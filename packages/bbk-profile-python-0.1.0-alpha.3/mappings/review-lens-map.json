@@ -1,0 +1,158 @@
+{
+  "genericOnlyLensIds": [
+    "intent-outcome",
+    "specification-acceptance",
+    "feasibility-dependency",
+    "cross-shard-integration"
+  ],
+  "lenses": {
+    "architecture-boundary": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not create or replace the project environment or select an interpreter.",
+        "Typing evidence is distinct from runtime validation and packaging evidence.",
+        "Native extension, multi-platform, process, async, web-stack and deployment claims remain conditional on exact environment qualification."
+      ],
+      "skills": [
+        "comprehensive-analysis-python"
+      ]
+    },
+    "implementation-structure": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not create or replace the project environment or select an interpreter.",
+        "Typing evidence is distinct from runtime validation and packaging evidence.",
+        "Native extension, multi-platform, process, async, web-stack and deployment claims remain conditional on exact environment qualification."
+      ],
+      "skills": [
+        "python-implementation-structure-review"
+      ]
+    },
+    "interface-consumer-compatibility": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not create or replace the project environment or select an interpreter.",
+        "Typing evidence is distinct from runtime validation and packaging evidence.",
+        "Native extension, multi-platform, process, async, web-stack and deployment claims remain conditional on exact environment qualification."
+      ],
+      "skills": [
+        "python-api-package-boundary-review",
+        "python-typing-contract-review"
+      ]
+    },
+    "operations-performance-resource": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not create or replace the project environment or select an interpreter.",
+        "Typing evidence is distinct from runtime validation and packaging evidence.",
+        "Native extension, multi-platform, process, async, web-stack and deployment claims remain conditional on exact environment qualification."
+      ],
+      "skills": [
+        "python-operational-readiness-review"
+      ]
+    },
+    "package-install-migration-release": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not create or replace the project environment or select an interpreter.",
+        "Typing evidence is distinct from runtime validation and packaging evidence.",
+        "Native extension, multi-platform, process, async, web-stack and deployment claims remain conditional on exact environment qualification."
+      ],
+      "skills": [
+        "python-package-release-gates"
+      ]
+    },
+    "security-privacy-supply-chain": {
+      "conditionalSkills": [
+        {
+          "skills": [
+            "python-native-extension-review"
+          ],
+          "tokens": [
+            "native",
+            "extension",
+            "abi",
+            "cffi",
+            "ctypes",
+            "pyo3",
+            "maturin"
+          ]
+        }
+      ],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not create or replace the project environment or select an interpreter.",
+        "Typing evidence is distinct from runtime validation and packaging evidence.",
+        "Native extension, multi-platform, process, async, web-stack and deployment claims remain conditional on exact environment qualification."
+      ],
+      "skills": [
+        "python-security-supply-chain-review"
+      ]
+    },
+    "state-concurrency-effect-recovery": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not create or replace the project environment or select an interpreter.",
+        "Typing evidence is distinct from runtime validation and packaging evidence.",
+        "Native extension, multi-platform, process, async, web-stack and deployment claims remain conditional on exact environment qualification."
+      ],
+      "skills": [
+        "python-runtime-correctness-review"
+      ]
+    },
+    "test-evidence": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not create or replace the project environment or select an interpreter.",
+        "Typing evidence is distinct from runtime validation and packaging evidence.",
+        "Native extension, multi-platform, process, async, web-stack and deployment claims remain conditional on exact environment qualification."
+      ],
+      "skills": [
+        "python-test-strategy-review"
+      ]
+    }
+  },
+  "profile": "python",
+  "schema": "bbk.profile-review-lens-map.v1",
+  "schemaPrefix": "python",
+  "version": "0.1.0-alpha.3"
+}

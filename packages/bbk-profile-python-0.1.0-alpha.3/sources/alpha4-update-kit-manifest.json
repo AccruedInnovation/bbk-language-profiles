@@ -1,0 +1,97 @@
+{
+  "bbkVersion": "0.1.0-alpha.4",
+  "files": [
+    {
+      "bytes": 4469,
+      "path": "IMPLEMENTATION-STRUCTURE.md",
+      "sha256": "eb70c1514e10c8df2dd39cc032c1413982e89b0cee8013ad97de3c8b55ab5962"
+    },
+    {
+      "bytes": 1819,
+      "path": "LANGUAGE-PROFILES.md",
+      "sha256": "0ea149958cd26d0f4431696698ed2851bb32b5e00125aaa497a24d574f5b4233"
+    },
+    {
+      "bytes": 33021,
+      "path": "PRD.md",
+      "sha256": "3476cb07d0fffd5b0c3ecb82d8b7821e3cff36105ffc4870bed2b481c0e2a61a"
+    },
+    {
+      "bytes": 2681,
+      "path": "fixtures/slices/procedure-slice-1.json",
+      "sha256": "499842174e1bdb40feb6481dba4c3a3f22c14558b33e07a2a0912a70994b3253"
+    },
+    {
+      "bytes": 2699,
+      "path": "fixtures/slices/software-slice-1.json",
+      "sha256": "a6862cd858717b39b50bf004c0195f252fcfa324d6a367a82bb254844fa293f6"
+    },
+    {
+      "bytes": 2344,
+      "path": "fixtures/slices/software-slice-2.json",
+      "sha256": "c61302549cc0b081f0338a92cf74759d23c5d9c90971a66ecb98cef8870fc85d"
+    },
+    {
+      "bytes": 3563,
+      "path": "fixtures/structure/invalid-contract.json",
+      "sha256": "d6af0a25f3a93dd3cea6a7026228367f7ac122175896318f00e7a668a0a45f99"
+    },
+    {
+      "bytes": 8975,
+      "path": "fixtures/structure/procedure-contract.json",
+      "sha256": "62c8b353b6741884fdfc26926f13512d32d40d7b603fbba529c7b961e663e4e7"
+    },
+    {
+      "bytes": 8299,
+      "path": "fixtures/structure/software-contract.json",
+      "sha256": "0334563424b8402748aaa85b57b35864443017291cc77b25b12a38ee6761f0d1"
+    },
+    {
+      "bytes": 1539,
+      "path": "fixtures/work-units/query-service.json",
+      "sha256": "c790f024a4ecf6187ca73f44a1f14fcaa00ccfb19799d4e7a514c24a04a4c84e"
+    },
+    {
+      "bytes": 6027,
+      "path": "schemas/bbk-execution-slice-v1.schema.json",
+      "sha256": "db4a0839516db3aaab7cac3378a88bb13bf3b93fad0e71b16d97d8a291e0a05b"
+    },
+    {
+      "bytes": 14120,
+      "path": "schemas/bbk-implementation-structure-contract-v1.schema.json",
+      "sha256": "c3c711e0a9b41a5755b01f41db50743bc5727346240c376dbab5b580639182b2"
+    },
+    {
+      "bytes": 4434,
+      "path": "schemas/bbk-language-profile-v1.schema.json",
+      "sha256": "d589210874a088ef5388de7065e525fbaaf57e96a8ebd77bd8f9ba3b74bbe87f"
+    },
+    {
+      "bytes": 1909,
+      "path": "schemas/bbk-structure-review-result-v1.schema.json",
+      "sha256": "b19eb89e1b71bfa1db62f6e33e00bf9c50cd26188a18d07245c99c30500db29e"
+    },
+    {
+      "bytes": 2802,
+      "path": "schemas/work-unit.schema.json",
+      "sha256": "25a8009208b019471b6a77f14154ce32b13817adf6a77721fb5d61261ce7bee0"
+    },
+    {
+      "bytes": 2699,
+      "path": "templates/execution-slice.json",
+      "sha256": "a6862cd858717b39b50bf004c0195f252fcfa324d6a367a82bb254844fa293f6"
+    },
+    {
+      "bytes": 8299,
+      "path": "templates/implementation-structure-contract.json",
+      "sha256": "0334563424b8402748aaa85b57b35864443017291cc77b25b12a38ee6761f0d1"
+    },
+    {
+      "bytes": 828,
+      "path": "templates/profile-alpha4-fragment.json",
+      "sha256": "124986d15308aea7a71e974cffc3cd35040e13414d1ae0fc0886f3bfb52694fd"
+    }
+  ],
+  "rootSha256": "21ab969456d972b2ec44beb684b9c8a5ad1ce9ee2f00e6a3a19e4a5df9f02ebf",
+  "schema": "bbk.alpha4-profile-update-kit.v1"
+}

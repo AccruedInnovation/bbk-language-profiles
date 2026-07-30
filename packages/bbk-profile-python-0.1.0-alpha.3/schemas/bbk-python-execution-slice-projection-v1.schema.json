@@ -1,0 +1,281 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-python-execution-slice-projection-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "advisories": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "applicability": {
+      "additionalProperties": false,
+      "properties": {
+        "disposition": {
+          "enum": [
+            "PROJECTED",
+            "NOT_APPLICABLE",
+            "PARTIAL",
+            "UNSUPPORTED",
+            "BLOCKED"
+          ]
+        },
+        "level": {
+          "enum": [
+            "none",
+            "inline",
+            "contract"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "triggers": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "level",
+        "disposition",
+        "rationale",
+        "triggers"
+      ],
+      "type": "object"
+    },
+    "bbk_version": {
+      "type": "string"
+    },
+    "blockers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "input": {
+      "additionalProperties": false,
+      "properties": {
+        "digest": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "implementation-structure-contract",
+            "execution-slice"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "revision",
+        "digest",
+        "path"
+      ],
+      "type": "object"
+    },
+    "no_authority": {
+      "additionalProperties": false,
+      "properties": {
+        "may_declare_pass": {
+          "const": false
+        },
+        "may_expand_work_scope": {
+          "const": false
+        },
+        "may_grant_tools_or_effects": {
+          "const": false
+        },
+        "may_reduce_assurance": {
+          "const": false
+        },
+        "statement": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "may_declare_pass",
+        "may_expand_work_scope",
+        "may_grant_tools_or_effects",
+        "may_reduce_assurance",
+        "statement"
+      ],
+      "type": "object"
+    },
+    "output_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "preflight_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profile": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": "python"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "type": "object"
+    },
+    "projection": {
+      "additionalProperties": false,
+      "properties": {
+        "assertions": {
+          "items": {},
+          "type": "array"
+        },
+        "atomicity": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "candidate_boundary": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "dependency_closure": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "entry_conditions": {
+          "items": {},
+          "type": "array"
+        },
+        "exit_conditions": {
+          "items": {},
+          "type": "array"
+        },
+        "flow": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "horizontal_sequence_assessment": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "inspection_plan": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "integration_owner": {
+          "type": "string"
+        },
+        "objective": {
+          "type": "string"
+        },
+        "planned_gates": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "profile_input_projection": {
+          "additionalProperties": true,
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "scaffolding": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "selected_skills": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "touchpoint": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "validation_boundary": {
+          "additionalProperties": true,
+          "type": "object"
+        }
+      },
+      "required": [
+        "assertions",
+        "integration_owner",
+        "atomicity",
+        "exit_conditions",
+        "entry_conditions",
+        "flow",
+        "objective",
+        "touchpoint",
+        "inspection_plan",
+        "dependency_closure",
+        "candidate_boundary",
+        "validation_boundary",
+        "scaffolding",
+        "horizontal_sequence_assessment",
+        "selected_skills",
+        "planned_gates",
+        "profile_input_projection"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "const": "bbk.python.execution-slice-projection.v1"
+    },
+    "unsupported_or_uncertain": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "profile",
+    "bbk_version",
+    "input",
+    "preflight_digest",
+    "applicability",
+    "projection",
+    "unsupported_or_uncertain",
+    "advisories",
+    "blockers",
+    "no_authority",
+    "output_digest"
+  ],
+  "title": "BBK Python Execution Slice Projection v1",
+  "type": "object"
+}

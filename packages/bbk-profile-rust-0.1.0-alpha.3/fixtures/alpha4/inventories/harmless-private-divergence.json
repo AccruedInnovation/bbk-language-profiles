@@ -1,0 +1,29 @@
+{
+  "artifacts": [
+    {
+      "id": "ART-RUST-CORE",
+      "kind": "module",
+      "logicalPath": "crates/core/src/lib.rs"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "KC-RUST-ADD",
+      "kind": "fn",
+      "name": "add",
+      "visibility": "public"
+    }
+  ],
+  "declaredDivergences": [
+    {
+      "classification": "within-delegated",
+      "kind": "private-module-layout",
+      "message": "A private helper moved under an internal module; no public contract or owner changed."
+    }
+  ],
+  "fixedDecisionRefs": [
+    "FD-RUST-PUBLIC"
+  ],
+  "schema": "rust.actual-structure-inventory.v1",
+  "stateOwnership": []
+}

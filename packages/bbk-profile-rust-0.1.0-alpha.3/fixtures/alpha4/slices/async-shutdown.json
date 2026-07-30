@@ -1,0 +1,72 @@
+{
+  "assertions": [
+    {
+      "evidence": "deterministic async test receipt",
+      "id": "A-RUST-SHUTDOWN",
+      "method": "test",
+      "statement": "Cancellation releases the owned task and resources."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "Splitting further would remove the integrated observation or create an artificial handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-RUST-ASYNC revision 1 accepted."
+  ],
+  "exitConditions": [
+    "The declared touchpoint is observed.",
+    "Every required assertion has candidate-bound evidence."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ISC-RUST-ASYNC"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-RUST-ASYNC"
+    ],
+    "participants": [
+      "caller",
+      "ServiceHandle",
+      "service task"
+    ],
+    "steps": [
+      "Start one service.",
+      "Send work.",
+      "Request cancellation.",
+      "Join and inspect classified outcome."
+    ]
+  },
+  "integrationOwner": "integration-owner",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Start, cancel, and join one service while observing resource cleanup.",
+  "parentCapabilityRefs": [
+    "CAP-ISC-RUST-ASYNC"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-RUST-ASYNC",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-RUST-ASYNC@1"
+  ],
+  "title": "Async shutdown touchpoint",
+  "touchpoint": {
+    "actor": "service caller",
+    "environment": "deterministic async test runtime",
+    "expectedObservation": "The task joins, channels close, and timeout remains distinct.",
+    "interaction": "Exercise start and shutdown.",
+    "kind": "api"
+  },
+  "workUnitRefs": [
+    "WU-RUST-SERVICE",
+    "WU-RUST-SHUTDOWN"
+  ]
+}

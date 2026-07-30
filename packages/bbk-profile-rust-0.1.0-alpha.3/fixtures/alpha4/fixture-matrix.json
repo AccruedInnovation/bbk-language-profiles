@@ -1,0 +1,49 @@
+{
+  "profile": "rust",
+  "scenarios": [
+    {
+      "contract": "contracts/routine-internal-refactor.json",
+      "expected": "NOT_APPLICABLE",
+      "id": "rust-routine-private",
+      "reviewer": false
+    },
+    {
+      "contract": "contracts/public-crate-api.json",
+      "expected": "SUPPORTED",
+      "id": "rust-public-api",
+      "slice": "slices/public-consumer.json"
+    },
+    {
+      "contract": "contracts/async-service.json",
+      "expected": "SUPPORTED",
+      "id": "rust-async",
+      "slice": "slices/async-shutdown.json"
+    },
+    {
+      "contract": "contracts/persistence-migration.json",
+      "expected": "SUPPORTED",
+      "id": "rust-persistence",
+      "slice": "slices/migration-rehearsal.json"
+    },
+    {
+      "contract": "contracts/unsafe-ffi.json",
+      "expected": "SUPPORTED",
+      "id": "rust-unsafe-ffi",
+      "slice": "slices/ffi-consumer.json"
+    },
+    {
+      "contract": "contracts/public-crate-api.json",
+      "expected": "CONFORMS",
+      "id": "rust-harmless-divergence",
+      "inventory": "inventories/harmless-private-divergence.json"
+    },
+    {
+      "contract": "contracts/public-crate-api.json",
+      "expected": "MATERIAL_DIVERGENCE",
+      "id": "rust-material-divergence",
+      "inventory": "inventories/material-public-divergence.json"
+    }
+  ],
+  "schema": "bbk.alpha4-fixture-matrix.v1",
+  "version": "0.1.0-alpha.2"
+}

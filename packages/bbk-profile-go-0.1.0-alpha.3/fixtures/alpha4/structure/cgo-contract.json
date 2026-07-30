@@ -1,0 +1,240 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "Native pointer lifetime and ABI shape cannot be delegated implicitly.",
+    "triggers": [
+      "cgo",
+      "unsafe",
+      "abi",
+      "platform-boundary"
+    ]
+  },
+  "contractId": "ISC-GO-CGO-001",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper layout",
+        "bounds": "May change inside api if public contracts and lifecycle ownership remain intact."
+      },
+      {
+        "area": "internal synchronization implementation",
+        "bounds": "May change if race-free behavior, terminal Close semantics, and evidence remain equivalent."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "unsafe/cgo structure and security review",
+        "id": "FD-CGO-LIFETIME",
+        "rationale": "Go pointer lifetime is a soundness boundary.",
+        "sourceRefs": [
+          "REQ-CGO-001"
+        ],
+        "statement": "Native code may not retain the Go pointer after the qualified call returns."
+      }
+    ],
+    "prohibited": [
+      "Duplicating Service closed-state policy in cmd/app.",
+      "Returning an output channel without one explicit close owner.",
+      "Treating a passing race run as proof of goroutine termination."
+    ]
+  },
+  "executionSliceRefs": [],
+  "metadata": {
+    "fixture": "go-alpha4"
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Public API and error contracts are explicit.",
+      "Package and goroutine/channel ownership are unambiguous.",
+      "Cancellation and shutdown have direct evidence."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "critical",
+    "requiredReviewers": [
+      "go-implementation-structure-review",
+      "go-unsafe-cgo-assembly-review",
+      "go-security-supply-chain-review"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-CGO",
+        "kind": "native-boundary",
+        "logicalPath": "api/internal/native/native.go",
+        "owner": "example.com/bbk/api/internal/native",
+        "responsibility": "Own the qualified CGO/unsafe boundary and Go pointer lifetime rules.",
+        "sourceRefs": [
+          "ARCH-NATIVE"
+        ]
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "closed service returns ErrClosed",
+          "cancelled context returns cancellation",
+          "store error is returned without hidden retry"
+        ],
+        "id": "BP-SAVE",
+        "interfaceRefs": [
+          "IF-GO-SAVE"
+        ],
+        "name": "Command save",
+        "steps": [
+          {
+            "contractRef": "KC-SERVICE",
+            "from": "cmd/app",
+            "interaction": "construct with Store implementation",
+            "to": "api.Service"
+          },
+          {
+            "contractRef": "KC-STORE",
+            "from": "api.Service",
+            "interaction": "Save with propagated context and Record",
+            "to": "api.Store"
+          }
+        ],
+        "success": "Record is handled once and command observes success.",
+        "trigger": "command constructs Service and invokes Save"
+      },
+      {
+        "failureAndRecovery": [
+          "cancellation terminates the owned goroutine",
+          "output channel closes exactly once"
+        ],
+        "id": "BP-STREAM",
+        "interfaceRefs": [
+          "IF-GO-STREAM"
+        ],
+        "name": "Cancellable stream",
+        "steps": [
+          {
+            "contractRef": "KC-RECORD",
+            "from": "caller",
+            "interaction": "provide context and receive-only input channel",
+            "to": "api.Stream"
+          },
+          {
+            "contractRef": "KC-RECORD",
+            "from": "api.Stream",
+            "interaction": "return receive-only output channel and close it on completion",
+            "to": "caller"
+          }
+        ],
+        "success": "Records are forwarded in order until input closes.",
+        "trigger": "caller invokes Stream with context and input channel"
+      }
+    ],
+    "effectBoundaries": [
+      {
+        "authorization": "caller-provided implementation under work-unit grant",
+        "effect": "Store.Save effect",
+        "failure": "error is returned; no hidden retry",
+        "idempotency": "not assumed; caller/application policy decides",
+        "owner": "Store implementation",
+        "recovery": "caller decides retry/reconciliation"
+      },
+      {
+        "authorization": "calling Stream",
+        "effect": "goroutine creation",
+        "failure": "blocked send must remain cancellable",
+        "idempotency": "one goroutine per call",
+        "owner": "api.Stream invocation",
+        "recovery": "context cancellation or input close terminates"
+      }
+    ],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "unsupported target or sanitizer configuration is BLOCKED"
+        ],
+        "id": "KC-CGO",
+        "invariants": [
+          "No foreign retention of unpinned Go memory",
+          "ABI and compiler assumptions are explicit"
+        ],
+        "kind": "cgo-abi",
+        "name": "PointerValue",
+        "responsibility": "Expose only the qualified native pointer observation used by the fixture.",
+        "shape": "func PointerValue(*byte) uintptr",
+        "sourceRefs": [
+          "REQ-CGO-001"
+        ],
+        "visibility": "internal"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-CMD",
+        "statement": "Command exit and output show success/failure without leaking record contents."
+      },
+      {
+        "id": "OBS-STREAM",
+        "statement": "Tests observe output closure and no post-cancel delivery."
+      }
+    ],
+    "stateOwnership": [
+      {
+        "concurrency": "thread/callback policy is explicit",
+        "consistency": "no foreign retention after return",
+        "lifetime": "one qualified call",
+        "mutationAuthority": "none",
+        "owner": "caller for call duration",
+        "recovery": "fail closed on unsupported configuration",
+        "state": "Go pointer passed to native boundary"
+      }
+    ],
+    "testSeams": [
+      {
+        "id": "TS-STORE",
+        "sourceRefs": [
+          "REQ-GO-API"
+        ],
+        "statement": "Inject a deterministic Store fake and assert Save/error behavior."
+      },
+      {
+        "id": "TS-STREAM",
+        "sourceRefs": [
+          "REQ-GO-CANCEL"
+        ],
+        "statement": "Use bounded channels and cancellation to prove output close and goroutine termination."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-GO-API",
+      "ARCH-GO-CMD"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-GO-001"
+    ],
+    "capabilityRefs": [
+      "CAP-GO-SAVE"
+    ],
+    "interfaceRefs": [
+      "IF-GO-SAVE"
+    ],
+    "kind": "software",
+    "purpose": "Expose a public Record/Store/Service API and bounded streaming lifecycle through a command consumer.",
+    "requirementRefs": [
+      "REQ-GO-API",
+      "REQ-GO-CANCEL"
+    ],
+    "scopeRefs": [
+      "SCOPE-GO-API"
+    ]
+  },
+  "title": "Go CGO pointer and ABI boundary",
+  "uncertainties": []
+}

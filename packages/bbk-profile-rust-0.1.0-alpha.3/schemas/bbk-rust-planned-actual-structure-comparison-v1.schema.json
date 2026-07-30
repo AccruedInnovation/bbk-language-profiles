@@ -1,0 +1,55 @@
+{
+  "$id": "https://bbk.local/schemas/rust.planned-actual-structure-comparison.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "actual_inventory_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "advisory_findings": {
+      "type": "array"
+    },
+    "comparison_policy": {
+      "type": "string"
+    },
+    "contract_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "disposition": {
+      "enum": [
+        "CONFORMS",
+        "ADVISORY_DIVERGENCE",
+        "MATERIAL_DIVERGENCE",
+        "BLOCKED",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "material_findings": {
+      "type": "array"
+    },
+    "output_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema": {
+      "const": "rust.planned-actual-structure-comparison.v1"
+    },
+    "within_delegated_freedom": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "contract_digest",
+    "actual_inventory_digest",
+    "disposition",
+    "material_findings",
+    "advisory_findings",
+    "within_delegated_freedom",
+    "comparison_policy",
+    "output_digest"
+  ],
+  "type": "object"
+}

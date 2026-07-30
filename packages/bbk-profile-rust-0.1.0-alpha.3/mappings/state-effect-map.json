@@ -1,0 +1,234 @@
+{
+  "antiPatterns": [
+    "stringly typed identities",
+    "shadow mutable state",
+    "ambient global mutation",
+    "detached tasks without cancellation ownership",
+    "effect execution hidden inside domain decisions"
+  ],
+  "concepts": [
+    "enum and product-of-enum state",
+    "newtype identities and units",
+    "explicit error/result enums",
+    "application-service decision functions",
+    "ports/adapters and trait boundaries",
+    "task, channel, lease, cancellation, shutdown, and persistence ownership"
+  ],
+  "conditionalSkills": [
+    {
+      "skills": [
+        "rust-unsafe-ffi-assurance"
+      ],
+      "tokens": [
+        "unsafe",
+        "ffi",
+        "abi"
+      ]
+    }
+  ],
+  "expectedFacets": [
+    "state owners",
+    "decision entrypoints",
+    "effect executors",
+    "retry",
+    "cancellation",
+    "duplicate",
+    "timeout",
+    "acknowledgement",
+    "persistence",
+    "migration",
+    "recovery",
+    "shutdown",
+    "tests/traces/models"
+  ],
+  "formalModelTools": [
+    "property/state-machine tests such as proptest or repository equivalents",
+    "Loom-like deterministic concurrency exploration where applicable",
+    "Miri for supported unsafe/aliasing claims",
+    "Kani or other qualified bounded verification where selected",
+    "optional external Quint/TLA+ trace mappings"
+  ],
+  "inventoryProcedure": "Read exact request-relative inputs and BBK_PROFILE_SOURCE_ROOT; perform bounded static inventory without mutation or tool installation.",
+  "profile": "rust",
+  "representations": [
+    "enum and product-of-enum state",
+    "newtype identities and units",
+    "explicit error/result enums",
+    "application-service decision functions"
+  ],
+  "routing": {
+    "CONTRACT": {
+      "description": "Explicit profile projection, inventory, planned-versus-actual review and evidence touchpoints.",
+      "skills": [
+        "rust-implementation-structure-review",
+        "rust-correctness-failure-review",
+        "rust-test-strategy-review"
+      ]
+    },
+    "INLINE": {
+      "description": "Focused local representation and failure review only.",
+      "skills": [
+        "rust-implementation-structure-review",
+        "rust-correctness-failure-review"
+      ]
+    },
+    "NONE": {
+      "description": "No standalone profile procedure; retain only generic record identity.",
+      "skills": []
+    }
+  },
+  "schema": "bbk.profile-state-effect-map.v1",
+  "schemaPrefix": "rust",
+  "signalPatterns": {
+    "acknowledgement": [
+      "ack",
+      "receipt",
+      "status"
+    ],
+    "ambientState": [
+      "ambient",
+      "global",
+      "static ",
+      "gvl",
+      "singleton",
+      "package var",
+      "module global"
+    ],
+    "cancellation": [
+      "cancel",
+      "abortsignal",
+      "context.context",
+      "cancellation"
+    ],
+    "canonicalOwners": [
+      "owner",
+      "owned",
+      "function_block",
+      "class ",
+      "struct ",
+      "reducer",
+      "service"
+    ],
+    "decisionEntrypoints": [
+      "decide",
+      "transition",
+      "reducer",
+      "apply",
+      "handle",
+      "step",
+      "execute logic",
+      "method decidetransition"
+    ],
+    "derivedState": [
+      "derived",
+      "computed",
+      "projection",
+      "cache"
+    ],
+    "duplicate": [
+      "duplicate",
+      "idempot"
+    ],
+    "effectExecutors": [
+      "effect",
+      "adapter",
+      "port",
+      "write",
+      "publish",
+      "send",
+      "output",
+      "i/o",
+      "io ",
+      "network",
+      "filesystem",
+      "physical"
+    ],
+    "externalBoundaries": [
+      "api",
+      "cli",
+      "http",
+      "rpc",
+      "queue",
+      "process",
+      "controller",
+      "target",
+      "package",
+      "plugin",
+      "ffi",
+      "mcp"
+    ],
+    "hiddenDependencies": [
+      "ambient",
+      "singleton",
+      "getenv",
+      "environment variable",
+      "global lookup",
+      "service locator"
+    ],
+    "migration": [
+      "migration",
+      "migrate",
+      "schema version"
+    ],
+    "persistence": [
+      "persist",
+      "retain",
+      "database",
+      "store"
+    ],
+    "recovery": [
+      "recover",
+      "recovery",
+      "rollback",
+      "reset",
+      "fault"
+    ],
+    "retry": [
+      "retry",
+      "backoff"
+    ],
+    "shadowState": [
+      "shadow",
+      "duplicate state",
+      "mirror state",
+      "cached state",
+      "eshadowstate",
+      "shadow_order_state"
+    ],
+    "shutdown": [
+      "shutdown",
+      "cleanup",
+      "close",
+      "dispose"
+    ],
+    "stateRepresentations": [
+      "enum",
+      "state",
+      "status",
+      "mode",
+      "variant",
+      "union",
+      "struct",
+      "dataclass",
+      "dut"
+    ],
+    "testsTracesModels": [
+      "test",
+      "trace",
+      "property",
+      "hypothesis",
+      "proptest",
+      "loom",
+      "miri",
+      "kani",
+      "simulator",
+      "counit",
+      "test manager"
+    ],
+    "timeout": [
+      "timeout",
+      "deadline"
+    ]
+  },
+  "version": "0.1.0-alpha.3"
+}

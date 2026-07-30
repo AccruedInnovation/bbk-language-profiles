@@ -1,0 +1,15 @@
+{
+  "schema": "bbk.tsjs-runtime-capability-map.v1",
+  "runtimes": {
+    "node": {"support": "primary", "triggers": ["engines.node", "node:* imports", "process", "package bin"]},
+    "browser": {"support": "primary", "triggers": ["browserslist", "browser field", "DOM globals", "browser framework"]},
+    "omp": {"support": "primary-with-exact-host-fixture", "triggers": ["OMP extension metadata", ".omp path", "registerTool/registerCommand"]},
+    "bun": {"support": "conditional", "triggers": ["bun.lock", "bunfig.toml", "engines.bun", "bun dependency"]},
+    "deno": {"support": "conditional", "triggers": ["deno.json", "deno.lock", "Deno global"]},
+    "worker": {"support": "conditional", "triggers": ["wrangler.toml", "worker-configuration", "Web Worker API"]},
+    "electron": {"support": "conditional", "triggers": ["electron dependency", "electron-builder configuration"]},
+    "react-native": {"support": "unqualified", "triggers": ["react-native dependency"]},
+    "native-addon": {"support": "conditional-wrapper-only", "triggers": ["node-gyp", "napi-rs", "*.node artifact", "prebuild"]},
+    "wasm": {"support": "conditional-wrapper-only", "triggers": ["*.wasm", "WebAssembly", "wasm-pack"]}
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "bbk_target": "0.1.0-alpha.4",
+  "profile_version": "0.1.0-alpha.2",
+  "scenarios": [
+    {
+      "expectation": "legacy/alpha3-profile-expected.json",
+      "expected": "generic profile schema valid; implementation-structure support reported as legacy-unprojected with no invented projection",
+      "id": "legacy-alpha3-profile",
+      "profile": "../../sources/predecessor-PROFILE.json"
+    },
+    {
+      "contract": "contracts/routine-private-none.json",
+      "expected": "NOT_APPLICABLE; no focused structure reviewer",
+      "id": "routine-private"
+    },
+    {
+      "contract": "contracts/public-typed-package.json",
+      "expected": "projection plus API/typing and focused structure review when reviewing",
+      "id": "public-typed-api",
+      "slice": "slices/es-py-public-consumer.json"
+    },
+    {
+      "contract": "contracts/external-json-validation.json",
+      "expected": "runtime-validation and security boundary guidance",
+      "id": "runtime-validation",
+      "slice": "slices/es-py-validation.json"
+    },
+    {
+      "contract": "contracts/async-cancellation.json",
+      "expected": "state/task/cancellation ownership and test evidence",
+      "id": "async-cancellation",
+      "slice": "slices/es-py-async.json"
+    },
+    {
+      "contract": "contracts/multiprocessing-handoff.json",
+      "expected": "process-message and start-method evidence",
+      "id": "multiprocessing",
+      "slice": "slices/es-py-process.json"
+    },
+    {
+      "contract": "contracts/plugin-entry-point.json",
+      "expected": "installed entry-point consumer touchpoint",
+      "id": "plugin",
+      "slice": "slices/es-py-plugin.json"
+    },
+    {
+      "contract": "contracts/package-consumer.json",
+      "expected": "clean wheel consumer and package gates",
+      "id": "package-consumer",
+      "slice": "slices/es-py-package.json"
+    },
+    {
+      "contract": "contracts/migration.json",
+      "expected": "migration, recovery, evidence, consumer checks",
+      "id": "migration",
+      "slice": "slices/es-py-migration.json"
+    },
+    {
+      "contract": "contracts/unsupported-procedure.json",
+      "expected": "bounded UNSUPPORTED result",
+      "id": "unsupported"
+    },
+    {
+      "contract": "contracts/routine-private-none.json",
+      "expected": "no material conformance failure",
+      "id": "harmless-private-divergence",
+      "inventory": "inventories/private-harmless-divergence.json"
+    },
+    {
+      "contract": "contracts/public-typed-package.json",
+      "expected": "MATERIAL_DIVERGENCE with FD-PUBLIC-IMPORT",
+      "id": "public-import-drift",
+      "inventory": "inventories/public-import-drift.json"
+    },
+    {
+      "contract": "contracts/async-cancellation.json",
+      "expected": "MATERIAL_DIVERGENCE with FD-ASYNC-OWNER",
+      "id": "async-owner-drift",
+      "inventory": "inventories/async-ownership-drift.json"
+    },
+    {
+      "expected": "foundation exception allowed and next integrated slice named",
+      "id": "foundation-exception",
+      "slice": "slices/es-py-foundation.json"
+    }
+  ],
+  "schema": "bbk.python-alpha4-fixture-matrix.v1"
+}

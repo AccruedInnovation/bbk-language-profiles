@@ -1,0 +1,68 @@
+{
+  "assertions": [
+    {
+      "evidence": "entry point result",
+      "id": "A-PLUGIN",
+      "method": "test",
+      "statement": "Plugin discovery uses the declared group."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice creates one integrated, reversible qualification touchpoint.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "Contract accepted."
+  ],
+  "exitConditions": [
+    "Declared observation is evidenced."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "participants": [
+      "installed distribution",
+      "entry point consumer"
+    ],
+    "steps": [
+      "Install the wheel and discover fixture.plugins."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Python fixture",
+  "metadata": {
+    "fixture": true,
+    "revision": "1"
+  },
+  "objective": "Installed plugin discovery",
+  "parentCapabilityRefs": [
+    "CAP-PYTHON"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-PY-PLUGIN",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-PY-PLUGIN@1"
+  ],
+  "title": "Installed plugin discovery",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "isolated qualification fixture",
+    "expectedObservation": "The built-in plugin is found through package metadata.",
+    "interaction": "Install the wheel and discover fixture.plugins.",
+    "kind": "package"
+  },
+  "workUnitRefs": [
+    "WU-PLUGIN",
+    "WU-PACKAGE"
+  ]
+}

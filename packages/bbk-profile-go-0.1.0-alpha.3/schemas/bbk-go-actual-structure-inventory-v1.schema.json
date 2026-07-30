@@ -1,0 +1,63 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-go-actual-structure-inventory-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifacts": {
+      "type": "array"
+    },
+    "behavior_paths": {
+      "type": "array"
+    },
+    "contracts": {
+      "type": "array"
+    },
+    "delegated_differences": {
+      "type": "array"
+    },
+    "fixed_decisions": {
+      "type": "array"
+    },
+    "output_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "ownership": {
+      "type": "array"
+    },
+    "preflight_sha256": {
+      "oneOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "root": {
+      "type": "string"
+    },
+    "schema": {
+      "const": "bbk.go.actual-structure-inventory.v1"
+    },
+    "unsupported_or_uncertain": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "root",
+    "artifacts",
+    "contracts",
+    "ownership",
+    "behavior_paths",
+    "fixed_decisions",
+    "delegated_differences",
+    "unsupported_or_uncertain",
+    "output_sha256"
+  ],
+  "title": "BBK Go actual structure inventory v1",
+  "type": "object"
+}

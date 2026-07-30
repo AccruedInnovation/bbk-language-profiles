@@ -1,0 +1,88 @@
+{
+  "artifacts": [
+    {
+      "kind": "fixture",
+      "path": "pyproject.toml"
+    },
+    {
+      "kind": "fixture",
+      "path": "src/fixture_pkg/__init__.py"
+    },
+    {
+      "kind": "fixture",
+      "path": "src/fixture_pkg/api.py"
+    },
+    {
+      "kind": "fixture",
+      "path": "src/fixture_pkg/py.typed"
+    },
+    {
+      "kind": "fixture",
+      "path": "src/fixture_pkg/async_service.py"
+    },
+    {
+      "kind": "fixture",
+      "path": "src/fixture_pkg/plugins.py"
+    },
+    {
+      "kind": "fixture",
+      "path": "migrations/0001_initial.py"
+    }
+  ],
+  "contracts": [
+    {
+      "kind": "dataclass-value",
+      "name": "Greeting",
+      "path": "src/fixture_pkg/api.py",
+      "visibility": "public"
+    },
+    {
+      "kind": "function",
+      "name": "greet",
+      "path": "src/fixture_pkg/api.py",
+      "visibility": "public"
+    },
+    {
+      "kind": "plugin-entry-point-group",
+      "name": "fixture.plugins",
+      "visibility": "external"
+    },
+    {
+      "kind": "class",
+      "name": "Plugin",
+      "path": "src/fixture_pkg/plugins.py",
+      "visibility": "public"
+    },
+    {
+      "kind": "package-import",
+      "name": "fixture_pkg",
+      "visibility": "external"
+    },
+    {
+      "kind": "console-entry-point",
+      "name": "fixture-cli",
+      "visibility": "external"
+    }
+  ],
+  "delegated_differences": [],
+  "fixed_decision_evidence": [
+    {
+      "decision_id": "FD-PUBLIC-IMPORT",
+      "evidence": "consumer imports Greeting and greet from fixture_pkg",
+      "status": "conforms"
+    },
+    {
+      "decision_id": "FD-PY-TYPED",
+      "evidence": "py.typed present in wheel contents",
+      "status": "conforms"
+    }
+  ],
+  "limitations": [
+    "Supplied fixture inventory represents qualification evidence, not a live repository scan."
+  ],
+  "ownership": [],
+  "preflight_digest": null,
+  "root": "fixture",
+  "schema": "bbk.python.actual-structure-inventory.v1",
+  "source": "supplied"
+}

@@ -1,0 +1,107 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-python-planned-actual-structure-comparison-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "advisory_difference_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "artifact_differences": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "blocking_unknowns": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "candidate_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "contract_differences": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "contract_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "contract_id": {
+      "type": "string"
+    },
+    "contract_revision": {
+      "type": "string"
+    },
+    "delegated_differences": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "fixed_decision_differences": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "inventory_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "material_difference_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "output_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "ownership_differences": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema": {
+      "const": "bbk.python.planned-actual-structure-comparison.v1"
+    },
+    "unknowns": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "contract_id",
+    "contract_revision",
+    "contract_digest",
+    "candidate_digest",
+    "inventory_digest",
+    "artifact_differences",
+    "contract_differences",
+    "fixed_decision_differences",
+    "delegated_differences",
+    "ownership_differences",
+    "unknowns",
+    "blocking_unknowns",
+    "material_difference_count",
+    "advisory_difference_count",
+    "output_digest"
+  ],
+  "title": "BBK Python Planned Actual Structure Comparison v1",
+  "type": "object"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "fixture-strict-node-esm",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.0.0",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "node --test dist/test/*.js",
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {"typescript": "^6.0.0", "eslint": "^9.0.0", "@types/node": "^22.0.0"}
+}

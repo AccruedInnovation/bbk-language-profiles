@@ -1,0 +1,71 @@
+{
+  "assertions": [
+    {
+      "evidence": "pre/post state and replay receipt",
+      "id": "A-RUST-MIGRATE",
+      "method": "test",
+      "statement": "Migration is atomic or complete-forward and replay-safe."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "Splitting further would remove the integrated observation or create an artificial handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-RUST-PERSIST revision 1 accepted."
+  ],
+  "exitConditions": [
+    "The declared touchpoint is observed.",
+    "Every required assertion has candidate-bound evidence."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ISC-RUST-PERSIST"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-RUST-PERSIST"
+    ],
+    "participants": [
+      "migration coordinator",
+      "durable store"
+    ],
+    "steps": [
+      "Capture pre-state.",
+      "Apply or fault the migration.",
+      "Restart and replay.",
+      "Inspect state and receipt."
+    ]
+  },
+  "integrationOwner": "integration-owner",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Apply and replay the migration against a disposable durable fixture.",
+  "parentCapabilityRefs": [
+    "CAP-ISC-RUST-PERSIST"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-RUST-MIGRATION",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-RUST-PERSIST@1"
+  ],
+  "title": "Migration rehearsal",
+  "touchpoint": {
+    "actor": "migration operator",
+    "environment": "disposable local persistence fixture",
+    "expectedObservation": "State is either prior or complete and replay does not duplicate effects.",
+    "interaction": "Apply, interrupt, replay, and inspect durable state.",
+    "kind": "other"
+  },
+  "workUnitRefs": [
+    "WU-RUST-MIGRATION",
+    "WU-RUST-RECOVERY"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "assertions": [
+    {
+      "evidence": "consumer fixture",
+      "id": "A-PUBLIC",
+      "method": "test",
+      "statement": "Public import and call remain compatible."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice creates one integrated, reversible qualification touchpoint.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "Contract accepted."
+  ],
+  "exitConditions": [
+    "Declared observation is evidenced."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "participants": [
+      "installed package",
+      "consumer fixture"
+    ],
+    "steps": [
+      "Import fixture_pkg and call greet."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Python fixture",
+  "metadata": {
+    "fixture": true,
+    "revision": "1"
+  },
+  "objective": "Public import consumer",
+  "parentCapabilityRefs": [
+    "CAP-PYTHON"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-PY-PUBLIC-CONSUMER",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-PY-PUBLIC@1"
+  ],
+  "title": "Public import consumer",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "isolated qualification fixture",
+    "expectedObservation": "Greeting is returned through the public package import.",
+    "interaction": "Import fixture_pkg and call greet.",
+    "kind": "api"
+  },
+  "workUnitRefs": [
+    "WU-PUBLIC-API",
+    "WU-CONSUMER"
+  ]
+}

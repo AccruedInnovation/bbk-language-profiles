@@ -1,0 +1,153 @@
+{
+  "genericOnlyLensIds": [
+    "intent-outcome",
+    "specification-acceptance",
+    "feasibility-dependency",
+    "cross-shard-integration"
+  ],
+  "lenses": {
+    "architecture-boundary": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Rust toolchain.",
+        "Types and compilation do not prove runtime input validity, persistence, cancellation, recovery, or operational behavior.",
+        "Unsafe, concurrency, performance, package, and supply-chain methods remain trigger-based rather than universal."
+      ],
+      "skills": [
+        "comprehensive-analysis-rust"
+      ]
+    },
+    "implementation-structure": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Rust toolchain.",
+        "Types and compilation do not prove runtime input validity, persistence, cancellation, recovery, or operational behavior.",
+        "Unsafe, concurrency, performance, package, and supply-chain methods remain trigger-based rather than universal."
+      ],
+      "skills": [
+        "rust-implementation-structure-review"
+      ]
+    },
+    "interface-consumer-compatibility": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Rust toolchain.",
+        "Types and compilation do not prove runtime input validity, persistence, cancellation, recovery, or operational behavior.",
+        "Unsafe, concurrency, performance, package, and supply-chain methods remain trigger-based rather than universal."
+      ],
+      "skills": [
+        "rust-api-crate-boundary-review"
+      ]
+    },
+    "operations-performance-resource": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Rust toolchain.",
+        "Types and compilation do not prove runtime input validity, persistence, cancellation, recovery, or operational behavior.",
+        "Unsafe, concurrency, performance, package, and supply-chain methods remain trigger-based rather than universal."
+      ],
+      "skills": [
+        "rust-operational-readiness-review"
+      ]
+    },
+    "package-install-migration-release": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Rust toolchain.",
+        "Types and compilation do not prove runtime input validity, persistence, cancellation, recovery, or operational behavior.",
+        "Unsafe, concurrency, performance, package, and supply-chain methods remain trigger-based rather than universal."
+      ],
+      "skills": [
+        "rust-package-release-gates"
+      ]
+    },
+    "security-privacy-supply-chain": {
+      "conditionalSkills": [
+        {
+          "skills": [
+            "rust-unsafe-ffi-assurance"
+          ],
+          "tokens": [
+            "unsafe",
+            "ffi",
+            "abi"
+          ]
+        }
+      ],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Rust toolchain.",
+        "Types and compilation do not prove runtime input validity, persistence, cancellation, recovery, or operational behavior.",
+        "Unsafe, concurrency, performance, package, and supply-chain methods remain trigger-based rather than universal."
+      ],
+      "skills": [
+        "rust-security-supply-chain-review"
+      ]
+    },
+    "state-concurrency-effect-recovery": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Rust toolchain.",
+        "Types and compilation do not prove runtime input validity, persistence, cancellation, recovery, or operational behavior.",
+        "Unsafe, concurrency, performance, package, and supply-chain methods remain trigger-based rather than universal."
+      ],
+      "skills": [
+        "rust-correctness-failure-review"
+      ]
+    },
+    "test-evidence": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Rust toolchain.",
+        "Types and compilation do not prove runtime input validity, persistence, cancellation, recovery, or operational behavior.",
+        "Unsafe, concurrency, performance, package, and supply-chain methods remain trigger-based rather than universal."
+      ],
+      "skills": [
+        "rust-test-strategy-review"
+      ]
+    }
+  },
+  "profile": "rust",
+  "schema": "bbk.profile-review-lens-map.v1",
+  "schemaPrefix": "rust",
+  "version": "0.1.0-alpha.3"
+}

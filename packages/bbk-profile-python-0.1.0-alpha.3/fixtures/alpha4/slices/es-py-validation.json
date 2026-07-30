@@ -1,0 +1,67 @@
+{
+  "assertions": [
+    {
+      "evidence": "negative fixture",
+      "id": "A-VALID",
+      "method": "test",
+      "statement": "Invalid external JSON cannot become trusted state."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice creates one integrated, reversible qualification touchpoint.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "Contract accepted."
+  ],
+  "exitConditions": [
+    "Declared observation is evidenced."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "participants": [
+      "external JSON",
+      "runtime validator"
+    ],
+    "steps": [
+      "Submit valid and invalid JSON to the boundary parser."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Python fixture",
+  "metadata": {
+    "fixture": true,
+    "revision": "1"
+  },
+  "objective": "Runtime JSON validation",
+  "parentCapabilityRefs": [
+    "CAP-PYTHON"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-PY-VALIDATION",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-PY-VALIDATION@1"
+  ],
+  "title": "Runtime JSON validation",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "isolated qualification fixture",
+    "expectedObservation": "Valid data becomes a trusted value and invalid data is rejected.",
+    "interaction": "Submit valid and invalid JSON to the boundary parser.",
+    "kind": "api"
+  },
+  "workUnitRefs": [
+    "WU-VALIDATION"
+  ]
+}

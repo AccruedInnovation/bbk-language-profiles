@@ -1,0 +1,80 @@
+{
+  "artifacts": [
+    {
+      "kind": "go-source-file",
+      "path": "api/api.go"
+    },
+    {
+      "kind": "go-source-file",
+      "path": "cmd/app/main.go"
+    },
+    {
+      "kind": "go-test-file",
+      "path": "api/api_test.go"
+    }
+  ],
+  "behavior_paths": [
+    {
+      "id": "BP-SAVE"
+    },
+    {
+      "id": "BP-STREAM"
+    }
+  ],
+  "contracts": [
+    {
+      "kind": "type",
+      "name": "Record",
+      "visibility": "exported"
+    },
+    {
+      "kind": "type",
+      "name": "Store",
+      "visibility": "exported"
+    },
+    {
+      "kind": "type",
+      "name": "Service",
+      "visibility": "exported"
+    },
+    {
+      "kind": "sentinel-error",
+      "name": "ErrClosed",
+      "visibility": "exported"
+    }
+  ],
+  "delegated_differences": [],
+  "fixed_decisions": [
+    {
+      "evidence": [
+        "api/api.go",
+        "cmd/app/main.go"
+      ],
+      "id": "FD-PACKAGE-OWNER",
+      "status": "satisfied"
+    },
+    {
+      "evidence": [
+        "api/api.go",
+        "api/api_test.go"
+      ],
+      "id": "FD-STREAM-OWNER",
+      "status": "satisfied"
+    }
+  ],
+  "output_sha256": "184e29936987bd812c80a2ef945f7805d9d6470332b13759a00ca0ae8e1fe192",
+  "ownership": [
+    {
+      "kind": "service-state",
+      "owner": "example.com/bbk/api.Service"
+    },
+    {
+      "kind": "stream",
+      "owner": "api.Stream invocation"
+    }
+  ],
+  "preflight_sha256": null,
+  "root": "fixtures/go-workspace",
+  "schema": "bbk.go.actual-structure-inventory.v1",
+  "unsupported_or_uncertain": []
+}

@@ -1,0 +1,154 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The realization shape is material to independent work, ownership, compatibility, or verification.",
+    "triggers": [
+      "persistence",
+      "migration"
+    ]
+  },
+  "contractId": "ISC-RUST-PERSIST",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and local layout",
+        "bounds": "May differ when fixed public/shared contracts, ownership, behavior paths, and evidence seams remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "contract revision and focused impact review",
+        "id": "FD-RUST-MIGRATION",
+        "rationale": "Replay and recovery require one authority.",
+        "sourceRefs": [
+          "REQ-FD-RUST-MIGRATION"
+        ],
+        "statement": "Migration identity and durable state transition are owned by the migration coordinator."
+      }
+    ],
+    "prohibited": [
+      "Do not reinterpret a private convenience choice as authority to change a fixed contract."
+    ]
+  },
+  "executionSliceRefs": [],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and shared contracts are preserved.",
+      "Delegated freedom remains available.",
+      "Applicable touchpoints have bounded evidence."
+    ],
+    "assuranceTier": "consequential",
+    "requiredReviewers": [
+      "focused-profile-structure-review"
+    ]
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "create",
+        "id": "ART-RUST-MIGRATION",
+        "kind": "migration",
+        "logicalPath": "migrations/0002_state.sql",
+        "owner": "migration subsystem",
+        "responsibility": "Transform durable state and record migration identity.",
+        "sourceRefs": [
+          "ARCH-ART-RUST-MIGRATION"
+        ]
+      }
+    ],
+    "behaviorPaths": [],
+    "effectBoundaries": [
+      {
+        "authorization": "migration authorization",
+        "effect": "durable migration",
+        "failure": "partial durable state is prohibited",
+        "idempotency": "migration ID is replay-safe",
+        "owner": "migration coordinator",
+        "recovery": "rollback or complete forward from receipt"
+      }
+    ],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "Failure is explicit and no partial success is reported."
+        ],
+        "id": "KC-RUST-MIGRATION",
+        "invariants": [
+          "The boundary preserves its declared meaning."
+        ],
+        "kind": "persistence result",
+        "name": "MigrationResult",
+        "responsibility": "Classify migration outcome and recovery",
+        "shape": "enum Applied|AlreadyApplied|Blocked|Failed",
+        "sourceRefs": [
+          "IF-KC-RUST-MIGRATION"
+        ],
+        "visibility": "shared"
+      }
+    ],
+    "migrationTouchpoints": [
+      {
+        "id": "MIG-ISC-RUST-PERSIST",
+        "statement": "Preserve prior state and explicit rollback or complete-forward disposition."
+      }
+    ],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-RUST-PERSIST",
+        "statement": "Record the fixed-boundary outcome and failure disposition without fabricating operational truth."
+      }
+    ],
+    "stateOwnership": [
+      {
+        "concurrency": "single owner unless explicitly stated",
+        "consistency": "one committed schema revision",
+        "lifetime": "persistent",
+        "mutationAuthority": "migration transaction",
+        "owner": "migration coordinator",
+        "recovery": "rollback before commit; complete forward after commit",
+        "state": "durable schema revision"
+      }
+    ],
+    "testSeams": [
+      {
+        "id": "TS-ISC-RUST-PERSIST",
+        "sourceRefs": [
+          "REQ-ISC-RUST-PERSIST"
+        ],
+        "statement": "Use a focused fixture at the fixed boundary and preserve candidate-bound evidence."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-RUST-PERSIST"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-ALPHA4-FIXTURE"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-RUST-PERSIST"
+    ],
+    "interfaceRefs": [
+      "KC-RUST-MIGRATION"
+    ],
+    "kind": "software",
+    "purpose": "Migrate durable records with explicit transaction, replay, and rollback ownership.",
+    "requirementRefs": [
+      "REQ-ISC-RUST-PERSIST"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-RUST-PERSIST"
+    ]
+  },
+  "title": "Persistence migration structure",
+  "uncertainties": []
+}

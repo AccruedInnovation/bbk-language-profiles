@@ -1,0 +1,68 @@
+{
+  "assertions": [
+    {
+      "evidence": "build plus smoke receipt",
+      "id": "A-TRANSPILE",
+      "method": "test",
+      "statement": "Emitted artifact starts."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice closes one integrated feedback path without artificial layer-only handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-TSJS-TRANSPILE@1 accepted"
+  ],
+  "exitConditions": [
+    "Build/runtime evidence is present and type-check evidence is explicitly absent."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ES-TSJS-TRANSPILE"
+    ],
+    "interfaceRefs": [
+      "IF-ES-TSJS-TRANSPILE"
+    ],
+    "participants": [
+      "consumer",
+      "owner"
+    ],
+    "steps": [
+      "Transform source.",
+      "Run emitted output."
+    ]
+  },
+  "integrationOwner": "Owner of ES-TSJS-TRANSPILE",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Build and execute the artifact without claiming semantic type-check evidence.",
+  "parentCapabilityRefs": [
+    "CAP-ES-TSJS-TRANSPILE"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-TSJS-TRANSPILE",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-TSJS-TRANSPILE@1"
+  ],
+  "title": "Transpile-only artifact path",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "synthetic qualified fixture",
+    "expectedObservation": "Build/runtime evidence is present and type-check evidence is explicitly absent.",
+    "interaction": "Run emitted application",
+    "kind": "cli"
+  },
+  "workUnitRefs": [
+    "WU-BUILD",
+    "WU-SMOKE"
+  ]
+}

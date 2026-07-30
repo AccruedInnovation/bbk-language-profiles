@@ -1,0 +1,6 @@
+{
+  "candidate_id": "CAND-GO-001",
+  "manifest_content_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "schema": "bbk.candidate.v1",
+  "source_root": "fixtures/go-workspace"
+}

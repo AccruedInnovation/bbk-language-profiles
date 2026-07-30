@@ -1,0 +1,28 @@
+{
+  "candidate_id": "CAND-PY-ALPHA4",
+  "content_sha256": "5757ae3262a89a0d49de6a077438560c659c36e0ca36cb96273f55f00c242cbd",
+  "files": [
+    {
+      "path": "pyproject.toml"
+    },
+    {
+      "path": "src/fixture_pkg/__init__.py"
+    },
+    {
+      "path": "src/fixture_pkg/api.py"
+    },
+    {
+      "path": "src/fixture_pkg/py.typed"
+    },
+    {
+      "path": "src/fixture_pkg/async_service.py"
+    },
+    {
+      "path": "src/fixture_pkg/plugins.py"
+    },
+    {
+      "path": "migrations/0001_initial.py"
+    }
+  ],
+  "schema": "bbk.candidate-manifest.v1"
+}

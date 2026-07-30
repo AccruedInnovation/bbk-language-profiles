@@ -1,0 +1,354 @@
+{
+  "authority": {
+    "may_add_gate_recipes": true,
+    "may_add_procedure": true,
+    "may_add_review_criteria": true,
+    "may_declare_pass": false,
+    "may_expand_work_scope": false,
+    "may_grant_tools_or_effects": false,
+    "may_reduce_assurance": false
+  },
+  "capabilities": {
+    "implementation_structure": {
+      "artifact_kinds": [
+        "workspace",
+        "crate",
+        "module",
+        "feature",
+        "target",
+        "generated-artifact",
+        "test",
+        "migration",
+        "package"
+      ],
+      "contract_kinds": [
+        "public-api",
+        "trait-boundary",
+        "wire-schema",
+        "state-owner",
+        "async-lifecycle",
+        "persistence-contract",
+        "unsafe-ffi-abi",
+        "package-consumer"
+      ],
+      "status": "supported",
+      "touchpoint_kinds": [
+        "cli",
+        "api",
+        "protocol",
+        "consumer-test",
+        "component-test",
+        "integration-test",
+        "package",
+        "migration",
+        "benchmark"
+      ],
+      "trigger_hints": [
+        "public-api",
+        "wire-format",
+        "async",
+        "concurrency",
+        "cancellation",
+        "persistence",
+        "migration",
+        "unsafe",
+        "ffi",
+        "abi",
+        "multi-crate",
+        "package-consumer",
+        "hard-to-reverse-topology"
+      ],
+      "type_concepts": [
+        "newtype-identity",
+        "enum-state",
+        "boundary-type",
+        "ownership-lifetime",
+        "error-enum",
+        "evidence-disposition"
+      ]
+    },
+    "review_assurance": {
+      "context_entrypoint": "review_context",
+      "context_selectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "dispatch_protocol": "bbk.profile-capability.v1",
+      "evidence_adapters": [
+        "profile-native-evidence-v1"
+      ],
+      "evidence_entrypoint": "evidence_adapter",
+      "lens_ids": [
+        "architecture-boundary",
+        "interface-consumer-compatibility",
+        "implementation-structure",
+        "state-concurrency-effect-recovery",
+        "security-privacy-supply-chain",
+        "test-evidence",
+        "operations-performance-resource",
+        "package-install-migration-release"
+      ],
+      "limitations": [
+        "The profile must not install or select a Rust toolchain.",
+        "Types and compilation do not prove runtime input validity, persistence, cancellation, recovery, or operational behavior.",
+        "Unsafe, concurrency, performance, package, and supply-chain methods remain trigger-based rather than universal."
+      ],
+      "review_entrypoint": "review_lens",
+      "status": "supported"
+    },
+    "state_decision_effect": {
+      "boundary_concepts": [
+        "enum and product-of-enum state",
+        "newtype identities and units",
+        "explicit error/result enums",
+        "application-service decision functions",
+        "ports/adapters and trait boundaries",
+        "task, channel, lease, cancellation, shutdown, and persistence ownership"
+      ],
+      "dispatch_protocol": "bbk.profile-capability.v1",
+      "formal_model_tools": [
+        "property/state-machine tests such as proptest or repository equivalents",
+        "Loom-like deterministic concurrency exploration where applicable",
+        "Miri for supported unsafe/aliasing claims",
+        "Kani or other qualified bounded verification where selected",
+        "optional external Quint/TLA+ trace mappings"
+      ],
+      "inventory_entrypoint": "state_effect_inventory",
+      "limitations": [
+        "The profile must not install or select a Rust toolchain.",
+        "Types and compilation do not prove runtime input validity, persistence, cancellation, recovery, or operational behavior.",
+        "Unsafe, concurrency, performance, package, and supply-chain methods remain trigger-based rather than universal."
+      ],
+      "projection_entrypoint": "state_effect",
+      "representations": [
+        "enum and product-of-enum state",
+        "newtype identities and units",
+        "explicit error/result enums",
+        "application-service decision functions"
+      ],
+      "review_entrypoint": "state_effect_review",
+      "status": "supported"
+    }
+  },
+  "description": "Applicability-aware Rust worker, review, validation, gate, evidence, and toolchain guidance for BBK across Codex, OMP, Claude Code, and generic agent harnesses.",
+  "entrypoints": {
+    "evidence_adapter": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "evidence-adapter"
+    ],
+    "gate_plan": [
+      "{python}",
+      "tools/bbk_rust.py",
+      "--json",
+      "gate-plan"
+    ],
+    "preflight": [
+      "{python}",
+      "tools/bbk_rust.py",
+      "--json",
+      "preflight"
+    ],
+    "resolve": [
+      "{python}",
+      "tools/bbk_rust.py",
+      "--json",
+      "resolve"
+    ],
+    "review_context": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "review-context"
+    ],
+    "review_lens": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "review-lens"
+    ],
+    "slice": [
+      "{python}",
+      "tools/bbk_rust.py",
+      "--json",
+      "slice"
+    ],
+    "state_effect": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect"
+    ],
+    "state_effect_inventory": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect-inventory"
+    ],
+    "state_effect_review": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect-review"
+    ],
+    "structure": [
+      "{python}",
+      "tools/bbk_rust.py",
+      "--json",
+      "structure"
+    ],
+    "structure_review": [
+      "{python}",
+      "tools/bbk_rust.py",
+      "--json",
+      "structure-review"
+    ]
+  },
+  "gates": "gates/rust-gates.json",
+  "id": "rust",
+  "installation": {
+    "cli": "tools/bbk_rust.py",
+    "omp_extension": "omp/extension",
+    "skill_root": "skills"
+  },
+  "maturity": "comprehensive-alpha",
+  "mutation_testing": {
+    "cargo_subcommand": [
+      "cargo",
+      "mutest",
+      "run"
+    ],
+    "legacy_tool_policy": "Do not substitute a different mutation framework silently.",
+    "policy": "Triggered for high-value logic or explicit assurance needs; never installed or run automatically merely because the profile is active.",
+    "selected_tool": "mutest-rs"
+  },
+  "name": "BBK Rust Profile",
+  "package": "bbk-profile-rust",
+  "predecessor": {
+    "archive_sha256": "e2d7dbf0ff9d3d3a5827e5577eb52f52eebd5c763c1b5b14c1158b3388b948e1",
+    "compatibility": "all alpha.2 skills, procedures, gate recipes, structure/slice behavior, installer safeguards, package rules and qualification boundaries retained; alpha.8 typed profile dispatch is additive",
+    "package": "bbk-profile-rust",
+    "package_root_sha256": "1dc73a7d1aa3a064b14dbd43b8e899779e0e178cf97ba7f9f23a404b3d5c18ea",
+    "version": "0.1.0-alpha.2"
+  },
+  "references": [
+    "references/compatibility-policy.md",
+    "references/performance-policy.md",
+    "references/mutest-rs.md",
+    "references/support-matrix.md",
+    "skills/rust-skills/rules-index.json",
+    "references/implementation-structure.md",
+    "references/execution-slicing.md"
+  ],
+  "requires": {
+    "bbk_minimum": "0.1.0-alpha.8",
+    "python_minimum": "3.11",
+    "rust_policy": "Repository pins and declared MSRV are authoritative; this profile does not silently install or replace a toolchain."
+  },
+  "schema": "bbk.language-profile.v1",
+  "selection": {
+    "risk_trigger_map": "mappings/risk-trigger-map.json",
+    "rule_overrides": "mappings/rule-overrides.json",
+    "task_skill_map": "mappings/task-skill-map.json"
+  },
+  "skills": [
+    {
+      "id": "bbk-rust",
+      "kind": "router",
+      "path": "skills/bbk-rust/SKILL.md"
+    },
+    {
+      "id": "rust-skills",
+      "kind": "reference",
+      "path": "skills/rust-skills/SKILL.md"
+    },
+    {
+      "id": "comprehensive-analysis-rust",
+      "kind": "survey-review",
+      "path": "skills/comprehensive-analysis-rust/SKILL.md"
+    },
+    {
+      "id": "rust-api-crate-boundary-review",
+      "kind": "focused-review",
+      "path": "skills/rust-api-crate-boundary-review/SKILL.md"
+    },
+    {
+      "id": "rust-correctness-failure-review",
+      "kind": "focused-review",
+      "path": "skills/rust-correctness-failure-review/SKILL.md"
+    },
+    {
+      "id": "rust-test-strategy-review",
+      "kind": "focused-review",
+      "path": "skills/rust-test-strategy-review/SKILL.md"
+    },
+    {
+      "id": "rust-operational-readiness-review",
+      "kind": "focused-review",
+      "path": "skills/rust-operational-readiness-review/SKILL.md"
+    },
+    {
+      "id": "rust-security-supply-chain-review",
+      "kind": "focused-review",
+      "path": "skills/rust-security-supply-chain-review/SKILL.md"
+    },
+    {
+      "id": "rust-unsafe-ffi-assurance",
+      "kind": "focused-assurance",
+      "path": "skills/rust-unsafe-ffi-assurance/SKILL.md"
+    },
+    {
+      "id": "rust-package-release-gates",
+      "kind": "focused-assurance",
+      "path": "skills/rust-package-release-gates/SKILL.md"
+    },
+    {
+      "id": "rust-evidence-reproducer",
+      "kind": "evidence",
+      "path": "skills/rust-evidence-reproducer/SKILL.md"
+    },
+    {
+      "id": "rust-implementation-structure",
+      "kind": "planning-worker",
+      "path": "skills/rust-implementation-structure/SKILL.md"
+    },
+    {
+      "id": "rust-execution-slicing",
+      "kind": "planning",
+      "path": "skills/rust-execution-slicing/SKILL.md"
+    },
+    {
+      "id": "rust-implementation-structure-review",
+      "kind": "focused-review",
+      "path": "skills/rust-implementation-structure-review/SKILL.md"
+    }
+  ],
+  "support": {
+    "conditional": [
+      "unsafe Rust",
+      "FFI and ABI boundaries",
+      "procedural macros",
+      "cross-target builds",
+      "WASM"
+    ],
+    "partial_or_unqualified": [
+      "no_std and alloc-only",
+      "embedded targets",
+      "kernel development",
+      "GPU targets",
+      "specialized WASM runtimes"
+    ],
+    "primary": [
+      "std libraries",
+      "binaries and command-line tools",
+      "ordinary Cargo workspaces",
+      "async services",
+      "public crates",
+      "persistence and migration work",
+      "publishable crates and packaged binaries"
+    ]
+  },
+  "version": "0.1.0-alpha.3"
+}

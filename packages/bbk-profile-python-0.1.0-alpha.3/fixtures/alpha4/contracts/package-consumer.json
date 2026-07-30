@@ -1,0 +1,182 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "Use the least structure ceremony sufficient for this fixture.",
+    "triggers": [
+      "packaging",
+      "distribution",
+      "consumer-shape",
+      "public-api"
+    ]
+  },
+  "contractId": "ISC-PY-PACKAGE",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and equivalent internal module layout",
+        "bounds": "May vary when public/shared contracts, ownership, behavior, and evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-INSTALLED-SUBJECT",
+        "rationale": "The decision stabilizes a material Python boundary.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Release evidence uses a clean installed wheel and sdist-derived wheel, not only a checkout or editable install."
+      }
+    ],
+    "prohibited": [
+      "Do not treat annotations as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-PY-PACKAGE"
+  ],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {
+    "python": {}
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and consequential shape are explicit.",
+      "Delegated freedom remains sufficient.",
+      "A real touchpoint can verify the result."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "consequential",
+    "requiredReviewers": [
+      "bbk_reviewer"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-PYPROJECT",
+        "kind": "distribution",
+        "logicalPath": "pyproject.toml",
+        "owner": "python",
+        "responsibility": "Own art-pyproject behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      },
+      {
+        "action": "modify",
+        "id": "ART-INIT",
+        "kind": "module",
+        "logicalPath": "src/fixture_pkg/__init__.py",
+        "owner": "python",
+        "responsibility": "Own art-init behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      },
+      {
+        "action": "retain",
+        "id": "ART-PYTYPED",
+        "kind": "artifact",
+        "logicalPath": "src/fixture_pkg/py.typed",
+        "owner": "python",
+        "responsibility": "Own art-pytyped behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      }
+    ],
+    "behaviorPaths": [],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "Invalid external values are rejected before trusted use."
+        ],
+        "id": "KC-PACKAGE-IMPORT",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "package-import",
+        "name": "fixture_pkg",
+        "responsibility": "Represent fixture_pkg.",
+        "shape": "import fixture_pkg",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "external"
+      },
+      {
+        "failureSemantics": [
+          "Invalid external values are rejected before trusted use."
+        ],
+        "id": "KC-CLI",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "console-entry-point",
+        "name": "fixture-cli",
+        "responsibility": "Represent fixture-cli.",
+        "shape": "fixture-cli",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "external"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-PY-PACKAGE",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Record outcome and failure class without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-PY-PACKAGE",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Exercise the declared touchpoint through the normal package/runtime subject."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-PY-ALPHA4"
+    ],
+    "capabilityRefs": [
+      "CAP-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "kind": "software",
+    "purpose": "Package artifact and consumer boundary",
+    "requirementRefs": [
+      "REQ-PYTHON"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-PY-PACKAGE"
+    ]
+  },
+  "title": "Package artifact and consumer boundary",
+  "uncertainties": []
+}

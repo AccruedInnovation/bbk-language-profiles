@@ -1,0 +1,78 @@
+{
+  "assertions": [
+    {
+      "evidence": "tarball digest and clean consumer results",
+      "id": "A-ESM",
+      "method": "test",
+      "statement": "Packed ESM consumers resolve runtime and types."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice closes one integrated feedback path without artificial layer-only handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-TSJS-PUBLIC-ESM@1 accepted"
+  ],
+  "exitConditions": [
+    "Root and feature exports plus declarations resolve from the tarball."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ES-TSJS-PUBLIC-ESM"
+    ],
+    "interfaceRefs": [
+      "IF-ES-TSJS-PUBLIC-ESM"
+    ],
+    "participants": [
+      "consumer",
+      "owner"
+    ],
+    "steps": [
+      "Build runtime and declarations.",
+      "Pack tarball.",
+      "Install clean consumer.",
+      "Import root and feature."
+    ]
+  },
+  "integrationOwner": "Owner of ES-TSJS-PUBLIC-ESM",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Pack and install the ESM package in a clean TypeScript/JavaScript consumer.",
+  "parentCapabilityRefs": [
+    "CAP-ES-TSJS-PUBLIC-ESM"
+  ],
+  "profileProjections": {},
+  "scaffolding": [
+    {
+      "disposition": "remove-in-slice",
+      "id": "SC-CONSUMER",
+      "owner": "package test",
+      "purpose": "Clean temporary consumer project"
+    }
+  ],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-TSJS-PUBLIC-ESM",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-TSJS-PUBLIC-ESM@1"
+  ],
+  "title": "Packed ESM consumer",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "synthetic qualified fixture",
+    "expectedObservation": "Root and feature exports plus declarations resolve from the tarball.",
+    "interaction": "Install and import packed tarball",
+    "kind": "package"
+  },
+  "workUnitRefs": [
+    "WU-EXPORTS",
+    "WU-DECL",
+    "WU-CONSUMER"
+  ]
+}

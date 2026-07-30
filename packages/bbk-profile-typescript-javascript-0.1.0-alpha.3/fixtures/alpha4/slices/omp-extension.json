@@ -1,0 +1,71 @@
+{
+  "assertions": [
+    {
+      "evidence": "host registration/invocation trace",
+      "id": "A-OMP",
+      "method": "test",
+      "statement": "Exact host discovers and invokes extension."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice closes one integrated feedback path without artificial layer-only handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-TSJS-OMP@1 accepted"
+  ],
+  "exitConditions": [
+    "Declared tools/commands register and child CLI invocation returns structured results."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ES-TSJS-OMP"
+    ],
+    "interfaceRefs": [
+      "IF-ES-TSJS-OMP"
+    ],
+    "participants": [
+      "consumer",
+      "owner"
+    ],
+    "steps": [
+      "Install extension.",
+      "Start host.",
+      "Register surfaces.",
+      "Invoke representative tool.",
+      "Restart/unload."
+    ]
+  },
+  "integrationOwner": "Owner of ES-TSJS-OMP",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Install and load the extension in the exact qualified OMP host.",
+  "parentCapabilityRefs": [
+    "CAP-ES-TSJS-OMP"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-TSJS-OMP",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-TSJS-OMP@1"
+  ],
+  "title": "Exact OMP host load",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "synthetic qualified fixture",
+    "expectedObservation": "Declared tools/commands register and child CLI invocation returns structured results.",
+    "interaction": "Discover, load and invoke extension",
+    "kind": "protocol-trace"
+  },
+  "workUnitRefs": [
+    "WU-EXT",
+    "WU-HOST"
+  ]
+}

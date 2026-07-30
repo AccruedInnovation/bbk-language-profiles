@@ -1,0 +1,146 @@
+{
+  "schema": "bbk.tsjs-task-skill-map.v1",
+  "tasks": {
+    "documentation-specification": {
+      "review": [
+        "bbk-tsjs",
+        "tsjs-type-contract-review",
+        "tsjs-api-module-package-review"
+      ],
+      "validator_recommendations": [
+        "tsjs-type-contract-review",
+        "tsjs-api-module-package-review"
+      ],
+      "worker": [
+        "bbk-tsjs",
+        "tsjs-development-practices"
+      ]
+    },
+    "execution-slicing": {
+      "review": [
+        "bbk-tsjs",
+        "tsjs-implementation-structure-review",
+        "tsjs-test-strategy-review",
+        "tsjs-evidence-reproducer"
+      ],
+      "validator_recommendations": [
+        "tsjs-implementation-structure-review",
+        "tsjs-test-strategy-review"
+      ],
+      "worker": [
+        "bbk-tsjs",
+        "tsjs-development-practices",
+        "tsjs-evidence-reproducer"
+      ]
+    },
+    "implementation": {
+      "review": [
+        "bbk-tsjs",
+        "tsjs-type-contract-review"
+      ],
+      "validator_recommendations": [
+        "tsjs-type-contract-review"
+      ],
+      "worker": [
+        "bbk-tsjs",
+        "tsjs-development-practices"
+      ]
+    },
+    "implementation-structure": {
+      "review": [
+        "bbk-tsjs",
+        "tsjs-implementation-structure-review",
+        "tsjs-type-contract-review",
+        "tsjs-api-module-package-review"
+      ],
+      "validator_recommendations": [
+        "tsjs-implementation-structure-review"
+      ],
+      "worker": [
+        "bbk-tsjs",
+        "tsjs-development-practices"
+      ]
+    },
+    "integration-consumer-path": {
+      "review": [
+        "bbk-tsjs",
+        "tsjs-api-module-package-review",
+        "tsjs-runtime-data-contract-review",
+        "tsjs-async-resource-failure-review"
+      ],
+      "validator_recommendations": [
+        "tsjs-api-module-package-review",
+        "tsjs-runtime-data-contract-review",
+        "tsjs-async-resource-failure-review"
+      ],
+      "worker": [
+        "bbk-tsjs",
+        "tsjs-development-practices",
+        "tsjs-evidence-reproducer"
+      ]
+    },
+    "interface-schema-migration": {
+      "review": [
+        "bbk-tsjs",
+        "tsjs-type-contract-review",
+        "tsjs-runtime-data-contract-review",
+        "tsjs-api-module-package-review"
+      ],
+      "validator_recommendations": [
+        "tsjs-type-contract-review",
+        "tsjs-runtime-data-contract-review",
+        "tsjs-api-module-package-review"
+      ],
+      "worker": [
+        "bbk-tsjs",
+        "tsjs-development-practices"
+      ]
+    },
+    "investigation-prototype": {
+      "review": [
+        "bbk-tsjs",
+        "comprehensive-analysis-tsjs"
+      ],
+      "validator_recommendations": [],
+      "worker": [
+        "bbk-tsjs",
+        "tsjs-development-practices",
+        "tsjs-evidence-reproducer"
+      ]
+    },
+    "packaging-release": {
+      "review": [
+        "bbk-tsjs",
+        "tsjs-api-module-package-review",
+        "tsjs-operational-release-review",
+        "tsjs-security-supply-chain-review",
+        "tsjs-evidence-reproducer"
+      ],
+      "validator_recommendations": [
+        "tsjs-api-module-package-review",
+        "tsjs-operational-release-review",
+        "tsjs-security-supply-chain-review"
+      ],
+      "worker": [
+        "bbk-tsjs",
+        "tsjs-development-practices",
+        "tsjs-evidence-reproducer"
+      ]
+    },
+    "test-fixture": {
+      "review": [
+        "bbk-tsjs",
+        "tsjs-test-strategy-review",
+        "tsjs-evidence-reproducer"
+      ],
+      "validator_recommendations": [
+        "tsjs-test-strategy-review"
+      ],
+      "worker": [
+        "bbk-tsjs",
+        "tsjs-development-practices",
+        "tsjs-evidence-reproducer"
+      ]
+    }
+  }
+}

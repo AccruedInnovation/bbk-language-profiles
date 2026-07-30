@@ -1,0 +1,17 @@
+{
+  "schema": "bbk.go-negative-fixtures.v1",
+  "cases": [
+    {"id": "hidden-parent-go-work", "fixture": "negative/hidden-parent-workspace/child", "required_observation": "preflight reports the parent go.work; GOWORK=off changes the active root"},
+    {"id": "local-replace-masks-release", "fixture": "negative/local-replace", "required_observation": "module release assurance identifies the local replace and requires standalone consumer evidence"},
+    {"id": "cached-tests-not-fresh", "required_observation": "candidate acceptance records a cache policy and normally uses -count=1"},
+    {"id": "goroutine-leak-after-cancellation", "fixture": "negative/behavior-hazards", "required_observation": "correctness review requires goroutine ownership, cancellation, and join evidence"},
+    {"id": "typed-nil-interface", "fixture": "negative/behavior-hazards", "required_observation": "correctness review identifies the non-nil interface containing a nil pointer"},
+    {"id": "map-order-output", "fixture": "negative/behavior-hazards", "required_observation": "correctness review identifies nondeterministic map iteration in visible output"},
+    {"id": "generated-code-drift", "fixture": "negative/generated-drift", "required_observation": "generation runs only in a disposable copy and reports a semantic diff"},
+    {"id": "race-requires-representative-workload", "required_observation": "a passing unit race run is not treated as proof for unexecuted service paths"},
+    {"id": "stale-or-unavailable-toolchain", "fixture": "negative/stale-toolchain", "required_observation": "preflight records the exact directives and tool execution blocks rather than downloading a new toolchain"},
+    {"id": "cgo-pointer-lifetime", "fixture": "go-workspace/api/internal/native", "required_observation": "unsafe/cgo review and checkptr or qualified native evidence are selected"},
+    {"id": "workspace-module-release", "fixture": "negative/hidden-parent-workspace/child", "required_observation": "public module release is also tested with GOWORK=off"},
+    {"id": "breaking-error-http-contract", "required_observation": "compatibility is reported separately for source API, error identity, HTTP, behavior, operations, wire, persistence, and configuration"}
+  ]
+}

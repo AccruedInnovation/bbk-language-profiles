@@ -1,0 +1,346 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "Independent package and command work shares public types and lifecycle behavior.",
+    "triggers": [
+      "public-interface",
+      "cross-module",
+      "state-ownership",
+      "concurrency",
+      "cancellation",
+      "migration",
+      "persistence",
+      "module-release"
+    ]
+  },
+  "contractId": "ISC-GO-MIGRATION-001",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper layout",
+        "bounds": "May change inside api if public contracts and lifecycle ownership remain intact."
+      },
+      {
+        "area": "internal synchronization implementation",
+        "bounds": "May change if race-free behavior, terminal Close semantics, and evidence remain equivalent."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact plus API compatibility review",
+        "id": "FD-PACKAGE-OWNER",
+        "rationale": "One owner prevents command/package drift.",
+        "sourceRefs": [
+          "ARCH-GO-API"
+        ],
+        "statement": "Package example.com/bbk/api owns Service lifecycle and the command may not duplicate closed-state behavior."
+      },
+      {
+        "changeRoute": "concurrency and structure review",
+        "id": "FD-STREAM-OWNER",
+        "rationale": "Explicit channel ownership prevents leaks, send-after-close, and ambiguous shutdown.",
+        "sourceRefs": [
+          "REQ-GO-CANCEL"
+        ],
+        "statement": "Stream owns its goroutine and output-channel close; caller owns input send and close."
+      }
+    ],
+    "prohibited": [
+      "Duplicating Service closed-state policy in cmd/app.",
+      "Returning an output channel without one explicit close owner.",
+      "Treating a passing race run as proof of goroutine termination."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-GO-SAVE-001",
+    "ES-GO-STREAM-001"
+  ],
+  "metadata": {
+    "fixture": "go-alpha4"
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Public API and error contracts are explicit.",
+      "Package and goroutine/channel ownership are unambiguous.",
+      "Cancellation and shutdown have direct evidence."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "consequential",
+    "requiredReviewers": [
+      "go-implementation-structure-review",
+      "go-api-module-boundary-review",
+      "go-correctness-concurrency-review"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-GO-API",
+        "kind": "package",
+        "logicalPath": "api/api.go",
+        "owner": "example.com/bbk/api",
+        "responsibility": "Own public Record, Store, Service, ErrClosed, and Stream contracts.",
+        "sourceRefs": [
+          "ARCH-GO-API"
+        ]
+      },
+      {
+        "action": "modify",
+        "id": "ART-GO-CMD",
+        "kind": "command",
+        "logicalPath": "cmd/app/main.go",
+        "owner": "example.com/bbk/cmd/app",
+        "responsibility": "Construct the service and consume public API without owning domain lifecycle semantics.",
+        "sourceRefs": [
+          "ARCH-GO-CMD"
+        ]
+      },
+      {
+        "action": "modify",
+        "id": "ART-GO-TEST",
+        "kind": "test",
+        "logicalPath": "api/api_test.go",
+        "owner": "example.com/bbk/api tests",
+        "responsibility": "Prove close, cancellation, stream shutdown, error identity, and wire behavior.",
+        "sourceRefs": [
+          "REQ-GO-CANCEL"
+        ]
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "closed service returns ErrClosed",
+          "cancelled context returns cancellation",
+          "store error is returned without hidden retry"
+        ],
+        "id": "BP-SAVE",
+        "interfaceRefs": [
+          "IF-GO-SAVE"
+        ],
+        "name": "Command save",
+        "steps": [
+          {
+            "contractRef": "KC-SERVICE",
+            "from": "cmd/app",
+            "interaction": "construct with Store implementation",
+            "to": "api.Service"
+          },
+          {
+            "contractRef": "KC-STORE",
+            "from": "api.Service",
+            "interaction": "Save with propagated context and Record",
+            "to": "api.Store"
+          }
+        ],
+        "success": "Record is handled once and command observes success.",
+        "trigger": "command constructs Service and invokes Save"
+      },
+      {
+        "failureAndRecovery": [
+          "cancellation terminates the owned goroutine",
+          "output channel closes exactly once"
+        ],
+        "id": "BP-STREAM",
+        "interfaceRefs": [
+          "IF-GO-STREAM"
+        ],
+        "name": "Cancellable stream",
+        "steps": [
+          {
+            "contractRef": "KC-RECORD",
+            "from": "caller",
+            "interaction": "provide context and receive-only input channel",
+            "to": "api.Stream"
+          },
+          {
+            "contractRef": "KC-RECORD",
+            "from": "api.Stream",
+            "interaction": "return receive-only output channel and close it on completion",
+            "to": "caller"
+          }
+        ],
+        "success": "Records are forwarded in order until input closes.",
+        "trigger": "caller invokes Stream with context and input channel"
+      }
+    ],
+    "effectBoundaries": [
+      {
+        "authorization": "caller-provided implementation under work-unit grant",
+        "effect": "Store.Save effect",
+        "failure": "error is returned; no hidden retry",
+        "idempotency": "not assumed; caller/application policy decides",
+        "owner": "Store implementation",
+        "recovery": "caller decides retry/reconciliation"
+      },
+      {
+        "authorization": "calling Stream",
+        "effect": "goroutine creation",
+        "failure": "blocked send must remain cancellable",
+        "idempotency": "one goroutine per call",
+        "owner": "api.Stream invocation",
+        "recovery": "context cancellation or input close terminates"
+      }
+    ],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "untrusted runtime data is validated before trusted use"
+        ],
+        "id": "KC-RECORD",
+        "invariants": [
+          "ID semantics remain stable",
+          "nil and empty fields have documented JSON behavior"
+        ],
+        "kind": "wire-type",
+        "name": "Record",
+        "responsibility": "Stable public request/wire representation.",
+        "shape": "type Record struct { ID string; Tags map[string]string; Value []byte }",
+        "sourceRefs": [
+          "IF-GO-SAVE"
+        ],
+        "visibility": "public"
+      },
+      {
+        "failureSemantics": [
+          "partial effects and retryability are implementation contracts"
+        ],
+        "id": "KC-STORE",
+        "invariants": [
+          "Save observes context cancellation",
+          "error identity is intentionally preserved"
+        ],
+        "kind": "consumer-interface",
+        "name": "Store",
+        "responsibility": "Consumer-owned persistence seam for Service.",
+        "shape": "type Store interface { Save(context.Context, Record) error }",
+        "sourceRefs": [
+          "IF-GO-SAVE"
+        ],
+        "visibility": "shared"
+      },
+      {
+        "failureSemantics": [
+          "context cancellation and store errors return without hidden retry"
+        ],
+        "id": "KC-SERVICE",
+        "invariants": [
+          "Save after Close returns ErrClosed",
+          "Close is concurrency safe"
+        ],
+        "kind": "public-api",
+        "name": "Service",
+        "responsibility": "Own closed-state transition and bounded save lifecycle.",
+        "shape": "NewService(Store) *Service; Save(context.Context, Record) error; Close()",
+        "sourceRefs": [
+          "REQ-GO-API"
+        ],
+        "visibility": "public"
+      },
+      {
+        "failureSemantics": [],
+        "id": "KC-ERROR",
+        "invariants": [
+          "errors.Is can classify it"
+        ],
+        "kind": "typed-error",
+        "name": "ErrClosed",
+        "responsibility": "Stable caller classification of closed service.",
+        "shape": "var ErrClosed error",
+        "sourceRefs": [
+          "REQ-GO-API"
+        ],
+        "visibility": "public"
+      }
+    ],
+    "migrationTouchpoints": [
+      {
+        "id": "MIG-DB",
+        "sourceRefs": [
+          "REQ-MIG-001"
+        ],
+        "statement": "Old and new record forms coexist through an explicit read/write transition and rollback checkpoint."
+      }
+    ],
+    "observabilityPoints": [
+      {
+        "id": "OBS-CMD",
+        "statement": "Command exit and output show success/failure without leaking record contents."
+      },
+      {
+        "id": "OBS-STREAM",
+        "statement": "Tests observe output closure and no post-cancel delivery."
+      }
+    ],
+    "stateOwnership": [
+      {
+        "concurrency": "Save and Close may race safely",
+        "consistency": "RWMutex protects reads and writes",
+        "lifetime": "Service instance",
+        "mutationAuthority": "Close only",
+        "owner": "example.com/bbk/api.Service",
+        "recovery": "closed state is terminal for the instance",
+        "state": "Service closed flag"
+      },
+      {
+        "concurrency": "caller owns input send/close; Stream owns output close",
+        "consistency": "single close owner and context-aware send",
+        "lifetime": "until input closes or context is cancelled",
+        "mutationAuthority": "owned goroutine is sole output sender and closer",
+        "owner": "api.Stream invocation",
+        "recovery": "cancellation exits and closes output",
+        "state": "Stream goroutine and output channel"
+      }
+    ],
+    "testSeams": [
+      {
+        "id": "TS-STORE",
+        "sourceRefs": [
+          "REQ-GO-API"
+        ],
+        "statement": "Inject a deterministic Store fake and assert Save/error behavior."
+      },
+      {
+        "id": "TS-STREAM",
+        "sourceRefs": [
+          "REQ-GO-CANCEL"
+        ],
+        "statement": "Use bounded channels and cancellation to prove output close and goroutine termination."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-GO-API",
+      "ARCH-GO-CMD"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-GO-001"
+    ],
+    "capabilityRefs": [
+      "CAP-GO-SAVE"
+    ],
+    "interfaceRefs": [
+      "IF-GO-SAVE"
+    ],
+    "kind": "software",
+    "purpose": "Expose a public Record/Store/Service API and bounded streaming lifecycle through a command consumer.",
+    "requirementRefs": [
+      "REQ-GO-API",
+      "REQ-GO-CANCEL"
+    ],
+    "scopeRefs": [
+      "SCOPE-GO-API"
+    ]
+  },
+  "title": "Go module and persistence migration structure",
+  "uncertainties": []
+}

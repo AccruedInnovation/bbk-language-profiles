@@ -1,0 +1,787 @@
+{
+  "policy": {
+    "check_only_final_gates": true,
+    "full_matrix_policy": "Run declared supported configurations, not an accidental Cartesian product.",
+    "full_suite_repeat": "Only when the assurance contract or aggregate gate requires it; do not repeat at every layer for reassurance.",
+    "missing_recommended_tool": "ADVISORY",
+    "missing_required_tool": "BLOCKED",
+    "no_silent_install": true,
+    "no_silent_toolchain_download": true,
+    "private_tree_equality_is_not_conformance": true,
+    "repository_commands_first": true,
+    "structure_projection_is_non_authoritative": true,
+    "test_cache_policy": "Candidate acceptance declares whether cached results are reusable; fresh execution normally uses -count=1 or a repository equivalent."
+  },
+  "recipes": [
+    {
+      "assertions": [
+        "Go source formatting matches repository policy"
+      ],
+      "class": "always-cheap",
+      "command": [
+        "{bbk-go}",
+        "check-format",
+        "--root",
+        "{root}",
+        "{scope-paths}"
+      ],
+      "id": "go-format-check",
+      "minimum_tier": "routine",
+      "requires": [
+        "gofmt"
+      ],
+      "success_condition": "No file is reported by gofmt -l"
+    },
+    {
+      "assertions": [
+        "Focused tests covering the changed behavior pass"
+      ],
+      "cache_policy": "repository-default during iteration; candidate acceptance may require fresh execution",
+      "class": "required-if-configured",
+      "command": [
+        "go",
+        "test",
+        "{package-pattern}",
+        "{test-selection}"
+      ],
+      "id": "go-focused-tests",
+      "minimum_tier": "routine",
+      "requires": [
+        "go"
+      ]
+    },
+    {
+      "assertions": [
+        "Affected packages and tests compile in the selected configuration"
+      ],
+      "class": "always-cheap",
+      "command": [
+        "go",
+        "test",
+        "-run=^$",
+        "{package-pattern}"
+      ],
+      "id": "go-compile-affected",
+      "limitations": [
+        "This does not prove command linking, alternate tags, targets, CGO configurations, or runtime behavior"
+      ],
+      "minimum_tier": "routine",
+      "requires": [
+        "go"
+      ]
+    },
+    {
+      "assertions": [
+        "Repository-authoritative Go vet/static-analysis policy passes"
+      ],
+      "class": "required-if-configured",
+      "command": [
+        "go",
+        "vet",
+        "{package-pattern}"
+      ],
+      "id": "go-vet-affected",
+      "limitations": [
+        "go test runs only a subset of vet checks and does not replace the repository lint policy"
+      ],
+      "minimum_tier": "routine",
+      "requires": [
+        "go"
+      ]
+    },
+    {
+      "assertions": [
+        "Affected tests execute freshly and pass"
+      ],
+      "class": "required-if-configured",
+      "command": [
+        "go",
+        "test",
+        "-count=1",
+        "{package-pattern}"
+      ],
+      "id": "go-test-fresh-affected",
+      "minimum_tier": "material",
+      "requires": [
+        "go"
+      ]
+    },
+    {
+      "assertions": [
+        "Affected commands complete code generation and linking"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "go",
+        "build",
+        "{build-flags}",
+        "{command-packages}"
+      ],
+      "id": "go-build-commands",
+      "minimum_tier": "material",
+      "requires": [
+        "go"
+      ],
+      "triggers": [
+        "binary",
+        "command",
+        "operations",
+        "release",
+        "material"
+      ]
+    },
+    {
+      "assertions": [
+        "Downloaded module content matches go.sum expectations"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "go",
+        "mod",
+        "verify"
+      ],
+      "id": "go-mod-verify",
+      "minimum_tier": "material",
+      "requires": [
+        "go"
+      ],
+      "triggers": [
+        "module",
+        "dependency",
+        "supply-chain",
+        "release",
+        "vendor"
+      ]
+    },
+    {
+      "assertions": [
+        "go mod tidy produces no unexplained module-file drift"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{disposable-mod-tidy-diff-command}"
+      ],
+      "id": "go-mod-tidy-diff",
+      "limitations": [
+        "Run in draft/repair or a disposable copy; never mutate a frozen candidate"
+      ],
+      "minimum_tier": "material",
+      "procedure": [
+        "create an isolated disposable copy",
+        "run go mod tidy without network expansion unless separately authorized",
+        "compare go.mod and go.sum to the candidate",
+        "preserve the semantic diff and discard the copy"
+      ],
+      "requires": [
+        "go",
+        "disposable-copy"
+      ],
+      "triggers": [
+        "module",
+        "dependency",
+        "generation",
+        "release"
+      ]
+    },
+    {
+      "assertions": [
+        "Generation is reproducible and generated artifacts are current"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{disposable-generation-diff-command}"
+      ],
+      "id": "go-generate-diff",
+      "limitations": [
+        "Generators may execute arbitrary project commands and require explicit effect authority"
+      ],
+      "minimum_tier": "material",
+      "procedure": [
+        "create an isolated disposable copy",
+        "run the repository-authoritative generation command under its effect fence",
+        "compare generated artifacts to the candidate",
+        "preserve the semantic diff and discard the copy"
+      ],
+      "requires": [
+        "go",
+        "disposable-copy"
+      ],
+      "triggers": [
+        "generation",
+        "generated-code",
+        "protobuf",
+        "mock-generation"
+      ]
+    },
+    {
+      "assertions": [
+        "Declared supported toolchain, target, tag, CGO, and module configurations pass"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-matrix-command}"
+      ],
+      "id": "go-supported-matrix",
+      "limitations": [
+        "Do not run an undeclared Cartesian product"
+      ],
+      "minimum_tier": "material",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "target",
+        "tags",
+        "cgo",
+        "minimum-go",
+        "workspace",
+        "vendor",
+        "platform"
+      ]
+    },
+    {
+      "assertions": [
+        "The module builds and tests outside the development go.work workspace"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "env",
+        "GOWORK=off",
+        "go",
+        "test",
+        "-count=1",
+        "./..."
+      ],
+      "id": "go-standalone-module",
+      "minimum_tier": "material",
+      "requires": [
+        "go"
+      ],
+      "triggers": [
+        "module-release",
+        "public-api",
+        "workspace",
+        "replace",
+        "standalone"
+      ]
+    },
+    {
+      "assertions": [
+        "No race is detected in the exercised paths"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "go",
+        "test",
+        "-count=1",
+        "-race",
+        "{package-pattern}"
+      ],
+      "id": "go-race",
+      "limitations": [
+        "Passing proves only executed paths and the qualified target"
+      ],
+      "minimum_tier": "consequential",
+      "requires": [
+        "go",
+        "race-supported-target"
+      ],
+      "triggers": [
+        "concurrency",
+        "goroutine",
+        "channel",
+        "shared-state",
+        "race",
+        "cancellation"
+      ]
+    },
+    {
+      "assertions": [
+        "Selected controlled-time and contained-goroutine invariants pass"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-synctest-command}"
+      ],
+      "id": "go-synctest",
+      "limitations": [
+        "Does not replace race detection or external integration tests"
+      ],
+      "minimum_tier": "consequential",
+      "requires": [
+        "go>=1.25",
+        "repository-defined"
+      ],
+      "triggers": [
+        "synctest",
+        "cancellation",
+        "timer",
+        "deadline",
+        "goroutine",
+        "concurrency"
+      ]
+    },
+    {
+      "assertions": [
+        "No reproducible crash or invariant violation occurs within the declared budget"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "go",
+        "test",
+        "-run=^$",
+        "-fuzz={fuzz-target}",
+        "-fuzztime={budget}",
+        "{package}"
+      ],
+      "id": "go-fuzz",
+      "minimum_tier": "consequential",
+      "requires": [
+        "go",
+        "fuzz-supported-target"
+      ],
+      "triggers": [
+        "fuzz",
+        "parser",
+        "decoder",
+        "protocol",
+        "untrusted-input",
+        "path"
+      ]
+    },
+    {
+      "assertions": [
+        "Declared downstream consumers compile and satisfy behavioral contracts"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{downstream-fixture-command}"
+      ],
+      "id": "go-downstream-compat",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "public-api",
+        "module-release",
+        "method-set",
+        "error-contract",
+        "major-version"
+      ]
+    },
+    {
+      "assertions": [
+        "No undispositioned reachable known vulnerability is reported"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "govulncheck",
+        "{package-pattern}"
+      ],
+      "id": "go-vulncheck",
+      "limitations": [
+        "Known-vulnerability reachability is not a general security proof"
+      ],
+      "minimum_tier": "consequential",
+      "requires": [
+        "govulncheck"
+      ],
+      "triggers": [
+        "security",
+        "dependency",
+        "supply-chain",
+        "release",
+        "vulnerability"
+      ]
+    },
+    {
+      "assertions": [
+        "Critical behavior has adequate exercised-path evidence"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "go",
+        "test",
+        "-count=1",
+        "-coverprofile={artifact}",
+        "{package-pattern}"
+      ],
+      "id": "go-coverage",
+      "limitations": [
+        "Coverage is a gap-finding aid, not a universal quality score"
+      ],
+      "minimum_tier": "consequential",
+      "requires": [
+        "go"
+      ],
+      "triggers": [
+        "coverage",
+        "test-strategy-gap",
+        "critical-path"
+      ]
+    },
+    {
+      "assertions": [
+        "Selected high-value logic has no undispositioned surviving mutants"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "{repository-mutation-command}"
+      ],
+      "id": "go-mutation",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "mutation-testing",
+        "high-value-pure-logic",
+        "test-strategy-gap"
+      ]
+    },
+    {
+      "assertions": [
+        "The shipped build configuration produces the expected binaries"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "go",
+        "build",
+        "{release-flags}",
+        "{command-packages}"
+      ],
+      "id": "go-release-build",
+      "minimum_tier": "consequential",
+      "requires": [
+        "go"
+      ],
+      "triggers": [
+        "release",
+        "package",
+        "operations",
+        "pgo",
+        "binary"
+      ]
+    },
+    {
+      "assertions": [
+        "The clean module, tag/path policy, minimum Go version, and external consumer fixture pass"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{clean-release-fixture-command}"
+      ],
+      "id": "go-module-release",
+      "minimum_tier": "consequential",
+      "requires": [
+        "go",
+        "clean-copy"
+      ],
+      "triggers": [
+        "module-release",
+        "public-api",
+        "major-version",
+        "release"
+      ]
+    },
+    {
+      "assertions": [
+        "Selected tests exhibit no checkptr-detected invalid pointer use"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "go",
+        "test",
+        "-count=1",
+        "-gcflags=all=-d=checkptr=2",
+        "{package-pattern}"
+      ],
+      "id": "go-checkptr",
+      "limitations": [
+        "Passing is supporting evidence, not proof of native-boundary correctness"
+      ],
+      "minimum_tier": "consequential",
+      "requires": [
+        "go",
+        "supported-target"
+      ],
+      "triggers": [
+        "unsafe",
+        "cgo",
+        "checkptr",
+        "abi"
+      ]
+    },
+    {
+      "assertions": [
+        "Selected native-boundary execution has no sanitizer-detected violation"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "{repository-cgo-sanitizer-command}"
+      ],
+      "id": "go-cgo-sanitizers",
+      "minimum_tier": "critical",
+      "requires": [
+        "supported-go-target",
+        "supported-c-compiler",
+        "cgo"
+      ],
+      "triggers": [
+        "cgo",
+        "unsafe",
+        "memory",
+        "native-library",
+        "critical",
+        "sanitizer"
+      ]
+    },
+    {
+      "assertions": [
+        "No race is detected under the declared representative workload"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "{repository-race-workload-command}"
+      ],
+      "id": "go-representative-race-workload",
+      "minimum_tier": "critical",
+      "requires": [
+        "race-supported-target",
+        "representative-environment"
+      ],
+      "triggers": [
+        "concurrency",
+        "critical",
+        "race",
+        "service"
+      ]
+    },
+    {
+      "assertions": [
+        "Faulted and restarted execution preserves declared durability and recovery invariants"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "{repository-fault-restart-command}"
+      ],
+      "id": "go-fault-restart",
+      "minimum_tier": "critical",
+      "requires": [
+        "repository-defined",
+        "isolated-environment"
+      ],
+      "triggers": [
+        "persistence",
+        "migration",
+        "restart",
+        "partial-effect",
+        "critical",
+        "recovery"
+      ]
+    },
+    {
+      "assertions": [
+        "The generic structure contract is valid and has a deterministic Go projection"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{bbk-go}",
+        "structure",
+        "--root",
+        "{root}",
+        "--contract",
+        "{structure-contract}",
+        "--role",
+        "{role}",
+        "--task-profile",
+        "implementation-structure",
+        "--assurance-tier",
+        "{assurance-tier}"
+      ],
+      "id": "go-structure-projection",
+      "minimum_tier": "routine",
+      "requires": [
+        "python3"
+      ],
+      "success_condition": "Projection is schema-valid, deterministic, non-mutating, and preserves the generic contract digest",
+      "triggers": [
+        "implementation-structure",
+        "structure",
+        "structure-projection"
+      ]
+    },
+    {
+      "assertions": [
+        "The execution slice has a deterministic Go touchpoint, dependency, evidence, and scaffolding projection"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{bbk-go}",
+        "slice",
+        "--root",
+        "{root}",
+        "--slice",
+        "{execution-slice}",
+        "--role",
+        "{role}",
+        "--task-profile",
+        "execution-slicing",
+        "--assurance-tier",
+        "{assurance-tier}"
+      ],
+      "id": "go-slice-projection",
+      "minimum_tier": "routine",
+      "requires": [
+        "python3"
+      ],
+      "triggers": [
+        "execution-slicing",
+        "slice"
+      ]
+    },
+    {
+      "assertions": [
+        "Actual consequential Go shape conforms to fixed decisions or divergences are explicitly classified"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{bbk-go}",
+        "structure-review",
+        "--root",
+        "{root}",
+        "--contract",
+        "{structure-contract}",
+        "--candidate",
+        "{candidate-manifest}",
+        "--assurance-tier",
+        "{assurance-tier}"
+      ],
+      "id": "go-planned-actual-structure",
+      "limitations": [
+        "Private helper, file, and package differences inside delegated freedom are not failures by themselves"
+      ],
+      "minimum_tier": "material",
+      "requires": [
+        "python3"
+      ],
+      "triggers": [
+        "planned-actual",
+        "structure",
+        "implementation-structure"
+      ]
+    },
+    {
+      "assertions": [
+        "Exported declarations, consumer interfaces, error contracts, wire shapes, module paths, and downstream obligations do not materially diverge from fixed decisions"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{bbk-go}",
+        "structure-review",
+        "--root",
+        "{root}",
+        "--contract",
+        "{structure-contract}",
+        "--candidate",
+        "{candidate-manifest}",
+        "--actual-inventory",
+        "{actual-inventory}",
+        "--assurance-tier",
+        "{assurance-tier}"
+      ],
+      "id": "go-public-contract-drift",
+      "minimum_tier": "material",
+      "requires": [
+        "python3"
+      ],
+      "triggers": [
+        "public-contract-drift",
+        "public-api",
+        "wire",
+        "module",
+        "compatibility"
+      ]
+    },
+    {
+      "assertions": [
+        "Package, state, goroutine, channel, context, timer, lock, shutdown, effect, and recovery ownership preserve fixed decisions"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{bbk-go}",
+        "structure-review",
+        "--root",
+        "{root}",
+        "--contract",
+        "{structure-contract}",
+        "--candidate",
+        "{candidate-manifest}",
+        "--actual-inventory",
+        "{actual-inventory}",
+        "--assurance-tier",
+        "{assurance-tier}"
+      ],
+      "id": "go-ownership-state-model-drift",
+      "minimum_tier": "material",
+      "requires": [
+        "python3"
+      ],
+      "triggers": [
+        "ownership-drift",
+        "state-ownership",
+        "concurrency",
+        "cancellation",
+        "recovery"
+      ]
+    },
+    {
+      "assertions": [
+        "The slice creates the declared inspectable Go touchpoint in the exact qualified configuration"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-touchpoint-command}"
+      ],
+      "id": "go-slice-touchpoint-evidence",
+      "limitations": [
+        "Repository or work-unit authority must supply the concrete command; the profile does not invent or execute it during resolution"
+      ],
+      "minimum_tier": "material",
+      "requires": [],
+      "triggers": [
+        "touchpoint",
+        "slice",
+        "execution-slicing"
+      ]
+    },
+    {
+      "assertions": [
+        "Every temporary fixture, adapter, fake, compatibility shim, migration bridge, or generated placeholder has an explicit owner and removal, retention, or successor disposition"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{bbk-go}",
+        "slice",
+        "--root",
+        "{root}",
+        "--slice",
+        "{execution-slice}",
+        "--assurance-tier",
+        "{assurance-tier}"
+      ],
+      "id": "go-scaffolding-disposition",
+      "minimum_tier": "material",
+      "requires": [
+        "python3"
+      ],
+      "triggers": [
+        "scaffolding",
+        "slice",
+        "execution-slicing"
+      ]
+    }
+  ],
+  "schema": "bbk.go-gate-recipes.v1"
+}

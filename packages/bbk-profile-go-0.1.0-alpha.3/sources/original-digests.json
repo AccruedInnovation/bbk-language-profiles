@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-07-23T00:00:00Z",
+  "file_count": 1,
+  "files": [
+    {
+      "bytes": 12165,
+      "disposition": "preserved-as-user-source",
+      "path": "comprehensive-analysis-go.md",
+      "sha256": "76ffbf837fcedf4d5a32193bf009cde8b8417c91ef67f1f1803b52de0760cdac"
+    }
+  ],
+  "schema": "bbk.go-source-digests.v1",
+  "source": "user-supplied comprehensive-analysis-go skill"
+}

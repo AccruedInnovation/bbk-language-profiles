@@ -1,0 +1,18 @@
+{
+  "families": [
+    "contract-dispatch",
+    "NONE-INLINE-CONTRACT",
+    "sum-and-product-state",
+    "shadow-and-ambient-state",
+    "hidden-dependency-effect",
+    "retry-cancellation-duplicate-timeout-ack-recovery",
+    "blind-targeted-context",
+    "complete-incomplete-stale-wrong-subject-redacted-evidence",
+    "unsupported-lens",
+    "deterministic-path-stability",
+    "OMP-adjacent-dispatch"
+  ],
+  "profile": "typescript-javascript",
+  "schema": "bbk.profile-dispatch-fixture-matrix.v1",
+  "version": "0.1.0-alpha.3"
+}

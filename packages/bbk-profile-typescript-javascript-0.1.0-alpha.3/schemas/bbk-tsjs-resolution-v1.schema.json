@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bbk.local/schemas/bbk-tsjs-resolution-v1.schema.json",
+  "title": "BBK TypeScript/JavaScript profile resolution",
+  "type": "object",
+  "required": ["schema", "profile", "inputs", "observations", "selected_components", "gate_plan", "lock", "effective_sha256"],
+  "properties": {
+    "schema": {"const": "bbk.tsjs-profile-resolution.v1"},
+    "effective_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": true
+}

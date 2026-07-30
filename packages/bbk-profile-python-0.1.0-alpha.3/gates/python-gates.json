@@ -1,0 +1,701 @@
+{
+  "policy": {
+    "check_only_final_gates": true,
+    "full_suite_repeat": "Only when the assurance contract or aggregate gate requires it; do not repeat at every layer for reassurance.",
+    "installed_artifact_for_release_claims": true,
+    "missing_recommended_tool": "ADVISORY",
+    "missing_required_tool": "BLOCKED",
+    "no_environment_creation": true,
+    "no_silent_install": true,
+    "planned_actual_comparison_is_candidate_bound": true,
+    "profile_projection_is_not_conformance_evidence": true,
+    "repository_commands_first": true,
+    "structure_resolution_does_not_execute_gates": true
+  },
+  "recipes": [
+    {
+      "assertions": [
+        "Changed Python sources parse and compile in memory without writing bytecode"
+      ],
+      "class": "always-cheap",
+      "command": [
+        "bbk-python",
+        "syntax-check",
+        "--root",
+        "{root}",
+        "--path",
+        "{scope}"
+      ],
+      "id": "python-syntax-check",
+      "minimum_tier": "routine",
+      "requires": [
+        "bbk-python"
+      ]
+    },
+    {
+      "assertions": [
+        "Python formatting matches repository policy"
+      ],
+      "class": "required-if-configured",
+      "command": [
+        "{repository-format-command}"
+      ],
+      "id": "python-format-check",
+      "minimum_tier": "routine",
+      "requires": [
+        "repository-defined"
+      ]
+    },
+    {
+      "assertions": [
+        "Repository-authoritative Python lints pass"
+      ],
+      "class": "required-if-configured",
+      "command": [
+        "{repository-lint-command}"
+      ],
+      "id": "python-lint-check",
+      "minimum_tier": "routine",
+      "requires": [
+        "repository-defined"
+      ]
+    },
+    {
+      "assertions": [
+        "Focused tests covering the changed behavior pass"
+      ],
+      "class": "required-if-configured",
+      "command": [
+        "{repository-focused-test-command}"
+      ],
+      "id": "python-focused-tests",
+      "minimum_tier": "routine",
+      "requires": [
+        "repository-defined"
+      ]
+    },
+    {
+      "assertions": [
+        "Configured static typing assertions pass for the affected scope"
+      ],
+      "class": "required-if-configured",
+      "command": [
+        "{repository-type-check-command}"
+      ],
+      "id": "python-type-check-affected",
+      "limitations": [
+        "Type-checker success does not establish runtime validation or behavior"
+      ],
+      "minimum_tier": "routine",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "typing",
+        "typing-api",
+        "public-api"
+      ]
+    },
+    {
+      "assertions": [
+        "The declared build backend produces the required distribution artifacts in isolation"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-build-command}"
+      ],
+      "id": "python-build-distributions",
+      "minimum_tier": "material",
+      "requires": [
+        "repository-defined-or-python-build"
+      ],
+      "triggers": [
+        "distribution",
+        "package",
+        "release"
+      ]
+    },
+    {
+      "assertions": [
+        "The clean installed wheel behaves correctly outside the source checkout"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-installed-wheel-test-command}"
+      ],
+      "id": "python-installed-wheel-tests",
+      "minimum_tier": "material",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "distribution",
+        "package",
+        "public-api",
+        "entry-point"
+      ]
+    },
+    {
+      "assertions": [
+        "Distribution contents and metadata include the intended packages, resources, stubs, entry points, licences, and dependency declarations"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-package-inspection-command}"
+      ],
+      "id": "python-package-contents",
+      "minimum_tier": "material",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "distribution",
+        "package",
+        "typing-api",
+        "entry-point",
+        "plugin"
+      ]
+    },
+    {
+      "assertions": [
+        "Affected external and framework boundaries pass realistic integration tests"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-integration-test-command}"
+      ],
+      "id": "python-integration-tests",
+      "minimum_tier": "material",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "runtime-state",
+        "failure",
+        "asyncio",
+        "multiprocessing",
+        "migration",
+        "operations",
+        "network",
+        "web"
+      ]
+    },
+    {
+      "assertions": [
+        "Declared supported Python and interpreter configurations pass"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-python-matrix-command}"
+      ],
+      "id": "python-supported-version-matrix",
+      "limitations": [
+        "Test the declared bounded matrix; do not infer all implementations or prereleases"
+      ],
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "public-api",
+        "distribution",
+        "typing-api",
+        "release",
+        "free-threaded"
+      ]
+    },
+    {
+      "assertions": [
+        "Declared extras and dependency combinations behave as promised"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-extras-matrix-command}"
+      ],
+      "id": "python-extras-dependency-matrix",
+      "limitations": [
+        "Do not enumerate an unbounded powerset without a declared support policy"
+      ],
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "distribution",
+        "plugin",
+        "dependency",
+        "optional-dependencies"
+      ]
+    },
+    {
+      "assertions": [
+        "A wheel built from the sdist installs and passes the required package tests"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-sdist-wheel-roundtrip-command}"
+      ],
+      "id": "python-sdist-wheel-roundtrip",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "publish",
+        "release",
+        "distribution"
+      ]
+    },
+    {
+      "assertions": [
+        "Declared runtime, import, exception, and typing compatibility obligations are satisfied"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-compatibility-command}"
+      ],
+      "id": "python-api-typing-compatibility",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "public-api",
+        "typing-api",
+        "import-api"
+      ]
+    },
+    {
+      "assertions": [
+        "Affected async operations clean up and preserve invariants under cancellation, timeout, and shutdown"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-async-cancellation-command}"
+      ],
+      "id": "python-async-cancellation",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "asyncio",
+        "cancellation",
+        "concurrency"
+      ]
+    },
+    {
+      "assertions": [
+        "Declared multiprocessing start methods and crash/retry behavior pass on supported platforms"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-process-matrix-command}"
+      ],
+      "id": "python-process-start-methods",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "multiprocessing",
+        "process"
+      ]
+    },
+    {
+      "assertions": [
+        "The claimed free-threaded configuration preserves synchronization and extension invariants"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "{repository-free-threaded-command}"
+      ],
+      "id": "python-free-threaded",
+      "limitations": [
+        "A normal GIL build is not free-threaded evidence"
+      ],
+      "minimum_tier": "consequential",
+      "requires": [
+        "qualified-free-threaded-python",
+        "repository-defined"
+      ],
+      "triggers": [
+        "free-threaded"
+      ]
+    },
+    {
+      "assertions": [
+        "Native extension ownership, exceptions, threading, ABI, import, and wheel behavior pass in the claimed configurations"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "{repository-native-test-command}"
+      ],
+      "id": "python-native-extension",
+      "minimum_tier": "consequential",
+      "requires": [
+        "qualified-native-toolchain",
+        "repository-defined"
+      ],
+      "triggers": [
+        "native-extension",
+        "ffi",
+        "abi"
+      ]
+    },
+    {
+      "assertions": [
+        "Migration, interruption, restart, mixed-version, and rollback behavior satisfy the declared contract"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-migration-test-command}"
+      ],
+      "id": "python-migration-rollback",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "migration",
+        "rollback",
+        "persistence"
+      ]
+    },
+    {
+      "assertions": [
+        "Selected hostile inputs cannot cross the declared trust and effect boundaries"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-security-test-command}"
+      ],
+      "id": "python-security-boundary",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "security",
+        "dynamic-exec",
+        "deserialization",
+        "subprocess",
+        "archive",
+        "filesystem",
+        "network",
+        "untrusted-input"
+      ]
+    },
+    {
+      "assertions": [
+        "Repository-approved dependency and supply-chain policy passes"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-dependency-audit-command}"
+      ],
+      "id": "python-dependency-audit",
+      "limitations": [
+        "Absence of a scanner is not a clean result and tools are never installed silently"
+      ],
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "dependency",
+        "release",
+        "security",
+        "distribution"
+      ]
+    },
+    {
+      "assertions": [
+        "Selected invariants hold across generated examples or state transitions"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "{repository-property-test-command}"
+      ],
+      "id": "python-property-stateful",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "property-testing",
+        "state-machine",
+        "runtime-state",
+        "parser",
+        "protocol"
+      ]
+    },
+    {
+      "assertions": [
+        "The selected fuzz target has no undispositioned reproducible crash or invariant violation within the declared budget"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "{repository-fuzz-command}"
+      ],
+      "id": "python-fuzz",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "fuzzing",
+        "parser",
+        "deserialization",
+        "archive",
+        "untrusted-input"
+      ]
+    },
+    {
+      "assertions": [
+        "Selected high-value logic has no undispositioned surviving mutants within the declared scope"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "{repository-mutation-command}"
+      ],
+      "id": "python-mutation",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "mutation-testing",
+        "high-value-pure-logic",
+        "test-strategy-gap"
+      ]
+    },
+    {
+      "assertions": [
+        "The declared workload meets the performance or resource criterion in a recorded environment"
+      ],
+      "class": "manual-experimental",
+      "command": [
+        "{repository-benchmark-command}"
+      ],
+      "id": "python-performance-benchmark",
+      "minimum_tier": "material",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "performance",
+        "benchmark",
+        "startup-time"
+      ]
+    },
+    {
+      "assertions": [
+        "The exact artifact starts, reports health, handles signals, drains, and shuts down or recovers as declared"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "{repository-operational-test-command}"
+      ],
+      "id": "python-operational-startup-shutdown",
+      "minimum_tier": "consequential",
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "operations",
+        "startup",
+        "shutdown",
+        "deployment"
+      ]
+    },
+    {
+      "assertions": [
+        "The generic ImplementationStructureContract is schema-valid and bound to an exact identity and digest"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "bbk",
+        "structure",
+        "validate",
+        "--contract",
+        "{contract}"
+      ],
+      "id": "python-generic-structure-contract-validate",
+      "minimum_tier": "routine",
+      "requires": [
+        "bbk-alpha4-structure-validator"
+      ],
+      "triggers": [
+        "implementation-structure"
+      ]
+    },
+    {
+      "assertions": [
+        "The deterministic Python projection is schema-valid and preserves generic identity, fixed decisions, delegated freedom, scope, and authority"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "bbk-python",
+        "structure",
+        "--root",
+        "{root}",
+        "--contract",
+        "{contract}",
+        "--role",
+        "{role}",
+        "--task-profile",
+        "implementation-structure",
+        "--assurance-tier",
+        "{tier}"
+      ],
+      "id": "python-structure-projection-validate",
+      "minimum_tier": "routine",
+      "requires": [
+        "bbk-python"
+      ],
+      "triggers": [
+        "implementation-structure"
+      ]
+    },
+    {
+      "assertions": [
+        "Public runtime imports, public typing surfaces, entry points, package subjects, and shared runtime schemas do not materially diverge from fixed contract decisions"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "bbk-python",
+        "structure-review",
+        "--root",
+        "{root}",
+        "--contract",
+        "{contract}",
+        "--candidate",
+        "{candidate}"
+      ],
+      "id": "python-public-shared-contract-drift",
+      "minimum_tier": "material",
+      "requires": [
+        "bbk-python"
+      ],
+      "triggers": [
+        "public-api",
+        "typing-api",
+        "distribution",
+        "entry-point-plugin"
+      ]
+    },
+    {
+      "assertions": [
+        "State, resource, task, process, transaction, cancellation, cleanup, retry, and recovery ownership remain consistent with fixed decisions"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "bbk-python",
+        "structure-review",
+        "--root",
+        "{root}",
+        "--contract",
+        "{contract}",
+        "--candidate",
+        "{candidate}"
+      ],
+      "id": "python-state-ownership-drift",
+      "minimum_tier": "material",
+      "requires": [
+        "bbk-python"
+      ],
+      "triggers": [
+        "state-ownership",
+        "runtime-state",
+        "asyncio",
+        "multiprocessing",
+        "persistence-migration"
+      ]
+    },
+    {
+      "assertions": [
+        "Material divergence names an exact fixed decision, shared contract, owner, behavior path, effect boundary, assertion, or slice; harmless delegated private differences do not fail conformance"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "bbk-python",
+        "structure-review",
+        "--root",
+        "{root}",
+        "--contract",
+        "{contract}",
+        "--candidate",
+        "{candidate}",
+        "--actual-inventory",
+        "{actual-inventory}"
+      ],
+      "id": "python-planned-actual-structure-compare",
+      "minimum_tier": "material",
+      "requires": [
+        "bbk-python"
+      ],
+      "triggers": [
+        "planned-actual",
+        "implementation-structure"
+      ]
+    },
+    {
+      "assertions": [
+        "The execution slice has one real Python-appropriate integrated touchpoint, exact dependency closure, assertions, containment, and evidence plan"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "bbk-python",
+        "slice",
+        "--root",
+        "{root}",
+        "--slice",
+        "{slice}",
+        "--role",
+        "{role}",
+        "--task-profile",
+        "execution-slicing",
+        "--assurance-tier",
+        "{tier}"
+      ],
+      "id": "python-slice-touchpoint-evidence",
+      "minimum_tier": "material",
+      "requires": [
+        "bbk-python"
+      ],
+      "triggers": [
+        "execution-slice"
+      ]
+    },
+    {
+      "assertions": [
+        "Every temporary fixture, adapter, plugin, schema, queue, migration snapshot, or test-only entry point has an owner and removal, replacement, retention, or supersession disposition"
+      ],
+      "class": "required-when-triggered",
+      "command": [
+        "bbk-python",
+        "slice",
+        "--root",
+        "{root}",
+        "--slice",
+        "{slice}",
+        "--role",
+        "reviewer",
+        "--task-profile",
+        "execution-slicing",
+        "--assurance-tier",
+        "{tier}"
+      ],
+      "id": "python-scaffolding-disposition",
+      "minimum_tier": "material",
+      "requires": [
+        "bbk-python"
+      ],
+      "triggers": [
+        "execution-slice"
+      ]
+    }
+  ],
+  "schema": "bbk.python-gate-recipes.v1"
+}

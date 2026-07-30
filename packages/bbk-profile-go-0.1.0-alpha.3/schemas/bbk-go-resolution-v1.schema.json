@@ -1,0 +1,35 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-go-resolution-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "effective_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "gate_plan": {
+      "type": "object"
+    },
+    "lock": {
+      "type": "object"
+    },
+    "schema": {
+      "const": "bbk.go-profile-resolution.v1"
+    },
+    "selected_components": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "profile",
+    "inputs",
+    "preflight",
+    "selected_components",
+    "gate_plan",
+    "lock",
+    "effective_sha256"
+  ],
+  "title": "BBK Go profile resolution",
+  "type": "object"
+}

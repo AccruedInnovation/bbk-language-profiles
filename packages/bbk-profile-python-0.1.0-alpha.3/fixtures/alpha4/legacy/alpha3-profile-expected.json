@@ -1,0 +1,10 @@
+{
+  "schema": "bbk.alpha4-legacy-profile-expectation.v1",
+  "profile_id": "python",
+  "profile_version": "0.1.0-alpha.1",
+  "generic_profile_schema_valid": true,
+  "implementation_structure_support": "legacy-unprojected",
+  "ordinary_preflight_resolution_gate_planning_retained": true,
+  "structure_projection_claims_permitted": false,
+  "rationale": "An alpha.3 profile without capabilities.implementation_structure remains valid for ordinary profile behavior but must not invent an alpha.4 profile-specific structure projection."
+}

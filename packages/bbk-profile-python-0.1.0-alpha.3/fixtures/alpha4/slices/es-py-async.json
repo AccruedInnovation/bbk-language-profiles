@@ -1,0 +1,68 @@
+{
+  "assertions": [
+    {
+      "evidence": "task trace",
+      "id": "A-ASYNC",
+      "method": "test",
+      "statement": "Cancellation cleans up owned tasks."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice creates one integrated, reversible qualification touchpoint.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "Contract accepted."
+  ],
+  "exitConditions": [
+    "Declared observation is evidenced."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "participants": [
+      "caller",
+      "TaskGroup",
+      "child tasks"
+    ],
+    "steps": [
+      "Start and cancel a batch operation."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Python fixture",
+  "metadata": {
+    "fixture": true,
+    "revision": "1"
+  },
+  "objective": "Async cancellation flow",
+  "parentCapabilityRefs": [
+    "CAP-PYTHON"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-PY-ASYNC",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-PY-ASYNC@1"
+  ],
+  "title": "Async cancellation flow",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "isolated qualification fixture",
+    "expectedObservation": "Cancellation propagates after child cleanup and no task is orphaned.",
+    "interaction": "Start and cancel a batch operation.",
+    "kind": "api"
+  },
+  "workUnitRefs": [
+    "WU-ASYNC"
+  ]
+}

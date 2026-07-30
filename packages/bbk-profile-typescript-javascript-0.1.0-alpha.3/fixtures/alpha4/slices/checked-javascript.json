@@ -1,0 +1,68 @@
+{
+  "assertions": [
+    {
+      "evidence": "checker receipt plus runtime test",
+      "id": "A-CHECKJS",
+      "method": "test",
+      "statement": "Checked JS and runtime behavior remain valid."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice closes one integrated feedback path without artificial layer-only handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-TSJS-CHECKED-JS@1 accepted"
+  ],
+  "exitConditions": [
+    "checkJs and runtime behavior both satisfy their distinct assertions."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ES-TSJS-CHECKED-JS"
+    ],
+    "interfaceRefs": [
+      "IF-ES-TSJS-CHECKED-JS"
+    ],
+    "participants": [
+      "consumer",
+      "owner"
+    ],
+    "steps": [
+      "Check JSDoc surface.",
+      "Execute JavaScript consumer."
+    ]
+  },
+  "integrationOwner": "Owner of ES-TSJS-CHECKED-JS",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Preserve checkJs diagnostics and execute the JavaScript API.",
+  "parentCapabilityRefs": [
+    "CAP-ES-TSJS-CHECKED-JS"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-TSJS-CHECKED-JS",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-TSJS-CHECKED-JS@1"
+  ],
+  "title": "Checked JavaScript path",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "synthetic qualified fixture",
+    "expectedObservation": "checkJs and runtime behavior both satisfy their distinct assertions.",
+    "interaction": "Run checked JavaScript consumer",
+    "kind": "api"
+  },
+  "workUnitRefs": [
+    "WU-JSDOC",
+    "WU-RUNTIME"
+  ]
+}

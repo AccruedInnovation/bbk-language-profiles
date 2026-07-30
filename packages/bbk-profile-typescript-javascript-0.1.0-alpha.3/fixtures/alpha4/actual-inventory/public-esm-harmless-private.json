@@ -1,0 +1,81 @@
+{
+  "artifacts": [
+    {
+      "exists": true,
+      "observed_kind": "package",
+      "path": "package.json",
+      "planned_id": "ART-PKG"
+    },
+    {
+      "exists": true,
+      "observed_kind": "entry-point",
+      "path": "src/index.ts",
+      "planned_id": "ART-INDEX"
+    },
+    {
+      "exists": true,
+      "observed_kind": "entry-point",
+      "path": "src/feature.ts",
+      "planned_id": "ART-FEATURE"
+    },
+    {
+      "exists": true,
+      "observed_kind": "compiler-config",
+      "path": "tsconfig.build.json",
+      "planned_id": "ART-TSCONFIG"
+    },
+    {
+      "exists": true,
+      "observed_kind": "module",
+      "path": "src/private-helper.ts",
+      "visibility": "private"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "KC-EXPORTS",
+      "observedShape": ". and ./feature import+types conditions",
+      "reason": "",
+      "status": "CONFORMS"
+    },
+    {
+      "id": "KC-ESM-API",
+      "observedShape": "root and feature named exports",
+      "reason": "",
+      "status": "CONFORMS"
+    }
+  ],
+  "effectBoundaries": [],
+  "fixedDecisions": [
+    {
+      "id": "FD-ESM-EXPORTS",
+      "observed": "The package exposes only . and ./feature through ESM import and types conditions.",
+      "reason": "",
+      "status": "CONFORMS"
+    },
+    {
+      "id": "FD-PACK-CONSUMER",
+      "observed": "Acceptance uses a packed clean consumer, not workspace source imports.",
+      "reason": "",
+      "status": "CONFORMS"
+    }
+  ],
+  "notes": [],
+  "packageSurfaces": [
+    {
+      "exports": {
+        ".": {
+          "import": "./dist/index.js",
+          "types": "./dist/index.d.ts"
+        },
+        "./feature": {
+          "import": "./dist/feature.js",
+          "types": "./dist/feature.d.ts"
+        }
+      },
+      "path": "package.json"
+    }
+  ],
+  "schema": "bbk.tsjs-actual-structure-inventory.v1",
+  "stateOwnership": []
+}

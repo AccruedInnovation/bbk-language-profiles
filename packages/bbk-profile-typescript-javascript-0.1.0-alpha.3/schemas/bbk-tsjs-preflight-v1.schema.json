@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bbk.local/schemas/bbk-tsjs-preflight-v1.schema.json",
+  "title": "BBK TypeScript/JavaScript preflight",
+  "type": "object",
+  "required": ["schema", "root", "workspace", "toolchain", "language", "runtime", "packages", "repository_commands", "digest"],
+  "properties": {
+    "schema": {"const": "bbk.tsjs-preflight.v1"},
+    "root": {"type": "string"},
+    "workspace": {"type": "object"},
+    "toolchain": {"type": "object"},
+    "language": {"type": "object"},
+    "runtime": {"type": "object"},
+    "packages": {"type": "array"},
+    "repository_commands": {"type": "object"},
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": true
+}

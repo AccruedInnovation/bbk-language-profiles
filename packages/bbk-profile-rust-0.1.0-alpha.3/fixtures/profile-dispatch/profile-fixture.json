@@ -1,0 +1,17 @@
+{
+  "expectedLenses": [
+    "architecture-boundary",
+    "interface-consumer-compatibility",
+    "implementation-structure",
+    "state-concurrency-effect-recovery",
+    "security-privacy-supply-chain",
+    "test-evidence",
+    "operations-performance-resource",
+    "package-install-migration-release"
+  ],
+  "ompEnvToken": "RUST",
+  "profileId": "rust",
+  "reviewStatus": "supported",
+  "sourcePath": "src/lib.rs",
+  "sourceText": "pub enum OrderState { Draft, Submitted, Complete }\npub struct OrderId(pub u64);\npub fn decide_transition(state: OrderState) -> Result<OrderState, &'static str> { Ok(state) }\npub async fn execute_effect_with_retry_and_timeout() { /* cancellation acknowledgement recovery */ }\nstatic AMBIENT_STATE: bool = false;\nstruct ShadowOrderState;\n"
+}

@@ -1,0 +1,70 @@
+{
+  "applicability": {
+    "level": "none",
+    "rationale": "No standalone contract is needed for this routine private change.",
+    "triggers": []
+  },
+  "contractId": "ISC-RUST-ROUTINE",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and local layout",
+        "bounds": "May differ when fixed public/shared contracts, ownership, behavior paths, and evidence seams remain intact."
+      }
+    ],
+    "fixed": [],
+    "prohibited": [
+      "Do not reinterpret a private convenience choice as authority to change a fixed contract."
+    ]
+  },
+  "executionSliceRefs": [],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and shared contracts are preserved.",
+      "Delegated freedom remains available.",
+      "Applicable touchpoints have bounded evidence."
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [],
+    "behaviorPaths": [],
+    "effectBoundaries": [],
+    "keyContracts": [],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [],
+    "stateOwnership": [],
+    "testSeams": []
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-RUST-ROUTINE"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-ALPHA4-FIXTURE"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-RUST-ROUTINE"
+    ],
+    "interfaceRefs": [],
+    "kind": "software",
+    "purpose": "Refactor one private helper without changing ownership or a shared boundary.",
+    "requirementRefs": [
+      "REQ-ISC-RUST-ROUTINE"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-RUST-ROUTINE"
+    ]
+  },
+  "title": "Routine private refactor",
+  "uncertainties": []
+}

@@ -1,0 +1,184 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The change fixes consequential realization shape needed for independent implementation and review.",
+    "triggers": [
+      "host-extension",
+      "plugin"
+    ]
+  },
+  "contractId": "ISC-TSJS-OMP",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper layout",
+        "bounds": "May change if fixed public/runtime contracts, ownership, effects and touchpoint evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-HOST-LOAD",
+        "rationale": "Protect a material boundary.",
+        "sourceRefs": [],
+        "statement": "Acceptance requires exact-host discovery/load/invocation; parser success is not host compatibility."
+      }
+    ],
+    "prohibited": [
+      "Duplicating the same runtime schema or authoritative rule in independently mutable layers.",
+      "Treating a TypeScript declaration or transpiler pass as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-TSJS-OMP"
+  ],
+  "metadata": {
+    "fixture": true,
+    "profile": "typescript-javascript"
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed public/shared contracts and owners are explicit.",
+      "Delegated freedom preserves competent private implementation choices.",
+      "The first execution slice creates an inspectable integrated touchpoint."
+    ],
+    "acceptedBy": [
+      "FIXTURE-AUTHORITY"
+    ],
+    "assuranceTier": "consequential",
+    "requiredReviewers": [
+      "tsjs-implementation-structure-review"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "retain",
+        "id": "ART-PKG",
+        "kind": "package",
+        "logicalPath": "package.json",
+        "owner": "extension",
+        "responsibility": "Declare OMP extension package.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-EXT",
+        "kind": "extension-entry-point",
+        "logicalPath": "src/index.ts",
+        "owner": "extension",
+        "responsibility": "Register commands/tools and adapt host calls.",
+        "sourceRefs": []
+      },
+      {
+        "action": "retain",
+        "id": "ART-BUILD",
+        "kind": "compiler-config",
+        "logicalPath": "tsconfig.build.json",
+        "owner": "toolchain",
+        "responsibility": "Emit host-loadable output.",
+        "sourceRefs": []
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "Failure is typed or otherwise classified and leaves the declared recoverable state."
+        ],
+        "id": "BP-ISC-TSJS-OMP",
+        "interfaceRefs": [
+          "IF-ISC-TSJS-OMP"
+        ],
+        "name": "OMP extension structure",
+        "steps": [
+          {
+            "contractRef": "KC-OMP-HOST",
+            "from": "Consumer",
+            "interaction": "use the accepted contract",
+            "to": "Owner"
+          }
+        ],
+        "success": "The declared touchpoint produces the accepted behavior.",
+        "trigger": "A declared consumer invokes the slice"
+      }
+    ],
+    "effectBoundaries": [
+      {
+        "authorization": "OMP tool invocation grant",
+        "effect": "spawn profile CLI",
+        "failure": "structured tool error",
+        "idempotency": "tool-call identity",
+        "owner": "extension adapter",
+        "recovery": "cancel child and preserve result"
+      }
+    ],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "syntax success alone is insufficient"
+        ],
+        "id": "KC-OMP-HOST",
+        "invariants": [
+          "loaded extension registers declared surfaces",
+          "host errors remain observable"
+        ],
+        "kind": "plugin-host",
+        "name": "OMP extension registration",
+        "responsibility": "Exact host owns lifecycle; extension adapts only",
+        "shape": "default extension factory registers tools/commands",
+        "sourceRefs": [],
+        "visibility": "external"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-TSJS-OMP",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-OMP"
+        ],
+        "statement": "Record outcome class and correlation identity without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-TSJS-OMP",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-OMP"
+        ],
+        "statement": "Exercise the declared public/runtime boundary through a deterministic fixture or clean consumer."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-TSJS-OMP"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-TSJS-A4"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-TSJS-OMP"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-TSJS-OMP"
+    ],
+    "kind": "software",
+    "purpose": "Keep host registration, tool invocation and installed CLI boundary explicit.",
+    "requirementRefs": [
+      "REQ-ISC-TSJS-OMP"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-TSJS-OMP"
+    ]
+  },
+  "title": "OMP extension structure",
+  "uncertainties": []
+}

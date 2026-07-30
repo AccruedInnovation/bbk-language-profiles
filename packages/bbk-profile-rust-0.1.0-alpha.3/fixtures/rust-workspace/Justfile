@@ -1,0 +1,11 @@
+fmt-check:
+    cargo fmt --all -- --check
+
+lint:
+    cargo clippy --workspace --all-targets
+
+test:
+    cargo test --workspace
+
+mutest:
+    cargo mutest run -p fixture-core

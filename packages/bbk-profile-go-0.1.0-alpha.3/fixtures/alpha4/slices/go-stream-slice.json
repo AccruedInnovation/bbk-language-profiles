@@ -1,0 +1,77 @@
+{
+  "assertions": [
+    {
+      "evidence": "targeted test, race run, and bounded goroutine observation",
+      "id": "A-GO-CANCEL",
+      "method": "test",
+      "statement": "Cancellation terminates the owned goroutine and closes output exactly once."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "One public consumer path and its exact regression evidence are complete.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-GO-SERVICE-001 revision 1 accepted."
+  ],
+  "exitConditions": [
+    "Command touchpoint executes.",
+    "A-GO-SAVE and A-GO-ERROR pass."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-GO-API"
+    ],
+    "interfaceRefs": [
+      "IF-GO-STREAM"
+    ],
+    "participants": [
+      "caller",
+      "api.Stream owned goroutine",
+      "input and output channels"
+    ],
+    "steps": [
+      "Create bounded input and cancellable context.",
+      "Start Stream and exercise delivery/backpressure.",
+      "Cancel or close input and observe output close."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Go save path",
+  "metadata": {
+    "fixture": "go-alpha4"
+  },
+  "objective": "Exercise goroutine, channel close, cancellation, and backpressure behavior as one integrated test touchpoint.",
+  "parentCapabilityRefs": [
+    "CAP-GO-SAVE"
+  ],
+  "scaffolding": [
+    {
+      "disposition": "retain-as-fixture",
+      "id": "SC-STORE",
+      "owner": "tests",
+      "purpose": "Deterministic Store implementation for the touchpoint."
+    }
+  ],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-GO-STREAM-001",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-GO-SERVICE-001@1"
+  ],
+  "title": "Cancellable stream ownership and shutdown",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "fixture module under declared Go toolchain",
+    "expectedObservation": "Output closes after input close or cancellation, no goroutine remains blocked, and no send occurs after close.",
+    "interaction": "Run targeted package tests under race detection and deterministic cancellation.",
+    "kind": "other"
+  },
+  "workUnitRefs": [
+    "WU-GO-STREAM",
+    "WU-GO-STREAM-TEST"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "assertions": [
+    {
+      "evidence": "declaration tree manifest",
+      "id": "A-DECL-FOUND",
+      "method": "test",
+      "statement": "Declaration bundle can be generated deterministically."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice closes one integrated feedback path without artificial layer-only handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-TSJS-PUBLIC-ESM@1 accepted"
+  ],
+  "exitConditions": [
+    "The declaration build is reproducible and explicitly enables ES-TSJS-PUBLIC-ESM."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ES-TSJS-FOUNDATION"
+    ],
+    "interfaceRefs": [
+      "IF-ES-TSJS-FOUNDATION"
+    ],
+    "participants": [
+      "consumer",
+      "owner"
+    ],
+    "steps": [
+      "Generate declaration bundle.",
+      "Compare manifest."
+    ]
+  },
+  "integrationOwner": "Owner of ES-TSJS-FOUNDATION",
+  "metadata": {
+    "fixture": true,
+    "foundationException": "A vertical consumer would be misleading until declarations can be emitted.",
+    "nextIntegratedSliceRef": "ES-TSJS-PUBLIC-ESM"
+  },
+  "objective": "Establish deterministic declaration bundling before the next packed-consumer slice.",
+  "parentCapabilityRefs": [
+    "CAP-ES-TSJS-FOUNDATION"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-TSJS-FOUNDATION",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-TSJS-PUBLIC-ESM@1"
+  ],
+  "title": "Qualified package-build foundation",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "synthetic qualified fixture",
+    "expectedObservation": "The declaration build is reproducible and explicitly enables ES-TSJS-PUBLIC-ESM.",
+    "interaction": "Build declaration bundle and inspect manifest",
+    "kind": "report"
+  },
+  "workUnitRefs": [
+    "WU-DECL-FOUNDATION"
+  ]
+}

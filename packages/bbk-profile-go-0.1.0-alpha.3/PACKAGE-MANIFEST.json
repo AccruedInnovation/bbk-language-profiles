@@ -1,0 +1,907 @@
+{
+  "authority_disclaimer": "This optional BBK profile adds procedure and gate recipes; it grants no tools, effects, completion, readiness, or release authority.",
+  "created_at": "2026-07-24T00:00:00Z",
+  "file_count": 148,
+  "files": [
+    {
+      "bytes": 1248,
+      "executable": false,
+      "path": "CHANGELOG.md",
+      "sha256": "8e4a63bb9b895953630b30cf142a7490d97e4287ac7c1fe6fc2373bcbeab6d1b"
+    },
+    {
+      "bytes": 1093,
+      "executable": false,
+      "path": "LICENSE",
+      "sha256": "d1278607a64065a2485edb5700a36a7050e57e450df28be8f703f62a87c92355"
+    },
+    {
+      "bytes": 11442,
+      "executable": false,
+      "path": "PROFILE.json",
+      "sha256": "89494fe352d566359c480cd6d677f57aa737fd09f99e8298cb1029e1fab32d33"
+    },
+    {
+      "bytes": 2609,
+      "executable": false,
+      "path": "README.md",
+      "sha256": "984e7e6e3e161770f9fd995ddd306ae8fffa0dbf2ca98d579ce0577ed4ab383f"
+    },
+    {
+      "bytes": 14,
+      "executable": false,
+      "path": "VERSION",
+      "sha256": "9fa47ac8eb6ce95e560187b2f5c61eb121bdca00d799afd5979d43c725d61c20"
+    },
+    {
+      "bytes": 1666,
+      "executable": false,
+      "path": "docs/ALPHA4-FIXTURE-MATRIX.md",
+      "sha256": "025c070cee53aae04bb05eaca8bd7d32cccafd80125f87cfbc12602f79e9a240"
+    },
+    {
+      "bytes": 2841,
+      "executable": false,
+      "path": "docs/ALPHA8-FIXTURE-MATRIX.md",
+      "sha256": "ab5eb1d7de6023f18b2cda225fdcb672345326644367399f854163b1f1740a80"
+    },
+    {
+      "bytes": 1350,
+      "executable": false,
+      "path": "docs/BOUNDARIES.md",
+      "sha256": "b8ee0ed34d205634127ff19c57157f7059852e20c4658cc54fa85d8f1154824e"
+    },
+    {
+      "bytes": 2295,
+      "executable": false,
+      "path": "docs/DESIGN-NOTE.md",
+      "sha256": "51d6342559c4ef5f6e28fd8d1c6bd7035aea7e88c0dd199878cfcbc7109b2e0b"
+    },
+    {
+      "bytes": 1565,
+      "executable": false,
+      "path": "docs/INSTALL.md",
+      "sha256": "d7fd155a23f688085fcad97dbf2a7148dd17317fa603d9895983f328dafd6f24"
+    },
+    {
+      "bytes": 1926,
+      "executable": false,
+      "path": "docs/KNOWN-LIMITATIONS.md",
+      "sha256": "e003da5ee2535227d4f8f3fef579f900369b35c6585c23b0d213778355754c6e"
+    },
+    {
+      "bytes": 2526,
+      "executable": false,
+      "path": "docs/LIVE-QUALIFICATION-PLAN.md",
+      "sha256": "f5bee769eb7dd02bc9d51c39aa51211549f403c053d32be58deee02b0a8fc488"
+    },
+    {
+      "bytes": 500,
+      "executable": false,
+      "path": "docs/MIGRATION-ALPHA2-TO-ALPHA3.md",
+      "sha256": "97fb7af9c8343228e1a7a825acbe5271ab2d5b51d0d0628eaa4df244db9090ea"
+    },
+    {
+      "bytes": 1480,
+      "executable": false,
+      "path": "docs/PROFILE-DISPATCH.md",
+      "sha256": "bd0b389b56c7d78746b6ccdf0cc2b5e03517047d50b6707d6a1475ffb7083cf6"
+    },
+    {
+      "bytes": 2150,
+      "executable": false,
+      "path": "docs/QUALIFICATION.md",
+      "sha256": "8f2209591387531d58b91efde27e9bfa0d0915ea2cdbf7ead245d184b32b40b4"
+    },
+    {
+      "bytes": 2459,
+      "executable": false,
+      "path": "docs/RELEASE-NOTES.md",
+      "sha256": "d1c0157d2d2be1aef0e9c95f3d34c33f8427f6d9b8897f5d591033f20fb8f91b"
+    },
+    {
+      "bytes": 2717,
+      "executable": false,
+      "path": "docs/SOURCE-CHANGES.md",
+      "sha256": "05021a5fa7c4f86f23eeb85491af43aa3e08c2f05a4774e79c669800283e44db"
+    },
+    {
+      "bytes": 1128,
+      "executable": false,
+      "path": "docs/SUPPORT-MATRIX.md",
+      "sha256": "7241c6a1d05750f3e562788f93c781d629482fb0e5f41301bec0263bff8c5736"
+    },
+    {
+      "bytes": 1850,
+      "executable": false,
+      "path": "docs/USAGE.md",
+      "sha256": "32b5bc31d562da71d2ffb4c959ee9b53bf91877d6d5426aaea40844f8ee8e48e"
+    },
+    {
+      "bytes": 1519,
+      "executable": false,
+      "path": "fixtures/alpha4/actual/conforms.json",
+      "sha256": "fa2d9cf1fcf5a7d773a780e92688eb521d370102230c7101cf2ccc7751cc9b92"
+    },
+    {
+      "bytes": 1522,
+      "executable": false,
+      "path": "fixtures/alpha4/actual/harmless-private-divergence.json",
+      "sha256": "b3106d5e0396e6d259187a0e44859411a8967599389b8c92a6aee10f645fcf6f"
+    },
+    {
+      "bytes": 1485,
+      "executable": false,
+      "path": "fixtures/alpha4/actual/material-package-owner-divergence.json",
+      "sha256": "7fe605b585fcdad6fea1b009184b2bdc29efdfa1478dbd42505c4daaa83b8f01"
+    },
+    {
+      "bytes": 1218,
+      "executable": false,
+      "path": "fixtures/alpha4/actual/unknown-fixed-evidence.json",
+      "sha256": "ad2fa6e6678f9592421a0479c5c82ec9c842325369f979d33fa6baa2864795c6"
+    },
+    {
+      "bytes": 207,
+      "executable": false,
+      "path": "fixtures/alpha4/candidates/candidate.json",
+      "sha256": "c47e9f1f0c680e0dd9a33167b636c2781cab3dff1ea9f73d71945527d8f531c5"
+    },
+    {
+      "bytes": 2493,
+      "executable": false,
+      "path": "fixtures/alpha4/fixture-matrix.json",
+      "sha256": "7f9705f6b7478a0e36c4751a15451840ce9f86f85dbee7992d67ed3a49777c0b"
+    },
+    {
+      "bytes": 4753,
+      "executable": false,
+      "path": "fixtures/alpha4/legacy/PROFILE-alpha3.json",
+      "sha256": "31960e310acba2d566b866b29f003bf3d6714ba6b774a687e32adc5e9d930866"
+    },
+    {
+      "bytes": 2334,
+      "executable": false,
+      "path": "fixtures/alpha4/slices/foundation-invalid-slice.json",
+      "sha256": "5f3cb70f452f584a0a806cde548de315351121f8c81949753c1f546e6d3993b7"
+    },
+    {
+      "bytes": 2632,
+      "executable": false,
+      "path": "fixtures/alpha4/slices/foundation-valid-slice.json",
+      "sha256": "be9c64ea3ea9a366a71d6c6f18a91f92e827a50faa12ef306ecbf9774fdad19d"
+    },
+    {
+      "bytes": 2367,
+      "executable": false,
+      "path": "fixtures/alpha4/slices/go-save-slice.json",
+      "sha256": "2ecb158ecb1364a2020b93df48e0946a1ad9b2b270351be171fc104514c5c58b"
+    },
+    {
+      "bytes": 2270,
+      "executable": false,
+      "path": "fixtures/alpha4/slices/go-stream-slice.json",
+      "sha256": "be7c2cf3e45ed6fdcb08333819ed592cab4cec0eb91b1343263a638d24cd27eb"
+    },
+    {
+      "bytes": 2480,
+      "executable": false,
+      "path": "fixtures/alpha4/slices/module-downstream-slice.json",
+      "sha256": "02e4677fe933ed9e98223c6778602cf8ce4ed972141d4588a8ce94dadde77208"
+    },
+    {
+      "bytes": 7295,
+      "executable": false,
+      "path": "fixtures/alpha4/structure/cgo-contract.json",
+      "sha256": "dc812e44e7e78250597275ab0c26ae44d149384cdf9e295407766a310c781706"
+    },
+    {
+      "bytes": 10593,
+      "executable": false,
+      "path": "fixtures/alpha4/structure/go-service-contract.json",
+      "sha256": "53c9c0d931dec393b7cf96d883c3f94dd09557e1a41be51c49bca81038bd2c07"
+    },
+    {
+      "bytes": 3563,
+      "executable": false,
+      "path": "fixtures/alpha4/structure/invalid-contract.json",
+      "sha256": "d6af0a25f3a93dd3cea6a7026228367f7ac122175896318f00e7a668a0a45f99"
+    },
+    {
+      "bytes": 10893,
+      "executable": false,
+      "path": "fixtures/alpha4/structure/migration-contract.json",
+      "sha256": "803a2776832cde3f199fa2312331cd13b789a4a53931f171712035cae52b090d"
+    },
+    {
+      "bytes": 9531,
+      "executable": false,
+      "path": "fixtures/alpha4/structure/routine-inline-contract.json",
+      "sha256": "be01fae864ee01c1b8dfa77a28ac2c839cc8e0ac21699654d2a6d7ec6b6539fb"
+    },
+    {
+      "bytes": 10448,
+      "executable": false,
+      "path": "fixtures/alpha4/unsupported/procedure-contract.json",
+      "sha256": "2e2a22a44c8d9114648d2eb2adfca70596b62bd1b5469765af5dca7b87b44283"
+    },
+    {
+      "bytes": 445,
+      "executable": false,
+      "path": "fixtures/go-workspace/Justfile",
+      "sha256": "bbf3eb3e00ba8ae83a99a436da67e018fc4ebd9f0c367542239e5bf0e8451d4c"
+    },
+    {
+      "bytes": 1452,
+      "executable": false,
+      "path": "fixtures/go-workspace/api/api.go",
+      "sha256": "901587f40e67956d1f4698032e2f95ccc9d62a7fd313c3fa9981b4f4d4998ad3"
+    },
+    {
+      "bytes": 800,
+      "executable": false,
+      "path": "fixtures/go-workspace/api/api_test.go",
+      "sha256": "99fb682c595c5a48d397096c7106df67814a2dc46acee94fb135c17a3ddea11f"
+    },
+    {
+      "bytes": 84,
+      "executable": false,
+      "path": "fixtures/go-workspace/api/generate.go",
+      "sha256": "8c88900b241b0423e656c15880a8c995bdbd545dd6b35f739fbb5fbf1a8ba0bc"
+    },
+    {
+      "bytes": 158,
+      "executable": false,
+      "path": "fixtures/go-workspace/api/generated.go",
+      "sha256": "f7ad3b9f7fa9153eefbf8b3b42cfcec626613606592650426610bf13751c41c6"
+    },
+    {
+      "bytes": 56,
+      "executable": false,
+      "path": "fixtures/go-workspace/api/go.mod",
+      "sha256": "cf59970912dcea6d58f98980fbfec1aafb0f1ff74d087096effac5f416ccd34a"
+    },
+    {
+      "bytes": 229,
+      "executable": false,
+      "path": "fixtures/go-workspace/api/internal/native/native.go",
+      "sha256": "7720fce1257725bd634678272450ae71bd7f95abb7c70efeb2664c7f44de07d0"
+    },
+    {
+      "bytes": 377,
+      "executable": false,
+      "path": "fixtures/go-workspace/api/web/handler.go",
+      "sha256": "8c14029f4fb8e178a40e9c121f0e40b1f9b416f16a0cb6f6ba24dbf4bd61386e"
+    },
+    {
+      "bytes": 329,
+      "executable": false,
+      "path": "fixtures/go-workspace/cmd/app/main.go",
+      "sha256": "c330601e29232fb519082d9fcced2e971ae40d835d1566801e12a87e51c94a4e"
+    },
+    {
+      "bytes": 127,
+      "executable": false,
+      "path": "fixtures/go-workspace/cmd/app/main_test.go",
+      "sha256": "eaad7d709f58e5876c3df555f96c1aec550be1ceab4cb2973617ebf27f939efa"
+    },
+    {
+      "bytes": 92,
+      "executable": false,
+      "path": "fixtures/go-workspace/cmd/go.mod",
+      "sha256": "838a82a1b3ca7578d8840373c5a043a349f71a109862afda80b08c6107735fa0"
+    },
+    {
+      "bytes": 51,
+      "executable": false,
+      "path": "fixtures/go-workspace/go.work",
+      "sha256": "c2e0203235b581a143e8dca0736e22bfdbe874ca2ed9539d0911daba75794e7d"
+    },
+    {
+      "bytes": 36,
+      "executable": false,
+      "path": "fixtures/negative/behavior-hazards/go.mod",
+      "sha256": "8c8afabfcb3570008d611dcdfe927ae3e3af3e81f46b6f1d121c0ab08bf1d672"
+    },
+    {
+      "bytes": 611,
+      "executable": false,
+      "path": "fixtures/negative/behavior-hazards/hazards.go",
+      "sha256": "16b320a1963cbc3d96c7aab6d1bb109e21a0cada4c4b271acb17d47ce6e3b0d4"
+    },
+    {
+      "bytes": 83,
+      "executable": false,
+      "path": "fixtures/negative/generated-drift/generated.go",
+      "sha256": "f3c08a43a1e9326f0590b1f4458d1fd94abf0b1f399d8dfff8b184a9422257f7"
+    },
+    {
+      "bytes": 38,
+      "executable": false,
+      "path": "fixtures/negative/generated-drift/go.mod",
+      "sha256": "3c64ae52c3d2b6c54aaeb884013b0ad7b174256f900222d860ad225bb9484787"
+    },
+    {
+      "bytes": 128,
+      "executable": false,
+      "path": "fixtures/negative/generated-drift/model.go",
+      "sha256": "20550f7cff4ce551c9d09fdd78977b2f47e5e3c4d551ff06ca2b6a9aa256057a"
+    },
+    {
+      "bytes": 45,
+      "executable": false,
+      "path": "fixtures/negative/hidden-parent-workspace/child/child.go",
+      "sha256": "135a9692435d426af31c404c7e8c95168d78cb042fd27c508aff2a69adab2c6e"
+    },
+    {
+      "bytes": 41,
+      "executable": false,
+      "path": "fixtures/negative/hidden-parent-workspace/child/go.mod",
+      "sha256": "0ae7ee1f3a0087bfcf5826b0c7377487123f152594e9fea4cd47b4c918be4512"
+    },
+    {
+      "bytes": 21,
+      "executable": false,
+      "path": "fixtures/negative/hidden-parent-workspace/go.work",
+      "sha256": "ef18136b15f9d6359e18ac4ad4f6b376685af28f0893d947c5d3eb210df27154"
+    },
+    {
+      "bytes": 120,
+      "executable": false,
+      "path": "fixtures/negative/local-replace/go.mod",
+      "sha256": "d9cd62af54a08fc41b31ac80eef8e264adb398794c36744e490f0bf880bcdd27"
+    },
+    {
+      "bytes": 64,
+      "executable": false,
+      "path": "fixtures/negative/local-replace/localdep/dependency.go",
+      "sha256": "0e477e50aeadd4175b0bb9f9769f3259096c15029003b1c3c4583acc049e1a53"
+    },
+    {
+      "bytes": 39,
+      "executable": false,
+      "path": "fixtures/negative/local-replace/localdep/go.mod",
+      "sha256": "14fee07dffea3bd49b6b54571505c8071db2dda76de1b01671cb230e14f0dda2"
+    },
+    {
+      "bytes": 100,
+      "executable": false,
+      "path": "fixtures/negative/local-replace/release.go",
+      "sha256": "18f33450cdc7ada83e3770c7749db9113c9114ca67dd03cf69c022731e13fdd5"
+    },
+    {
+      "bytes": 15,
+      "executable": false,
+      "path": "fixtures/negative/stale-toolchain/future.go",
+      "sha256": "d72f2ac7c48890ba77bb9840d2ebe4d636ecacc6fae3e389a49bae41fd0987a9"
+    },
+    {
+      "bytes": 55,
+      "executable": false,
+      "path": "fixtures/negative/stale-toolchain/go.mod",
+      "sha256": "3ce83bf88f4edc9980769fdb4f9e72434839f1a4260782cf54403014f34e9380"
+    },
+    {
+      "bytes": 2253,
+      "executable": false,
+      "path": "fixtures/negative-cases.json",
+      "sha256": "ad157f96afcc9a2bb0df62d1737f0afe6da58630766b56de613d5077f8b52f39"
+    },
+    {
+      "bytes": 3449,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/assurance-contract.json",
+      "sha256": "ecbaa592b1637b8b81467ce9960b8a71da05f8e202136c9bcf66467f58fbc7cb"
+    },
+    {
+      "bytes": 10505,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/design-contract.json",
+      "sha256": "4423b6a348a07202485367d600a90288b5c0ee9e606b28152ddabcda942496d1"
+    },
+    {
+      "bytes": 3312,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/design-inline.json",
+      "sha256": "6b5defe87c301b0d804193586a4d378290edcb939c5c64e1c4cb30c4968d0a59"
+    },
+    {
+      "bytes": 1581,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/design-none.json",
+      "sha256": "4f7fd39edcfcd612970332edf4f292a1e695090bc8fd26c4eb0c5a9f379cf261"
+    },
+    {
+      "bytes": 513,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/fixture-matrix.json",
+      "sha256": "ce8a7396f7e297c6c02e5f61d41b87c9befac0e6e14a6e5bd4073cb078fe6602"
+    },
+    {
+      "bytes": 578,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/inventory-divergent.json",
+      "sha256": "2c191edabfbb0b7c74f31e3b98ea607411ecd7bf6e1eed62d9234fa41acc9420"
+    },
+    {
+      "bytes": 1260,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/inventory-match.json",
+      "sha256": "5ad1f6279433213a38304f77ed581f9720ebc2c151ad0783cee6a99ee62d0395"
+    },
+    {
+      "bytes": 79,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/legacy-evidence.txt",
+      "sha256": "083a4644d4c9b1f1a81a31950e09b750d623643c4e1f1420ae50974cc47a5fea"
+    },
+    {
+      "bytes": 1536,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/native-evidence.json",
+      "sha256": "01a20a459802860762a1ac3729819019cfb6102b32773f11a60a545da1e028c2"
+    },
+    {
+      "bytes": 832,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/profile-fixture.json",
+      "sha256": "2cea3ae3022d7a322c7cbf44c8d4fce1a8c203d87b6dd473bb54ed945ba7e525"
+    },
+    {
+      "bytes": 4547,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/review-manifest.json",
+      "sha256": "ce8e88d341e601c05639af726fb4237bedb9ed6cebe8a9807793ee4a112df283"
+    },
+    {
+      "bytes": 1553,
+      "executable": false,
+      "path": "fixtures/profile-dispatch/unstructured-evidence.json",
+      "sha256": "28f20cc7fbcc7136b7eb3c03ad97afe5fd91c2f7eb662d759888411cb44239fc"
+    },
+    {
+      "bytes": 19694,
+      "executable": false,
+      "path": "gates/go-gates.json",
+      "sha256": "5fafa53b7f5f5ff3780e04f91b11886b0b1bca2a99f8da1ac824f4deb7a1b064"
+    },
+    {
+      "bytes": 476,
+      "executable": false,
+      "path": "licenses/THIRD-PARTY-NOTICES.md",
+      "sha256": "389df62dd6ccccb25d17749530dea370687ef16fe7da02e5a383af8710831756"
+    },
+    {
+      "bytes": 785,
+      "executable": false,
+      "path": "mappings/evidence-adapter-map.json",
+      "sha256": "ed0024e5b61688b3fa58f5b632f125221e6da8477c9720d8a85d7945c3289ae6"
+    },
+    {
+      "bytes": 885,
+      "executable": false,
+      "path": "mappings/review-context-map.json",
+      "sha256": "3fad2e17b8908f56f9c7a8de82efbee535ece57e431fbac98365449b8709ad22"
+    },
+    {
+      "bytes": 5394,
+      "executable": false,
+      "path": "mappings/review-lens-map.json",
+      "sha256": "94217f3edc7316f8463dff2a886e87728938f310f5c9b0a7cd78b77317a82643"
+    },
+    {
+      "bytes": 14047,
+      "executable": false,
+      "path": "mappings/risk-trigger-map.json",
+      "sha256": "fb613d27130fe5671e1d2c2ac4e9964de2c3bbc8f7170d3f1542c06a004c03c0"
+    },
+    {
+      "bytes": 5100,
+      "executable": false,
+      "path": "mappings/state-effect-map.json",
+      "sha256": "bb366e2719151e2822fa2c0cf334103c5013b6e30818ba5f717b51df806ee03f"
+    },
+    {
+      "bytes": 3860,
+      "executable": false,
+      "path": "mappings/task-skill-map.json",
+      "sha256": "810ee97f0dd4f8699a8f0762a97fd370d5e71e367f9d04235e690911d7f4131e"
+    },
+    {
+      "bytes": 868,
+      "executable": false,
+      "path": "omp/extension/README.md",
+      "sha256": "658796a8b2f3eea7cd05b1b473e7fe612288a3b378f73b1624f593cd226679a7"
+    },
+    {
+      "bytes": 20915,
+      "executable": false,
+      "path": "omp/extension/index.js",
+      "sha256": "f5da808c05c0aa053a1f7a10f583171d06de8ddc7a324c22561d222c62d4c052"
+    },
+    {
+      "bytes": 250,
+      "executable": false,
+      "path": "omp/extension/package.json",
+      "sha256": "08d33b2e669a2dc84b952bb3c351f65e684e8c2e2ead3b7e7ed3e26a74b9312e"
+    },
+    {
+      "bytes": 941,
+      "executable": false,
+      "path": "references/compatibility-policy.md",
+      "sha256": "b57571a0791bfa9c84e695245bb47d6edf4818c890852aecd2114fae34d9f6cb"
+    },
+    {
+      "bytes": 955,
+      "executable": false,
+      "path": "references/implementation-structure.md",
+      "sha256": "8a6a9c1600184a510eb75aa139dd1b13e988e97ad35b41334723d2af9d8826e0"
+    },
+    {
+      "bytes": 828,
+      "executable": false,
+      "path": "references/performance-policy.md",
+      "sha256": "920120bbfebd315acf1957c6864168e62347ef35a69ea76d3ad5537e08443d74"
+    },
+    {
+      "bytes": 1269,
+      "executable": false,
+      "path": "references/support-matrix.md",
+      "sha256": "b273ed0b5e201878ba467f2307fb44da28770142e4da830d1ac4d814e95dbbe9"
+    },
+    {
+      "bytes": 915,
+      "executable": false,
+      "path": "references/testing-policy.md",
+      "sha256": "a60948468db125e3b1177045c690457e7fdb85ab1554b695c4bb0f6a9c598482"
+    },
+    {
+      "bytes": 7477,
+      "executable": false,
+      "path": "schemas/bbk-assurance-contract-v1.schema.json",
+      "sha256": "26ef6ded93b159a29dbe39c048084e1163285306ec6264b6ea7a0b700b2db1e9"
+    },
+    {
+      "bytes": 4974,
+      "executable": false,
+      "path": "schemas/bbk-evidence-receipt-v2.schema.json",
+      "sha256": "b78bd247850cf45c78277c501a30d0eb2168bac8b23822a6605ed45ac7893cd5"
+    },
+    {
+      "bytes": 6027,
+      "executable": false,
+      "path": "schemas/bbk-execution-slice-v1.schema.json",
+      "sha256": "db4a0839516db3aaab7cac3378a88bb13bf3b93fad0e71b16d97d8a291e0a05b"
+    },
+    {
+      "bytes": 1273,
+      "executable": false,
+      "path": "schemas/bbk-go-actual-structure-inventory-v1.schema.json",
+      "sha256": "a211034d6533d559c0964d6f84c73089757ddaa3cc33cebfb68ef1862a697dde"
+    },
+    {
+      "bytes": 594,
+      "executable": false,
+      "path": "schemas/bbk-go-evidence-adapter-result-v1.schema.json",
+      "sha256": "3a226bc713521620ea985741c7f896788345b9b22732eaf7f5f22259a90c279c"
+    },
+    {
+      "bytes": 3585,
+      "executable": false,
+      "path": "schemas/bbk-go-execution-slice-projection-v1.schema.json",
+      "sha256": "50547890800166857c18f200a7a6a4774cf2951fbbdb014d6de80c80ec822164"
+    },
+    {
+      "bytes": 3602,
+      "executable": false,
+      "path": "schemas/bbk-go-implementation-structure-projection-v1.schema.json",
+      "sha256": "fecc5cba90b59761d149c5532a4681413e5b650d447e4c274558d8ea7e8a3892"
+    },
+    {
+      "bytes": 3752,
+      "executable": false,
+      "path": "schemas/bbk-go-planned-actual-structure-comparison-v1.schema.json",
+      "sha256": "400eec2d5a187527eb8cd52d0845a15f81ee435737d820b0f5f06550e328d83c"
+    },
+    {
+      "bytes": 766,
+      "executable": false,
+      "path": "schemas/bbk-go-preflight-v1.schema.json",
+      "sha256": "a0bc872a983f775fd3eb3d0976da3c98bb5948ff4b52d7032af976807232592c"
+    },
+    {
+      "bytes": 720,
+      "executable": false,
+      "path": "schemas/bbk-go-resolution-v1.schema.json",
+      "sha256": "4a20955ef7616ad42585022258fa175027c6f348657a8882d1e62a3b6e32a491"
+    },
+    {
+      "bytes": 616,
+      "executable": false,
+      "path": "schemas/bbk-go-review-lens-result-v1.schema.json",
+      "sha256": "4c3b672a792f969d9b2f001fd407778ba7cf72075fb1aa3ddf585f277c909264"
+    },
+    {
+      "bytes": 622,
+      "executable": false,
+      "path": "schemas/bbk-go-state-effect-inventory-v1.schema.json",
+      "sha256": "1b7d8c50f14779f7aa653c16e5596b89a136aaf5b8f8c37f42d0fa53a0e71429"
+    },
+    {
+      "bytes": 635,
+      "executable": false,
+      "path": "schemas/bbk-go-state-effect-projection-v1.schema.json",
+      "sha256": "a3105bbe20cdff42d7e83ca9c467c64af415b46084c2e7683b99c98381ec71d2"
+    },
+    {
+      "bytes": 597,
+      "executable": false,
+      "path": "schemas/bbk-go-state-effect-review-v1.schema.json",
+      "sha256": "7d491a522c49faf8e8be0abbc52eec9900208837d36ed3607d791f832a450db1"
+    },
+    {
+      "bytes": 3818,
+      "executable": false,
+      "path": "schemas/bbk-go-structure-review-result-v1.schema.json",
+      "sha256": "ab0c27704ce14123f254e6c74e78fd226113259bf84da3c6cb3394befc6035bd"
+    },
+    {
+      "bytes": 14120,
+      "executable": false,
+      "path": "schemas/bbk-implementation-structure-contract-v1.schema.json",
+      "sha256": "c3c711e0a9b41a5755b01f41db50743bc5727346240c376dbab5b580639182b2"
+    },
+    {
+      "bytes": 7355,
+      "executable": false,
+      "path": "schemas/bbk-language-profile-v1.schema.json",
+      "sha256": "7e233c3a39b0385b1cd843ebf9d56f24d6dc8c788eafe29d0931f8a72a0570f3"
+    },
+    {
+      "bytes": 4866,
+      "executable": false,
+      "path": "schemas/bbk-profile-capability-request-v1.schema.json",
+      "sha256": "fec8e8a9f04a9d2867bdfb9afe6df2c39e9668004e2450a99c70d8f0d35aab61"
+    },
+    {
+      "bytes": 1545,
+      "executable": false,
+      "path": "schemas/bbk-profile-capability-result-v1.schema.json",
+      "sha256": "8354fe74c613100fe93643f1c87d6ba9e57feb01ad251755789bf8d8b08c01e1"
+    },
+    {
+      "bytes": 977,
+      "executable": false,
+      "path": "schemas/bbk-profile-dispatch-v1.schema.json",
+      "sha256": "6e6878f70227a070c87e522753e5d5fa2323034fa1fdaec7f091622cad2cd6c5"
+    },
+    {
+      "bytes": 716,
+      "executable": false,
+      "path": "schemas/bbk-profile-lock-v1.schema.json",
+      "sha256": "04e9b77f218bbb152e38319290927a089534babb0383ce986e9c6799059a36d6"
+    },
+    {
+      "bytes": 5276,
+      "executable": false,
+      "path": "schemas/bbk-review-context-manifest-v1.schema.json",
+      "sha256": "10045e18595f1dde521ec7232b1407f747d4e3a6ed91befc29f42013b119c781"
+    },
+    {
+      "bytes": 7489,
+      "executable": false,
+      "path": "schemas/bbk-review-manifest-v1.schema.json",
+      "sha256": "98d411c22a1cb0d1a8145861647bd82cbef6f6aaba3719b8a7fb0c7b7be830f9"
+    },
+    {
+      "bytes": 20973,
+      "executable": false,
+      "path": "schemas/bbk-state-decision-effect-design-v1.schema.json",
+      "sha256": "c7e2314cf8f44f6ff010b5c1321977b9d26ba88ee3e8157a2af8b2cba337b54a"
+    },
+    {
+      "bytes": 1909,
+      "executable": false,
+      "path": "schemas/bbk-structure-review-result-v1.schema.json",
+      "sha256": "b19eb89e1b71bfa1db62f6e33e00bf9c50cd26188a18d07245c99c30500db29e"
+    },
+    {
+      "bytes": 2802,
+      "executable": false,
+      "path": "schemas/work-unit.schema.json",
+      "sha256": "25a8009208b019471b6a77f14154ce32b13817adf6a77721fb5d61261ce7bee0"
+    },
+    {
+      "bytes": 4986,
+      "executable": false,
+      "path": "skills/bbk-go/SKILL.md",
+      "sha256": "073118269f64bc3788c675ddbe61db28eff74abdfb3eaac6ec3b146c26455f34"
+    },
+    {
+      "bytes": 8265,
+      "executable": false,
+      "path": "skills/comprehensive-analysis-go/SKILL.md",
+      "sha256": "298c7ba828661ec81d91e8eb666581cb8a8cd00c795f269b067047438c618f29"
+    },
+    {
+      "bytes": 4112,
+      "executable": false,
+      "path": "skills/go-api-module-boundary-review/SKILL.md",
+      "sha256": "e0e189e5fb0bacdd3f0bedfed4d879c8f9245aa8888ec0276fc29da0da4dcc63"
+    },
+    {
+      "bytes": 4534,
+      "executable": false,
+      "path": "skills/go-correctness-concurrency-review/SKILL.md",
+      "sha256": "1103cbafe02e706abc5b7aded9c83a1a14c7d72032311855f2345a5916504b34"
+    },
+    {
+      "bytes": 3003,
+      "executable": false,
+      "path": "skills/go-evidence-reproducer/SKILL.md",
+      "sha256": "83900e19ff0cc1c577f704dfb90aeed0271956aefdf52c7729228c42c6417928"
+    },
+    {
+      "bytes": 3954,
+      "executable": false,
+      "path": "skills/go-implementation-structure/SKILL.md",
+      "sha256": "7379c2340bf2e68402d4553ef1a8fada13fa9ad8f6ac70fd54265848c656bfad"
+    },
+    {
+      "bytes": 2696,
+      "executable": false,
+      "path": "skills/go-implementation-structure-review/SKILL.md",
+      "sha256": "9486011389729d0ff2735cbc8ab7facaa08b3c15b5c66454d7903d1f6239d2ca"
+    },
+    {
+      "bytes": 3169,
+      "executable": false,
+      "path": "skills/go-operational-readiness-review/SKILL.md",
+      "sha256": "12952d6b1ac51162829ef5d5b211061fef2bfe5d58b9ef2f96a33e3772f0c694"
+    },
+    {
+      "bytes": 2509,
+      "executable": false,
+      "path": "skills/go-package-release-gates/SKILL.md",
+      "sha256": "fba0a3e16f3b4b64959af57bddf41970f3ab4379f4ff72ae7d5ef01811192d70"
+    },
+    {
+      "bytes": 3298,
+      "executable": false,
+      "path": "skills/go-security-supply-chain-review/SKILL.md",
+      "sha256": "aef5a45ac60426b9a09772c08ed75553eb651d4013136e38780897ce28150b7d"
+    },
+    {
+      "bytes": 7847,
+      "executable": false,
+      "path": "skills/go-skills/SKILL.md",
+      "sha256": "b95a4c65e2461cf3bbfcb152b7b169cae2c914a7e3f9e2e754b3a6b2695ad502"
+    },
+    {
+      "bytes": 4205,
+      "executable": false,
+      "path": "skills/go-test-strategy-review/SKILL.md",
+      "sha256": "71d30e521d03f548a2ddf45a633ae729a0ffc4127f70a539b639fbcdcb0e1376"
+    },
+    {
+      "bytes": 3014,
+      "executable": false,
+      "path": "skills/go-unsafe-cgo-assembly-review/SKILL.md",
+      "sha256": "b200802310c5550edeabc94e93906b8f9dcabe95a92adf89758b20efeb9c0915"
+    },
+    {
+      "bytes": 2083,
+      "executable": false,
+      "path": "skills/go-web-htmx-review/SKILL.md",
+      "sha256": "5b3bbb9aea572806d4de9b732c868269acfbb7ef238cbee2deedab39b73a2c30"
+    },
+    {
+      "bytes": 545,
+      "executable": false,
+      "path": "sources/alpha3-source-binding.json",
+      "sha256": "3bbf0e15c9f91b1622ffe2789d49ec743aef7a88820f162163539114f2b935ab"
+    },
+    {
+      "bytes": 21055,
+      "executable": false,
+      "path": "sources/alpha3-update-prd.md",
+      "sha256": "42e9157fe258899d51f615773097c75fad8715d77a68a4eae54289f8bdec7b42"
+    },
+    {
+      "bytes": 1598,
+      "executable": false,
+      "path": "sources/alpha4-source-provenance.json",
+      "sha256": "e8bd6e8682c270d7afb015a7cda682e716ccb4e8b2325af575032444d898688f"
+    },
+    {
+      "bytes": 3282,
+      "executable": false,
+      "path": "sources/alpha4-update-kit-manifest.json",
+      "sha256": "bf4667b2621ff643e2b78968554db480365f04b7c89e3196aac116cc0ba5ea88"
+    },
+    {
+      "bytes": 33021,
+      "executable": false,
+      "path": "sources/bbk-language-profile-alpha4-update-prd.md",
+      "sha256": "3476cb07d0fffd5b0c3ecb82d8b7821e3cff36105ffc4870bed2b481c0e2a61a"
+    },
+    {
+      "bytes": 394,
+      "executable": false,
+      "path": "sources/original-digests.json",
+      "sha256": "33fe2226d52ed2e735f3d6f1d29bca36306fb87f30ef8ef0ef18e1a5522e0532"
+    },
+    {
+      "bytes": 2699,
+      "executable": false,
+      "path": "templates/execution-slice.json",
+      "sha256": "a6862cd858717b39b50bf004c0195f252fcfa324d6a367a82bb254844fa293f6"
+    },
+    {
+      "bytes": 8299,
+      "executable": false,
+      "path": "templates/implementation-structure-contract.json",
+      "sha256": "0334563424b8402748aaa85b57b35864443017291cc77b25b12a38ee6761f0d1"
+    },
+    {
+      "bytes": 18822,
+      "executable": false,
+      "path": "tests/test_alpha8_dispatch.py",
+      "sha256": "3863612e99dc8bec922082a75c88992a7cbc78274855ee571d8fdc596d934a6e"
+    },
+    {
+      "bytes": 912,
+      "executable": false,
+      "path": "tests/test_omp_context_boundary.py",
+      "sha256": "3ffb7b793d53b7b42130657428013af6708150abd1fceb75e6072ecfa8a8c279"
+    },
+    {
+      "bytes": 37534,
+      "executable": false,
+      "path": "tests/test_profile.py",
+      "sha256": "3c52688e6b63e66c98fce049bca822903da6742105682869f3d8549339685467"
+    },
+    {
+      "bytes": 91971,
+      "executable": false,
+      "path": "tools/bbk_go.py",
+      "sha256": "55c979c363be62539b3a75d3167cb5cfd54ee4f1558e4120d524cfc77197c56e"
+    },
+    {
+      "bytes": 6890,
+      "executable": false,
+      "path": "tools/build_release.py",
+      "sha256": "617528c2a1e853d646a341209626360b5c7e7dd39f1670b9308160013fdc74f6"
+    },
+    {
+      "bytes": 14791,
+      "executable": false,
+      "path": "tools/install.py",
+      "sha256": "7f38885e5ebfd6cfa0e170ef87d7fe51d3cc9e80a06db0ca963df153ba7ceca9"
+    },
+    {
+      "bytes": 55389,
+      "executable": true,
+      "path": "tools/profile.py",
+      "sha256": "07ab8af8de7af267c43d1b2d4f79c1c6c7b81274896577fec98e015496bf9c30"
+    },
+    {
+      "bytes": 6188,
+      "executable": false,
+      "path": "tools/verify_package.py",
+      "sha256": "3c6e6f7849965dc65c49e9fd1ca2c2174a8c70340addae439e1ce58c676f8682"
+    }
+  ],
+  "fixture_file_count": 57,
+  "gate_recipe_count": 31,
+  "maturity": "comprehensive-alpha",
+  "name": "BBK Go Profile",
+  "profile_id": "go",
+  "profile_manifest_sha256": "89494fe352d566359c480cd6d677f57aa737fd09f99e8298cb1029e1fab32d33",
+  "root_schema": "bbk.profile-package-root.v1",
+  "root_sha256": "4da1f08f78ae62a3a3d35a669669cc97543a797b98a082a0bbb4d46897f3284a",
+  "schema": "bbk.profile-package-manifest.v1",
+  "skill_count": 14,
+  "trigger_count": 17,
+  "version": "0.1.0-alpha.3"
+}

@@ -1,0 +1,169 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-tsjs-implementation-structure-projection-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "advisories": {
+      "type": "array"
+    },
+    "applicability": {
+      "additionalProperties": false,
+      "properties": {
+        "disposition": {
+          "enum": [
+            "SUPPORTED",
+            "PARTIAL",
+            "NOT_APPLICABLE",
+            "BLOCKED"
+          ]
+        },
+        "generic_level": {
+          "enum": [
+            "none",
+            "inline",
+            "contract"
+          ]
+        },
+        "rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "generic_level",
+        "disposition"
+      ],
+      "type": "object"
+    },
+    "authority": {
+      "additionalProperties": true,
+      "properties": {
+        "may_declare_pass": {
+          "const": false
+        },
+        "may_expand_work_scope": {
+          "const": false
+        },
+        "may_grant_tools_or_effects": {
+          "const": false
+        },
+        "may_reduce_assurance": {
+          "const": false
+        },
+        "projection_is_authority": {
+          "const": false
+        },
+        "statement": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "projection_is_authority",
+        "may_declare_pass",
+        "may_expand_work_scope",
+        "may_grant_tools_or_effects",
+        "may_reduce_assurance",
+        "statement"
+      ],
+      "type": "object"
+    },
+    "bbk_version": {
+      "const": "0.1.0-alpha.4"
+    },
+    "blockers": {
+      "type": "array"
+    },
+    "input": {
+      "additionalProperties": false,
+      "properties": {
+        "digest": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "type": "string"
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "revision",
+        "digest"
+      ],
+      "type": "object"
+    },
+    "invocation": {
+      "type": "object"
+    },
+    "output_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "preflight_digest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profile": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": "typescript-javascript"
+        },
+        "package": {
+          "const": "bbk-profile-typescript-javascript"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "package",
+        "version"
+      ],
+      "type": "object"
+    },
+    "projection": {
+      "type": "object"
+    },
+    "schema": {
+      "const": "bbk.tsjs-implementation-structure-projection.v1"
+    },
+    "unsupported_or_uncertain": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "profile",
+    "bbk_version",
+    "input",
+    "preflight_digest",
+    "invocation",
+    "applicability",
+    "projection",
+    "unsupported_or_uncertain",
+    "advisories",
+    "blockers",
+    "authority",
+    "output_digest"
+  ],
+  "title": "BBK TS/JS implementation structure projection",
+  "type": "object"
+}

@@ -1,0 +1,158 @@
+{
+  "genericOnlyLensIds": [
+    "intent-outcome",
+    "specification-acceptance",
+    "feasibility-dependency",
+    "cross-shard-integration"
+  ],
+  "lenses": {
+    "architecture-boundary": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not select or install a runtime, package manager, TypeScript version, or build tool.",
+        "Static typing does not prove runtime data validity or host/browser behavior.",
+        "Dual-package, edge, Electron, native-addon, React Native, and cross-runtime claims remain conditional or explicitly blocked when unqualified."
+      ],
+      "skills": [
+        "comprehensive-analysis-tsjs"
+      ]
+    },
+    "implementation-structure": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not select or install a runtime, package manager, TypeScript version, or build tool.",
+        "Static typing does not prove runtime data validity or host/browser behavior.",
+        "Dual-package, edge, Electron, native-addon, React Native, and cross-runtime claims remain conditional or explicitly blocked when unqualified."
+      ],
+      "skills": [
+        "tsjs-implementation-structure-review"
+      ]
+    },
+    "interface-consumer-compatibility": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not select or install a runtime, package manager, TypeScript version, or build tool.",
+        "Static typing does not prove runtime data validity or host/browser behavior.",
+        "Dual-package, edge, Electron, native-addon, React Native, and cross-runtime claims remain conditional or explicitly blocked when unqualified."
+      ],
+      "skills": [
+        "tsjs-api-module-package-review",
+        "tsjs-type-contract-review",
+        "tsjs-runtime-data-contract-review"
+      ]
+    },
+    "operations-performance-resource": {
+      "conditionalSkills": [
+        {
+          "skills": [
+            "tsjs-browser-ui-review"
+          ],
+          "tokens": [
+            "browser",
+            "ui",
+            "dom",
+            "react",
+            "web"
+          ]
+        }
+      ],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not select or install a runtime, package manager, TypeScript version, or build tool.",
+        "Static typing does not prove runtime data validity or host/browser behavior.",
+        "Dual-package, edge, Electron, native-addon, React Native, and cross-runtime claims remain conditional or explicitly blocked when unqualified."
+      ],
+      "skills": [
+        "tsjs-operational-release-review"
+      ]
+    },
+    "package-install-migration-release": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not select or install a runtime, package manager, TypeScript version, or build tool.",
+        "Static typing does not prove runtime data validity or host/browser behavior.",
+        "Dual-package, edge, Electron, native-addon, React Native, and cross-runtime claims remain conditional or explicitly blocked when unqualified."
+      ],
+      "skills": [
+        "tsjs-api-module-package-review",
+        "tsjs-operational-release-review"
+      ]
+    },
+    "security-privacy-supply-chain": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not select or install a runtime, package manager, TypeScript version, or build tool.",
+        "Static typing does not prove runtime data validity or host/browser behavior.",
+        "Dual-package, edge, Electron, native-addon, React Native, and cross-runtime claims remain conditional or explicitly blocked when unqualified."
+      ],
+      "skills": [
+        "tsjs-security-supply-chain-review"
+      ]
+    },
+    "state-concurrency-effect-recovery": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not select or install a runtime, package manager, TypeScript version, or build tool.",
+        "Static typing does not prove runtime data validity or host/browser behavior.",
+        "Dual-package, edge, Electron, native-addon, React Native, and cross-runtime claims remain conditional or explicitly blocked when unqualified."
+      ],
+      "skills": [
+        "tsjs-async-resource-failure-review"
+      ]
+    },
+    "test-evidence": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not select or install a runtime, package manager, TypeScript version, or build tool.",
+        "Static typing does not prove runtime data validity or host/browser behavior.",
+        "Dual-package, edge, Electron, native-addon, React Native, and cross-runtime claims remain conditional or explicitly blocked when unqualified."
+      ],
+      "skills": [
+        "tsjs-test-strategy-review"
+      ]
+    }
+  },
+  "profile": "typescript-javascript",
+  "schema": "bbk.profile-review-lens-map.v1",
+  "schemaPrefix": "tsjs",
+  "version": "0.1.0-alpha.3"
+}

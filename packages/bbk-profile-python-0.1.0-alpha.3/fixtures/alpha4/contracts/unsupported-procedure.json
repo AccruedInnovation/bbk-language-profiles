@@ -1,0 +1,98 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "Use the least structure ceremony sufficient for this fixture.",
+    "triggers": [
+      "procedure"
+    ]
+  },
+  "contractId": "ISC-PY-PROCEDURE",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and equivalent internal module layout",
+        "bounds": "May vary when public/shared contracts, ownership, behavior, and evidence remain intact."
+      }
+    ],
+    "fixed": [],
+    "prohibited": [
+      "Do not treat annotations as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {
+    "python": {}
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and consequential shape are explicit.",
+      "Delegated freedom remains sufficient.",
+      "A real touchpoint can verify the result."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": [
+      "bbk_reviewer"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [],
+    "behaviorPaths": [],
+    "effectBoundaries": [],
+    "keyContracts": [],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-PY-PROCEDURE",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Record outcome and failure class without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-PY-PROCEDURE",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Exercise the declared touchpoint through the normal package/runtime subject."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-PY-ALPHA4"
+    ],
+    "capabilityRefs": [
+      "CAP-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "kind": "procedure",
+    "purpose": "Operator paper procedure",
+    "requirementRefs": [
+      "REQ-PYTHON"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-PY-PROCEDURE"
+    ]
+  },
+  "title": "Operator paper procedure",
+  "uncertainties": []
+}

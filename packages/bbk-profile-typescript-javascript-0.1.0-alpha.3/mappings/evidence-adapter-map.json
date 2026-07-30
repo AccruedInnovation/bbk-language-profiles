@@ -1,0 +1,38 @@
+{
+  "evidenceKinds": [
+    "typecheck",
+    "transform-build",
+    "declaration-emit",
+    "test",
+    "runtime-schema",
+    "browser",
+    "worker",
+    "stream-abort",
+    "package-consumer"
+  ],
+  "noInventedFields": [
+    "command",
+    "exitStatus",
+    "observedAt",
+    "toolchain",
+    "environment",
+    "subject",
+    "completeness"
+  ],
+  "principalProcedure": "tsjs-evidence-reproducer",
+  "profile": "typescript-javascript",
+  "schema": "bbk.profile-evidence-adapter-map.v1",
+  "schemaPrefix": "tsjs",
+  "trustClasses": [
+    "AGENT_INSPECTION",
+    "DETERMINISTIC_LOCAL",
+    "HUMAN_REVIEW",
+    "LEGACY_IMPORTED",
+    "OPERATIONAL_OBSERVATION",
+    "QUALIFIED_EXTERNAL_CHECK",
+    "QUALIFIED_TOOL",
+    "SIMULATOR_OR_HARNESS",
+    "UNSTRUCTURED_OBSERVATION"
+  ],
+  "version": "0.1.0-alpha.3"
+}

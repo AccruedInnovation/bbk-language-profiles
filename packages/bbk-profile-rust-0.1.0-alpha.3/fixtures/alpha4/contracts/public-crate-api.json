@@ -1,0 +1,157 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The realization shape is material to independent work, ownership, compatibility, or verification.",
+    "triggers": [
+      "public-api",
+      "multi-crate"
+    ]
+  },
+  "contractId": "ISC-RUST-PUBLIC-API",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and local layout",
+        "bounds": "May differ when fixed public/shared contracts, ownership, behavior paths, and evidence seams remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "contract revision and focused impact review",
+        "id": "FD-RUST-PUBLIC",
+        "rationale": "Downstream compatibility depends on one owner.",
+        "sourceRefs": [
+          "REQ-FD-RUST-PUBLIC"
+        ],
+        "statement": "The public add contract remains owned by the core crate."
+      }
+    ],
+    "prohibited": [
+      "Do not reinterpret a private convenience choice as authority to change a fixed contract."
+    ]
+  },
+  "executionSliceRefs": [],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and shared contracts are preserved.",
+      "Delegated freedom remains available.",
+      "Applicable touchpoints have bounded evidence."
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": [
+      "focused-profile-structure-review"
+    ]
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-RUST-CORE",
+        "kind": "crate",
+        "logicalPath": "crates/core/src/lib.rs",
+        "owner": "core crate",
+        "responsibility": "Own the public API and invariant.",
+        "sourceRefs": [
+          "ARCH-ART-RUST-CORE"
+        ]
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "Invalid or unsupported use is rejected by the type contract."
+        ],
+        "id": "BP-RUST-API",
+        "interfaceRefs": [
+          "KC-RUST-ADD"
+        ],
+        "name": "Downstream API call",
+        "steps": [
+          {
+            "contractRef": "KC-RUST-ADD",
+            "from": "consumer",
+            "interaction": "call public function",
+            "to": "core crate"
+          },
+          {
+            "contractRef": "KC-RUST-ADD",
+            "from": "core crate",
+            "interaction": "return deterministic value",
+            "to": "consumer"
+          }
+        ],
+        "success": "Consumer receives the correct value.",
+        "trigger": "consumer invokes add"
+      }
+    ],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "Failure is explicit and no partial success is reported."
+        ],
+        "id": "KC-RUST-ADD",
+        "invariants": [
+          "The boundary preserves its declared meaning."
+        ],
+        "kind": "public function",
+        "name": "add",
+        "responsibility": "Expose deterministic addition to downstream consumers",
+        "shape": "pub const fn add(u32,u32)->u32",
+        "sourceRefs": [
+          "IF-KC-RUST-ADD"
+        ],
+        "visibility": "public"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-RUST-PUBLIC-API",
+        "statement": "Record the fixed-boundary outcome and failure disposition without fabricating operational truth."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-RUST-PUBLIC-API",
+        "sourceRefs": [
+          "REQ-ISC-RUST-PUBLIC-API"
+        ],
+        "statement": "Use a focused fixture at the fixed boundary and preserve candidate-bound evidence."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-RUST-PUBLIC-API"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-ALPHA4-FIXTURE"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-RUST-PUBLIC-API"
+    ],
+    "interfaceRefs": [
+      "KC-RUST-ADD"
+    ],
+    "kind": "software",
+    "purpose": "Add a stable public identity and query API without leaking adapter details.",
+    "requirementRefs": [
+      "REQ-ISC-RUST-PUBLIC-API"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-RUST-PUBLIC-API"
+    ]
+  },
+  "title": "Public crate API structure",
+  "uncertainties": []
+}

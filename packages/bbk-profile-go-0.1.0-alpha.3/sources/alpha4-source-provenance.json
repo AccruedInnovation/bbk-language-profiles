@@ -1,0 +1,47 @@
+{
+  "authority": "User-provided requirements and source skills; package projections grant no BBK authority.",
+  "change_classes": [
+    "profile-capability",
+    "entrypoints",
+    "schemas",
+    "skills",
+    "mappings",
+    "gates",
+    "fixtures",
+    "omp-extension",
+    "documentation",
+    "qualification"
+  ],
+  "inputs": [
+    {
+      "kind": "prior-release-archive",
+      "path": "bbk-profile-go-0.1.0-alpha.1.zip",
+      "prior_package_root_sha256": "2fe9c5b510f00690a363f5f430e119e9ece512356485939a5c1be3cbdc3194e2",
+      "prior_profile_manifest_sha256": "da8b2f0a003d082b9e7d707772ff647a36d3e9ecb5a03c78d20764082cfc54e0",
+      "sha256": "bd28e0ecac43bfdb36cbf66313a950605364b9a2ef1fd61d3c594ef4efc72f25"
+    },
+    {
+      "kind": "controlling-prd",
+      "path": "sources/bbk-language-profile-alpha4-update-prd.md",
+      "sha256": "3476cb07d0fffd5b0c3ecb82d8b7821e3cff36105ffc4870bed2b481c0e2a61a"
+    },
+    {
+      "kind": "alpha4-update-kit",
+      "kit_root_sha256": "21ab969456d972b2ec44beb684b9c8a5ad1ce9ee2f00e6a3a19e4a5df9f02ebf",
+      "path": "bbk-alpha4-profile-update-kit(3).zip",
+      "sha256": "efa51a559b8c2e774315dc6e1a7265dd5156407b53420b378a00aacfe286021e"
+    },
+    {
+      "kind": "user-go-skill",
+      "path": "comprehensive-analysis-go.md",
+      "sha256": "76ffbf837fcedf4d5a32193bf009cde8b8417c91ef67f1f1803b52de0760cdac"
+    }
+  ],
+  "schema": "bbk.go-profile-source-provenance.v1",
+  "successor": {
+    "immutable_successor_of": "0.1.0-alpha.1",
+    "package": "bbk-profile-go",
+    "target_bbk": "0.1.0-alpha.4",
+    "version": "0.1.0-alpha.2"
+  }
+}

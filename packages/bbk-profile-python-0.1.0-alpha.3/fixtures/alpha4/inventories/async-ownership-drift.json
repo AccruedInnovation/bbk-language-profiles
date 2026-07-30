@@ -1,0 +1,37 @@
+{
+  "artifacts": [
+    {
+      "kind": "python-module",
+      "path": "src/fixture_pkg/async_service.py"
+    }
+  ],
+  "contracts": [
+    {
+      "kind": "dataclass-value",
+      "name": "AsyncBatchResult",
+      "visibility": "shared"
+    }
+  ],
+  "delegated_differences": [],
+  "fixed_decision_evidence": [
+    {
+      "decision_id": "FD-ASYNC-OWNER",
+      "evidence": "detached tasks outlive the TaskGroup scope",
+      "status": "diverges"
+    }
+  ],
+  "limitations": [],
+  "ownership": [
+    {
+      "actual_owner": "detached background task registry",
+      "evidence": "tasks are created with asyncio.create_task and never joined",
+      "planned_owner": "fetch_many TaskGroup scope",
+      "state": "child tasks and async resources",
+      "status": "diverges"
+    }
+  ],
+  "preflight_digest": null,
+  "root": "fixture",
+  "schema": "bbk.python.actual-structure-inventory.v1",
+  "source": "supplied"
+}

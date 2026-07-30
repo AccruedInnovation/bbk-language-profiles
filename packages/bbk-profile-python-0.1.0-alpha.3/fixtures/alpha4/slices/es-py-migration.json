@@ -1,0 +1,69 @@
+{
+  "assertions": [
+    {
+      "evidence": "before/after state",
+      "id": "A-MIGRATION",
+      "method": "test",
+      "statement": "Upgrade and recovery preserve declared data contract."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice creates one integrated, reversible qualification touchpoint.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "Contract accepted."
+  ],
+  "exitConditions": [
+    "Declared observation is evidenced."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "participants": [
+      "migration runner",
+      "fixture database",
+      "application"
+    ],
+    "steps": [
+      "Apply migration and exercise rollback or complete-forward recovery."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Python fixture",
+  "metadata": {
+    "fixture": true,
+    "revision": "1"
+  },
+  "objective": "Migration rehearsal",
+  "parentCapabilityRefs": [
+    "CAP-PYTHON"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-PY-MIGRATION",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-PY-MIGRATION@1"
+  ],
+  "title": "Migration rehearsal",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "isolated qualification fixture",
+    "expectedObservation": "Representative data is preserved or explicitly dispositioned.",
+    "interaction": "Apply migration and exercise rollback or complete-forward recovery.",
+    "kind": "procedure"
+  },
+  "workUnitRefs": [
+    "WU-MIGRATE",
+    "WU-ROLLBACK"
+  ]
+}

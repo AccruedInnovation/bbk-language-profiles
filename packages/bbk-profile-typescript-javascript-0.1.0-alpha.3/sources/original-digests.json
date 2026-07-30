@@ -1,0 +1,33 @@
+{
+  "profile_version": "0.1.0-alpha.2",
+  "schema": "bbk.tsjs-original-sources.v1",
+  "sources": [
+    {
+      "bytes": 7737,
+      "kind": "user-supplied-skill",
+      "name": "comprehensive-analysis.md",
+      "packaged_derivative": "skills/comprehensive-analysis-tsjs/SKILL.md",
+      "sha256": "aabf5069145bb1e047d95d43c5052bf76c810eb3076283997121c84d4b47305d"
+    }
+  ],
+  "successor_sources": [
+    {
+      "bytes": 33021,
+      "name": "bbk-language-profile-alpha.4-update-prd(2).md",
+      "role": "controlling alpha.4 profile update PRD",
+      "sha256": "3476cb07d0fffd5b0c3ecb82d8b7821e3cff36105ffc4870bed2b481c0e2a61a"
+    },
+    {
+      "bytes": 39147,
+      "name": "bbk-alpha4-profile-update-kit(2).zip",
+      "role": "generic alpha.4 schemas, templates, and fixtures",
+      "sha256": "efa51a559b8c2e774315dc6e1a7265dd5156407b53420b378a00aacfe286021e"
+    },
+    {
+      "bytes": 114534,
+      "name": "bbk-profile-typescript-javascript-0.1.0-alpha.1.zip",
+      "role": "immutable predecessor source package",
+      "sha256": "9b1ff39658301b453b3a0f175314fefa065d973d38bd552e73a9fc47a70ce8e4"
+    }
+  ]
+}

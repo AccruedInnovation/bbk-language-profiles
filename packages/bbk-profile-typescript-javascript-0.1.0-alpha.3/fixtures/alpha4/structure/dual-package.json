@@ -1,0 +1,174 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The change fixes consequential realization shape needed for independent implementation and review.",
+    "triggers": [
+      "dual-package",
+      "export-map"
+    ]
+  },
+  "contractId": "ISC-TSJS-DUAL",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper layout",
+        "bounds": "May change if fixed public/runtime contracts, ownership, effects and touchpoint evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-DUAL-CONSUMERS",
+        "rationale": "Protect a material boundary.",
+        "sourceRefs": [],
+        "statement": "Both ESM import and CommonJS require are supported and separately tested."
+      }
+    ],
+    "prohibited": [
+      "Duplicating the same runtime schema or authoritative rule in independently mutable layers.",
+      "Treating a TypeScript declaration or transpiler pass as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-TSJS-DUAL"
+  ],
+  "metadata": {
+    "fixture": true,
+    "profile": "typescript-javascript"
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed public/shared contracts and owners are explicit.",
+      "Delegated freedom preserves competent private implementation choices.",
+      "The first execution slice creates an inspectable integrated touchpoint."
+    ],
+    "acceptedBy": [
+      "FIXTURE-AUTHORITY"
+    ],
+    "assuranceTier": "consequential",
+    "requiredReviewers": [
+      "tsjs-implementation-structure-review"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-PKG",
+        "kind": "package",
+        "logicalPath": "package.json",
+        "owner": "package",
+        "responsibility": "Own conditional exports.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-ESM",
+        "kind": "entry-point",
+        "logicalPath": "src/index.mts",
+        "owner": "esm",
+        "responsibility": "Own ESM implementation.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-CJS",
+        "kind": "entry-point",
+        "logicalPath": "src/index.cts",
+        "owner": "cjs",
+        "responsibility": "Own CommonJS implementation.",
+        "sourceRefs": []
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "Failure is typed or otherwise classified and leaves the declared recoverable state."
+        ],
+        "id": "BP-ISC-TSJS-DUAL",
+        "interfaceRefs": [
+          "IF-ISC-TSJS-DUAL"
+        ],
+        "name": "Dual ESM/CommonJS package structure",
+        "steps": [
+          {
+            "contractRef": "KC-DUAL",
+            "from": "Consumer",
+            "interaction": "use the accepted contract",
+            "to": "Owner"
+          }
+        ],
+        "success": "The declared touchpoint produces the accepted behavior.",
+        "trigger": "A declared consumer invokes the slice"
+      }
+    ],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "one condition may not silently load incompatible behavior"
+        ],
+        "id": "KC-DUAL",
+        "invariants": [
+          "import and require expose equivalent supported semantics"
+        ],
+        "kind": "package-export",
+        "name": "Dual package conditions",
+        "responsibility": "Support claimed consumers without split state",
+        "shape": "import, require and types targets",
+        "sourceRefs": [],
+        "visibility": "public"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-TSJS-DUAL",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-DUAL"
+        ],
+        "statement": "Record outcome class and correlation identity without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-TSJS-DUAL",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-DUAL"
+        ],
+        "statement": "Exercise the declared public/runtime boundary through a deterministic fixture or clean consumer."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-TSJS-DUAL"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-TSJS-A4"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-TSJS-DUAL"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-TSJS-DUAL"
+    ],
+    "kind": "software",
+    "purpose": "Keep import, require and declaration conditions behaviorally aligned.",
+    "requirementRefs": [
+      "REQ-ISC-TSJS-DUAL"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-TSJS-DUAL"
+    ]
+  },
+  "title": "Dual ESM/CommonJS package structure",
+  "uncertainties": []
+}

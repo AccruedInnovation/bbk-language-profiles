@@ -1,0 +1,141 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The realization shape is material to independent work, ownership, compatibility, or verification.",
+    "triggers": [
+      "unsafe",
+      "ffi",
+      "abi"
+    ]
+  },
+  "contractId": "ISC-RUST-FFI",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and local layout",
+        "bounds": "May differ when fixed public/shared contracts, ownership, behavior paths, and evidence seams remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "contract revision and focused impact review",
+        "id": "FD-RUST-ABI",
+        "rationale": "Unsafe correctness cannot be inferred from compilation.",
+        "sourceRefs": [
+          "REQ-FD-RUST-ABI"
+        ],
+        "statement": "The ABI, pointer validity, panic, and ownership contract is fixed at the native crate boundary."
+      }
+    ],
+    "prohibited": [
+      "Do not reinterpret a private convenience choice as authority to change a fixed contract."
+    ]
+  },
+  "executionSliceRefs": [],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and shared contracts are preserved.",
+      "Delegated freedom remains available.",
+      "Applicable touchpoints have bounded evidence."
+    ],
+    "assuranceTier": "critical",
+    "requiredReviewers": [
+      "focused-profile-structure-review"
+    ]
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-RUST-NATIVE",
+        "kind": "crate",
+        "logicalPath": "crates/native/src/lib.rs",
+        "owner": "native crate",
+        "responsibility": "Own the C ABI and unsafe invariants.",
+        "sourceRefs": [
+          "ARCH-ART-RUST-NATIVE"
+        ]
+      }
+    ],
+    "behaviorPaths": [],
+    "effectBoundaries": [
+      {
+        "authorization": "FFI caller contract plus candidate authority",
+        "effect": "foreign memory read",
+        "failure": "invalid pointer may cause undefined behavior",
+        "idempotency": "read-only",
+        "owner": "native crate",
+        "recovery": "prevent by boundary validation and qualified unsafe review"
+      }
+    ],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "Invalid pointer behavior is outside the safe contract and must be prevented by the caller.",
+          "No panic may unwind across the FFI boundary."
+        ],
+        "id": "KC-RUST-FFI",
+        "invariants": [
+          "Pointer is non-null, aligned, valid for one initialized byte, and remains live for the call."
+        ],
+        "kind": "ffi abi",
+        "name": "fixture_read",
+        "responsibility": "Read one initialized byte under a documented caller contract",
+        "shape": "extern C fn(*const u8)->u8",
+        "sourceRefs": [
+          "IF-KC-RUST-FFI"
+        ],
+        "visibility": "external"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-RUST-FFI",
+        "statement": "Record the fixed-boundary outcome and failure disposition without fabricating operational truth."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-RUST-FFI",
+        "sourceRefs": [
+          "REQ-ISC-RUST-FFI"
+        ],
+        "statement": "Use a focused fixture at the fixed boundary and preserve candidate-bound evidence."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-RUST-FFI"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-ALPHA4-FIXTURE"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-RUST-FFI"
+    ],
+    "interfaceRefs": [
+      "KC-RUST-FFI"
+    ],
+    "kind": "software",
+    "purpose": "Expose one C ABI operation with explicit pointer, ownership, panic, and allocator contracts.",
+    "requirementRefs": [
+      "REQ-ISC-RUST-FFI"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-RUST-FFI"
+    ]
+  },
+  "title": "Unsafe FFI boundary",
+  "uncertainties": []
+}

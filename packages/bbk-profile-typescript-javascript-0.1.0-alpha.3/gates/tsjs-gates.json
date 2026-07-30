@@ -1,0 +1,648 @@
+{
+  "policy": {
+    "check_only_final_gates": true,
+    "evidence_classes_remain_distinct": true,
+    "full_suite_repeat": "Only when the assurance contract or aggregate gate requires it; do not repeat at every layer for reassurance.",
+    "missing_recommended_tool": "ADVISORY",
+    "missing_required_tool": "BLOCKED",
+    "no_silent_install": true,
+    "no_silent_lifecycle_scripts": true,
+    "no_silent_lockfile_change": true,
+    "repository_commands_first": true
+  },
+  "recipes": [
+    {
+      "assertions": [
+        "Formatting matches repository policy without mutating the final candidate"
+      ],
+      "class": "required-if-configured",
+      "id": "tsjs-format-check",
+      "limitations": [
+        "A script named format must be verified to run in check-only mode before use as a final gate"
+      ],
+      "minimum_tier": "routine",
+      "script_candidates": [
+        "format:check",
+        "fmt:check",
+        "check:format",
+        "format"
+      ],
+      "triggers": []
+    },
+    {
+      "assertions": [
+        "Repository-authoritative lint checks pass for the affected scope"
+      ],
+      "class": "required-if-configured",
+      "id": "tsjs-lint-affected",
+      "minimum_tier": "routine",
+      "script_candidates": [
+        "lint",
+        "lint:check",
+        "check:lint",
+        "biome:check"
+      ],
+      "triggers": []
+    },
+    {
+      "assertions": [
+        "Affected checked TypeScript or JavaScript satisfies the declared semantic checker configuration"
+      ],
+      "class": "required-when-language-checked",
+      "fallback_command": [
+        "{local-typescript}",
+        "--noEmit",
+        "-p",
+        "{tsconfig}"
+      ],
+      "id": "tsjs-typecheck-affected",
+      "limitations": [
+        "A bundler or runtime parsing TypeScript is not semantic type-check evidence"
+      ],
+      "minimum_tier": "routine",
+      "script_candidates": [
+        "typecheck",
+        "type-check",
+        "check:types",
+        "types",
+        "tsc"
+      ],
+      "triggers": [
+        "typecheck",
+        "types",
+        "declarations",
+        "checked-javascript"
+      ]
+    },
+    {
+      "assertions": [
+        "Focused tests covering changed behavior pass"
+      ],
+      "class": "required-if-configured",
+      "id": "tsjs-focused-tests",
+      "minimum_tier": "routine",
+      "script_candidates": [
+        "test:unit",
+        "test",
+        "test:focused",
+        "check:test"
+      ],
+      "triggers": [
+        "test"
+      ]
+    },
+    {
+      "assertions": [
+        "Affected packages complete the actual transformation, bundling, code generation, and linking steps they claim"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-build-affected",
+      "minimum_tier": "material",
+      "script_candidates": [
+        "build",
+        "build:production",
+        "compile"
+      ],
+      "triggers": [
+        "build",
+        "module",
+        "package",
+        "browser",
+        "release",
+        "host-load",
+        "transpile-only",
+        "material"
+      ]
+    },
+    {
+      "assertions": [
+        "The emitted or bundled artifact loads or starts in the declared runtime"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-emitted-artifact-load",
+      "limitations": [
+        "Source-level imports and tests are not substitutes for artifact execution"
+      ],
+      "minimum_tier": "material",
+      "script_candidates": [
+        "test:dist",
+        "test:build",
+        "check:dist",
+        "smoke"
+      ],
+      "triggers": [
+        "build",
+        "module",
+        "package",
+        "cli",
+        "service",
+        "host-load",
+        "transpile-only"
+      ]
+    },
+    {
+      "assertions": [
+        "Public declaration output is generated and resolves for supported consumers"
+      ],
+      "class": "required-when-triggered",
+      "fallback_command": [
+        "{local-typescript}",
+        "--emitDeclarationOnly",
+        "-p",
+        "{tsconfig}"
+      ],
+      "id": "tsjs-declaration-emit",
+      "minimum_tier": "material",
+      "script_candidates": [
+        "build:types",
+        "types:build",
+        "declarations",
+        "api:extract"
+      ],
+      "triggers": [
+        "declarations",
+        "public-api",
+        "package",
+        "types"
+      ]
+    },
+    {
+      "assertions": [
+        "Generated artifacts match canonical inputs without silently mutating the final candidate"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-generated-artifacts",
+      "limitations": [
+        "A mutating generate script must be followed by a clean-tree comparison or an explicit check-only equivalent"
+      ],
+      "minimum_tier": "material",
+      "script_candidates": [
+        "generate:check",
+        "codegen:check",
+        "check:generated",
+        "generate"
+      ],
+      "triggers": [
+        "generated",
+        "schema",
+        "codegen",
+        "declarations"
+      ]
+    },
+    {
+      "assertions": [
+        "Affected boundaries work together under representative success and failure conditions"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-integration-tests",
+      "minimum_tier": "material",
+      "script_candidates": [
+        "test:integration",
+        "integration",
+        "test:e2e",
+        "e2e"
+      ],
+      "triggers": [
+        "integration",
+        "runtime-contract",
+        "async",
+        "persistence",
+        "browser",
+        "host-load"
+      ]
+    },
+    {
+      "assertions": [
+        "A clean dependency installation uses the declared lockfile without rewriting dependency intent"
+      ],
+      "class": "required-when-triggered",
+      "command_kind": "frozen-install",
+      "id": "tsjs-frozen-install",
+      "limitations": [
+        "Lifecycle-script execution is a separately authorized effect and must be reported"
+      ],
+      "minimum_tier": "consequential",
+      "triggers": [
+        "dependency",
+        "lockfile",
+        "package",
+        "release",
+        "supply-chain",
+        "clean-install"
+      ]
+    },
+    {
+      "assertions": [
+        "The distributable package inclusion set is inspectable and contains the required files without unexpected sensitive material"
+      ],
+      "class": "required-when-triggered",
+      "command_kind": "pack-dry-run",
+      "id": "tsjs-pack-dry-run",
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "pack:check",
+        "package:check"
+      ],
+      "triggers": [
+        "package",
+        "publish",
+        "release",
+        "consumer"
+      ]
+    },
+    {
+      "assertions": [
+        "Clean consumers can install, resolve types, and load the packed artifact in every claimed consumer mode"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-packed-consumer-matrix",
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "test:package",
+        "test:consumer",
+        "test:pack",
+        "check:package"
+      ],
+      "triggers": [
+        "package",
+        "public-api",
+        "consumer",
+        "module",
+        "dual-package",
+        "cli"
+      ]
+    },
+    {
+      "assertions": [
+        "Supported runtime, TypeScript, bundler, and export-condition consumers select compatible entry points"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-module-condition-matrix",
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "test:exports",
+        "test:modules",
+        "test:conditions",
+        "test:matrix"
+      ],
+      "triggers": [
+        "exports",
+        "subpath",
+        "conditional-exports",
+        "dual-package",
+        "module",
+        "runtime-matrix"
+      ]
+    },
+    {
+      "assertions": [
+        "Runtime parsing, validation, compatibility, and migration claims hold for declared fixtures"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-runtime-contract-fixtures",
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "test:contract",
+        "test:schema",
+        "test:compat",
+        "test:migration"
+      ],
+      "triggers": [
+        "runtime-contract",
+        "schema",
+        "wire-format",
+        "configuration",
+        "persistence",
+        "migration"
+      ]
+    },
+    {
+      "assertions": [
+        "Cancellation, partial failure, retry, backpressure, shutdown, and resource cleanup satisfy the assigned assertions"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-async-resource-faults",
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "test:fault",
+        "test:cancellation",
+        "test:resources",
+        "test:chaos"
+      ],
+      "triggers": [
+        "async",
+        "cancellation",
+        "stream",
+        "worker",
+        "child-process",
+        "retry",
+        "shutdown",
+        "fault"
+      ]
+    },
+    {
+      "assertions": [
+        "Browser-specific behavior passes in the declared real-browser environment"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-real-browser",
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "test:browser",
+        "test:e2e",
+        "playwright",
+        "cypress"
+      ],
+      "triggers": [
+        "browser",
+        "hydration",
+        "service-worker",
+        "browser-compatibility",
+        "browser-security"
+      ]
+    },
+    {
+      "assertions": [
+        "Declared automated accessibility checks pass and required manual coverage is recorded"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-accessibility",
+      "limitations": [
+        "Automated tooling does not prove complete accessibility"
+      ],
+      "minimum_tier": "material",
+      "script_candidates": [
+        "test:a11y",
+        "a11y",
+        "accessibility"
+      ],
+      "triggers": [
+        "accessibility",
+        "browser-ui"
+      ]
+    },
+    {
+      "assertions": [
+        "Repository-authoritative security and supply-chain policy checks pass"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-security-policy",
+      "limitations": [
+        "A vulnerability database result does not replace reachable-impact analysis"
+      ],
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "security",
+        "audit",
+        "check:security",
+        "lint:security"
+      ],
+      "triggers": [
+        "security",
+        "supply-chain",
+        "dependency",
+        "install-script",
+        "native-addon",
+        "provenance"
+      ]
+    },
+    {
+      "assertions": [
+        "The exact supported host discovers, loads, invokes, restarts, and unloads the extension or plugin correctly"
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-host-load",
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "test:host",
+        "test:extension",
+        "test:plugin"
+      ],
+      "triggers": [
+        "host-load",
+        "omp-extension",
+        "plugin",
+        "extension"
+      ]
+    },
+    {
+      "assertions": [
+        "Selected properties or fuzz targets have no undispositioned reproducible counterexample within the declared budget"
+      ],
+      "class": "manual-experimental",
+      "id": "tsjs-property-fuzz",
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "test:property",
+        "test:fuzz",
+        "fuzz"
+      ],
+      "triggers": [
+        "property",
+        "fuzz",
+        "parser",
+        "decoder",
+        "untrusted-input",
+        "state-machine"
+      ]
+    },
+    {
+      "assertions": [
+        "Selected important logic has no undispositioned surviving mutants in the declared scope"
+      ],
+      "class": "manual-experimental",
+      "id": "tsjs-mutation-testing",
+      "limitations": [
+        "The profile does not select or install a universal mutation tool"
+      ],
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "test:mutation",
+        "mutation"
+      ],
+      "triggers": [
+        "mutation",
+        "mutation-testing",
+        "test-strategy-gap",
+        "high-value-logic"
+      ]
+    },
+    {
+      "assertions": [
+        "Coverage data identifies exercised and unexercised scope under the declared tests"
+      ],
+      "class": "recommended",
+      "id": "tsjs-coverage",
+      "limitations": [
+        "Coverage percentage is not a correctness or release score"
+      ],
+      "minimum_tier": "material",
+      "script_candidates": [
+        "test:coverage",
+        "coverage"
+      ],
+      "triggers": [
+        "coverage",
+        "test-strategy"
+      ]
+    },
+    {
+      "assertions": [
+        "Measured performance, resource, or bundle-size criteria pass in the declared environment"
+      ],
+      "class": "manual-experimental",
+      "id": "tsjs-performance-bundle",
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "test:performance",
+        "benchmark",
+        "bench",
+        "check:size",
+        "size"
+      ],
+      "triggers": [
+        "performance",
+        "bundle-size",
+        "latency",
+        "cold-start",
+        "event-loop",
+        "memory"
+      ]
+    },
+    {
+      "assertions": [
+        "The generic ImplementationStructureContract is schema-valid and the TS/JS projection is deterministic for the exact input and preflight identity."
+      ],
+      "class": "required-when-triggered",
+      "command_kind": "profile-entrypoint",
+      "id": "tsjs-structure-contract-validation",
+      "limitations": [
+        "Planning this gate does not accept the generic contract or grant implementation authority."
+      ],
+      "minimum_tier": "material",
+      "triggers": [
+        "structure-contract",
+        "implementation-structure"
+      ]
+    },
+    {
+      "assertions": [
+        "The profile projection preserves generic identity, fixed decisions, delegated freedom, authority boundary, and output digest."
+      ],
+      "class": "required-when-triggered",
+      "command_kind": "profile-entrypoint",
+      "id": "tsjs-structure-projection-validation",
+      "minimum_tier": "material",
+      "triggers": [
+        "profile-projection",
+        "implementation-structure"
+      ]
+    },
+    {
+      "assertions": [
+        "Public/shared static types, runtime behavior, runtime schemas, declarations, package exports, and supported consumers conform to the accepted fixed contract."
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-public-shared-contract-drift",
+      "minimum_tier": "material",
+      "script_candidates": [
+        "test:types",
+        "test:api",
+        "test:exports",
+        "test:consumer",
+        "api:check"
+      ],
+      "triggers": [
+        "public-contract",
+        "public-api",
+        "exports",
+        "declarations",
+        "runtime-contract",
+        "schema",
+        "package"
+      ]
+    },
+    {
+      "assertions": [
+        "Mutable state, async resources, cancellation, cleanup, effects, retry, and recovery remain under the accepted owners."
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-state-effect-ownership-drift",
+      "limitations": [
+        "Source inspection may identify likely ownership but consequential runtime ownership requires representative behavior or fault evidence."
+      ],
+      "minimum_tier": "consequential",
+      "script_candidates": [
+        "test:cancellation",
+        "test:resources",
+        "test:fault",
+        "test:integration"
+      ],
+      "triggers": [
+        "ownership",
+        "state-ownership",
+        "effect-boundary",
+        "async",
+        "cancellation",
+        "stream",
+        "worker",
+        "shutdown"
+      ]
+    },
+    {
+      "assertions": [
+        "The exact candidate conforms to fixed consequential shape or every divergence is classified without failing harmless delegated private differences."
+      ],
+      "class": "required-when-triggered",
+      "command_kind": "profile-entrypoint",
+      "id": "tsjs-planned-actual-structure-comparison",
+      "minimum_tier": "material",
+      "triggers": [
+        "planned-actual",
+        "implementation-structure"
+      ]
+    },
+    {
+      "assertions": [
+        "The execution slice creates the declared inspectable touchpoint against the exact integrated candidate."
+      ],
+      "class": "required-when-triggered",
+      "id": "tsjs-slice-touchpoint-evidence",
+      "minimum_tier": "material",
+      "script_candidates": [
+        "test:integration",
+        "test:consumer",
+        "test:package",
+        "test:browser",
+        "test:host",
+        "smoke"
+      ],
+      "triggers": [
+        "execution-slice",
+        "touchpoint",
+        "integration",
+        "consumer",
+        "package",
+        "browser",
+        "host-load"
+      ]
+    },
+    {
+      "assertions": [
+        "Every temporary path alias, fixture adapter, mock server, shim, generated declaration, temporary export, or host stub has the declared removal, fixture, or promotion-review disposition."
+      ],
+      "class": "required-when-triggered",
+      "command_kind": "inspection",
+      "id": "tsjs-scaffolding-disposition",
+      "minimum_tier": "material",
+      "triggers": [
+        "scaffolding",
+        "execution-slice",
+        "generated",
+        "alias",
+        "fixture"
+      ]
+    }
+  ],
+  "schema": "bbk.tsjs-gate-recipes.v1"
+}

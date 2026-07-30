@@ -1,0 +1,374 @@
+{
+  "authority": {
+    "may_add_gate_recipes": true,
+    "may_add_procedure": true,
+    "may_add_review_criteria": true,
+    "may_declare_pass": false,
+    "may_expand_work_scope": false,
+    "may_grant_tools_or_effects": false,
+    "may_reduce_assurance": false
+  },
+  "capabilities": {
+    "implementation_structure": {
+      "artifact_kinds": [
+        "go-workspace",
+        "go-module",
+        "go-package",
+        "go-command",
+        "go-source-file",
+        "go-generated-artifact",
+        "go-test-package",
+        "go-build-tag-variant",
+        "go-module-release",
+        "go-binary",
+        "go-native-boundary"
+      ],
+      "contract_kinds": [
+        "exported-api",
+        "consumer-interface",
+        "request-struct",
+        "result-struct",
+        "wire-schema",
+        "typed-error",
+        "state-owner",
+        "goroutine-owner",
+        "channel-protocol",
+        "context-cancellation",
+        "module-release",
+        "cgo-abi",
+        "generated-code"
+      ],
+      "status": "supported",
+      "touchpoint_kinds": [
+        "cli",
+        "api",
+        "http",
+        "rpc",
+        "downstream-consumer",
+        "package",
+        "binary",
+        "test",
+        "race-run",
+        "synctest",
+        "fuzz",
+        "protocol-trace",
+        "generated-artifact",
+        "module-release",
+        "cgo-abi"
+      ],
+      "trigger_hints": [
+        "implementation-structure",
+        "execution-slicing",
+        "public-api",
+        "wire-format",
+        "module-boundary",
+        "package-ownership",
+        "state-ownership",
+        "concurrency",
+        "cancellation",
+        "recovery",
+        "persistence-migration",
+        "multi-module",
+        "generated-code",
+        "build-tags",
+        "cgo",
+        "unsafe",
+        "release"
+      ],
+      "type_concepts": [
+        "defined-identity-type",
+        "struct",
+        "consumer-interface",
+        "typed-constant-set",
+        "generic-constraint",
+        "sentinel-error",
+        "typed-error",
+        "zero-value-contract",
+        "pointer-value-semantics",
+        "goroutine-ownership",
+        "channel-ownership",
+        "context-lifecycle",
+        "runtime-schema"
+      ]
+    },
+    "review_assurance": {
+      "context_entrypoint": "review_context",
+      "context_selectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "dispatch_protocol": "bbk.profile-capability.v1",
+      "evidence_adapters": [
+        "profile-native-evidence-v1"
+      ],
+      "evidence_entrypoint": "evidence_adapter",
+      "lens_ids": [
+        "architecture-boundary",
+        "interface-consumer-compatibility",
+        "implementation-structure",
+        "state-concurrency-effect-recovery",
+        "security-privacy-supply-chain",
+        "test-evidence",
+        "operations-performance-resource",
+        "package-install-migration-release"
+      ],
+      "limitations": [
+        "The profile must not install or select a Go toolchain.",
+        "A race-detector pass does not prove absence of all concurrency defects.",
+        "Cross-compilation, CGO, platform tags, external services, performance and module-release claims require exact environment and consumer evidence."
+      ],
+      "review_entrypoint": "review_lens",
+      "status": "supported"
+    },
+    "state_decision_effect": {
+      "boundary_concepts": [
+        "defined identity types and typed constants",
+        "explicit lifecycle structs and transition functions",
+        "products of independent lifecycle dimensions",
+        "interfaces at real consumer/effect boundaries",
+        "goroutine, channel, context, timer, mutex and shutdown ownership",
+        "typed error/result, persistence, migration, generated-code and cgo boundaries"
+      ],
+      "dispatch_protocol": "bbk.profile-capability.v1",
+      "formal_model_tools": [
+        "table/property/model-based tests supported by the repository",
+        "race detector and deterministic/synctest-style scheduling where qualified",
+        "fuzzing for untrusted input and protocol boundaries",
+        "optional external state-machine or Quint/TLA+ mappings"
+      ],
+      "inventory_entrypoint": "state_effect_inventory",
+      "limitations": [
+        "The profile must not install or select a Go toolchain.",
+        "A race-detector pass does not prove absence of all concurrency defects.",
+        "Cross-compilation, CGO, platform tags, external services, performance and module-release claims require exact environment and consumer evidence."
+      ],
+      "projection_entrypoint": "state_effect",
+      "representations": [
+        "defined identity types and typed constants",
+        "explicit lifecycle structs and transition functions",
+        "products of independent lifecycle dimensions",
+        "interfaces at real consumer/effect boundaries"
+      ],
+      "review_entrypoint": "state_effect_review",
+      "status": "supported"
+    }
+  },
+  "description": "Applicability-aware Go worker, implementation-structure, execution-slice, architecture, correctness, concurrency, validation, test, module, release, evidence, and toolchain guidance for BBK alpha.4 across Codex, OMP, Claude Code, and generic agent harnesses.",
+  "entrypoints": {
+    "evidence_adapter": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "evidence-adapter"
+    ],
+    "gate_plan": [
+      "{python}",
+      "tools/bbk_go.py",
+      "--json",
+      "gate-plan"
+    ],
+    "preflight": [
+      "{python}",
+      "tools/bbk_go.py",
+      "--json",
+      "preflight"
+    ],
+    "resolve": [
+      "{python}",
+      "tools/bbk_go.py",
+      "--json",
+      "resolve"
+    ],
+    "review_context": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "review-context"
+    ],
+    "review_lens": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "review-lens"
+    ],
+    "slice": [
+      "{python}",
+      "tools/bbk_go.py",
+      "--json",
+      "slice"
+    ],
+    "state_effect": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect"
+    ],
+    "state_effect_inventory": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect-inventory"
+    ],
+    "state_effect_review": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect-review"
+    ],
+    "structure": [
+      "{python}",
+      "tools/bbk_go.py",
+      "--json",
+      "structure"
+    ],
+    "structure_review": [
+      "{python}",
+      "tools/bbk_go.py",
+      "--json",
+      "structure-review"
+    ]
+  },
+  "gates": "gates/go-gates.json",
+  "id": "go",
+  "installation": {
+    "cli": "tools/bbk_go.py",
+    "omp_extension": "omp/extension",
+    "skill_root": "skills"
+  },
+  "maturity": "comprehensive-alpha",
+  "name": "BBK Go Profile",
+  "package": "bbk-profile-go",
+  "predecessor": {
+    "archive_sha256": "23f3e92688d505de96e02ec10ca14d5ae4cf08b81b71e1296b6cd48e3c279bc8",
+    "compatibility": "all alpha.2 skills, procedures, gate recipes, structure/slice behavior, installer safeguards, package rules and qualification boundaries retained; alpha.8 typed profile dispatch is additive",
+    "package": "bbk-profile-go",
+    "package_root_sha256": "a8ac0e0d821cca94719fa47e8caf6bd32f43bf27e778ad9210e9ff6c0feee642",
+    "version": "0.1.0-alpha.2"
+  },
+  "qualification": {
+    "documentation_policy": "Go behavior that varies by release is gated by the repository's effective toolchain and profile capability checks.",
+    "fixture_toolchain_note": "The package qualification suite is designed to run without network access and records the exact locally available Go toolchain when tool execution is requested."
+  },
+  "references": [
+    "references/compatibility-policy.md",
+    "references/performance-policy.md",
+    "references/testing-policy.md",
+    "references/support-matrix.md",
+    "references/implementation-structure.md",
+    "docs/DESIGN-NOTE.md"
+  ],
+  "requires": {
+    "bbk_minimum": "0.1.0-alpha.8",
+    "go_policy": "Repository go/toolchain directives, supported platforms, tags, CGO policy, module layout, and repository commands are authoritative. This profile does not silently install or select a Go toolchain.",
+    "python_minimum": "3.11"
+  },
+  "schema": "bbk.language-profile.v1",
+  "selection": {
+    "risk_trigger_map": "mappings/risk-trigger-map.json",
+    "task_skill_map": "mappings/task-skill-map.json"
+  },
+  "skills": [
+    {
+      "id": "bbk-go",
+      "kind": "router",
+      "path": "skills/bbk-go/SKILL.md"
+    },
+    {
+      "id": "go-skills",
+      "kind": "reference",
+      "path": "skills/go-skills/SKILL.md"
+    },
+    {
+      "id": "comprehensive-analysis-go",
+      "kind": "survey-review",
+      "path": "skills/comprehensive-analysis-go/SKILL.md"
+    },
+    {
+      "id": "go-api-module-boundary-review",
+      "kind": "focused-review",
+      "path": "skills/go-api-module-boundary-review/SKILL.md"
+    },
+    {
+      "id": "go-correctness-concurrency-review",
+      "kind": "focused-review",
+      "path": "skills/go-correctness-concurrency-review/SKILL.md"
+    },
+    {
+      "id": "go-test-strategy-review",
+      "kind": "focused-review",
+      "path": "skills/go-test-strategy-review/SKILL.md"
+    },
+    {
+      "id": "go-operational-readiness-review",
+      "kind": "focused-review",
+      "path": "skills/go-operational-readiness-review/SKILL.md"
+    },
+    {
+      "id": "go-security-supply-chain-review",
+      "kind": "focused-review",
+      "path": "skills/go-security-supply-chain-review/SKILL.md"
+    },
+    {
+      "id": "go-unsafe-cgo-assembly-review",
+      "kind": "focused-assurance",
+      "path": "skills/go-unsafe-cgo-assembly-review/SKILL.md"
+    },
+    {
+      "id": "go-web-htmx-review",
+      "kind": "optional-stack-review",
+      "path": "skills/go-web-htmx-review/SKILL.md"
+    },
+    {
+      "id": "go-package-release-gates",
+      "kind": "focused-assurance",
+      "path": "skills/go-package-release-gates/SKILL.md"
+    },
+    {
+      "id": "go-evidence-reproducer",
+      "kind": "evidence",
+      "path": "skills/go-evidence-reproducer/SKILL.md"
+    },
+    {
+      "id": "go-implementation-structure",
+      "kind": "authoring-procedure",
+      "path": "skills/go-implementation-structure/SKILL.md"
+    },
+    {
+      "id": "go-implementation-structure-review",
+      "kind": "focused-review",
+      "path": "skills/go-implementation-structure-review/SKILL.md"
+    }
+  ],
+  "support": {
+    "conditional": [
+      "public module releases",
+      "database and persistence migrations",
+      "unsafe Go",
+      "cgo and native-library boundaries",
+      "Go assembly and compiler/runtime directives",
+      "platform-specific builds",
+      "profile-guided optimization",
+      "HTMX, Alpine.js, and server-driven HTML applications"
+    ],
+    "partial_or_unqualified": [
+      "Go plugins",
+      "Go mobile",
+      "TinyGo and embedded targets",
+      "eBPF toolchains",
+      "specialized WASM environments",
+      "custom Go compiler forks",
+      "unusual shared-library build modes"
+    ],
+    "primary": [
+      "ordinary Go modules",
+      "multi-module repositories and go.work workspaces",
+      "libraries and public packages",
+      "binaries and command-line tools",
+      "HTTP and RPC services",
+      "concurrent applications",
+      "generated-code repositories"
+    ]
+  },
+  "version": "0.1.0-alpha.3"
+}

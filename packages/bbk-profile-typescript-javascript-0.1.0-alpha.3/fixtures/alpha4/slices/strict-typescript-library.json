@@ -1,0 +1,70 @@
+{
+  "assertions": [
+    {
+      "evidence": "built runtime call plus type consumer",
+      "id": "A-STRICT",
+      "method": "test",
+      "statement": "Built export behaves as declared."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice closes one integrated feedback path without artificial layer-only handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-TSJS-STRICT-LIB@1 accepted"
+  ],
+  "exitConditions": [
+    "Runtime result and declaration consumer agree."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ES-TSJS-STRICT-LIB"
+    ],
+    "interfaceRefs": [
+      "IF-ES-TSJS-STRICT-LIB"
+    ],
+    "participants": [
+      "consumer",
+      "owner"
+    ],
+    "steps": [
+      "Define shared input/output shape.",
+      "Build the package.",
+      "Call the emitted entry point."
+    ]
+  },
+  "integrationOwner": "Owner of ES-TSJS-STRICT-LIB",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Build and call the exported function through emitted JavaScript.",
+  "parentCapabilityRefs": [
+    "CAP-ES-TSJS-STRICT-LIB"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-TSJS-STRICT-LIB",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-TSJS-STRICT-LIB@1"
+  ],
+  "title": "Built strict library path",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "synthetic qualified fixture",
+    "expectedObservation": "Runtime result and declaration consumer agree.",
+    "interaction": "Call emitted library API",
+    "kind": "api"
+  },
+  "workUnitRefs": [
+    "WU-TYPE",
+    "WU-IMPL",
+    "WU-CONSUMER"
+  ]
+}

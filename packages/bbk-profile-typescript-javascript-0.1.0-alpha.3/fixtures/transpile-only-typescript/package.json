@@ -1,0 +1,8 @@
+{
+  "name": "fixture-transpile-only",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.0.0",
+  "scripts": {"build": "vite build", "test": "vitest run"},
+  "devDependencies": {"vite": "^7.0.0", "vitest": "^3.0.0"}
+}

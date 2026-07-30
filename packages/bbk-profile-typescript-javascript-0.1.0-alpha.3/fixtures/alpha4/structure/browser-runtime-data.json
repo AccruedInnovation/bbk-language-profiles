@@ -1,0 +1,193 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The change fixes consequential realization shape needed for independent implementation and review.",
+    "triggers": [
+      "browser",
+      "runtime-schema"
+    ]
+  },
+  "contractId": "ISC-TSJS-BROWSER-DATA",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper layout",
+        "bounds": "May change if fixed public/runtime contracts, ownership, effects and touchpoint evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-SCHEMA-OWNER",
+        "rationale": "Protect a material boundary.",
+        "sourceRefs": [],
+        "statement": "src/user-schema.ts is the single authoritative runtime parser for the user payload."
+      }
+    ],
+    "prohibited": [
+      "Duplicating the same runtime schema or authoritative rule in independently mutable layers.",
+      "Treating a TypeScript declaration or transpiler pass as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-TSJS-BROWSER-DATA"
+  ],
+  "metadata": {
+    "fixture": true,
+    "profile": "typescript-javascript"
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed public/shared contracts and owners are explicit.",
+      "Delegated freedom preserves competent private implementation choices.",
+      "The first execution slice creates an inspectable integrated touchpoint."
+    ],
+    "acceptedBy": [
+      "FIXTURE-AUTHORITY"
+    ],
+    "assuranceTier": "consequential",
+    "requiredReviewers": [
+      "tsjs-implementation-structure-review"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "retain",
+        "id": "ART-PKG",
+        "kind": "package",
+        "logicalPath": "package.json",
+        "owner": "package",
+        "responsibility": "Own browser build/test scripts.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-APP",
+        "kind": "ui-component",
+        "logicalPath": "src/App.tsx",
+        "owner": "ui",
+        "responsibility": "Render validated state.",
+        "sourceRefs": []
+      },
+      {
+        "action": "create",
+        "id": "ART-SCHEMA",
+        "kind": "runtime-schema",
+        "logicalPath": "src/user-schema.ts",
+        "owner": "boundary",
+        "responsibility": "Own runtime parser and static projection.",
+        "sourceRefs": []
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "Failure is typed or otherwise classified and leaves the declared recoverable state."
+        ],
+        "id": "BP-ISC-TSJS-BROWSER-DATA",
+        "interfaceRefs": [
+          "IF-ISC-TSJS-BROWSER-DATA"
+        ],
+        "name": "Browser runtime-data boundary",
+        "steps": [
+          {
+            "contractRef": "KC-USER-SCHEMA",
+            "from": "Consumer",
+            "interaction": "use the accepted contract",
+            "to": "Owner"
+          }
+        ],
+        "success": "The declared touchpoint produces the accepted behavior.",
+        "trigger": "A declared consumer invokes the slice"
+      }
+    ],
+    "effectBoundaries": [
+      {
+        "authorization": "network effect grant",
+        "effect": "browser fetch",
+        "failure": "typed network/parse error",
+        "idempotency": "GET/read-only",
+        "owner": "browser data adapter",
+        "recovery": "abort and render bounded error"
+      }
+    ],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "invalid payload produces a visible bounded error"
+        ],
+        "id": "KC-USER-SCHEMA",
+        "invariants": [
+          "untrusted payload starts unknown",
+          "static type derives from or is checked against parser"
+        ],
+        "kind": "runtime-schema",
+        "name": "User payload",
+        "responsibility": "Validate external JSON once at the browser boundary",
+        "shape": "runtime parser -> User",
+        "sourceRefs": [],
+        "visibility": "shared"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-TSJS-BROWSER-DATA",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-BROWSER-DATA"
+        ],
+        "statement": "Record outcome class and correlation identity without secrets."
+      }
+    ],
+    "stateOwnership": [
+      {
+        "consistency": "one validated representation",
+        "lifetime": "component lifecycle",
+        "mutationAuthority": "validated reducer/actions only",
+        "owner": "App boundary",
+        "recovery": "clear or refetch after invalidation",
+        "state": "rendered user state"
+      }
+    ],
+    "testSeams": [
+      {
+        "id": "TS-ISC-TSJS-BROWSER-DATA",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-BROWSER-DATA"
+        ],
+        "statement": "Exercise the declared public/runtime boundary through a deterministic fixture or clean consumer."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-TSJS-BROWSER-DATA"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-TSJS-A4"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-TSJS-BROWSER-DATA"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-TSJS-BROWSER-DATA"
+    ],
+    "kind": "software",
+    "purpose": "Validate untrusted API data before it becomes application state.",
+    "requirementRefs": [
+      "REQ-ISC-TSJS-BROWSER-DATA"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-TSJS-BROWSER-DATA"
+    ]
+  },
+  "title": "Browser runtime-data boundary",
+  "uncertainties": []
+}

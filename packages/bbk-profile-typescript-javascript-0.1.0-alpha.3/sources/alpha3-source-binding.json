@@ -1,0 +1,13 @@
+{
+  "prdSha256": "c3ba1a721494c72e815f2113282af270a77341ea00bb4948df753646714075c9",
+  "profile": "typescript-javascript",
+  "requiredBbk": "0.1.0-alpha.8",
+  "schema": "bbk.profile-source-binding.v1",
+  "skillsByteIdentityRequired": true,
+  "sourceArchiveSha256": "b5391b4d4c1c96f5e8acdd12b9063b34d2e1efc105dd788c706681b7daa29c5a",
+  "sourceManifestedFiles": 146,
+  "sourcePackageRootSha256": "e56a1d0e90bf1848b02332e381e2416067b998226cc53f7e98758be26a63fdf5",
+  "sourceSkillCount": 13,
+  "sourceVersion": "0.1.0-alpha.2",
+  "successorVersion": "0.1.0-alpha.3"
+}

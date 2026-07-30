@@ -1,0 +1,77 @@
+{
+  "artifacts": [
+    {
+      "kind": "go-source-file",
+      "path": "api/api.go"
+    },
+    {
+      "kind": "go-source-file",
+      "path": "cmd/app/main.go"
+    },
+    {
+      "kind": "go-test-file",
+      "path": "api/api_test.go"
+    }
+  ],
+  "behavior_paths": [
+    {
+      "id": "BP-SAVE"
+    },
+    {
+      "id": "BP-STREAM"
+    }
+  ],
+  "contracts": [
+    {
+      "kind": "type",
+      "name": "Record",
+      "visibility": "exported"
+    },
+    {
+      "kind": "type",
+      "name": "Store",
+      "visibility": "exported"
+    },
+    {
+      "kind": "type",
+      "name": "Service",
+      "visibility": "exported"
+    },
+    {
+      "kind": "sentinel-error",
+      "name": "ErrClosed",
+      "visibility": "exported"
+    }
+  ],
+  "delegated_differences": [
+    {
+      "message": "Private helper moved from api.go to internal helper file inside the same package.",
+      "within": "private helper layout"
+    }
+  ],
+  "fixed_decisions": [
+    {
+      "id": "FD-PACKAGE-OWNER",
+      "status": "satisfied"
+    },
+    {
+      "id": "FD-STREAM-OWNER",
+      "status": "satisfied"
+    }
+  ],
+  "output_sha256": "84d1310d78866c559d4771c477033001250dd56b780d13aabe1dc8129aeb90f5",
+  "ownership": [
+    {
+      "kind": "service-state",
+      "owner": "example.com/bbk/api.Service"
+    },
+    {
+      "kind": "stream",
+      "owner": "api.Stream invocation"
+    }
+  ],
+  "preflight_sha256": null,
+  "root": "fixtures/go-workspace",
+  "schema": "bbk.go.actual-structure-inventory.v1",
+  "unsupported_or_uncertain": []
+}

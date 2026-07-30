@@ -1,0 +1,151 @@
+{
+  "$id": "https://bbk.local/schemas/rust.implementation-structure-projection.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "advisories": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "applicability": {
+      "type": "object"
+    },
+    "authority": {
+      "additionalProperties": true,
+      "properties": {
+        "may_declare_pass": {
+          "const": false
+        },
+        "may_expand_work_scope": {
+          "const": false
+        },
+        "may_grant_tools_or_effects": {
+          "const": false
+        },
+        "may_reduce_assurance": {
+          "const": false
+        },
+        "projection_is_authoritative_state": {
+          "const": false
+        }
+      },
+      "required": [
+        "projection_is_authoritative_state",
+        "may_declare_pass",
+        "may_expand_work_scope",
+        "may_grant_tools_or_effects",
+        "may_reduce_assurance"
+      ],
+      "type": "object"
+    },
+    "bbk_version": {
+      "const": "0.1.0-alpha.4"
+    },
+    "blockers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "input": {
+      "additionalProperties": true,
+      "properties": {
+        "digest": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "validation_errors": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "digest"
+      ],
+      "type": "object"
+    },
+    "output_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "preflight_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profile": {
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "const": "rust"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "type": "object"
+    },
+    "projection": {
+      "type": "object"
+    },
+    "schema": {
+      "const": "rust.implementation-structure-projection.v1"
+    },
+    "unsupported_or_uncertain": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "profile",
+    "bbk_version",
+    "input",
+    "preflight_digest",
+    "applicability",
+    "projection",
+    "unsupported_or_uncertain",
+    "advisories",
+    "blockers",
+    "authority",
+    "output_digest"
+  ],
+  "title": "rust.implementation-structure-projection.v1",
+  "type": "object"
+}

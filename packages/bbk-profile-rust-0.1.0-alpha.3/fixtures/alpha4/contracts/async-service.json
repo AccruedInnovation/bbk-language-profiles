@@ -1,0 +1,183 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The realization shape is material to independent work, ownership, compatibility, or verification.",
+    "triggers": [
+      "async",
+      "concurrency",
+      "cancellation"
+    ]
+  },
+  "contractId": "ISC-RUST-ASYNC",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and local layout",
+        "bounds": "May differ when fixed public/shared contracts, ownership, behavior paths, and evidence seams remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "contract revision and focused impact review",
+        "id": "FD-RUST-TASK-OWNER",
+        "rationale": "Hidden task ownership makes cancellation and cleanup unreliable.",
+        "sourceRefs": [
+          "REQ-FD-RUST-TASK-OWNER"
+        ],
+        "statement": "ServiceHandle owns the task, cancellation token, channel closure, and join."
+      }
+    ],
+    "prohibited": [
+      "Do not reinterpret a private convenience choice as authority to change a fixed contract."
+    ]
+  },
+  "executionSliceRefs": [],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and shared contracts are preserved.",
+      "Delegated freedom remains available.",
+      "Applicable touchpoints have bounded evidence."
+    ],
+    "assuranceTier": "consequential",
+    "requiredReviewers": [
+      "focused-profile-structure-review"
+    ]
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "create",
+        "id": "ART-RUST-ASYNC",
+        "kind": "module",
+        "logicalPath": "crates/core/src/service.rs",
+        "owner": "service module",
+        "responsibility": "Own the service task and shutdown protocol.",
+        "sourceRefs": [
+          "ARCH-ART-RUST-ASYNC"
+        ]
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "Timeout preserves a distinct blocked/error result and does not claim shutdown."
+        ],
+        "id": "BP-RUST-SHUTDOWN",
+        "interfaceRefs": [
+          "KC-RUST-SERVICE"
+        ],
+        "name": "Service shutdown",
+        "steps": [
+          {
+            "contractRef": "KC-RUST-SERVICE",
+            "from": "caller",
+            "interaction": "signal cancellation",
+            "to": "ServiceHandle"
+          },
+          {
+            "contractRef": "KC-RUST-SERVICE",
+            "from": "ServiceHandle",
+            "interaction": "close input and await join",
+            "to": "service task"
+          },
+          {
+            "contractRef": "KC-RUST-SERVICE",
+            "from": "service task",
+            "interaction": "return classified outcome",
+            "to": "caller"
+          }
+        ],
+        "success": "All resources are released and outcome is explicit.",
+        "trigger": "caller requests shutdown"
+      }
+    ],
+    "effectBoundaries": [
+      {
+        "authorization": "work-unit plus runtime authority",
+        "effect": "spawn and stop background task",
+        "failure": "timeout or task failure is distinct from clean shutdown",
+        "idempotency": "one task per handle",
+        "owner": "ServiceHandle",
+        "recovery": "cancel, drain, join, then release resources"
+      }
+    ],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "Failure is explicit and no partial success is reported."
+        ],
+        "id": "KC-RUST-SERVICE",
+        "invariants": [
+          "The boundary preserves its declared meaning."
+        ],
+        "kind": "async lifecycle",
+        "name": "ServiceHandle",
+        "responsibility": "Provide explicit cancellation and completion",
+        "shape": "ServiceHandle::start -> shutdown -> join",
+        "sourceRefs": [
+          "IF-KC-RUST-SERVICE"
+        ],
+        "visibility": "shared"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-RUST-ASYNC",
+        "statement": "Record the fixed-boundary outcome and failure disposition without fabricating operational truth."
+      }
+    ],
+    "stateOwnership": [
+      {
+        "concurrency": "task and channel ownership are explicit",
+        "consistency": "one handle owns transition authority",
+        "lifetime": "process",
+        "mutationAuthority": "ServiceHandle methods",
+        "owner": "ServiceHandle",
+        "recovery": "cancel then join or report timeout",
+        "state": "service lifecycle"
+      }
+    ],
+    "testSeams": [
+      {
+        "id": "TS-ISC-RUST-ASYNC",
+        "sourceRefs": [
+          "REQ-ISC-RUST-ASYNC"
+        ],
+        "statement": "Use a focused fixture at the fixed boundary and preserve candidate-bound evidence."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-RUST-ASYNC"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-ALPHA4-FIXTURE"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-RUST-ASYNC"
+    ],
+    "interfaceRefs": [
+      "KC-RUST-SERVICE"
+    ],
+    "kind": "software",
+    "purpose": "Define task, channel, cancellation, and shutdown ownership for a bounded service.",
+    "requirementRefs": [
+      "REQ-ISC-RUST-ASYNC"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-RUST-ASYNC"
+    ]
+  },
+  "title": "Async service cancellation and resource ownership",
+  "uncertainties": []
+}

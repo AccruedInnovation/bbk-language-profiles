@@ -1,0 +1,7 @@
+{
+  "description": "OMP tools and commands for the optional BBK Rust language profile",
+  "name": "bbk-profile-rust-omp-extension",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0-alpha.3"
+}

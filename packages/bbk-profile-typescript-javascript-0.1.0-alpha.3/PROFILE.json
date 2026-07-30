@@ -1,0 +1,386 @@
+{
+  "authority": {
+    "may_add_gate_recipes": true,
+    "may_add_procedure": true,
+    "may_add_review_criteria": true,
+    "may_declare_pass": false,
+    "may_expand_work_scope": false,
+    "may_grant_tools_or_effects": false,
+    "may_reduce_assurance": false
+  },
+  "capabilities": {
+    "implementation_structure": {
+      "artifact_kinds": [
+        "workspace",
+        "package",
+        "module",
+        "entry-point",
+        "export-map",
+        "declaration",
+        "runtime-schema",
+        "browser-bundle",
+        "server-runtime",
+        "cli",
+        "component",
+        "event",
+        "worker",
+        "generated-artifact",
+        "test",
+        "fixture",
+        "build-config",
+        "dependency-lock",
+        "plugin",
+        "extension"
+      ],
+      "contract_kinds": [
+        "public-api",
+        "runtime-api",
+        "export-map",
+        "declaration-surface",
+        "runtime-schema",
+        "event-message",
+        "state-owner",
+        "effect-owner",
+        "async-resource",
+        "abort-cancellation",
+        "stream-backpressure",
+        "package-consumer",
+        "browser-host",
+        "plugin-host",
+        "migration"
+      ],
+      "status": "supported",
+      "touchpoint_kinds": [
+        "cli",
+        "api",
+        "ui",
+        "report",
+        "document",
+        "package",
+        "protocol-trace",
+        "simulation",
+        "procedure",
+        "other"
+      ],
+      "trigger_hints": [
+        "public-api",
+        "shared-contract",
+        "runtime-schema",
+        "export-map",
+        "declarations",
+        "state-ownership",
+        "async",
+        "cancellation",
+        "stream",
+        "worker",
+        "subscription",
+        "effect-boundary",
+        "migration",
+        "multi-package",
+        "dual-package",
+        "browser",
+        "host-extension",
+        "packaging",
+        "consumer-shape",
+        "implementation-structure",
+        "execution-slicing"
+      ],
+      "type_concepts": [
+        "identity",
+        "state",
+        "boundary",
+        "ownership",
+        "failure",
+        "evidence",
+        "discriminated-union",
+        "branded-identity",
+        "runtime-schema",
+        "AbortSignal",
+        "resource-lifetime",
+        "package-export",
+        "declaration"
+      ]
+    },
+    "review_assurance": {
+      "context_entrypoint": "review_context",
+      "context_selectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "dispatch_protocol": "bbk.profile-capability.v1",
+      "evidence_adapters": [
+        "profile-native-evidence-v1"
+      ],
+      "evidence_entrypoint": "evidence_adapter",
+      "lens_ids": [
+        "architecture-boundary",
+        "interface-consumer-compatibility",
+        "implementation-structure",
+        "state-concurrency-effect-recovery",
+        "security-privacy-supply-chain",
+        "test-evidence",
+        "operations-performance-resource",
+        "package-install-migration-release"
+      ],
+      "limitations": [
+        "The profile must not select or install a runtime, package manager, TypeScript version, or build tool.",
+        "Static typing does not prove runtime data validity or host/browser behavior.",
+        "Dual-package, edge, Electron, native-addon, React Native, and cross-runtime claims remain conditional or explicitly blocked when unqualified."
+      ],
+      "review_entrypoint": "review_lens",
+      "status": "supported"
+    },
+    "state_decision_effect": {
+      "boundary_concepts": [
+        "discriminated unions and products of independent unions",
+        "branded identities and boundary types",
+        "runtime schema/decoder boundaries distinct from static types",
+        "reducers, application services, or explicit state-machine boundaries",
+        "AbortSignal, task, subscription, timer, worker, stream, and cleanup ownership",
+        "browser, server, CLI, package, plugin, and OMP-extension effect adapters"
+      ],
+      "dispatch_protocol": "bbk.profile-capability.v1",
+      "formal_model_tools": [
+        "property/model-based tests supported by the repository",
+        "fake-clock and scheduler-controlled async traces",
+        "browser/server harnesses and protocol trace replay",
+        "optional statechart or external Quint/TLA+ mappings"
+      ],
+      "inventory_entrypoint": "state_effect_inventory",
+      "limitations": [
+        "The profile must not select or install a runtime, package manager, TypeScript version, or build tool.",
+        "Static typing does not prove runtime data validity or host/browser behavior.",
+        "Dual-package, edge, Electron, native-addon, React Native, and cross-runtime claims remain conditional or explicitly blocked when unqualified."
+      ],
+      "projection_entrypoint": "state_effect",
+      "representations": [
+        "discriminated unions and products of independent unions",
+        "branded identities and boundary types",
+        "runtime schema/decoder boundaries distinct from static types",
+        "reducers, application services, or explicit state-machine boundaries"
+      ],
+      "review_entrypoint": "state_effect_review",
+      "status": "supported"
+    }
+  },
+  "description": "Alpha.8-compatible applicability-aware TypeScript and JavaScript profile with deterministic preflight, proportional resolution and gates, ImplementationStructureContract and ExecutionSlice projections, planned-versus-actual structure review, and bounded evidence guidance across Codex, OMP, Claude Code, and generic harnesses.",
+  "entrypoints": {
+    "evidence_adapter": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "evidence-adapter"
+    ],
+    "gate_plan": [
+      "{python}",
+      "tools/bbk_tsjs.py",
+      "--json",
+      "gate-plan"
+    ],
+    "preflight": [
+      "{python}",
+      "tools/bbk_tsjs.py",
+      "--json",
+      "preflight"
+    ],
+    "resolve": [
+      "{python}",
+      "tools/bbk_tsjs.py",
+      "--json",
+      "resolve"
+    ],
+    "review_context": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "review-context"
+    ],
+    "review_lens": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "review-lens"
+    ],
+    "slice": [
+      "{python}",
+      "tools/bbk_tsjs.py",
+      "--json",
+      "slice"
+    ],
+    "state_effect": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect"
+    ],
+    "state_effect_inventory": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect-inventory"
+    ],
+    "state_effect_review": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect-review"
+    ],
+    "structure": [
+      "{python}",
+      "tools/bbk_tsjs.py",
+      "--json",
+      "structure"
+    ],
+    "structure_review": [
+      "{python}",
+      "tools/bbk_tsjs.py",
+      "--json",
+      "structure-review"
+    ]
+  },
+  "gates": "gates/tsjs-gates.json",
+  "id": "typescript-javascript",
+  "installation": {
+    "cli": "tools/bbk_tsjs.py",
+    "omp_extension": "omp/extension",
+    "skill_root": "skills"
+  },
+  "maturity": "comprehensive-alpha",
+  "name": "BBK TypeScript/JavaScript Profile",
+  "package": "bbk-profile-typescript-javascript",
+  "package_testing": {
+    "policy": "Type checking, transformation, bundling, declaration emit, artifact execution, and consumer installation are distinct evidence classes. No single one substitutes for all others.",
+    "structure_policy": "Generic BBK contracts and slices remain authoritative. The profile projects TS/JS package, module, export, declaration, runtime-schema, state, effect, async-resource, consumer, and touchpoint concerns and compares only consequential planned shape.",
+    "subject": "the built and packed artifact consumers actually receive"
+  },
+  "predecessor": {
+    "archive_sha256": "b5391b4d4c1c96f5e8acdd12b9063b34d2e1efc105dd788c706681b7daa29c5a",
+    "compatibility": "all alpha.2 skills, procedures, gate recipes, structure/slice behavior, installer safeguards, package rules and qualification boundaries retained; alpha.8 typed profile dispatch is additive",
+    "package": "bbk-profile-typescript-javascript",
+    "package_root_sha256": "e56a1d0e90bf1848b02332e381e2416067b998226cc53f7e98758be26a63fdf5",
+    "version": "0.1.0-alpha.2"
+  },
+  "references": [
+    "references/support-matrix.md",
+    "references/compatibility-policy.md",
+    "references/strictness-policy.md",
+    "references/runtime-module-model.md",
+    "references/testing-evidence-policy.md",
+    "references/performance-policy.md",
+    "references/implementation-structure.md",
+    "references/execution-slicing.md",
+    "references/type-driven-development.md"
+  ],
+  "requires": {
+    "bbk_minimum": "0.1.0-alpha.8",
+    "python_minimum": "3.11",
+    "toolchain_policy": "Repository-pinned runtimes, package managers, TypeScript versions, build tools, test runners, and supported consumers are authoritative. This profile does not silently install, upgrade, or replace them."
+  },
+  "schema": "bbk.language-profile.v1",
+  "selection": {
+    "risk_trigger_map": "mappings/risk-trigger-map.json",
+    "runtime_capability_map": "mappings/runtime-capability-map.json",
+    "strictness_policy_map": "mappings/strictness-policy-map.json",
+    "task_skill_map": "mappings/task-skill-map.json"
+  },
+  "skills": [
+    {
+      "id": "bbk-tsjs",
+      "kind": "router",
+      "path": "skills/bbk-tsjs/SKILL.md"
+    },
+    {
+      "id": "tsjs-development-practices",
+      "kind": "reference",
+      "path": "skills/tsjs-development-practices/SKILL.md"
+    },
+    {
+      "id": "comprehensive-analysis-tsjs",
+      "kind": "survey-review",
+      "path": "skills/comprehensive-analysis-tsjs/SKILL.md"
+    },
+    {
+      "id": "tsjs-implementation-structure-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-implementation-structure-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-type-contract-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-type-contract-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-runtime-data-contract-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-runtime-data-contract-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-api-module-package-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-api-module-package-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-async-resource-failure-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-async-resource-failure-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-test-strategy-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-test-strategy-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-security-supply-chain-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-security-supply-chain-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-operational-release-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-operational-release-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-browser-ui-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-browser-ui-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-evidence-reproducer",
+      "kind": "evidence",
+      "path": "skills/tsjs-evidence-reproducer/SKILL.md"
+    }
+  ],
+  "support": {
+    "conditional": [
+      "dual ESM and CommonJS packages",
+      "Bun and Deno production runtimes",
+      "edge and Worker runtimes",
+      "SSR and hydration systems",
+      "Electron",
+      "native Node.js addons",
+      "WASM wrappers",
+      "runtime-native TypeScript distribution"
+    ],
+    "partial_or_unqualified": [
+      "React Native",
+      "embedded JavaScript hosts",
+      "hostile-code sandboxing",
+      "universal cross-runtime packages",
+      "mobile-webview-specific behavior",
+      "native addon implementation internals"
+    ],
+    "primary": [
+      "Node.js applications and services",
+      "Node.js command-line tools",
+      "ESM libraries and packages",
+      "browser applications and libraries",
+      "strict or checked TypeScript projects",
+      "checked JavaScript using checkJs, @ts-check, or JSDoc",
+      "mixed TypeScript and JavaScript workspaces",
+      "package-manager workspaces and monorepos",
+      "OMP extensions and plugins when the exact host is qualified"
+    ]
+  },
+  "version": "0.1.0-alpha.3"
+}

@@ -1,0 +1,63 @@
+{
+  "declaredExclusions": [
+    "VCS internals",
+    "dependency caches",
+    "unrequested build caches",
+    "credentials and secrets",
+    "unrelated sibling scopes"
+  ],
+  "groups": {
+    "built-artifacts": [
+      "dist/**",
+      "build/**",
+      "*.d.ts"
+    ],
+    "consumer-fixtures": [
+      "test/**",
+      "tests/**",
+      "__tests__/**",
+      "examples/**"
+    ],
+    "source-boundaries": [
+      "*.ts",
+      "*.tsx",
+      "*.mts",
+      "*.cts",
+      "*.js",
+      "*.jsx",
+      "*.mjs",
+      "*.cjs"
+    ],
+    "workspace-runtime": [
+      "package.json",
+      "package-lock.json",
+      "pnpm-lock.yaml",
+      "yarn.lock",
+      "bun.lock*",
+      "tsconfig*.json",
+      "jsconfig.json"
+    ]
+  },
+  "profile": "typescript-javascript",
+  "schema": "bbk.profile-review-context-map.v1",
+  "selectors": [
+    "changed-surface",
+    "governing-contracts",
+    "consumer-and-failure-closure"
+  ],
+  "sourceExtensions": [
+    ".ts",
+    ".tsx",
+    ".mts",
+    ".cts",
+    ".js",
+    ".jsx",
+    ".mjs",
+    ".cjs",
+    ".json",
+    ".yaml",
+    ".yml",
+    ".md"
+  ],
+  "version": "0.1.0-alpha.3"
+}

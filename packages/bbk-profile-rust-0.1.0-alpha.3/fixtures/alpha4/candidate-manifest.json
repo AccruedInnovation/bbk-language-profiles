@@ -1,0 +1,8 @@
+{
+  "candidateId": "CAND-RUST-ALPHA4",
+  "digest": "fixture",
+  "paths": [
+    "crates/core/src/lib.rs"
+  ],
+  "schema": "bbk.candidate-manifest.fixture.v1"
+}

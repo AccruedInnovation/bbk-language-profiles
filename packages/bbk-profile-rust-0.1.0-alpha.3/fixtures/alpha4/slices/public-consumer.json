@@ -1,0 +1,75 @@
+{
+  "assertions": [
+    {
+      "evidence": "consumer compile receipt",
+      "id": "A-RUST-CONSUMER",
+      "method": "test",
+      "statement": "Downstream code compiles against the public contract."
+    },
+    {
+      "evidence": "consumer run result",
+      "id": "A-RUST-BEHAVIOR",
+      "method": "test",
+      "statement": "The observed result matches the contract."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "Splitting further would remove the integrated observation or create an artificial handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-RUST-PUBLIC-API revision 1 accepted."
+  ],
+  "exitConditions": [
+    "The declared touchpoint is observed.",
+    "Every required assertion has candidate-bound evidence."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ISC-RUST-PUBLIC-API"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-RUST-PUBLIC-API"
+    ],
+    "participants": [
+      "downstream crate",
+      "core crate"
+    ],
+    "steps": [
+      "Compile downstream consumer against the candidate.",
+      "Invoke add and inspect the result."
+    ]
+  },
+  "integrationOwner": "integration-owner",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Expose the public core API to a downstream compile-and-run fixture.",
+  "parentCapabilityRefs": [
+    "CAP-ISC-RUST-PUBLIC-API"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-RUST-PUBLIC",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-RUST-PUBLIC-API@1"
+  ],
+  "title": "Public crate consumer touchpoint",
+  "touchpoint": {
+    "actor": "downstream crate",
+    "environment": "clean workspace and downstream fixture",
+    "expectedObservation": "The downstream fixture compiles and receives the expected result.",
+    "interaction": "Compile and invoke the public API.",
+    "kind": "api"
+  },
+  "workUnitRefs": [
+    "WU-RUST-API",
+    "WU-RUST-CONSUMER"
+  ]
+}

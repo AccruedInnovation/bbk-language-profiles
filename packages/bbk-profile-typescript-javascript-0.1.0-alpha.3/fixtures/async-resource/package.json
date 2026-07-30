@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^6.0.0"
+  },
+  "name": "fixture-async-resource",
+  "packageManager": "npm@11.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test:cancellation": "node --test dist/test/*.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "type": "module"
+}

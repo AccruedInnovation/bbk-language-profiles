@@ -1,0 +1,47 @@
+{
+  "declaredExclusions": [
+    "VCS internals",
+    "dependency caches",
+    "unrequested build caches",
+    "credentials and secrets",
+    "unrelated sibling scopes"
+  ],
+  "groups": {
+    "consumer-fixtures": [
+      "tests/**",
+      "benches/**",
+      "examples/**"
+    ],
+    "generated-and-build": [
+      "build.rs",
+      "*.proto",
+      "*.wit"
+    ],
+    "source-boundaries": [
+      "*.rs"
+    ],
+    "workspace-toolchain": [
+      "Cargo.toml",
+      "Cargo.lock",
+      "rust-toolchain",
+      "rust-toolchain.toml"
+    ]
+  },
+  "profile": "rust",
+  "schema": "bbk.profile-review-context-map.v1",
+  "selectors": [
+    "changed-surface",
+    "governing-contracts",
+    "consumer-and-failure-closure"
+  ],
+  "sourceExtensions": [
+    ".rs",
+    ".toml",
+    ".lock",
+    ".proto",
+    ".wit",
+    ".json",
+    ".md"
+  ],
+  "version": "0.1.0-alpha.3"
+}

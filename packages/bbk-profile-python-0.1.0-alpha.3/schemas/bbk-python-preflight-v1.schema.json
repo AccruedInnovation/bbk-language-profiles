@@ -1,0 +1,48 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-python-preflight-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "interpreter": {
+      "type": "object"
+    },
+    "packaging": {
+      "type": "object"
+    },
+    "project": {
+      "type": "object"
+    },
+    "repository_commands": {
+      "type": "object"
+    },
+    "root": {
+      "type": "string"
+    },
+    "schema": {
+      "const": "bbk.python-preflight.v1"
+    },
+    "support_signals": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema",
+    "root",
+    "project",
+    "interpreter",
+    "environment",
+    "packaging",
+    "repository_commands",
+    "support_signals",
+    "digest"
+  ],
+  "title": "BBK Python preflight",
+  "type": "object"
+}

@@ -1,0 +1,332 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-python-implementation-structure-projection-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "advisories": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "applicability": {
+      "additionalProperties": false,
+      "properties": {
+        "disposition": {
+          "enum": [
+            "PROJECTED",
+            "NOT_APPLICABLE",
+            "PARTIAL",
+            "UNSUPPORTED",
+            "BLOCKED"
+          ]
+        },
+        "level": {
+          "enum": [
+            "none",
+            "inline",
+            "contract"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "triggers": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "level",
+        "disposition",
+        "rationale",
+        "triggers"
+      ],
+      "type": "object"
+    },
+    "bbk_version": {
+      "type": "string"
+    },
+    "blockers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "input": {
+      "additionalProperties": false,
+      "properties": {
+        "digest": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "implementation-structure-contract",
+            "execution-slice"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "revision",
+        "digest",
+        "path"
+      ],
+      "type": "object"
+    },
+    "no_authority": {
+      "additionalProperties": false,
+      "properties": {
+        "may_declare_pass": {
+          "const": false
+        },
+        "may_expand_work_scope": {
+          "const": false
+        },
+        "may_grant_tools_or_effects": {
+          "const": false
+        },
+        "may_reduce_assurance": {
+          "const": false
+        },
+        "statement": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "may_declare_pass",
+        "may_expand_work_scope",
+        "may_grant_tools_or_effects",
+        "may_reduce_assurance",
+        "statement"
+      ],
+      "type": "object"
+    },
+    "output_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "preflight_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profile": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": "python"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "type": "object"
+    },
+    "projection": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_topology": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "behavior_paths": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "delegated_freedom": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "effect_boundaries": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "fixed_decisions": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "key_contracts": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "migration_touchpoints": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "observability_points": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "ownership": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "package_subjects": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "planned_gates": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "profile_input_projection": {
+          "additionalProperties": true,
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "prohibited_shortcuts": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "python_subjects": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "review_policy": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "runtime_validation_boundaries": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "selected_skills": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "subject_kind": {
+          "type": "string"
+        },
+        "test_seams": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type_strategy": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "subject_kind",
+        "python_subjects",
+        "artifact_topology",
+        "key_contracts",
+        "type_strategy",
+        "runtime_validation_boundaries",
+        "ownership",
+        "behavior_paths",
+        "effect_boundaries",
+        "observability_points",
+        "migration_touchpoints",
+        "test_seams",
+        "review_policy",
+        "package_subjects",
+        "fixed_decisions",
+        "delegated_freedom",
+        "prohibited_shortcuts",
+        "selected_skills",
+        "planned_gates",
+        "profile_input_projection"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "const": "bbk.python.implementation-structure-projection.v1"
+    },
+    "unsupported_or_uncertain": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "profile",
+    "bbk_version",
+    "input",
+    "preflight_digest",
+    "applicability",
+    "projection",
+    "unsupported_or_uncertain",
+    "advisories",
+    "blockers",
+    "no_authority",
+    "output_digest"
+  ],
+  "title": "BBK Python Implementation Structure Projection v1",
+  "type": "object"
+}

@@ -1,0 +1,174 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The change fixes consequential realization shape needed for independent implementation and review.",
+    "triggers": [
+      "public-interface",
+      "declaration"
+    ]
+  },
+  "contractId": "ISC-TSJS-STRICT-LIB",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper layout",
+        "bounds": "May change if fixed public/runtime contracts, ownership, effects and touchpoint evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-LIB-ENTRY",
+        "rationale": "Protect a material boundary.",
+        "sourceRefs": [],
+        "statement": "src/index.ts remains the only public package entry point."
+      }
+    ],
+    "prohibited": [
+      "Duplicating the same runtime schema or authoritative rule in independently mutable layers.",
+      "Treating a TypeScript declaration or transpiler pass as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-TSJS-STRICT-LIB"
+  ],
+  "metadata": {
+    "fixture": true,
+    "profile": "typescript-javascript"
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed public/shared contracts and owners are explicit.",
+      "Delegated freedom preserves competent private implementation choices.",
+      "The first execution slice creates an inspectable integrated touchpoint."
+    ],
+    "acceptedBy": [
+      "FIXTURE-AUTHORITY"
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": [
+      "tsjs-implementation-structure-review"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "retain",
+        "id": "ART-PKG",
+        "kind": "package",
+        "logicalPath": "package.json",
+        "owner": "package",
+        "responsibility": "Declare ESM runtime and scripts.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-ENTRY",
+        "kind": "entry-point",
+        "logicalPath": "src/index.ts",
+        "owner": "library",
+        "responsibility": "Own public runtime and type exports.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-TEST",
+        "kind": "test",
+        "logicalPath": "test/index.test.ts",
+        "owner": "test",
+        "responsibility": "Exercise built behavior.",
+        "sourceRefs": []
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "Failure is typed or otherwise classified and leaves the declared recoverable state."
+        ],
+        "id": "BP-ISC-TSJS-STRICT-LIB",
+        "interfaceRefs": [
+          "IF-ISC-TSJS-STRICT-LIB"
+        ],
+        "name": "Strict TypeScript library structure",
+        "steps": [
+          {
+            "contractRef": "KC-LIB-API",
+            "from": "Consumer",
+            "interaction": "use the accepted contract",
+            "to": "Owner"
+          }
+        ],
+        "success": "The declared touchpoint produces the accepted behavior.",
+        "trigger": "A declared consumer invokes the slice"
+      }
+    ],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "invalid input is rejected by the declared contract"
+        ],
+        "id": "KC-LIB-API",
+        "invariants": [
+          "runtime export and declaration agree"
+        ],
+        "kind": "public-api",
+        "name": "Library API",
+        "responsibility": "Stable public callable and declaration surface",
+        "shape": "export function normalize(input: Input): Output",
+        "sourceRefs": [],
+        "visibility": "public"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-TSJS-STRICT-LIB",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-STRICT-LIB"
+        ],
+        "statement": "Record outcome class and correlation identity without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-TSJS-STRICT-LIB",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-STRICT-LIB"
+        ],
+        "statement": "Exercise the declared public/runtime boundary through a deterministic fixture or clean consumer."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-TSJS-STRICT-LIB"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-TSJS-A4"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-TSJS-STRICT-LIB"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-TSJS-STRICT-LIB"
+    ],
+    "kind": "software",
+    "purpose": "Expose one checked ESM library entry point with private implementation freedom.",
+    "requirementRefs": [
+      "REQ-ISC-TSJS-STRICT-LIB"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-TSJS-STRICT-LIB"
+    ]
+  },
+  "title": "Strict TypeScript library structure",
+  "uncertainties": []
+}

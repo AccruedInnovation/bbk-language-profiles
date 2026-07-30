@@ -1,0 +1,807 @@
+{
+  "scan": {
+    "exclude_globs": [
+      ".git/**",
+      ".venv/**",
+      "venv/**",
+      "node_modules/**",
+      "dist/**",
+      "build/**",
+      ".tox/**",
+      ".nox/**",
+      "__pycache__/**",
+      ".mypy_cache/**",
+      ".ruff_cache/**",
+      ".pytest_cache/**"
+    ],
+    "extensions": [
+      ".py",
+      ".pyi",
+      ".toml",
+      ".ini",
+      ".cfg",
+      ".txt",
+      ".yaml",
+      ".yml",
+      ".json",
+      ".c",
+      ".h",
+      ".cc",
+      ".cpp",
+      ".hpp",
+      ".pyx",
+      ".pxd"
+    ],
+    "max_file_bytes": 524288,
+    "max_files": 2000
+  },
+  "schema": "bbk.python-risk-trigger-map.v1",
+  "triggers": [
+    {
+      "exclusive_survey": true,
+      "gate_tags": [],
+      "hints": [
+        "broad-analysis",
+        "architecture-survey",
+        "inherited-codebase",
+        "modernization"
+      ],
+      "id": "broad-analysis",
+      "skills_by_role": {
+        "architect": [
+          "comprehensive-analysis-python"
+        ],
+        "reviewer": [
+          "comprehensive-analysis-python"
+        ]
+      }
+    },
+    {
+      "change_classes": [
+        "interface"
+      ],
+      "gate_tags": [
+        "public-api",
+        "distribution"
+      ],
+      "hints": [
+        "public-api",
+        "runtime-api",
+        "import-api",
+        "semver"
+      ],
+      "id": "public-api",
+      "path_globs": [
+        "src/**/__init__.py",
+        "**/*.pyi",
+        "**/py.typed"
+      ],
+      "regexes": [
+        "(?m)^\\s*__all__\\s*=",
+        "(?m)^\\s*def\\s+__getattr__\\s*\\("
+      ],
+      "skills": [
+        "python-api-package-boundary-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "packaging",
+        "dependency"
+      ],
+      "gate_tags": [
+        "distribution",
+        "package",
+        "release"
+      ],
+      "hints": [
+        "distribution",
+        "packaging",
+        "wheel",
+        "sdist",
+        "publish",
+        "release"
+      ],
+      "id": "distribution",
+      "path_globs": [
+        "pyproject.toml",
+        "setup.py",
+        "setup.cfg",
+        "MANIFEST.in",
+        "**/*.pyi",
+        "**/py.typed",
+        "requirements*.txt",
+        "uv.lock",
+        "poetry.lock",
+        "pdm.lock",
+        "pylock.toml"
+      ],
+      "skills": [
+        "python-api-package-boundary-review",
+        "python-package-release-gates"
+      ]
+    },
+    {
+      "gate_tags": [
+        "entry-point",
+        "plugin"
+      ],
+      "hints": [
+        "entry-point",
+        "plugin",
+        "plugins",
+        "console-script"
+      ],
+      "id": "entry-point-plugin",
+      "path_globs": [
+        "pyproject.toml",
+        "setup.cfg",
+        "**/plugins.py",
+        "**/plugin*.py"
+      ],
+      "regexes": [
+        "entry_points",
+        "importlib\\.metadata",
+        "pkg_resources",
+        "console_scripts"
+      ],
+      "skills": [
+        "python-api-package-boundary-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "typing",
+        "typing-api"
+      ],
+      "hints": [
+        "static-typing",
+        "typing-api",
+        "stubs",
+        "py-typed",
+        "annotations"
+      ],
+      "id": "typing-api",
+      "path_globs": [
+        "**/*.pyi",
+        "**/py.typed",
+        "mypy.ini",
+        "pyrightconfig.json",
+        "**/typing*.py"
+      ],
+      "regexes": [
+        "from\\s+typing\\s+import",
+        "typing_extensions",
+        "get_type_hints",
+        "annotationlib",
+        "__annotations__"
+      ],
+      "skills": [
+        "python-typing-contract-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "implementation",
+        "migration"
+      ],
+      "gate_tags": [
+        "runtime-state",
+        "failure"
+      ],
+      "hints": [
+        "runtime-state",
+        "stateful",
+        "retry",
+        "idempotency",
+        "transaction",
+        "cache"
+      ],
+      "id": "runtime-state",
+      "regexes": [
+        "(?m)^\\s*(CACHE|REGISTRY|STATE)\\s*=",
+        "functools\\.(cache|lru_cache)",
+        "@lru_cache",
+        "session\\.begin",
+        "transaction\\.atomic",
+        "retry"
+      ],
+      "skills": [
+        "python-runtime-correctness-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "asyncio",
+        "cancellation",
+        "concurrency"
+      ],
+      "hints": [
+        "asyncio",
+        "async",
+        "cancellation",
+        "taskgroup"
+      ],
+      "id": "asyncio",
+      "regexes": [
+        "async\\s+def",
+        "asyncio\\.",
+        "TaskGroup",
+        "create_task",
+        "CancelledError",
+        "await\\s"
+      ],
+      "skills": [
+        "python-runtime-correctness-review",
+        "python-test-strategy-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "threading"
+      ],
+      "hints": [
+        "threading",
+        "threads"
+      ],
+      "id": "threading",
+      "regexes": [
+        "threading\\.",
+        "ThreadPoolExecutor",
+        "concurrent\\.futures"
+      ],
+      "skills": [
+        "python-runtime-correctness-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "free-threaded"
+      ],
+      "hints": [
+        "free-threaded",
+        "nogil",
+        "gil-disabled"
+      ],
+      "id": "free-threaded",
+      "regexes": [
+        "sys\\._is_gil_enabled",
+        "Py_GIL_DISABLED",
+        "free.thread"
+      ],
+      "skills": [
+        "python-runtime-correctness-review",
+        "python-native-extension-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "multiprocessing",
+        "process"
+      ],
+      "hints": [
+        "multiprocessing",
+        "process-pool",
+        "processes"
+      ],
+      "id": "multiprocessing",
+      "regexes": [
+        "multiprocessing\\.",
+        "ProcessPoolExecutor",
+        "get_context\\(",
+        "set_start_method"
+      ],
+      "skills": [
+        "python-runtime-correctness-review",
+        "python-test-strategy-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "migration",
+        "schema"
+      ],
+      "gate_tags": [
+        "migration",
+        "rollback",
+        "persistence"
+      ],
+      "hints": [
+        "migration",
+        "database",
+        "persistence",
+        "rollback"
+      ],
+      "id": "persistence-migration",
+      "path_globs": [
+        "migrations/**",
+        "alembic/**",
+        "**/migrations/**"
+      ],
+      "regexes": [
+        "alembic",
+        "django\\.db",
+        "sqlalchemy",
+        "session\\.begin",
+        "transaction\\.atomic"
+      ],
+      "skills": [
+        "python-runtime-correctness-review",
+        "python-operational-readiness-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "test",
+        "verification"
+      ],
+      "gate_tags": [
+        "test-strategy"
+      ],
+      "hints": [
+        "test-strategy",
+        "test-architecture",
+        "flaky",
+        "coverage"
+      ],
+      "id": "test-strategy",
+      "path_globs": [
+        "tests/**",
+        "test/**",
+        "conftest.py",
+        "tox.ini",
+        "noxfile.py"
+      ],
+      "skills": [
+        "python-test-strategy-review",
+        "python-evidence-reproducer"
+      ]
+    },
+    {
+      "gate_tags": [
+        "property-testing",
+        "state-machine"
+      ],
+      "hints": [
+        "property-testing",
+        "state-machine",
+        "model-based"
+      ],
+      "id": "property-testing",
+      "regexes": [
+        "hypothesis",
+        "RuleBasedStateMachine"
+      ],
+      "skills": [
+        "python-test-strategy-review",
+        "python-evidence-reproducer"
+      ]
+    },
+    {
+      "gate_tags": [
+        "fuzzing"
+      ],
+      "hints": [
+        "fuzzing",
+        "fuzz"
+      ],
+      "id": "fuzzing",
+      "regexes": [
+        "atheris",
+        "pythonfuzz",
+        "hypofuzz"
+      ],
+      "skills": [
+        "python-test-strategy-review",
+        "python-evidence-reproducer"
+      ]
+    },
+    {
+      "gate_tags": [
+        "mutation-testing",
+        "test-strategy-gap"
+      ],
+      "hints": [
+        "mutation-testing",
+        "mutation",
+        "test-strategy-gap"
+      ],
+      "id": "mutation-testing",
+      "regexes": [
+        "mutmut",
+        "cosmic_ray",
+        "mutatest"
+      ],
+      "skills": [
+        "python-test-strategy-review",
+        "python-evidence-reproducer"
+      ]
+    },
+    {
+      "change_classes": [
+        "packaging",
+        "configuration",
+        "deployment"
+      ],
+      "gate_tags": [
+        "operations",
+        "startup",
+        "shutdown"
+      ],
+      "hints": [
+        "deployment",
+        "operations",
+        "startup",
+        "shutdown",
+        "configuration",
+        "observability",
+        "service",
+        "worker"
+      ],
+      "id": "operations",
+      "path_globs": [
+        "Dockerfile*",
+        "compose*.yml",
+        "compose*.yaml",
+        "deploy/**",
+        "helm/**",
+        "k8s/**",
+        "systemd/**",
+        "**/settings.py",
+        "**/config.py"
+      ],
+      "regexes": [
+        "signal\\.",
+        "atexit",
+        "logging\\.",
+        "structlog",
+        "opentelemetry",
+        "prometheus",
+        "health"
+      ],
+      "skills": [
+        "python-operational-readiness-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "dynamic-exec",
+        "security",
+        "untrusted-input"
+      ],
+      "hints": [
+        "dynamic-exec",
+        "eval",
+        "exec",
+        "untrusted-code"
+      ],
+      "id": "dynamic-exec",
+      "regexes": [
+        "(?<![A-Za-z0-9_])(eval|exec|compile)\\s*\\(",
+        "importlib\\.import_module",
+        "__import__\\s*\\("
+      ],
+      "skills": [
+        "python-security-supply-chain-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "deserialization",
+        "security",
+        "untrusted-input"
+      ],
+      "hints": [
+        "pickle",
+        "deserialization",
+        "yaml",
+        "untrusted-input"
+      ],
+      "id": "deserialization",
+      "regexes": [
+        "pickle\\.(load|loads)",
+        "shelve\\.",
+        "dill\\.",
+        "yaml\\.(load|unsafe_load)",
+        "marshal\\.(load|loads)"
+      ],
+      "skills": [
+        "python-security-supply-chain-review",
+        "python-runtime-correctness-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "subprocess",
+        "archive",
+        "filesystem",
+        "security"
+      ],
+      "hints": [
+        "subprocess",
+        "shell",
+        "archive",
+        "path-traversal",
+        "filesystem"
+      ],
+      "id": "subprocess-path-archive",
+      "regexes": [
+        "subprocess\\.",
+        "os\\.system",
+        "shell\\s*=\\s*True",
+        "tarfile\\.",
+        "zipfile\\.",
+        "tempfile\\.mktemp",
+        "shutil\\.unpack_archive"
+      ],
+      "skills": [
+        "python-security-supply-chain-review",
+        "python-runtime-correctness-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "network",
+        "web",
+        "security"
+      ],
+      "hints": [
+        "network",
+        "http",
+        "web",
+        "security-web"
+      ],
+      "id": "network-web",
+      "regexes": [
+        "requests\\.",
+        "httpx\\.",
+        "aiohttp\\.",
+        "urllib\\.request",
+        "FastAPI",
+        "Django",
+        "Flask"
+      ],
+      "skills": [
+        "python-security-supply-chain-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "web",
+        "hypermedia"
+      ],
+      "hints": [
+        "hypermedia",
+        "htmx",
+        "alpine",
+        "hateoas"
+      ],
+      "id": "hypermedia",
+      "regexes": [
+        "HX-Request",
+        "hx-target",
+        "hx-swap",
+        "htmx",
+        "Alpine\\.data"
+      ],
+      "skills": [
+        "python-web-hypermedia-review"
+      ]
+    },
+    {
+      "gate_tags": [
+        "native-extension",
+        "ffi",
+        "abi"
+      ],
+      "hints": [
+        "native-extension",
+        "ffi",
+        "abi3",
+        "c-api",
+        "cython",
+        "cffi",
+        "ctypes",
+        "pyo3",
+        "maturin"
+      ],
+      "id": "native-extension",
+      "path_globs": [
+        "**/*.c",
+        "**/*.cc",
+        "**/*.cpp",
+        "**/*.h",
+        "**/*.hpp",
+        "**/*.pyx",
+        "**/*.pxd",
+        "Cargo.toml"
+      ],
+      "regexes": [
+        "ctypes\\.",
+        "cffi",
+        "PyO3",
+        "maturin",
+        "Py_LIMITED_API"
+      ],
+      "skills": [
+        "python-native-extension-review",
+        "python-security-supply-chain-review",
+        "python-runtime-correctness-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "performance"
+      ],
+      "gate_tags": [
+        "performance",
+        "benchmark"
+      ],
+      "hints": [
+        "performance",
+        "benchmark",
+        "memory",
+        "startup-time"
+      ],
+      "id": "performance",
+      "path_globs": [
+        "benchmarks/**",
+        "benchmark/**"
+      ],
+      "regexes": [
+        "pytest_benchmark",
+        "pyperf",
+        "cProfile",
+        "tracemalloc"
+      ],
+      "skills": [
+        "python-evidence-reproducer"
+      ]
+    },
+    {
+      "change_classes": [
+        "dependency"
+      ],
+      "gate_tags": [
+        "dependency",
+        "security",
+        "distribution"
+      ],
+      "hints": [
+        "dependency",
+        "supply-chain",
+        "build-backend",
+        "dependency-update"
+      ],
+      "id": "dependency-supply-chain",
+      "skills": [
+        "python-security-supply-chain-review",
+        "python-package-release-gates"
+      ]
+    },
+    {
+      "change_classes": [
+        "interface",
+        "schema",
+        "architecture",
+        "state-ownership",
+        "migration"
+      ],
+      "gate_tags": [
+        "implementation-structure"
+      ],
+      "hints": [
+        "implementation-structure",
+        "structure-contract",
+        "planned-shape",
+        "type-driven-development"
+      ],
+      "id": "implementation-structure",
+      "skills_by_role": {
+        "architect": [
+          "python-implementation-structure-authoring"
+        ],
+        "reviewer": [
+          "python-implementation-structure-review"
+        ],
+        "validator": [
+          "python-implementation-structure-review"
+        ],
+        "worker": [
+          "python-implementation-structure-authoring"
+        ],
+        "worker-designer": [
+          "python-implementation-structure-authoring"
+        ]
+      }
+    },
+    {
+      "gate_tags": [
+        "execution-slice"
+      ],
+      "hints": [
+        "execution-slicing",
+        "execution-slice",
+        "integrated-touchpoint",
+        "vertical-slice",
+        "foundation-slice"
+      ],
+      "id": "execution-slicing",
+      "skills_by_role": {
+        "architect": [
+          "python-execution-slice-design"
+        ],
+        "reviewer": [
+          "python-execution-slice-design"
+        ],
+        "verification-designer": [
+          "python-execution-slice-design",
+          "python-test-strategy-review"
+        ],
+        "worker-designer": [
+          "python-execution-slice-design"
+        ]
+      }
+    },
+    {
+      "change_classes": [
+        "state-ownership",
+        "concurrency",
+        "recovery"
+      ],
+      "gate_tags": [
+        "state-ownership",
+        "implementation-structure"
+      ],
+      "hints": [
+        "state-ownership",
+        "resource-lifetime",
+        "effect-boundary",
+        "ownership-change"
+      ],
+      "id": "state-ownership-structure",
+      "skills_by_role": {
+        "architect": [
+          "python-implementation-structure-authoring",
+          "python-runtime-correctness-review"
+        ],
+        "reviewer": [
+          "python-implementation-structure-review",
+          "python-runtime-correctness-review"
+        ],
+        "validator": [
+          "python-implementation-structure-review",
+          "python-runtime-correctness-review"
+        ]
+      }
+    },
+    {
+      "change_classes": [
+        "interface",
+        "schema",
+        "packaging"
+      ],
+      "gate_tags": [
+        "planned-actual",
+        "public-api"
+      ],
+      "hints": [
+        "public-structure-drift",
+        "planned-actual",
+        "public-import-drift",
+        "fixed-decision-divergence"
+      ],
+      "id": "public-structure-drift",
+      "skills_by_role": {
+        "reviewer": [
+          "python-implementation-structure-review",
+          "python-api-package-boundary-review"
+        ],
+        "validator": [
+          "python-implementation-structure-review",
+          "python-api-package-boundary-review"
+        ]
+      }
+    }
+  ]
+}

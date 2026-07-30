@@ -1,0 +1,29 @@
+fmt-check:
+    test -z "$(gofmt -l $(find . -name '*.go' -not -path './vendor/*'))"
+
+lint:
+    go vet ./...
+
+test:
+    go test -count=1 ./...
+
+race:
+    go test -count=1 -race ./...
+
+generate:
+    go generate ./...
+
+coverage:
+    go test -count=1 -coverprofile=coverage.out ./...
+
+vulncheck:
+    govulncheck ./...
+
+matrix:
+    go test -count=1 ./...
+
+release-check:
+    go build ./...
+
+mutation-test:
+    echo repository-qualified-mutation-tool

@@ -1,0 +1,161 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "Use the least structure ceremony sufficient for this fixture.",
+    "triggers": [
+      "migration",
+      "persistence",
+      "recovery",
+      "state-ownership"
+    ]
+  },
+  "contractId": "ISC-PY-MIGRATION",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and equivalent internal module layout",
+        "bounds": "May vary when public/shared contracts, ownership, behavior, and evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-MIGRATION-SEQUENCE",
+        "rationale": "The decision stabilizes a material Python boundary.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "The migration sequence and persisted compatibility are fixed until impact review."
+      }
+    ],
+    "prohibited": [
+      "Do not treat annotations as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-PY-MIGRATION"
+  ],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {
+    "python": {}
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and consequential shape are explicit.",
+      "Delegated freedom remains sufficient.",
+      "A real touchpoint can verify the result."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "consequential",
+    "requiredReviewers": [
+      "bbk_reviewer"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-MIGRATION",
+        "kind": "migration",
+        "logicalPath": "migrations/0001_initial.py",
+        "owner": "python",
+        "responsibility": "Own art-migration behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      }
+    ],
+    "behaviorPaths": [],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "Invalid external values are rejected before trusted use."
+        ],
+        "id": "KC-PERSISTED-ROW",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "persistence-schema",
+        "name": "PersistedRecord",
+        "responsibility": "Represent PersistedRecord.",
+        "shape": "PersistedRecord v1",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "external"
+      }
+    ],
+    "migrationTouchpoints": [
+      {
+        "id": "MT-ROLLBACK",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Rehearse upgrade and rollback or complete-forward recovery against representative data."
+      }
+    ],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-PY-MIGRATION",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Record outcome and failure class without secrets."
+      }
+    ],
+    "stateOwnership": [
+      {
+        "concurrency": "writers fenced during incompatible transition",
+        "consistency": "transactional migration boundary",
+        "lifetime": "durable",
+        "mutationAuthority": "authorized migration only",
+        "owner": "database schema and migration coordinator",
+        "recovery": "rollback or forward recovery according to migration plan",
+        "state": "persisted records"
+      }
+    ],
+    "testSeams": [
+      {
+        "id": "TS-ISC-PY-MIGRATION",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Exercise the declared touchpoint through the normal package/runtime subject."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-PY-ALPHA4"
+    ],
+    "capabilityRefs": [
+      "CAP-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "kind": "software",
+    "purpose": "Persistence migration and rollback",
+    "requirementRefs": [
+      "REQ-PYTHON"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-PY-MIGRATION"
+    ]
+  },
+  "title": "Persistence migration and rollback",
+  "uncertainties": []
+}

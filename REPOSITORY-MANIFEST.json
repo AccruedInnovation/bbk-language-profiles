@@ -1,0 +1,55 @@
+{
+  "generated_from": {
+    "bbk_root_sha256": "ff3cd43978d01a7dbfa0fb97c153ec842043eb7cd15884fbe8483aa3cd5bbcc7",
+    "bbk_version": "0.1.0-alpha.11.7",
+    "bundled_source": "bundled-language-profiles"
+  },
+  "profile_count": 5,
+  "profile_versions": [
+    "0.1.0-alpha.3"
+  ],
+  "profiles": [
+    {
+      "file_count": 148,
+      "id": "go",
+      "name": "BBK Go Profile",
+      "package": "bbk-profile-go",
+      "path": "packages/bbk-profile-go-0.1.0-alpha.3",
+      "root_sha256": "4da1f08f78ae62a3a3d35a669669cc97543a797b98a082a0bbb4d46897f3284a",
+      "typed_capabilities": true,
+      "version": "0.1.0-alpha.3"
+    },
+    {
+      "file_count": 145,
+      "id": "python",
+      "name": "BBK Python Profile",
+      "package": "bbk-profile-python",
+      "path": "packages/bbk-profile-python-0.1.0-alpha.3",
+      "root_sha256": "d7e7f38796770ee7aaf7d1a5c6d68cfbe43626700e99c0468980feb674430950",
+      "typed_capabilities": true,
+      "version": "0.1.0-alpha.3"
+    },
+    {
+      "file_count": 395,
+      "id": "rust",
+      "name": "BBK Rust Profile",
+      "package": "bbk-profile-rust",
+      "path": "packages/bbk-profile-rust-0.1.0-alpha.3",
+      "root_sha256": "06158ecbe6709b55952f910b90f9c986e5ee147062bbe0a83bf63b06fe39984a",
+      "typed_capabilities": true,
+      "version": "0.1.0-alpha.3"
+    },
+    {
+      "file_count": 184,
+      "id": "typescript-javascript",
+      "name": "BBK TypeScript/JavaScript Profile",
+      "package": "bbk-profile-typescript-javascript",
+      "path": "packages/bbk-profile-typescript-javascript-0.1.0-alpha.3",
+      "root_sha256": "3cdcfe0e665bcb6e44431c6f472448c7c3e5b854fc8bb43422570f3d669e34aa",
+      "typed_capabilities": true,
+      "version": "0.1.0-alpha.3"
+    }
+  ],
+  "schema": "bbk.language-profiles-repository-manifest.v1",
+  "status": "PASS"
+}

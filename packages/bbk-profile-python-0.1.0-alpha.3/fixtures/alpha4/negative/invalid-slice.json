@@ -1,0 +1,71 @@
+{
+  "assertions": [
+    {
+      "evidence": "clean install receipt",
+      "id": "A-WHEEL",
+      "method": "test",
+      "statement": "The exact wheel works for the declared consumer."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice creates one integrated, reversible qualification touchpoint.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "Contract accepted."
+  ],
+  "exitConditions": [
+    "Declared observation is evidenced."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "participants": [
+      "build backend",
+      "wheel",
+      "clean environment",
+      "consumer"
+    ],
+    "steps": [
+      "Build, install, and consume the exact wheel outside the checkout."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Python fixture",
+  "metadata": {
+    "fixture": true,
+    "revision": "1"
+  },
+  "objective": "Clean wheel consumer",
+  "parentCapabilityRefs": [
+    "CAP-PYTHON"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-PY-PACKAGE@1"
+  ],
+  "title": "Clean wheel consumer",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "isolated qualification fixture",
+    "expectedObservation": "Public import, entry point, metadata, and resources work from the installed artifact.",
+    "interaction": "Build, install, and consume the exact wheel outside the checkout.",
+    "kind": "package"
+  },
+  "workUnitRefs": [
+    "WU-BUILD",
+    "WU-INSTALL",
+    "WU-CONSUMER"
+  ]
+}

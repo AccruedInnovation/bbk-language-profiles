@@ -1,0 +1,160 @@
+{
+  "authority": {
+    "may_add_gate_recipes": true,
+    "may_add_procedure": true,
+    "may_add_review_criteria": true,
+    "may_declare_pass": false,
+    "may_expand_work_scope": false,
+    "may_grant_tools_or_effects": false,
+    "may_reduce_assurance": false
+  },
+  "description": "Applicability-aware TypeScript and JavaScript worker, review, validation, gate, evidence, runtime, module, package, browser, and toolchain guidance for BBK across Codex, OMP, Claude Code, and generic agent harnesses.",
+  "entrypoints": {
+    "gate_plan": [
+      "{python}",
+      "tools/bbk_tsjs.py",
+      "--json",
+      "gate-plan"
+    ],
+    "preflight": [
+      "{python}",
+      "tools/bbk_tsjs.py",
+      "--json",
+      "preflight"
+    ],
+    "resolve": [
+      "{python}",
+      "tools/bbk_tsjs.py",
+      "--json",
+      "resolve"
+    ]
+  },
+  "gates": "gates/tsjs-gates.json",
+  "id": "typescript-javascript",
+  "installation": {
+    "cli": "tools/bbk_tsjs.py",
+    "omp_extension": "omp/extension",
+    "skill_root": "skills"
+  },
+  "maturity": "comprehensive-alpha",
+  "name": "BBK TypeScript/JavaScript Profile",
+  "package": "bbk-profile-typescript-javascript",
+  "package_testing": {
+    "policy": "Type checking, transformation, bundling, declaration emit, artifact execution, and consumer installation are distinct evidence classes. No single one substitutes for all others.",
+    "subject": "the built and packed artifact consumers actually receive"
+  },
+  "references": [
+    "references/support-matrix.md",
+    "references/compatibility-policy.md",
+    "references/strictness-policy.md",
+    "references/runtime-module-model.md",
+    "references/testing-evidence-policy.md",
+    "references/performance-policy.md"
+  ],
+  "requires": {
+    "bbk_minimum": "0.1.0-alpha.3",
+    "python_minimum": "3.11",
+    "toolchain_policy": "Repository-pinned runtimes, package managers, TypeScript versions, build tools, test runners, and supported consumers are authoritative. This profile does not silently install, upgrade, or replace them."
+  },
+  "schema": "bbk.language-profile.v1",
+  "selection": {
+    "risk_trigger_map": "mappings/risk-trigger-map.json",
+    "runtime_capability_map": "mappings/runtime-capability-map.json",
+    "strictness_policy_map": "mappings/strictness-policy-map.json",
+    "task_skill_map": "mappings/task-skill-map.json"
+  },
+  "skills": [
+    {
+      "id": "bbk-tsjs",
+      "kind": "router",
+      "path": "skills/bbk-tsjs/SKILL.md"
+    },
+    {
+      "id": "tsjs-development-practices",
+      "kind": "reference",
+      "path": "skills/tsjs-development-practices/SKILL.md"
+    },
+    {
+      "id": "comprehensive-analysis-tsjs",
+      "kind": "survey-review",
+      "path": "skills/comprehensive-analysis-tsjs/SKILL.md"
+    },
+    {
+      "id": "tsjs-type-contract-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-type-contract-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-runtime-data-contract-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-runtime-data-contract-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-api-module-package-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-api-module-package-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-async-resource-failure-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-async-resource-failure-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-test-strategy-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-test-strategy-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-security-supply-chain-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-security-supply-chain-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-operational-release-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-operational-release-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-browser-ui-review",
+      "kind": "focused-review",
+      "path": "skills/tsjs-browser-ui-review/SKILL.md"
+    },
+    {
+      "id": "tsjs-evidence-reproducer",
+      "kind": "evidence",
+      "path": "skills/tsjs-evidence-reproducer/SKILL.md"
+    }
+  ],
+  "support": {
+    "conditional": [
+      "dual ESM and CommonJS packages",
+      "Bun and Deno production runtimes",
+      "edge and Worker runtimes",
+      "SSR and hydration systems",
+      "Electron",
+      "native Node.js addons",
+      "WASM wrappers",
+      "runtime-native TypeScript distribution"
+    ],
+    "partial_or_unqualified": [
+      "React Native",
+      "embedded JavaScript hosts",
+      "hostile-code sandboxing",
+      "universal cross-runtime packages",
+      "mobile-webview-specific behavior",
+      "native addon implementation internals"
+    ],
+    "primary": [
+      "Node.js applications and services",
+      "Node.js command-line tools",
+      "ESM libraries and packages",
+      "browser applications and libraries",
+      "strict or checked TypeScript projects",
+      "checked JavaScript using checkJs, @ts-check, or JSDoc",
+      "mixed TypeScript and JavaScript workspaces",
+      "package-manager workspaces and monorepos",
+      "OMP extensions and plugins when the exact host is qualified"
+    ]
+  },
+  "version": "0.1.0-alpha.1"
+}

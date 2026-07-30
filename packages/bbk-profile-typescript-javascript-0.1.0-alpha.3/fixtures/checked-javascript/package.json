@@ -1,0 +1,8 @@
+{
+  "name": "fixture-checked-javascript",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.0.0",
+  "scripts": {"typecheck": "tsc --noEmit", "test": "node --test"},
+  "devDependencies": {"typescript": "^6.0.0"}
+}

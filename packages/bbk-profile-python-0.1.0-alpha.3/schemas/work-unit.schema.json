@@ -1,0 +1,155 @@
+{
+  "$id": "https://bbk.local/schemas/work-unit.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "affectedPaths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "assuranceTier": {
+      "enum": [
+        "routine",
+        "material",
+        "consequential",
+        "critical"
+      ]
+    },
+    "authority": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "changeClasses": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "dependencies": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "executionSliceIds": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "expectedBehavior": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "handoffSchema": {
+      "type": "string"
+    },
+    "id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "implementationStructureContractRefs": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "keyContractRefs": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "languageProfiles": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "plannedArtifactRefs": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "preconditions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "profileHints": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "purpose": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "requiredSkills": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "role": {
+      "enum": [
+        "worker",
+        "validator",
+        "reviewer",
+        "prototyper",
+        "architect",
+        "wayfinder"
+      ]
+    },
+    "scaffoldingDisposition": {
+      "type": "string"
+    },
+    "scope": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "taskProfile": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "temporaryScaffolding": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "touchpoint": {
+      "type": "string"
+    },
+    "verificationPlan": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "purpose",
+    "scope",
+    "taskProfile",
+    "assuranceTier",
+    "role",
+    "expectedBehavior",
+    "verificationPlan"
+  ],
+  "title": "BBK Work Unit alpha.4",
+  "type": "object"
+}

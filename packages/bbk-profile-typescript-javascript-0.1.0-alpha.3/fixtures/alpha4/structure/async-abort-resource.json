@@ -1,0 +1,196 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The change fixes consequential realization shape needed for independent implementation and review.",
+    "triggers": [
+      "async",
+      "cancellation",
+      "resource-ownership"
+    ]
+  },
+  "contractId": "ISC-TSJS-ASYNC",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper layout",
+        "bounds": "May change if fixed public/runtime contracts, ownership, effects and touchpoint evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-ABORT-OWNER",
+        "rationale": "Protect a material boundary.",
+        "sourceRefs": [],
+        "statement": "The caller supplies AbortSignal; the worker observes it and cleans every owned resource before settling."
+      }
+    ],
+    "prohibited": [
+      "Duplicating the same runtime schema or authoritative rule in independently mutable layers.",
+      "Treating a TypeScript declaration or transpiler pass as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-TSJS-ASYNC"
+  ],
+  "metadata": {
+    "fixture": true,
+    "profile": "typescript-javascript"
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed public/shared contracts and owners are explicit.",
+      "Delegated freedom preserves competent private implementation choices.",
+      "The first execution slice creates an inspectable integrated touchpoint."
+    ],
+    "acceptedBy": [
+      "FIXTURE-AUTHORITY"
+    ],
+    "assuranceTier": "consequential",
+    "requiredReviewers": [
+      "tsjs-implementation-structure-review"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "retain",
+        "id": "ART-PKG",
+        "kind": "package",
+        "logicalPath": "package.json",
+        "owner": "package",
+        "responsibility": "Own scripts and runtime.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-WORKER",
+        "kind": "worker",
+        "logicalPath": "src/worker.ts",
+        "owner": "async-service",
+        "responsibility": "Own operation lifecycle.",
+        "sourceRefs": []
+      },
+      {
+        "action": "create",
+        "id": "ART-TEST",
+        "kind": "test",
+        "logicalPath": "test/worker.test.ts",
+        "owner": "test",
+        "responsibility": "Prove cancellation and cleanup.",
+        "sourceRefs": []
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "Failure is typed or otherwise classified and leaves the declared recoverable state."
+        ],
+        "id": "BP-ISC-TSJS-ASYNC",
+        "interfaceRefs": [
+          "IF-ISC-TSJS-ASYNC"
+        ],
+        "name": "Async abort/resource structure",
+        "steps": [
+          {
+            "contractRef": "KC-RUN",
+            "from": "Consumer",
+            "interaction": "use the accepted contract",
+            "to": "Owner"
+          }
+        ],
+        "success": "The declared touchpoint produces the accepted behavior.",
+        "trigger": "A declared consumer invokes the slice"
+      }
+    ],
+    "effectBoundaries": [
+      {
+        "authorization": "work-unit execution grant",
+        "effect": "timer/listener/child task",
+        "failure": "typed cancellation or failure",
+        "idempotency": "operation identity fences late results",
+        "owner": "worker module",
+        "recovery": "abort, join, remove listeners and settle once"
+      }
+    ],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "timeout differs from cancellation",
+          "partial effects are reported"
+        ],
+        "id": "KC-RUN",
+        "invariants": [
+          "late completion cannot commit after cancellation",
+          "all timers/listeners are cleaned"
+        ],
+        "kind": "async-resource",
+        "name": "Run contract",
+        "responsibility": "Caller owns cancellation; callee owns cleanup",
+        "shape": "run(signal): Promise<Result>",
+        "sourceRefs": [],
+        "visibility": "shared"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-TSJS-ASYNC",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-ASYNC"
+        ],
+        "statement": "Record outcome class and correlation identity without secrets."
+      }
+    ],
+    "stateOwnership": [
+      {
+        "concurrency": "callbacks may interleave across await",
+        "consistency": "one terminal result",
+        "lifetime": "one invocation",
+        "mutationAuthority": "worker internals under caller signal",
+        "owner": "worker module",
+        "recovery": "cancel and cleanup",
+        "state": "active operation"
+      }
+    ],
+    "testSeams": [
+      {
+        "id": "TS-ISC-TSJS-ASYNC",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-ASYNC"
+        ],
+        "statement": "Exercise the declared public/runtime boundary through a deterministic fixture or clean consumer."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-TSJS-ASYNC"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-TSJS-A4"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-TSJS-ASYNC"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-TSJS-ASYNC"
+    ],
+    "kind": "software",
+    "purpose": "Make task, AbortSignal, timer and cleanup ownership explicit.",
+    "requirementRefs": [
+      "REQ-ISC-TSJS-ASYNC"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-TSJS-ASYNC"
+    ]
+  },
+  "title": "Async abort/resource structure",
+  "uncertainties": []
+}

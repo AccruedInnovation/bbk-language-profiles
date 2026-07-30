@@ -1,0 +1,143 @@
+{
+  "schema": "bbk.rust-task-skill-map.v1",
+  "defaults": {
+    "worker": [
+      "bbk-rust",
+      "rust-skills"
+    ],
+    "worker_designer": [
+      "bbk-rust",
+      "rust-skills"
+    ],
+    "validator": [
+      "bbk-rust"
+    ],
+    "reviewer": [
+      "bbk-rust"
+    ],
+    "verification_designer": [
+      "bbk-rust"
+    ]
+  },
+  "task_profiles": {
+    "implementation": {
+      "worker": [
+        "bbk-rust",
+        "rust-skills"
+      ],
+      "validator": []
+    },
+    "interface-schema-migration": {
+      "worker": [
+        "bbk-rust",
+        "rust-skills"
+      ],
+      "validator": [
+        "rust-api-crate-boundary-review",
+        "rust-correctness-failure-review"
+      ]
+    },
+    "integration-consumer-path": {
+      "worker": [
+        "bbk-rust",
+        "rust-skills"
+      ],
+      "validator": [
+        "rust-correctness-failure-review",
+        "rust-api-crate-boundary-review"
+      ]
+    },
+    "test-fixture": {
+      "worker": [
+        "bbk-rust",
+        "rust-skills"
+      ],
+      "verification_designer": [
+        "rust-test-strategy-review"
+      ],
+      "reviewer": [
+        "rust-test-strategy-review"
+      ]
+    },
+    "documentation-specification": {
+      "worker": [
+        "bbk-rust",
+        "rust-skills"
+      ],
+      "reviewer": [
+        "rust-api-crate-boundary-review"
+      ]
+    },
+    "investigation-prototype": {
+      "worker": [
+        "bbk-rust",
+        "rust-skills"
+      ],
+      "reviewer": []
+    },
+    "packaging-release": {
+      "worker": [
+        "bbk-rust",
+        "rust-package-release-gates"
+      ],
+      "validator": [
+        "rust-operational-readiness-review",
+        "rust-security-supply-chain-review",
+        "rust-package-release-gates"
+      ]
+    },
+    "implementation-structure": {
+      "architect": [
+        "bbk-rust",
+        "rust-implementation-structure"
+      ],
+      "worker_designer": [
+        "bbk-rust",
+        "rust-implementation-structure"
+      ],
+      "worker": [
+        "bbk-rust",
+        "rust-implementation-structure",
+        "rust-skills"
+      ],
+      "reviewer": [
+        "bbk-rust",
+        "rust-implementation-structure-review"
+      ],
+      "validator": [
+        "bbk-rust",
+        "rust-implementation-structure-review"
+      ]
+    },
+    "execution-slicing": {
+      "planning_wayfinder": [
+        "bbk-rust",
+        "rust-execution-slicing"
+      ],
+      "phase_wayfinder": [
+        "bbk-rust",
+        "rust-execution-slicing"
+      ],
+      "worker_designer": [
+        "bbk-rust",
+        "rust-execution-slicing"
+      ],
+      "verification_designer": [
+        "bbk-rust",
+        "rust-execution-slicing",
+        "rust-test-strategy-review"
+      ],
+      "reviewer": [
+        "bbk-rust",
+        "rust-execution-slicing"
+      ]
+    }
+  },
+  "constraints": [
+    "Focused validator packs are selected only for assigned assertions and applicable triggers.",
+    "comprehensive-analysis-rust is a survey or architecture review, not a mandatory precursor to every focused review.",
+    "Worker invocations do not automatically receive the focused validator wording that will later assess them.",
+    "Additional validators require distinct assertion ownership or a genuinely complementary evidence method.",
+    "Implementation-structure review is routed by contract applicability and role; it is not preloaded into routine private work."
+  ]
+}

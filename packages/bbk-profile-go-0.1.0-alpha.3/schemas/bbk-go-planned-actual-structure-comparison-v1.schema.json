@@ -1,0 +1,183 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-go-planned-actual-structure-comparison-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "actual_inventory_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "advisories": {
+      "type": "array"
+    },
+    "applicability": {
+      "additionalProperties": true,
+      "properties": {
+        "disposition": {
+          "enum": [
+            "SUPPORTED",
+            "PARTIAL",
+            "UNSUPPORTED",
+            "NOT_APPLICABLE",
+            "BLOCKED"
+          ]
+        },
+        "level": {
+          "enum": [
+            "none",
+            "inline",
+            "contract"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "triggers": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "level",
+        "disposition",
+        "rationale"
+      ],
+      "type": "object"
+    },
+    "authority_boundary": {
+      "additionalProperties": true,
+      "properties": {
+        "may_declare_pass": {
+          "const": false
+        },
+        "may_expand_work_scope": {
+          "const": false
+        },
+        "may_grant_tools_or_effects": {
+          "const": false
+        },
+        "may_reduce_assurance": {
+          "const": false
+        }
+      },
+      "required": [
+        "may_declare_pass",
+        "may_expand_work_scope",
+        "may_grant_tools_or_effects",
+        "may_reduce_assurance"
+      ],
+      "type": "object"
+    },
+    "bbk_version": {
+      "type": "string"
+    },
+    "blockers": {
+      "type": "array"
+    },
+    "differences": {
+      "type": "array"
+    },
+    "disposition": {
+      "enum": [
+        "CONFORMS",
+        "ADVISORY_DIVERGENCE",
+        "MATERIAL_DIVERGENCE",
+        "BLOCKED",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "input": {
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "revision",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "output_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "planned_contract_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "preflight_sha256": {
+      "oneOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "profile": {
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "const": "go"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "const": "bbk.go.planned-actual-structure-comparison.v1"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "unsupported_or_uncertain": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "profile",
+    "bbk_version",
+    "input",
+    "applicability",
+    "unsupported_or_uncertain",
+    "advisories",
+    "blockers",
+    "authority_boundary",
+    "output_sha256",
+    "planned_contract_sha256",
+    "actual_inventory_sha256",
+    "differences",
+    "summary",
+    "disposition"
+  ],
+  "title": "BBK Go planned actual structure comparison v1",
+  "type": "object"
+}

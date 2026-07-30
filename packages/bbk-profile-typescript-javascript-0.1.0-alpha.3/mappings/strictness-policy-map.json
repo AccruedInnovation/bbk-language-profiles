@@ -1,0 +1,35 @@
+{
+  "schema": "bbk.tsjs-strictness-policy-map.v1",
+  "modes": {
+    "typescript-strict": {
+      "checker_required": true,
+      "default_worker_guidance": ["preserve strictness", "avoid unchecked boundary assertions"],
+      "default_gates": ["tsjs-typecheck-affected"]
+    },
+    "typescript-partially-strict": {
+      "checker_required": true,
+      "default_worker_guidance": ["respect repository policy", "identify material disabled guarantees", "ratchet only within scope"],
+      "default_gates": ["tsjs-typecheck-affected"]
+    },
+    "typescript-transpile-only": {
+      "checker_required": false,
+      "default_worker_guidance": ["do not claim compiler type safety", "strengthen runtime validation and tests proportionally"],
+      "default_gates": ["tsjs-build-affected"]
+    },
+    "javascript-checked": {
+      "checker_required": true,
+      "default_worker_guidance": ["preserve checkJs or @ts-check coverage", "treat JSDoc as public contract where used"],
+      "default_gates": ["tsjs-typecheck-affected"]
+    },
+    "javascript-unchecked": {
+      "checker_required": false,
+      "default_worker_guidance": ["do not invent a static guarantee", "use runtime and behavioral evidence"],
+      "default_gates": []
+    },
+    "mixed": {
+      "checker_required": "per-package",
+      "default_worker_guidance": ["resolve each package mode independently", "do not average checked and unchecked areas"],
+      "default_gates": ["tsjs-typecheck-affected"]
+    }
+  }
+}

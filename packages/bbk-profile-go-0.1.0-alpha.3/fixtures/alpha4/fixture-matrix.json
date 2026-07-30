@@ -1,0 +1,85 @@
+{
+  "scenarios": [
+    {
+      "expected": "inline; no standalone structure reviewer",
+      "id": "routine-private",
+      "input": "structure/routine-inline-contract.json"
+    },
+    {
+      "expected": "supported projection and focused review",
+      "id": "material-public",
+      "input": "structure/go-service-contract.json"
+    },
+    {
+      "expected": "ownership/failure review and touchpoint evidence",
+      "id": "state-concurrency",
+      "input": "slices/go-stream-slice.json"
+    },
+    {
+      "expected": "slice projection",
+      "id": "explicit-slicing",
+      "input": "slices/go-save-slice.json"
+    },
+    {
+      "expected": "structure, migration, evidence, and consumer checks",
+      "id": "migration",
+      "input": "structure/migration-contract.json"
+    },
+    {
+      "expected": "bounded unsupported result",
+      "id": "unsupported",
+      "input": "unsupported/procedure-contract.json"
+    },
+    {
+      "expected": "no material failure",
+      "id": "harmless-private",
+      "input": "actual/harmless-private-divergence.json"
+    },
+    {
+      "expected": "material divergence",
+      "id": "fixed-divergence",
+      "input": "actual/material-package-owner-divergence.json"
+    },
+    {
+      "expected": "allowed foundation exception",
+      "id": "foundation-valid",
+      "input": "slices/foundation-valid-slice.json"
+    },
+    {
+      "expected": "blocking at consequential tier",
+      "id": "foundation-invalid",
+      "input": "slices/foundation-invalid-slice.json"
+    },
+    {
+      "expected": "standalone module and downstream consumer touchpoint",
+      "id": "module-downstream",
+      "input": "slices/module-downstream-slice.json"
+    },
+    {
+      "expected": "critical native boundary projection and focused review",
+      "id": "cgo-unsafe",
+      "input": "structure/cgo-contract.json"
+    },
+    {
+      "expected": "survey only; no automatic focused structure fan-out",
+      "id": "broad-survey",
+      "input": "resolver:broad-analysis"
+    },
+    {
+      "expected": "BLOCKED, not silently skipped",
+      "id": "required-tool-unavailable",
+      "input": "runtime:--run-tools-without-go"
+    },
+    {
+      "expected": "legacy-unprojected",
+      "id": "legacy-alpha3",
+      "input": "legacy/PROFILE-alpha3.json"
+    },
+    {
+      "expected": "BLOCKED at consequential tier",
+      "id": "unknown-fixed-evidence",
+      "input": "actual/unknown-fixed-evidence.json"
+    }
+  ],
+  "schema": "bbk.go-alpha4-fixture-matrix.v1"
+}

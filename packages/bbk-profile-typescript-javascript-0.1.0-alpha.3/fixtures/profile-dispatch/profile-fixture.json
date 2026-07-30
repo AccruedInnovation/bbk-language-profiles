@@ -1,0 +1,17 @@
+{
+  "expectedLenses": [
+    "architecture-boundary",
+    "interface-consumer-compatibility",
+    "implementation-structure",
+    "state-concurrency-effect-recovery",
+    "security-privacy-supply-chain",
+    "test-evidence",
+    "operations-performance-resource",
+    "package-install-migration-release"
+  ],
+  "ompEnvToken": "TSJS",
+  "profileId": "typescript-javascript",
+  "reviewStatus": "supported",
+  "sourcePath": "src/order.ts",
+  "sourceText": "export type OrderState = { kind: \"draft\" } | { kind: \"submitted\" } | { kind: \"complete\" };\nexport function decideTransition(state: OrderState): OrderState { return state; }\nexport async function executeEffect(signal: AbortSignal): Promise<void> { /* retry timeout acknowledgement recovery cleanup */ }\nlet ambientState = false;\nconst shadowOrderState = new Map<string, OrderState>();\n"
+}

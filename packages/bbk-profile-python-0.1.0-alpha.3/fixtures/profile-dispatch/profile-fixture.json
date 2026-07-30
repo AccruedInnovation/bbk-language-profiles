@@ -1,0 +1,17 @@
+{
+  "expectedLenses": [
+    "architecture-boundary",
+    "interface-consumer-compatibility",
+    "implementation-structure",
+    "state-concurrency-effect-recovery",
+    "security-privacy-supply-chain",
+    "test-evidence",
+    "operations-performance-resource",
+    "package-install-migration-release"
+  ],
+  "ompEnvToken": "PYTHON",
+  "profileId": "python",
+  "reviewStatus": "supported",
+  "sourcePath": "src/order.py",
+  "sourceText": "from dataclasses import dataclass\nfrom enum import Enum\nclass OrderState(Enum):\n    DRAFT = \"draft\"\n    SUBMITTED = \"submitted\"\n@dataclass(frozen=True)\nclass OrderId:\n    value: int\ndef decide_transition(state: OrderState) -> OrderState:\n    return state\nasync def execute_effect_with_retry_timeout_cancel_ack_recovery() -> None:\n    pass\nambient_state = False\nshadow_order_state = {}\n"
+}

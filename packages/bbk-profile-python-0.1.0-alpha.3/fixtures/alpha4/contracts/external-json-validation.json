@@ -1,0 +1,151 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "Use the least structure ceremony sufficient for this fixture.",
+    "triggers": [
+      "runtime-validation",
+      "serialization",
+      "external-boundary"
+    ]
+  },
+  "contractId": "ISC-PY-VALIDATION",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and equivalent internal module layout",
+        "bounds": "May vary when public/shared contracts, ownership, behavior, and evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-VALIDATION-OWNER",
+        "rationale": "The decision stabilizes a material Python boundary.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "External JSON is validated before construction of trusted domain values."
+      }
+    ],
+    "prohibited": [
+      "Do not rely on annotations alone to validate untrusted JSON."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-PY-VALIDATION"
+  ],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {
+    "python": {}
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and consequential shape are explicit.",
+      "Delegated freedom remains sufficient.",
+      "A real touchpoint can verify the result."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": [
+      "bbk_reviewer"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "create",
+        "id": "ART-VALIDATION",
+        "kind": "module",
+        "logicalPath": "src/fixture_pkg/validation.py",
+        "owner": "python",
+        "responsibility": "Own art-validation behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      }
+    ],
+    "behaviorPaths": [],
+    "effectBoundaries": [
+      {
+        "authorization": "request input only",
+        "effect": "accept external JSON",
+        "failure": "typed validation rejection",
+        "idempotency": "pure parse",
+        "owner": "boundary parser",
+        "recovery": "caller may correct and retry"
+      }
+    ],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "Invalid external values are rejected before trusted use."
+        ],
+        "id": "KC-EXTERNAL-PAYLOAD",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "runtime-schema",
+        "name": "ExternalPayload",
+        "responsibility": "Represent ExternalPayload.",
+        "shape": "ExternalPayload(name: str, count: int)",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "external"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-PY-VALIDATION",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Record outcome and failure class without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-PY-VALIDATION",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Exercise the declared touchpoint through the normal package/runtime subject."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-PY-ALPHA4"
+    ],
+    "capabilityRefs": [
+      "CAP-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "kind": "software",
+    "purpose": "External JSON runtime validation boundary",
+    "requirementRefs": [
+      "REQ-PYTHON"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-PY-VALIDATION"
+    ]
+  },
+  "title": "External JSON runtime validation boundary",
+  "uncertainties": []
+}

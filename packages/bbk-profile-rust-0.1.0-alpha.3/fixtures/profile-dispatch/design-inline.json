@@ -1,0 +1,130 @@
+{
+  "applicability": "INLINE",
+  "canonicalState": {
+    "derivedFacts": [],
+    "dimensions": [
+      {
+        "dimensionId": "lifecycle",
+        "independentOf": [],
+        "initialization": "Begin IDLE.",
+        "mutuallyExclusive": true,
+        "owner": "InlineStateOwner",
+        "persistence": "none",
+        "purpose": "Represent local lifecycle",
+        "terminalOrReset": "ACTIVE may reset to IDLE.",
+        "values": [
+          {
+            "id": "IDLE",
+            "prohibitedData": [],
+            "requiredData": []
+          },
+          {
+            "id": "ACTIVE",
+            "prohibitedData": [],
+            "requiredData": []
+          }
+        ]
+      }
+    ],
+    "duplicateStateProhibitions": [
+      "No parallel boolean flags."
+    ],
+    "observations": [],
+    "persistenceBoundary": "No persistence.",
+    "semanticOwner": "InlineStateOwner",
+    "strategy": "SINGLE_SUM",
+    "versionFenceSemantics": "Input revision is checked before transition."
+  },
+  "decisionBoundaries": [
+    {
+      "authorityValidation": "Caller scope is checked.",
+      "boundaryId": "DB-INLINE",
+      "contextHandling": {
+        "clock": "Not used.",
+        "configuration": "Passed explicitly.",
+        "environment": "Not used.",
+        "externalData": "Not used.",
+        "randomness": "Not used."
+      },
+      "determinism": "PURE_DETERMINISTIC",
+      "executionMode": "none",
+      "expectedFailures": [
+        "invalid transition"
+      ],
+      "freshnessValidation": "Revision must match.",
+      "hiddenDependencyPolicy": "No hidden dependencies.",
+      "inputTypes": [
+        "Activate",
+        "Reset"
+      ],
+      "ioClaims": [],
+      "outputs": [
+        "NEXT_STATE",
+        "REJECTION"
+      ],
+      "owner": "InlineStateOwner",
+      "stateInputs": [
+        "lifecycle"
+      ]
+    }
+  ],
+  "delegatedFreedom": [
+    "Private helper decomposition and naming may vary."
+  ],
+  "designId": "SDE-INLINE-001",
+  "effectContracts": [],
+  "fixedDecisionRefs": [
+    "FD-INLINE-STATE"
+  ],
+  "formalization": {
+    "assumptions": [],
+    "divergenceHandling": "Ordinary review.",
+    "exploredBounds": [],
+    "level": "NONE",
+    "limitations": [],
+    "mappingRefs": [],
+    "modelDigest": null,
+    "modelRef": null,
+    "properties": [],
+    "rationale": "Unit tests are sufficient.",
+    "required": false,
+    "tool": null
+  },
+  "invariants": [
+    {
+      "assertionRefs": [],
+      "class": "representation",
+      "invariantId": "INV-INLINE-ONE",
+      "statement": "Exactly one lifecycle value is active.",
+      "verificationMethods": [
+        "unit test"
+      ]
+    }
+  ],
+  "rationale": "A small local state transition benefits from explicit representation but no standalone cross-boundary contract.",
+  "reviewPolicy": {
+    "acceptanceCriteria": [],
+    "assuranceTier": "routine",
+    "required": false,
+    "reviewerLenses": []
+  },
+  "revision": "1",
+  "schema": "bbk.state-decision-effect-design.v1",
+  "scopeRefs": [
+    "SCOPE-INLINE"
+  ],
+  "sourceDecisionRefs": [
+    "ADR-INLINE-001"
+  ],
+  "sourceInterfaceRefs": [],
+  "sourceRequirementRefs": [
+    "REQ-INLINE-001"
+  ],
+  "status": "accepted",
+  "title": "Inline local state transition",
+  "traceFixtureRefs": [],
+  "transitionRules": [],
+  "triggerIndicators": [
+    "state"
+  ]
+}

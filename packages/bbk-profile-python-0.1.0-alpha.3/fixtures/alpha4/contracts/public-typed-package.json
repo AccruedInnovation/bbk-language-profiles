@@ -1,0 +1,189 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "Use the least structure ceremony sufficient for this fixture.",
+    "triggers": [
+      "public-api",
+      "public-typing",
+      "import-surface"
+    ]
+  },
+  "contractId": "ISC-PY-PUBLIC",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and equivalent internal module layout",
+        "bounds": "May vary when public/shared contracts, ownership, behavior, and evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-PUBLIC-IMPORT",
+        "rationale": "The decision stabilizes a material Python boundary.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Greeting and greet remain importable from fixture_pkg."
+      },
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-PY-TYPED",
+        "rationale": "The decision stabilizes a material Python boundary.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "The distribution retains its py.typed marker."
+      }
+    ],
+    "prohibited": [
+      "Do not move the public symbols without a compatibility plan.",
+      "Do not claim type-checker success as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-PY-PUBLIC-CONSUMER"
+  ],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {
+    "python": {
+      "typingSubject": "runtime exports plus py.typed public typing surface"
+    }
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and consequential shape are explicit.",
+      "Delegated freedom remains sufficient.",
+      "A real touchpoint can verify the result."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": [
+      "bbk_reviewer"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-INIT",
+        "kind": "module",
+        "logicalPath": "src/fixture_pkg/__init__.py",
+        "owner": "python",
+        "responsibility": "Own art-init behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      },
+      {
+        "action": "modify",
+        "id": "ART-API",
+        "kind": "module",
+        "logicalPath": "src/fixture_pkg/api.py",
+        "owner": "python",
+        "responsibility": "Own art-api behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      },
+      {
+        "action": "retain",
+        "id": "ART-PYTYPED",
+        "kind": "artifact",
+        "logicalPath": "src/fixture_pkg/py.typed",
+        "owner": "python",
+        "responsibility": "Own art-pytyped behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      }
+    ],
+    "behaviorPaths": [],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [],
+        "id": "KC-GREETING",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "public-value",
+        "name": "Greeting",
+        "responsibility": "Represent Greeting.",
+        "shape": "Greeting(message: str)",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "public"
+      },
+      {
+        "failureSemantics": [],
+        "id": "KC-GREET",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "public-function",
+        "name": "greet",
+        "responsibility": "Represent greet.",
+        "shape": "greet(name: str) -> Greeting",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "public"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-PY-PUBLIC",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Record outcome and failure class without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-PY-PUBLIC",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Exercise the declared touchpoint through the normal package/runtime subject."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-PY-ALPHA4"
+    ],
+    "capabilityRefs": [
+      "CAP-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "kind": "software",
+    "purpose": "Public typed package API",
+    "requirementRefs": [
+      "REQ-PYTHON"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-PY-PUBLIC"
+    ]
+  },
+  "title": "Public typed package API",
+  "uncertainties": []
+}

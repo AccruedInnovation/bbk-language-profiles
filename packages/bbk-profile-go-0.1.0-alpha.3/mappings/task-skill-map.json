@@ -1,0 +1,153 @@
+{
+  "constraints": [
+    "Focused validator packs are selected only for assigned assertions and applicable triggers.",
+    "comprehensive-analysis-go is a survey and routing review, not a mandatory precursor to every focused review.",
+    "Worker invocations do not automatically receive the focused validator wording that will later assess them.",
+    "go-web-htmx-review is selected only when the project uses that stack or an explicit hint requests it.",
+    "Additional validators require distinct assertion ownership or a genuinely complementary evidence method.",
+    "ImplementationStructureContract and ExecutionSlice projections remain views over generic BBK objects; they never become an independent source of truth.",
+    "Routine private work remains minimal and does not select a standalone structure reviewer.",
+    "Structure review compares fixed decisions and consequential shape, not exact private file-tree equality."
+  ],
+  "defaults": {
+    "reviewer": [
+      "bbk-go"
+    ],
+    "validator": [
+      "bbk-go"
+    ],
+    "verification_designer": [
+      "bbk-go"
+    ],
+    "worker": [
+      "bbk-go",
+      "go-skills"
+    ],
+    "worker_designer": [
+      "bbk-go",
+      "go-skills"
+    ]
+  },
+  "schema": "bbk.go-task-skill-map.v1",
+  "task_profiles": {
+    "documentation-specification": {
+      "reviewer": [
+        "go-api-module-boundary-review"
+      ],
+      "worker": [
+        "bbk-go",
+        "go-skills"
+      ]
+    },
+    "execution-slicing": {
+      "phase_wayfinder": [
+        "bbk-go",
+        "go-implementation-structure"
+      ],
+      "planning_wayfinder": [
+        "bbk-go",
+        "go-implementation-structure"
+      ],
+      "reviewer": [
+        "bbk-go",
+        "go-implementation-structure-review",
+        "go-test-strategy-review"
+      ],
+      "verification_designer": [
+        "bbk-go",
+        "go-test-strategy-review"
+      ],
+      "worker_designer": [
+        "bbk-go",
+        "go-skills",
+        "go-implementation-structure"
+      ]
+    },
+    "implementation": {
+      "validator": [],
+      "worker": [
+        "bbk-go",
+        "go-skills"
+      ]
+    },
+    "implementation-structure": {
+      "architect": [
+        "bbk-go",
+        "go-implementation-structure"
+      ],
+      "reviewer": [
+        "bbk-go",
+        "go-implementation-structure-review"
+      ],
+      "validator": [
+        "bbk-go",
+        "go-implementation-structure-review"
+      ],
+      "verification_designer": [
+        "bbk-go",
+        "go-test-strategy-review",
+        "go-implementation-structure"
+      ],
+      "worker": [
+        "bbk-go",
+        "go-skills",
+        "go-implementation-structure"
+      ],
+      "worker_designer": [
+        "bbk-go",
+        "go-skills",
+        "go-implementation-structure"
+      ]
+    },
+    "integration-consumer-path": {
+      "validator": [
+        "go-correctness-concurrency-review",
+        "go-api-module-boundary-review"
+      ],
+      "worker": [
+        "bbk-go",
+        "go-skills"
+      ]
+    },
+    "interface-schema-migration": {
+      "validator": [
+        "go-api-module-boundary-review",
+        "go-correctness-concurrency-review"
+      ],
+      "worker": [
+        "bbk-go",
+        "go-skills"
+      ]
+    },
+    "investigation-prototype": {
+      "reviewer": [],
+      "worker": [
+        "bbk-go",
+        "go-skills"
+      ]
+    },
+    "packaging-release": {
+      "validator": [
+        "go-operational-readiness-review",
+        "go-security-supply-chain-review",
+        "go-package-release-gates"
+      ],
+      "worker": [
+        "bbk-go",
+        "go-package-release-gates"
+      ]
+    },
+    "test-fixture": {
+      "reviewer": [
+        "go-test-strategy-review"
+      ],
+      "verification_designer": [
+        "go-test-strategy-review"
+      ],
+      "worker": [
+        "bbk-go",
+        "go-skills"
+      ]
+    }
+  }
+}

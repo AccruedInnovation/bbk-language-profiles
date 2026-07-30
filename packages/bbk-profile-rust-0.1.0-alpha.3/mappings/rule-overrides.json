@@ -1,0 +1,98 @@
+{
+  "schema": "bbk.rust-rule-overrides.v1",
+  "category_defaults": {
+    "own": {"kind": "design-guidance", "default_applicability": "general-with-context", "severity_if_violated": "context-dependent"},
+    "err": {"kind": "correctness-guidance", "default_applicability": "general-with-context", "severity_if_violated": "medium-to-critical"},
+    "mem": {"kind": "optimization-guidance", "default_applicability": "conditional", "evidence_required": true, "severity_if_violated": "advisory-to-medium"},
+    "unsafe": {"kind": "soundness-assurance", "default_applicability": "triggered", "evidence_required": true, "severity_if_violated": "documentation-to-critical"},
+    "api": {"kind": "api-design-guidance", "default_applicability": "conditional", "severity_if_violated": "advisory-to-high"},
+    "async": {"kind": "correctness-guidance", "default_applicability": "triggered", "evidence_required": true, "severity_if_violated": "medium-to-critical"},
+    "conc": {"kind": "correctness-guidance", "default_applicability": "triggered", "evidence_required": true, "severity_if_violated": "high-to-critical"},
+    "opt": {"kind": "optimization-guidance", "default_applicability": "conditional", "evidence_required": true, "severity_if_violated": "advisory"},
+    "num": {"kind": "correctness-guidance", "default_applicability": "conditional", "evidence_required": true, "severity_if_violated": "medium-to-critical"},
+    "type": {"kind": "type-design-guidance", "default_applicability": "conditional", "severity_if_violated": "advisory-to-high"},
+    "trait": {"kind": "api-design-guidance", "default_applicability": "conditional", "severity_if_violated": "advisory-to-medium"},
+    "conv": {"kind": "correctness-guidance", "default_applicability": "conditional", "severity_if_violated": "medium-to-high"},
+    "const": {"kind": "api-and-compile-time-guidance", "default_applicability": "conditional", "severity_if_violated": "advisory-to-medium"},
+    "serde": {"kind": "compatibility-guidance", "default_applicability": "triggered", "evidence_required": true, "severity_if_violated": "medium-to-critical"},
+    "pat": {"kind": "language-guidance", "default_applicability": "conditional", "severity_if_violated": "advisory-to-medium"},
+    "macro": {"kind": "macro-guidance", "default_applicability": "triggered", "evidence_required": true, "severity_if_violated": "advisory-to-high"},
+    "closure": {"kind": "language-guidance", "default_applicability": "conditional", "severity_if_violated": "advisory-to-medium"},
+    "coll": {"kind": "data-structure-guidance", "default_applicability": "conditional", "evidence_required": true, "severity_if_violated": "advisory-to-medium"},
+    "name": {"kind": "convention", "default_applicability": "project-convention", "severity_if_violated": "advisory"},
+    "test": {"kind": "assurance-technique", "default_applicability": "triggered", "evidence_required": true, "severity_if_violated": "coverage-dependent"},
+    "doc": {"kind": "documentation-guidance", "default_applicability": "project-and-api-dependent", "severity_if_violated": "advisory-to-high"},
+    "obs": {"kind": "operability-guidance", "default_applicability": "triggered", "evidence_required": true, "severity_if_violated": "medium-to-high"},
+    "perf": {"kind": "optimization-guidance", "default_applicability": "conditional", "evidence_required": true, "severity_if_violated": "advisory-to-medium"},
+    "proj": {"kind": "project-structure-guidance", "default_applicability": "project-convention", "severity_if_violated": "advisory-to-medium"},
+    "lint": {"kind": "mechanical-assurance", "default_applicability": "repository-policy", "evidence_required": true, "severity_if_violated": "lint-dependent"},
+    "anti": {"kind": "diagnostic-heuristic", "default_applicability": "conditional", "severity_if_violated": "context-dependent"}
+  },
+  "rules": {
+    "const-fn": {
+      "limitations": ["Removing public const-callability can break downstream const contexts; public use requires compatibility review"],
+      "severity_if_violated": "advisory-to-high"
+    },
+    "own-move-large": {
+      "default_applicability": "profiled-hot-path-only",
+      "limitations": ["Do not use universal byte thresholds", "Boxing adds allocation, indirection, and cache effects", "Compiler optimizations may elide moves"],
+      "evidence_required": true
+    },
+    "mem-smaller-integers": {
+      "default_applicability": "range-and-layout-evidence-required",
+      "limitations": ["Integer width, float precision, units, serialization, alignment, and conversion cost are domain contracts", "Do not downgrade geospatial or scientific precision without an explicit error budget"],
+      "evidence_required": true
+    },
+    "unsafe-miri-ci": {
+      "default_applicability": "triggered-and-supported",
+      "channels": ["nightly"],
+      "external_tools": ["miri"],
+      "limitations": ["Passing Miri is evidence rather than proof of soundness", "Safe local code may still exercise unsafe dependencies", "Unsupported system interactions may require a targeted subset"]
+    },
+    "perf-release-profile": {
+      "default_applicability": "benchmark-and-operational-policy-required",
+      "limitations": ["opt-level, LTO, codegen units, panic strategy, and stripping are independent trade-offs", "Diagnostic, size, throughput, startup, compile-time, and crash-policy goals may require different profiles"]
+    },
+    "opt-lto-release": {
+      "default_applicability": "benchmark-required",
+      "limitations": ["LTO can materially increase link time and does not guarantee a runtime improvement"]
+    },
+    "opt-codegen-units": {
+      "default_applicability": "benchmark-required",
+      "limitations": ["Fewer codegen units can improve optimization while increasing compile time and reducing build parallelism"]
+    },
+    "opt-target-cpu": {
+      "default_applicability": "deployment-target-specific",
+      "limitations": ["target-cpu=native can make artifacts non-portable and is inappropriate for generic distribution"]
+    },
+    "opt-pgo-profile": {
+      "default_applicability": "representative-workload-required",
+      "limitations": ["PGO is only as representative as the collected workload and must be repeated after material changes"]
+    },
+    "opt-simd-portable": {
+      "default_applicability": "profiled-hot-path-only",
+      "limitations": ["Portable SIMD may require nightly", "Platform intrinsics require target and safety qualification"]
+    },
+    "opt-likely-hint": {
+      "default_applicability": "profiled-hot-path-only",
+      "limitations": ["Do not infer branch probability from source order alone", "Channel support must be detected rather than stated from a static Rust version"]
+    },
+    "perf-collect-into": {
+      "default_applicability": "allocation-hot-path-only",
+      "limitations": ["Use stable extend when collect_into is unavailable", "Channel support must be detected"]
+    },
+    "perf-ahash": {
+      "default_applicability": "trusted-input-performance-only",
+      "limitations": ["Hashers are security and compatibility choices; untrusted-input DoS risk and deterministic-output requirements must be assessed"]
+    },
+    "proj-prelude-module": {"default_applicability": "project-convention", "severity_if_violated": "advisory"},
+    "api-extension-trait": {"default_applicability": "design-alternative", "severity_if_violated": "advisory"},
+    "err-thiserror-lib": {"default_applicability": "repository-convention-or-new-dependency-decision", "severity_if_violated": "advisory-to-medium"},
+    "err-anyhow-app": {"default_applicability": "repository-convention-or-new-dependency-decision", "severity_if_violated": "advisory-to-medium"},
+    "async-tokio-runtime": {"default_applicability": "tokio-project-only", "severity_if_violated": "context-dependent"},
+    "obs-tracing-over-log": {"default_applicability": "repository-convention-or-new-dependency-decision", "severity_if_violated": "advisory-to-medium"},
+    "test-criterion-bench": {"default_applicability": "performance-claim-only", "evidence_required": true},
+    "test-loom-concurrency": {"default_applicability": "concurrency-invariant-only", "evidence_required": true},
+    "test-proptest-properties": {"default_applicability": "property-suitable-behavior", "evidence_required": true}
+  }
+}

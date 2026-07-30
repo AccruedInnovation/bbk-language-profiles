@@ -1,0 +1,160 @@
+{
+  "authority": {
+    "may_add_gate_recipes": true,
+    "may_add_procedure": true,
+    "may_add_review_criteria": true,
+    "may_declare_pass": false,
+    "may_expand_work_scope": false,
+    "may_grant_tools_or_effects": false,
+    "may_reduce_assurance": false
+  },
+  "description": "Applicability-aware Python worker, architecture review, typing, packaging, runtime, testing, operations, security, native-extension, evidence, and gate guidance for BBK across Codex, OMP, Claude Code, and generic agent harnesses.",
+  "entrypoints": {
+    "gate_plan": [
+      "{python}",
+      "tools/bbk_python.py",
+      "--json",
+      "gate-plan"
+    ],
+    "preflight": [
+      "{python}",
+      "tools/bbk_python.py",
+      "--json",
+      "preflight"
+    ],
+    "resolve": [
+      "{python}",
+      "tools/bbk_python.py",
+      "--json",
+      "resolve"
+    ]
+  },
+  "gates": "gates/python-gates.json",
+  "id": "python",
+  "installation": {
+    "cli": "tools/bbk_python.py",
+    "omp_extension": "omp/extension",
+    "skill_root": "skills"
+  },
+  "maturity": "comprehensive-alpha",
+  "name": "BBK Python Profile",
+  "package": "bbk-profile-python",
+  "policy": {
+    "editable_install_is_not_release_evidence": true,
+    "installed_artifact_evidence_for_release_claims": true,
+    "no_automatic_full-review_fanout": true,
+    "no_silent_tool_installation": true,
+    "repository_commands_first": true,
+    "typing_is_not_runtime_validation": true
+  },
+  "references": [
+    "references/compatibility-policy.md",
+    "references/environment-package-policy.md",
+    "references/performance-policy.md",
+    "references/support-matrix.md",
+    "references/testing-evidence-policy.md"
+  ],
+  "requires": {
+    "bbk_minimum": "0.1.0-alpha.3",
+    "python_minimum": "3.11",
+    "python_policy": "Repository-declared interpreters, requires-python, environment manager, lock representation, build backend, test commands, and support matrix are authoritative. This profile does not silently install, upgrade, or replace them."
+  },
+  "schema": "bbk.language-profile.v1",
+  "selection": {
+    "risk_trigger_map": "mappings/risk-trigger-map.json",
+    "task_skill_map": "mappings/task-skill-map.json"
+  },
+  "skills": [
+    {
+      "id": "bbk-python",
+      "kind": "router",
+      "path": "skills/bbk-python/SKILL.md"
+    },
+    {
+      "id": "comprehensive-analysis-python",
+      "kind": "survey-review",
+      "path": "skills/comprehensive-analysis-python/SKILL.md"
+    },
+    {
+      "id": "python-api-package-boundary-review",
+      "kind": "focused-review",
+      "path": "skills/python-api-package-boundary-review/SKILL.md"
+    },
+    {
+      "id": "python-runtime-correctness-review",
+      "kind": "focused-review",
+      "path": "skills/python-runtime-correctness-review/SKILL.md"
+    },
+    {
+      "id": "python-typing-contract-review",
+      "kind": "focused-review",
+      "path": "skills/python-typing-contract-review/SKILL.md"
+    },
+    {
+      "id": "python-test-strategy-review",
+      "kind": "focused-review",
+      "path": "skills/python-test-strategy-review/SKILL.md"
+    },
+    {
+      "id": "python-operational-readiness-review",
+      "kind": "focused-review",
+      "path": "skills/python-operational-readiness-review/SKILL.md"
+    },
+    {
+      "id": "python-security-supply-chain-review",
+      "kind": "focused-review",
+      "path": "skills/python-security-supply-chain-review/SKILL.md"
+    },
+    {
+      "id": "python-native-extension-review",
+      "kind": "focused-assurance",
+      "path": "skills/python-native-extension-review/SKILL.md"
+    },
+    {
+      "id": "python-package-release-gates",
+      "kind": "focused-assurance",
+      "path": "skills/python-package-release-gates/SKILL.md"
+    },
+    {
+      "id": "python-evidence-reproducer",
+      "kind": "evidence",
+      "path": "skills/python-evidence-reproducer/SKILL.md"
+    },
+    {
+      "id": "python-web-hypermedia-review",
+      "kind": "optional-focused-review",
+      "path": "skills/python-web-hypermedia-review/SKILL.md"
+    }
+  ],
+  "support": {
+    "conditional": [
+      "multiprocessing and process pools",
+      "plugin and entry-point systems",
+      "database migrations",
+      "free-threaded CPython",
+      "native extensions through CPython C API, Cython, cffi, ctypes, or PyO3/maturin",
+      "public typing distributions and stub packages",
+      "web and hypermedia applications"
+    ],
+    "partial_or_unqualified": [
+      "scientific binary-wheel ecosystems with complex native stacks",
+      "embedded Python",
+      "mobile Python",
+      "Python on WASM",
+      "GPU-specific stacks",
+      "alternative interpreters not declared and tested by the project",
+      "operating-system vendor packaging"
+    ],
+    "primary": [
+      "pure-Python libraries",
+      "command-line applications",
+      "ordinary applications and services",
+      "pyproject.toml projects",
+      "pytest or repository-defined test suites",
+      "optional static typing",
+      "asyncio applications",
+      "sdist and wheel packaging"
+    ]
+  },
+  "version": "0.1.0-alpha.1"
+}

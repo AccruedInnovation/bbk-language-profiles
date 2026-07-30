@@ -1,0 +1,166 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "Use the least structure ceremony sufficient for this fixture.",
+    "triggers": [
+      "multiprocessing",
+      "process-handoff",
+      "serialization",
+      "state-ownership"
+    ]
+  },
+  "contractId": "ISC-PY-PROCESS",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and equivalent internal module layout",
+        "bounds": "May vary when public/shared contracts, ownership, behavior, and evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-PROCESS-CONTEXT",
+        "rationale": "The decision stabilizes a material Python boundary.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "The supported process start method and serialization form are explicit evidence dimensions."
+      }
+    ],
+    "prohibited": [
+      "Do not treat annotations as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-PY-PROCESS"
+  ],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {
+    "python": {}
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and consequential shape are explicit.",
+      "Delegated freedom remains sufficient.",
+      "A real touchpoint can verify the result."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": [
+      "bbk_reviewer"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "create",
+        "id": "ART-JOBS",
+        "kind": "module",
+        "logicalPath": "src/fixture_pkg/jobs.py",
+        "owner": "python",
+        "responsibility": "Own art-jobs behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      }
+    ],
+    "behaviorPaths": [],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [],
+        "id": "KC-JOB",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "process-message",
+        "name": "JobMessage",
+        "responsibility": "Represent JobMessage.",
+        "shape": "JobMessage(values: tuple[int, ...])",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "shared"
+      },
+      {
+        "failureSemantics": [],
+        "id": "KC-JOB-RESULT",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "result-type",
+        "name": "JobResult",
+        "responsibility": "Represent JobResult.",
+        "shape": "JobResult(total: int)",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "shared"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-PY-PROCESS",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Record outcome and failure class without secrets."
+      }
+    ],
+    "stateOwnership": [
+      {
+        "concurrency": "selected multiprocessing context",
+        "consistency": "one terminal result per job ID",
+        "lifetime": "one submitted job",
+        "mutationAuthority": "coordinator owns submission and result disposition",
+        "owner": "process coordinator",
+        "recovery": "timeout or worker failure produces explicit failure; no blind duplicate submission",
+        "state": "worker process and pending job"
+      }
+    ],
+    "testSeams": [
+      {
+        "id": "TS-ISC-PY-PROCESS",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Exercise the declared touchpoint through the normal package/runtime subject."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-PY-ALPHA4"
+    ],
+    "capabilityRefs": [
+      "CAP-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "kind": "software",
+    "purpose": "Multiprocessing job handoff",
+    "requirementRefs": [
+      "REQ-PYTHON"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-PY-PROCESS"
+    ]
+  },
+  "title": "Multiprocessing job handoff",
+  "uncertainties": []
+}

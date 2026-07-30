@@ -1,0 +1,122 @@
+{
+  "applicability": {
+    "level": "none",
+    "rationale": "Use the least structure ceremony sufficient for this fixture.",
+    "triggers": []
+  },
+  "contractId": "ISC-PY-ROUTINE",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and equivalent internal module layout",
+        "bounds": "May vary when public/shared contracts, ownership, behavior, and evidence remain intact."
+      }
+    ],
+    "fixed": [],
+    "prohibited": [
+      "Do not treat annotations as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {
+    "python": {}
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and consequential shape are explicit.",
+      "Delegated freedom remains sufficient.",
+      "A real touchpoint can verify the result."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "routine",
+    "requiredReviewers": [],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-ROUTINE",
+        "kind": "module",
+        "logicalPath": "src/fixture_pkg/api.py",
+        "owner": "python",
+        "responsibility": "Own art-routine behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      }
+    ],
+    "behaviorPaths": [],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [],
+        "id": "KC-PRIVATE",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "private-helper",
+        "name": "_normalize_name",
+        "responsibility": "Represent _normalize_name.",
+        "shape": "_normalize_name(value: str) -> str",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "private"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-PY-ROUTINE",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Record outcome and failure class without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-PY-ROUTINE",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Exercise the declared touchpoint through the normal package/runtime subject."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-PY-ALPHA4"
+    ],
+    "capabilityRefs": [
+      "CAP-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "kind": "software",
+    "purpose": "Routine private helper refactor",
+    "requirementRefs": [
+      "REQ-PYTHON"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-PY-ROUTINE"
+    ]
+  },
+  "title": "Routine private helper refactor",
+  "uncertainties": []
+}

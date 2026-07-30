@@ -1,0 +1,413 @@
+{
+  "authority": {
+    "may_add_gate_recipes": true,
+    "may_add_procedure": true,
+    "may_add_review_criteria": true,
+    "may_declare_pass": false,
+    "may_expand_work_scope": false,
+    "may_grant_tools_or_effects": false,
+    "may_reduce_assurance": false
+  },
+  "capabilities": {
+    "implementation_structure": {
+      "artifact_kinds": [
+        "distribution",
+        "package",
+        "module",
+        "namespace-package",
+        "public-import",
+        "py-typed-marker",
+        "stub-package",
+        "plugin",
+        "entry-point",
+        "dataclass",
+        "enum",
+        "protocol",
+        "abstract-base",
+        "typed-mapping",
+        "runtime-schema",
+        "migration",
+        "generated-artifact",
+        "test",
+        "fixture",
+        "wheel",
+        "sdist",
+        "native-extension",
+        "async-service",
+        "process-worker",
+        "context-manager",
+        "queue",
+        "serializer"
+      ],
+      "contract_kinds": [
+        "public-runtime-api",
+        "public-typing-api",
+        "import-surface",
+        "package-distribution",
+        "plugin-entry-point",
+        "runtime-validation",
+        "persistence-schema",
+        "serialization-wire",
+        "async-task-lifecycle",
+        "process-handoff",
+        "exception-taxonomy",
+        "resource-lifetime",
+        "native-extension-abi",
+        "consumer-compatibility",
+        "state-owner",
+        "effect-boundary"
+      ],
+      "status": "supported",
+      "touchpoint_kinds": [
+        "import",
+        "api",
+        "cli",
+        "package-install",
+        "wheel-consumer",
+        "plugin-discovery",
+        "runtime-validation",
+        "async-flow",
+        "process-handoff",
+        "migration-rehearsal",
+        "test",
+        "report",
+        "protocol-trace",
+        "deployed-service"
+      ],
+      "trigger_hints": [
+        "public-api",
+        "public-typing",
+        "import-surface",
+        "runtime-validation",
+        "asyncio",
+        "cancellation",
+        "multiprocessing",
+        "plugin",
+        "packaging",
+        "migration",
+        "serialization",
+        "state-ownership",
+        "resource-lifetime",
+        "native-extension",
+        "multi-package",
+        "external-boundary",
+        "difficult-to-reverse-topology",
+        "execution-slicing"
+      ],
+      "type_concepts": [
+        "domain-identity",
+        "enum-state",
+        "dataclass-value",
+        "protocol-seam",
+        "abstract-base",
+        "typed-mapping",
+        "runtime-schema",
+        "validated-boundary",
+        "static-annotation",
+        "result-disposition",
+        "exception-taxonomy",
+        "resource-owner",
+        "async-task-owner",
+        "cancellation-contract",
+        "process-message",
+        "serialization-shape",
+        "py-typed-export",
+        "boundary-value",
+        "failure-disposition",
+        "evidence-disposition"
+      ]
+    },
+    "review_assurance": {
+      "context_entrypoint": "review_context",
+      "context_selectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "dispatch_protocol": "bbk.profile-capability.v1",
+      "evidence_adapters": [
+        "profile-native-evidence-v1"
+      ],
+      "evidence_entrypoint": "evidence_adapter",
+      "lens_ids": [
+        "architecture-boundary",
+        "interface-consumer-compatibility",
+        "implementation-structure",
+        "state-concurrency-effect-recovery",
+        "security-privacy-supply-chain",
+        "test-evidence",
+        "operations-performance-resource",
+        "package-install-migration-release"
+      ],
+      "limitations": [
+        "The profile must not create or replace the project environment or select an interpreter.",
+        "Typing evidence is distinct from runtime validation and packaging evidence.",
+        "Native extension, multi-platform, process, async, web-stack and deployment claims remain conditional on exact environment qualification."
+      ],
+      "review_entrypoint": "review_lens",
+      "status": "supported"
+    },
+    "state_decision_effect": {
+      "boundary_concepts": [
+        "Enum and sum-like dataclass/validated-model state",
+        "products of independent state dimensions",
+        "immutable value objects where useful",
+        "Protocol/ABC and package/API boundaries",
+        "asyncio task, cancellation, queue, process, context-manager and resource ownership",
+        "exception/result/disposition and persistence/migration boundaries"
+      ],
+      "dispatch_protocol": "bbk.profile-capability.v1",
+      "formal_model_tools": [
+        "Hypothesis stateful or property testing when repository-qualified",
+        "deterministic/fake-clock async and retry traces",
+        "multiprocess/subprocess harnesses",
+        "optional external state-machine or Quint/TLA+ mappings"
+      ],
+      "inventory_entrypoint": "state_effect_inventory",
+      "limitations": [
+        "The profile must not create or replace the project environment or select an interpreter.",
+        "Typing evidence is distinct from runtime validation and packaging evidence.",
+        "Native extension, multi-platform, process, async, web-stack and deployment claims remain conditional on exact environment qualification."
+      ],
+      "projection_entrypoint": "state_effect",
+      "representations": [
+        "Enum and sum-like dataclass/validated-model state",
+        "products of independent state dimensions",
+        "immutable value objects where useful",
+        "Protocol/ABC and package/API boundaries"
+      ],
+      "review_entrypoint": "state_effect_review",
+      "status": "supported"
+    }
+  },
+  "description": "Applicability-aware Python worker, structure/slice authoring and review, typing, packaging, runtime, testing, operations, security, native-extension, evidence, and gate guidance for BBK alpha.4 across Codex, OMP, Claude Code, and generic agent harnesses.",
+  "entrypoints": {
+    "evidence_adapter": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "evidence-adapter"
+    ],
+    "gate_plan": [
+      "{python}",
+      "tools/bbk_python.py",
+      "--json",
+      "gate-plan"
+    ],
+    "preflight": [
+      "{python}",
+      "tools/bbk_python.py",
+      "--json",
+      "preflight"
+    ],
+    "resolve": [
+      "{python}",
+      "tools/bbk_python.py",
+      "--json",
+      "resolve"
+    ],
+    "review_context": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "review-context"
+    ],
+    "review_lens": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "review-lens"
+    ],
+    "slice": [
+      "{python}",
+      "tools/bbk_python.py",
+      "--json",
+      "slice"
+    ],
+    "state_effect": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect"
+    ],
+    "state_effect_inventory": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect-inventory"
+    ],
+    "state_effect_review": [
+      "{python}",
+      "tools/profile.py",
+      "--json",
+      "state-effect-review"
+    ],
+    "structure": [
+      "{python}",
+      "tools/bbk_python.py",
+      "--json",
+      "structure"
+    ],
+    "structure_review": [
+      "{python}",
+      "tools/bbk_python.py",
+      "--json",
+      "structure-review"
+    ]
+  },
+  "gates": "gates/python-gates.json",
+  "id": "python",
+  "installation": {
+    "cli": "tools/bbk_python.py",
+    "omp_extension": "omp/extension",
+    "skill_root": "skills"
+  },
+  "maturity": "comprehensive-alpha",
+  "name": "BBK Python Profile",
+  "package": "bbk-profile-python",
+  "policy": {
+    "editable_install_is_not_release_evidence": true,
+    "generic_structure_contract_remains_authoritative": true,
+    "installed_artifact_evidence_for_release_claims": true,
+    "no_automatic_full-review_fanout": true,
+    "no_silent_tool_installation": true,
+    "private_shape_differences_allowed_within_delegated_freedom": true,
+    "profile_projection_is_not_second_source_of_truth": true,
+    "repository_commands_first": true,
+    "slice_atomicity_is_coherence_not_line_count": true,
+    "structure_contract_not_required_for_every_change": true,
+    "typing_is_not_runtime_validation": true
+  },
+  "predecessor": {
+    "archive_sha256": "7326bd46eec47d5051ccc4b2ff47b26b2d9d3ec4a4bc4754f8b62933a79331d9",
+    "compatibility": "all alpha.2 skills, procedures, gate recipes, structure/slice behavior, installer safeguards, package rules and qualification boundaries retained; alpha.8 typed profile dispatch is additive",
+    "package": "bbk-profile-python",
+    "package_root_sha256": "d109386e9e1805a935f52023069a11e8fcead276445b9fda469997078f070718",
+    "version": "0.1.0-alpha.2"
+  },
+  "references": [
+    "references/compatibility-policy.md",
+    "references/environment-package-policy.md",
+    "references/performance-policy.md",
+    "references/support-matrix.md",
+    "references/testing-evidence-policy.md"
+  ],
+  "requires": {
+    "bbk_minimum": "0.1.0-alpha.8",
+    "python_minimum": "3.11",
+    "python_policy": "Repository-declared interpreters, requires-python, environment manager, lock representation, build backend, test commands, and support matrix are authoritative. This profile does not silently install, upgrade, or replace them."
+  },
+  "schema": "bbk.language-profile.v1",
+  "selection": {
+    "risk_trigger_map": "mappings/risk-trigger-map.json",
+    "task_skill_map": "mappings/task-skill-map.json"
+  },
+  "skills": [
+    {
+      "id": "bbk-python",
+      "kind": "router",
+      "path": "skills/bbk-python/SKILL.md"
+    },
+    {
+      "id": "python-implementation-structure-authoring",
+      "kind": "structure-authoring",
+      "path": "skills/python-implementation-structure-authoring/SKILL.md"
+    },
+    {
+      "id": "python-execution-slice-design",
+      "kind": "execution-slicing",
+      "path": "skills/python-execution-slice-design/SKILL.md"
+    },
+    {
+      "id": "python-implementation-structure-review",
+      "kind": "focused-structure-review",
+      "path": "skills/python-implementation-structure-review/SKILL.md"
+    },
+    {
+      "id": "comprehensive-analysis-python",
+      "kind": "survey-review",
+      "path": "skills/comprehensive-analysis-python/SKILL.md"
+    },
+    {
+      "id": "python-api-package-boundary-review",
+      "kind": "focused-review",
+      "path": "skills/python-api-package-boundary-review/SKILL.md"
+    },
+    {
+      "id": "python-runtime-correctness-review",
+      "kind": "focused-review",
+      "path": "skills/python-runtime-correctness-review/SKILL.md"
+    },
+    {
+      "id": "python-typing-contract-review",
+      "kind": "focused-review",
+      "path": "skills/python-typing-contract-review/SKILL.md"
+    },
+    {
+      "id": "python-test-strategy-review",
+      "kind": "focused-review",
+      "path": "skills/python-test-strategy-review/SKILL.md"
+    },
+    {
+      "id": "python-operational-readiness-review",
+      "kind": "focused-review",
+      "path": "skills/python-operational-readiness-review/SKILL.md"
+    },
+    {
+      "id": "python-security-supply-chain-review",
+      "kind": "focused-review",
+      "path": "skills/python-security-supply-chain-review/SKILL.md"
+    },
+    {
+      "id": "python-native-extension-review",
+      "kind": "focused-assurance",
+      "path": "skills/python-native-extension-review/SKILL.md"
+    },
+    {
+      "id": "python-package-release-gates",
+      "kind": "focused-assurance",
+      "path": "skills/python-package-release-gates/SKILL.md"
+    },
+    {
+      "id": "python-evidence-reproducer",
+      "kind": "evidence",
+      "path": "skills/python-evidence-reproducer/SKILL.md"
+    },
+    {
+      "id": "python-web-hypermedia-review",
+      "kind": "optional-focused-review",
+      "path": "skills/python-web-hypermedia-review/SKILL.md"
+    }
+  ],
+  "support": {
+    "conditional": [
+      "multiprocessing and process pools",
+      "plugin and entry-point systems",
+      "database migrations",
+      "free-threaded CPython",
+      "native extensions through CPython C API, Cython, cffi, ctypes, or PyO3/maturin",
+      "public typing distributions and stub packages",
+      "web and hypermedia applications"
+    ],
+    "partial_or_unqualified": [
+      "scientific binary-wheel ecosystems with complex native stacks",
+      "embedded Python",
+      "mobile Python",
+      "Python on WASM",
+      "GPU-specific stacks",
+      "alternative interpreters not declared and tested by the project",
+      "operating-system vendor packaging"
+    ],
+    "primary": [
+      "pure-Python libraries",
+      "command-line applications",
+      "ordinary applications and services",
+      "pyproject.toml projects",
+      "pytest or repository-defined test suites",
+      "optional static typing",
+      "asyncio applications",
+      "sdist and wheel packaging"
+    ]
+  },
+  "version": "0.1.0-alpha.3"
+}

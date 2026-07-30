@@ -1,0 +1,76 @@
+{
+  "artifacts": [
+    {
+      "kind": "go-source-file",
+      "path": "api/api.go"
+    },
+    {
+      "kind": "go-source-file",
+      "path": "cmd/app/main.go"
+    },
+    {
+      "kind": "go-test-file",
+      "path": "api/api_test.go"
+    }
+  ],
+  "behavior_paths": [
+    {
+      "id": "BP-SAVE"
+    },
+    {
+      "id": "BP-STREAM"
+    }
+  ],
+  "contracts": [
+    {
+      "kind": "type",
+      "name": "Record",
+      "visibility": "exported"
+    },
+    {
+      "kind": "type",
+      "name": "Store",
+      "visibility": "exported"
+    },
+    {
+      "kind": "type",
+      "name": "Service",
+      "visibility": "exported"
+    },
+    {
+      "kind": "sentinel-error",
+      "name": "ErrClosed",
+      "visibility": "exported"
+    }
+  ],
+  "delegated_differences": [],
+  "fixed_decisions": [
+    {
+      "evidence": [
+        "cmd/app/main.go"
+      ],
+      "id": "FD-PACKAGE-OWNER",
+      "message": "cmd/app now owns and mutates the closed flag.",
+      "status": "violated"
+    },
+    {
+      "id": "FD-STREAM-OWNER",
+      "status": "satisfied"
+    }
+  ],
+  "output_sha256": "1f95f7eb4cffcc4a9d0c0ba1d24a9a7864f6094a5c2195d2ebc927187ea3bdd0",
+  "ownership": [
+    {
+      "kind": "service-state",
+      "owner": "example.com/bbk/api.Service"
+    },
+    {
+      "kind": "stream",
+      "owner": "api.Stream invocation"
+    }
+  ],
+  "preflight_sha256": null,
+  "root": "fixtures/go-workspace",
+  "schema": "bbk.go.actual-structure-inventory.v1",
+  "unsupported_or_uncertain": []
+}

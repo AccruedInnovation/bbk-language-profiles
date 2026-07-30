@@ -1,0 +1,174 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "Use the least structure ceremony sufficient for this fixture.",
+    "triggers": [
+      "asyncio",
+      "cancellation",
+      "state-ownership",
+      "recovery"
+    ]
+  },
+  "contractId": "ISC-PY-ASYNC",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and equivalent internal module layout",
+        "bounds": "May vary when public/shared contracts, ownership, behavior, and evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-ASYNC-OWNER",
+        "rationale": "The decision stabilizes a material Python boundary.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "The TaskGroup scope owns every child task and cancellation cleanup."
+      }
+    ],
+    "prohibited": [
+      "Do not treat annotations as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-PY-ASYNC"
+  ],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {
+    "python": {}
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and consequential shape are explicit.",
+      "Delegated freedom remains sufficient.",
+      "A real touchpoint can verify the result."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": [
+      "bbk_reviewer"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-ASYNC",
+        "kind": "module",
+        "logicalPath": "src/fixture_pkg/async_service.py",
+        "owner": "python",
+        "responsibility": "Own art-async behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "cancellation propagates after cleanup",
+          "child failure cancels siblings"
+        ],
+        "id": "BP-ASYNC",
+        "name": "fetch batch",
+        "steps": [
+          {
+            "from": "caller",
+            "interaction": "start structured task group",
+            "to": "fetch_many"
+          },
+          {
+            "from": "fetch_many",
+            "interaction": "create and await child work",
+            "to": "child tasks"
+          }
+        ],
+        "success": "all values returned in input order",
+        "trigger": "caller awaits fetch_many"
+      }
+    ],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [],
+        "id": "KC-ASYNC-RESULT",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "result-type",
+        "name": "AsyncBatchResult",
+        "responsibility": "Represent AsyncBatchResult.",
+        "shape": "AsyncBatchResult(values: tuple[int, ...])",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "shared"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-PY-ASYNC",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Record outcome and failure class without secrets."
+      }
+    ],
+    "stateOwnership": [
+      {
+        "concurrency": "structured asyncio task group",
+        "consistency": "all results or raised failure",
+        "lifetime": "one call",
+        "mutationAuthority": "owning coroutine only",
+        "owner": "fetch_many TaskGroup scope",
+        "recovery": "cancel siblings and run cleanup before propagation",
+        "state": "child tasks and async resources"
+      }
+    ],
+    "testSeams": [
+      {
+        "id": "TS-ISC-PY-ASYNC",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Exercise the declared touchpoint through the normal package/runtime subject."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-PY-ALPHA4"
+    ],
+    "capabilityRefs": [
+      "CAP-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "kind": "software",
+    "purpose": "Asyncio resource and cancellation ownership",
+    "requirementRefs": [
+      "REQ-PYTHON"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-PY-ASYNC"
+    ]
+  },
+  "title": "Asyncio resource and cancellation ownership",
+  "uncertainties": []
+}

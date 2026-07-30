@@ -1,0 +1,76 @@
+{
+  "assertions": [
+    {
+      "evidence": "link and invocation receipt",
+      "id": "A-RUST-ABI",
+      "method": "test",
+      "statement": "The symbol and calling convention match the declared ABI."
+    },
+    {
+      "evidence": "unsafe/FFI review result",
+      "id": "A-RUST-UNSAFE",
+      "method": "review",
+      "statement": "The unsafe invariant receives focused review and applicable tool evidence."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "Splitting further would remove the integrated observation or create an artificial handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-RUST-FFI revision 1 accepted."
+  ],
+  "exitConditions": [
+    "The declared touchpoint is observed.",
+    "Every required assertion has candidate-bound evidence."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ISC-RUST-FFI"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-RUST-FFI"
+    ],
+    "participants": [
+      "C consumer",
+      "native crate"
+    ],
+    "steps": [
+      "Build the library.",
+      "Link the consumer.",
+      "Invoke the valid-pointer case."
+    ]
+  },
+  "integrationOwner": "integration-owner",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Build and invoke the C ABI from a bounded native consumer fixture.",
+  "parentCapabilityRefs": [
+    "CAP-ISC-RUST-FFI"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-RUST-FFI",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-RUST-FFI@1"
+  ],
+  "title": "FFI consumer touchpoint",
+  "touchpoint": {
+    "actor": "native consumer",
+    "environment": "qualified native toolchain fixture",
+    "expectedObservation": "The ABI symbol links and the valid-pointer case returns the byte.",
+    "interaction": "Invoke fixture_read with a qualified pointer fixture.",
+    "kind": "api"
+  },
+  "workUnitRefs": [
+    "WU-RUST-FFI",
+    "WU-RUST-NATIVE-FIXTURE"
+  ]
+}

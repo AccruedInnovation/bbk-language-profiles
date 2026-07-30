@@ -1,0 +1,8 @@
+{
+  "name": "fixture-omp-extension",
+  "private": true,
+  "type": "module",
+  "scripts": {"typecheck":"tsc --noEmit","build":"tsc -p tsconfig.build.json","test:extension":"node test-host.mjs"},
+  "devDependencies": {"typescript":"^6.0.0","@types/node":"^22.0.0"},
+  "keywords": ["oh-my-pi", "omp", "extension"]
+}

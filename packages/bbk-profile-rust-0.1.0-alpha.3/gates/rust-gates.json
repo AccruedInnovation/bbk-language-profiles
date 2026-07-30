@@ -1,0 +1,419 @@
+{
+  "schema": "bbk.rust-gate-recipes.v1",
+  "policy": {
+    "repository_commands_first": true,
+    "check_only_final_gates": true,
+    "missing_required_tool": "BLOCKED",
+    "missing_recommended_tool": "ADVISORY",
+    "no_silent_install": true,
+    "full_suite_repeat": "Only when the assurance contract or aggregate gate requires it; do not repeat at every layer for reassurance."
+  },
+  "recipes": [
+    {
+      "id": "rustfmt-check",
+      "class": "always-cheap",
+      "minimum_tier": "routine",
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "requires": [
+        "cargo",
+        "rustfmt"
+      ],
+      "assertions": [
+        "Rust source formatting matches repository policy"
+      ]
+    },
+    {
+      "id": "rust-focused-tests",
+      "class": "required-if-configured",
+      "minimum_tier": "routine",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "{package}",
+        "{target-selection}"
+      ],
+      "requires": [
+        "cargo"
+      ],
+      "assertions": [
+        "Focused tests covering the changed behavior pass"
+      ]
+    },
+    {
+      "id": "rust-check-affected",
+      "class": "always-cheap",
+      "minimum_tier": "routine",
+      "command": [
+        "cargo",
+        "check",
+        "-p",
+        "{package}",
+        "{feature-selection}",
+        "{target-selection}"
+      ],
+      "requires": [
+        "cargo"
+      ],
+      "assertions": [
+        "Affected package type-checks in the selected configuration"
+      ],
+      "limitations": [
+        "cargo check skips final code generation; it is not sufficient for material code-generation or linker claims"
+      ]
+    },
+    {
+      "id": "rust-clippy-affected",
+      "class": "required-if-configured",
+      "minimum_tier": "routine",
+      "command": [
+        "cargo",
+        "clippy",
+        "-p",
+        "{package}",
+        "{feature-selection}",
+        "{target-selection}",
+        "--",
+        "{repository-lint-policy}"
+      ],
+      "requires": [
+        "cargo",
+        "clippy"
+      ],
+      "assertions": [
+        "Repository-authoritative Rust lints pass"
+      ]
+    },
+    {
+      "id": "rust-build-affected",
+      "class": "required-when-triggered",
+      "minimum_tier": "material",
+      "command": [
+        "cargo",
+        "build",
+        "-p",
+        "{package}",
+        "{feature-selection}",
+        "{target-selection}"
+      ],
+      "requires": [
+        "cargo"
+      ],
+      "triggers": [
+        "linker",
+        "codegen",
+        "build-script",
+        "native-library",
+        "binary",
+        "cdylib",
+        "staticlib",
+        "material"
+      ],
+      "assertions": [
+        "Affected package completes code generation and linking"
+      ]
+    },
+    {
+      "id": "rust-doc-and-doctest",
+      "class": "required-when-triggered",
+      "minimum_tier": "material",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "{package}",
+        "--doc",
+        "{feature-selection}"
+      ],
+      "requires": [
+        "cargo"
+      ],
+      "triggers": [
+        "public-api",
+        "documentation",
+        "examples"
+      ],
+      "assertions": [
+        "Public examples and documentation tests remain valid"
+      ]
+    },
+    {
+      "id": "rust-supported-matrix",
+      "class": "required-when-triggered",
+      "minimum_tier": "material",
+      "command": [
+        "{repository-matrix-command}"
+      ],
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "features",
+        "target",
+        "msrv",
+        "no-default-features",
+        "cross-target"
+      ],
+      "assertions": [
+        "Declared supported feature, target, and compiler configurations pass"
+      ],
+      "limitations": [
+        "Do not enumerate the full feature powerset unless the repository explicitly supports and budgets it"
+      ]
+    },
+    {
+      "id": "rust-release-behavior",
+      "class": "required-when-triggered",
+      "minimum_tier": "consequential",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "{package}",
+        "--release",
+        "{feature-selection}",
+        "{target-selection}"
+      ],
+      "requires": [
+        "cargo"
+      ],
+      "triggers": [
+        "release",
+        "performance",
+        "overflow",
+        "panic-policy",
+        "optimized-behavior"
+      ],
+      "assertions": [
+        "Behavior remains correct under the release profile actually shipped"
+      ]
+    },
+    {
+      "id": "rust-package-clean",
+      "class": "required-when-triggered",
+      "minimum_tier": "consequential",
+      "command": [
+        "cargo",
+        "package",
+        "-p",
+        "{package}",
+        "--locked"
+      ],
+      "requires": [
+        "cargo"
+      ],
+      "triggers": [
+        "publish",
+        "crate-package",
+        "release"
+      ],
+      "assertions": [
+        "The clean packaged source set builds and passes Cargo package verification"
+      ]
+    },
+    {
+      "id": "rust-miri",
+      "class": "manual-experimental",
+      "minimum_tier": "consequential",
+      "command": [
+        "cargo",
+        "miri",
+        "test",
+        "-p",
+        "{package}",
+        "{target-selection}"
+      ],
+      "requires": [
+        "cargo",
+        "miri",
+        "qualified-nightly"
+      ],
+      "triggers": [
+        "unsafe",
+        "raw-pointer",
+        "manual-send-sync",
+        "ffi",
+        "aliasing",
+        "custom-allocation"
+      ],
+      "assertions": [
+        "Selected tests exhibit no Miri-detected undefined behavior under the qualified configuration"
+      ],
+      "limitations": [
+        "Passing Miri is evidence, not proof of soundness",
+        "Unsupported system interactions may block or require a reduced test subset"
+      ]
+    },
+    {
+      "id": "rust-loom",
+      "class": "manual-experimental",
+      "minimum_tier": "consequential",
+      "command": [
+        "{repository-loom-command}"
+      ],
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "concurrency",
+        "atomic",
+        "lock-free",
+        "ordering"
+      ],
+      "assertions": [
+        "Selected synchronization invariants hold across explored schedules"
+      ]
+    },
+    {
+      "id": "rust-fuzz",
+      "class": "manual-experimental",
+      "minimum_tier": "consequential",
+      "command": [
+        "{repository-fuzz-command}"
+      ],
+      "requires": [
+        "repository-defined"
+      ],
+      "triggers": [
+        "parser",
+        "decoder",
+        "deserializer",
+        "untrusted-input",
+        "protocol"
+      ],
+      "assertions": [
+        "The selected fuzz target has no reproducible crash or invariant violation within the declared budget"
+      ]
+    },
+    {
+      "id": "rust-mutest-rs",
+      "class": "manual-experimental",
+      "minimum_tier": "consequential",
+      "command": [
+        "cargo",
+        "mutest",
+        "run",
+        "-p",
+        "{package}",
+        "{target-selection}"
+      ],
+      "requires": [
+        "cargo",
+        "mutest-rs",
+        "qualified-nightly"
+      ],
+      "triggers": [
+        "mutation-testing",
+        "mutest-rs",
+        "high-value-pure-logic",
+        "test-strategy-gap"
+      ],
+      "assertions": [
+        "Selected high-value logic has no undispositioned surviving mutest-rs mutants within the declared scope"
+      ],
+      "limitations": [
+        "Use a project-qualified mutest-rs revision and nightly toolchain",
+        "Preserve surviving mutants and tool failures separately",
+        "Do not install or update the toolchain silently"
+      ]
+    },
+    {
+      "id": "rust-sanitizers",
+      "class": "manual-experimental",
+      "minimum_tier": "critical",
+      "command": [
+        "{repository-sanitizer-command}"
+      ],
+      "requires": [
+        "qualified-nightly",
+        "supported-target"
+      ],
+      "triggers": [
+        "unsafe",
+        "ffi",
+        "memory",
+        "thread-race",
+        "critical"
+      ],
+      "assertions": [
+        "Selected execution has no sanitizer-detected violation in the qualified target configuration"
+      ]
+    },
+    {
+      "id": "rust-structure-contract-validate",
+      "class": "required-when-triggered",
+      "minimum_tier": "routine",
+      "cost": "low",
+      "provider": "bbk-alpha4",
+      "command": null,
+      "description": "Validate the exact generic ImplementationStructureContract and bind its ID, revision and digest.",
+      "triggers": [
+        "implementation-structure",
+        "structure-review"
+      ]
+    },
+    {
+      "id": "rust-structure-projection-validate",
+      "class": "required-when-triggered",
+      "minimum_tier": "material",
+      "cost": "low",
+      "provider": "bbk-profile-rust",
+      "command": null,
+      "description": "Validate the deterministic Rust projection and type/ownership applicability.",
+      "triggers": [
+        "implementation-structure",
+        "structure-review"
+      ]
+    },
+    {
+      "id": "rust-planned-actual-structure",
+      "class": "required-when-triggered",
+      "minimum_tier": "material",
+      "cost": "medium",
+      "provider": "bbk-profile-rust",
+      "command": null,
+      "description": "Compare fixed public/shared shape and ownership to the exact candidate without requiring private tree equality.",
+      "triggers": [
+        "structure-review",
+        "public-api",
+        "async",
+        "persistence",
+        "unsafe",
+        "ffi",
+        "migration"
+      ]
+    },
+    {
+      "id": "rust-slice-touchpoint",
+      "class": "required-when-triggered",
+      "minimum_tier": "routine",
+      "cost": "low",
+      "provider": "bbk-alpha4",
+      "command": null,
+      "description": "Validate that the execution slice has an inspectable Rust touchpoint, assertions, integration owner and containment.",
+      "triggers": [
+        "execution-slicing",
+        "slice-touchpoint"
+      ]
+    },
+    {
+      "id": "rust-scaffolding-disposition",
+      "class": "required-when-triggered",
+      "minimum_tier": "material",
+      "cost": "low",
+      "provider": "bbk-alpha4",
+      "command": null,
+      "description": "Confirm temporary mocks, adapters, feature flags, fixtures and generated bindings have explicit disposition.",
+      "triggers": [
+        "execution-slicing",
+        "implementation-structure"
+      ]
+    }
+  ]
+}

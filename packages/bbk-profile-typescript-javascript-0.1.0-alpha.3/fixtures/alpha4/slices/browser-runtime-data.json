@@ -1,0 +1,77 @@
+{
+  "assertions": [
+    {
+      "evidence": "real-browser valid/invalid trace",
+      "id": "A-BROWSER-DATA",
+      "method": "test",
+      "statement": "Untrusted payload is runtime validated."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice closes one integrated feedback path without artificial layer-only handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-TSJS-BROWSER-DATA@1 accepted"
+  ],
+  "exitConditions": [
+    "Valid payload renders; invalid payload is rejected before domain state."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ES-TSJS-BROWSER-DATA"
+    ],
+    "interfaceRefs": [
+      "IF-ES-TSJS-BROWSER-DATA"
+    ],
+    "participants": [
+      "consumer",
+      "owner"
+    ],
+    "steps": [
+      "Parse unknown payload.",
+      "Construct domain state only after success.",
+      "Render success or bounded error."
+    ]
+  },
+  "integrationOwner": "Owner of ES-TSJS-BROWSER-DATA",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Fetch representative valid/invalid payloads and render bounded UI behavior.",
+  "parentCapabilityRefs": [
+    "CAP-ES-TSJS-BROWSER-DATA"
+  ],
+  "profileProjections": {},
+  "scaffolding": [
+    {
+      "disposition": "retain-as-fixture",
+      "id": "SC-API",
+      "owner": "browser test",
+      "purpose": "Fixture API with valid and malformed payloads"
+    }
+  ],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-TSJS-BROWSER-DATA",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-TSJS-BROWSER-DATA@1"
+  ],
+  "title": "Browser validated data touchpoint",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "synthetic qualified fixture",
+    "expectedObservation": "Valid payload renders; invalid payload is rejected before domain state.",
+    "interaction": "Use real browser against fixture API",
+    "kind": "ui"
+  },
+  "workUnitRefs": [
+    "WU-SCHEMA",
+    "WU-UI",
+    "WU-BROWSER"
+  ]
+}

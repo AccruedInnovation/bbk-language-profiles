@@ -1,0 +1,154 @@
+{
+  "policy": {
+    "additional_validators_require_distinct_assertions": true,
+    "base_router": "bbk-python",
+    "broad_survey_does_not_fan_out": true,
+    "implementation_structure_is_optional": true,
+    "structure_projection_does_not_replace_generic_contract": true,
+    "structure_reviewer_is_routed_by_applicability": true,
+    "workers_do_not_receive_future_validator_prompts": true
+  },
+  "roles": {
+    "architect": {
+      "default": [
+        "bbk-python"
+      ]
+    },
+    "reviewer": {
+      "default": [
+        "bbk-python"
+      ]
+    },
+    "validator": {
+      "default": [
+        "bbk-python"
+      ]
+    },
+    "verification-designer": {
+      "default": [
+        "bbk-python",
+        "python-test-strategy-review"
+      ]
+    },
+    "worker": {
+      "default": [
+        "bbk-python"
+      ]
+    },
+    "worker-designer": {
+      "default": [
+        "bbk-python"
+      ]
+    }
+  },
+  "schema": "bbk.python-task-skill-map.v1",
+  "task_profiles": {
+    "documentation-specification": {
+      "worker": [
+        "bbk-python"
+      ]
+    },
+    "execution-slicing": {
+      "architect": [
+        "bbk-python",
+        "python-execution-slice-design"
+      ],
+      "reviewer": [
+        "bbk-python",
+        "python-execution-slice-design"
+      ],
+      "verification-designer": [
+        "bbk-python",
+        "python-execution-slice-design",
+        "python-test-strategy-review"
+      ],
+      "worker": [
+        "bbk-python"
+      ],
+      "worker-designer": [
+        "bbk-python",
+        "python-execution-slice-design"
+      ]
+    },
+    "implementation": {
+      "worker": [
+        "bbk-python"
+      ]
+    },
+    "implementation-structure": {
+      "architect": [
+        "bbk-python",
+        "python-implementation-structure-authoring"
+      ],
+      "reviewer": [
+        "bbk-python",
+        "python-implementation-structure-review"
+      ],
+      "validator": [
+        "bbk-python",
+        "python-implementation-structure-review"
+      ],
+      "verification-designer": [
+        "bbk-python",
+        "python-test-strategy-review"
+      ],
+      "worker": [
+        "bbk-python",
+        "python-implementation-structure-authoring"
+      ],
+      "worker-designer": [
+        "bbk-python",
+        "python-implementation-structure-authoring"
+      ]
+    },
+    "integration-consumer-path": {
+      "validator": [
+        "bbk-python",
+        "python-runtime-correctness-review"
+      ],
+      "worker": [
+        "bbk-python"
+      ]
+    },
+    "interface-schema-migration": {
+      "validator": [
+        "bbk-python"
+      ],
+      "worker": [
+        "bbk-python"
+      ]
+    },
+    "investigation-prototype": {
+      "architect": [
+        "bbk-python"
+      ],
+      "reviewer": [
+        "bbk-python"
+      ]
+    },
+    "packaging-release": {
+      "validator": [
+        "bbk-python",
+        "python-package-release-gates",
+        "python-api-package-boundary-review"
+      ],
+      "worker": [
+        "bbk-python",
+        "python-package-release-gates"
+      ]
+    },
+    "test-fixture": {
+      "validator": [
+        "bbk-python",
+        "python-test-strategy-review"
+      ],
+      "verification-designer": [
+        "bbk-python",
+        "python-test-strategy-review"
+      ],
+      "worker": [
+        "bbk-python"
+      ]
+    }
+  }
+}

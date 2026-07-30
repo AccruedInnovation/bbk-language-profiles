@@ -1,0 +1,56 @@
+{
+  "declaredExclusions": [
+    "VCS internals",
+    "dependency caches",
+    "unrequested build caches",
+    "credentials and secrets",
+    "unrelated sibling scopes"
+  ],
+  "groups": {
+    "consumer-fixtures": [
+      "test/**",
+      "tests/**",
+      "examples/**"
+    ],
+    "packaging-migrations": [
+      "migrations/**",
+      "*.sql",
+      "MANIFEST.in"
+    ],
+    "project-environment": [
+      "pyproject.toml",
+      "setup.py",
+      "setup.cfg",
+      "requirements*.txt",
+      "poetry.lock",
+      "uv.lock",
+      "Pipfile*"
+    ],
+    "source-boundaries": [
+      "*.py",
+      "*.pyi",
+      "py.typed"
+    ]
+  },
+  "profile": "python",
+  "schema": "bbk.profile-review-context-map.v1",
+  "selectors": [
+    "changed-surface",
+    "governing-contracts",
+    "consumer-and-failure-closure"
+  ],
+  "sourceExtensions": [
+    ".py",
+    ".pyi",
+    ".toml",
+    ".cfg",
+    ".ini",
+    ".json",
+    ".yaml",
+    ".yml",
+    ".md",
+    ".txt",
+    ".sql"
+  ],
+  "version": "0.1.0-alpha.3"
+}

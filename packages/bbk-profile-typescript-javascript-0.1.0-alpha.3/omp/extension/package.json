@@ -1,0 +1,7 @@
+{
+  "description": "OMP tools and commands for the BBK TypeScript/JavaScript language profile",
+  "name": "bbk-profile-typescript-javascript-extension",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0-alpha.3"
+}

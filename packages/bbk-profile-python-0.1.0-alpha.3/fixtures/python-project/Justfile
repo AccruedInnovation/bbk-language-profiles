@@ -1,0 +1,14 @@
+fmt-check:
+    ruff format --check .
+
+lint:
+    ruff check .
+
+type:
+    mypy
+
+test:
+    python -m pytest
+
+build:
+    python -m build

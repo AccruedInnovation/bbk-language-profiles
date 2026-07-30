@@ -1,0 +1,22 @@
+{
+  "artifacts": [
+    {
+      "id": "ART-RUST-CORE",
+      "kind": "module",
+      "logicalPath": "crates/core/src/lib.rs"
+    }
+  ],
+  "contracts": [],
+  "declaredDivergences": [
+    {
+      "classification": "material",
+      "fixedDecisionRef": "FD-RUST-PUBLIC",
+      "kind": "public-type-owner-change",
+      "message": "The public function was removed and its behavior moved into an adapter-owned string protocol.",
+      "plannedRef": "KC-RUST-ADD"
+    }
+  ],
+  "fixedDecisionRefs": [],
+  "schema": "rust.actual-structure-inventory.v1",
+  "stateOwnership": []
+}

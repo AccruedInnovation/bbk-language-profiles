@@ -1,0 +1,40 @@
+{
+  "evidenceKinds": [
+    "format",
+    "lint",
+    "typecheck",
+    "test",
+    "wheel",
+    "sdist",
+    "consumer-install",
+    "runtime-validation",
+    "async-process-resource",
+    "migration",
+    "native-extension-abi"
+  ],
+  "noInventedFields": [
+    "command",
+    "exitStatus",
+    "observedAt",
+    "toolchain",
+    "environment",
+    "subject",
+    "completeness"
+  ],
+  "principalProcedure": "python-evidence-reproducer",
+  "profile": "python",
+  "schema": "bbk.profile-evidence-adapter-map.v1",
+  "schemaPrefix": "python",
+  "trustClasses": [
+    "AGENT_INSPECTION",
+    "DETERMINISTIC_LOCAL",
+    "HUMAN_REVIEW",
+    "LEGACY_IMPORTED",
+    "OPERATIONAL_OBSERVATION",
+    "QUALIFIED_EXTERNAL_CHECK",
+    "QUALIFIED_TOOL",
+    "SIMULATOR_OR_HARNESS",
+    "UNSTRUCTURED_OBSERVATION"
+  ],
+  "version": "0.1.0-alpha.3"
+}

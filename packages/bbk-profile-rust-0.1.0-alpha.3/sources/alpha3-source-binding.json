@@ -1,0 +1,13 @@
+{
+  "prdSha256": "6805d307edd9202714c1655c404a8bc01fe994e2980a71f0a6a1ddb779f1e5b2",
+  "profile": "rust",
+  "requiredBbk": "0.1.0-alpha.8",
+  "schema": "bbk.profile-source-binding.v1",
+  "skillsByteIdentityRequired": true,
+  "sourceArchiveSha256": "e2d7dbf0ff9d3d3a5827e5577eb52f52eebd5c763c1b5b14c1158b3388b948e1",
+  "sourceManifestedFiles": 357,
+  "sourcePackageRootSha256": "1dc73a7d1aa3a064b14dbd43b8e899779e0e178cf97ba7f9f23a404b3d5c18ea",
+  "sourceSkillCount": 14,
+  "sourceVersion": "0.1.0-alpha.2",
+  "successorVersion": "0.1.0-alpha.3"
+}

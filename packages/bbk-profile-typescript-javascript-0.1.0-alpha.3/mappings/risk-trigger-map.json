@@ -1,0 +1,569 @@
+{
+  "schema": "bbk.tsjs-risk-trigger-map.v1",
+  "triggers": [
+    {
+      "change_classes": [
+        "implementation",
+        "interface",
+        "schema",
+        "compatibility"
+      ],
+      "content_regex": [
+        "\\bany\\b",
+        "as\\s+unknown\\s+as",
+        "@ts-(ignore|expect-error|nocheck)",
+        "satisfies\\s",
+        "asserts\\s",
+        "is\\s+[A-Za-z_$]"
+      ],
+      "file_globs": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.mts",
+        "**/*.cts",
+        "**/*.d.ts",
+        "**/*.d.mts",
+        "**/*.d.cts",
+        "**/tsconfig*.json",
+        "**/jsconfig*.json"
+      ],
+      "gate_tags": [
+        "typecheck",
+        "declarations"
+      ],
+      "hints": [
+        "types",
+        "type-safety",
+        "strictness",
+        "declarations",
+        "inference",
+        "generics",
+        "public-types",
+        "any",
+        "suppression",
+        "jsdoc"
+      ],
+      "id": "type-contract",
+      "select": [
+        "tsjs-type-contract-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "schema",
+        "migration",
+        "persistence",
+        "configuration"
+      ],
+      "content_regex": [
+        "JSON\\.parse",
+        "process\\.env",
+        "postMessage\\s*\\(",
+        "addEventListener\\s*\\(\\s*['\"]message",
+        "\\bz\\.(object|string|number|enum)",
+        "parseAsync\\s*\\(",
+        "safeParse\\s*\\("
+      ],
+      "file_globs": [
+        "**/schemas/**",
+        "**/migrations/**",
+        "**/*schema*.{ts,js,json}",
+        "**/config/**",
+        "**/.env*"
+      ],
+      "gate_tags": [
+        "runtime-contract",
+        "compatibility"
+      ],
+      "hints": [
+        "runtime-validation",
+        "schema",
+        "wire-format",
+        "json",
+        "configuration",
+        "environment",
+        "database",
+        "persistence",
+        "ipc",
+        "postmessage",
+        "webhook"
+      ],
+      "id": "runtime-data-contract",
+      "select": [
+        "tsjs-runtime-data-contract-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "interface",
+        "packaging",
+        "release",
+        "compatibility"
+      ],
+      "content_regex": [
+        "module\\.exports",
+        "require\\s*\\(",
+        "export\\s+(default|\\{|type|interface|class|function|const)",
+        "import\\s*\\(",
+        "import\\.meta"
+      ],
+      "file_globs": [
+        "**/package.json",
+        "**/package-lock.json",
+        "**/pnpm-lock.yaml",
+        "**/yarn.lock",
+        "**/bun.lock*",
+        "**/*.d.ts",
+        "**/dist/**",
+        "**/build/**"
+      ],
+      "gate_tags": [
+        "package",
+        "consumer",
+        "module",
+        "declarations"
+      ],
+      "hints": [
+        "public-api",
+        "package",
+        "exports",
+        "esm",
+        "commonjs",
+        "dual-package",
+        "module-resolution",
+        "subpath",
+        "declarations",
+        "consumer"
+      ],
+      "id": "api-module-package",
+      "select": [
+        "tsjs-api-module-package-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "implementation",
+        "integration",
+        "persistence",
+        "operations"
+      ],
+      "content_regex": [
+        "\\basync\\s+",
+        "Promise\\.(all|race|any|allSettled)",
+        "Abort(Signal|Controller)",
+        "set(Timeout|Interval)",
+        "node:stream",
+        "worker_threads",
+        "child_process",
+        "EventEmitter",
+        "\\.pipe\\s*\\("
+      ],
+      "file_globs": [
+        "**/workers/**",
+        "**/streams/**",
+        "**/jobs/**",
+        "**/queues/**",
+        "**/server/**",
+        "**/cli/**"
+      ],
+      "gate_tags": [
+        "async",
+        "fault",
+        "resource"
+      ],
+      "hints": [
+        "async",
+        "promise",
+        "cancellation",
+        "abortsignal",
+        "timeout",
+        "stream",
+        "worker",
+        "child-process",
+        "retry",
+        "idempotency",
+        "shutdown",
+        "race"
+      ],
+      "id": "async-resource-failure",
+      "select": [
+        "tsjs-async-resource-failure-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "test",
+        "verification"
+      ],
+      "content_regex": [
+        "\\b(describe|it|test)\\s*\\(",
+        "fc\\.(property|assert)",
+        "vi\\.useFakeTimers",
+        "jest\\.useFakeTimers"
+      ],
+      "file_globs": [
+        "**/test/**",
+        "**/tests/**",
+        "**/__tests__/**",
+        "**/*.test.*",
+        "**/*.spec.*",
+        "**/e2e/**",
+        "**/playwright*.{ts,js}",
+        "**/vitest*.{ts,js}",
+        "**/jest*.{ts,js}"
+      ],
+      "gate_tags": [
+        "test",
+        "browser-test",
+        "coverage",
+        "property",
+        "fuzz",
+        "mutation"
+      ],
+      "hints": [
+        "test-strategy",
+        "regression",
+        "property-test",
+        "fuzz",
+        "mutation-testing",
+        "coverage",
+        "browser-test",
+        "flaky-test",
+        "fault-injection"
+      ],
+      "id": "test-strategy",
+      "select": [
+        "tsjs-test-strategy-review",
+        "tsjs-evidence-reproducer"
+      ]
+    },
+    {
+      "change_classes": [
+        "dependency",
+        "security",
+        "packaging",
+        "release",
+        "external-effect"
+      ],
+      "content_regex": [
+        "child_process",
+        "\\b(exec|execFile|spawn)\\s*\\(",
+        "\\beval\\s*\\(",
+        "new\\s+Function",
+        "innerHTML",
+        "dangerouslySetInnerHTML",
+        "fetch\\s*\\(",
+        "process\\.env",
+        "node-gyp",
+        "prebuild"
+      ],
+      "file_globs": [
+        "**/package.json",
+        "**/package-lock.json",
+        "**/pnpm-lock.yaml",
+        "**/yarn.lock",
+        "**/bun.lock*",
+        "**/.npmrc",
+        "**/.yarnrc*",
+        "**/Dockerfile*",
+        "**/.github/workflows/**"
+      ],
+      "gate_tags": [
+        "security",
+        "frozen-install",
+        "supply-chain"
+      ],
+      "hints": [
+        "security",
+        "supply-chain",
+        "dependency",
+        "lockfile",
+        "install-script",
+        "registry",
+        "secret",
+        "injection",
+        "path-traversal",
+        "ssrf",
+        "native-addon",
+        "provenance"
+      ],
+      "id": "security-supply-chain",
+      "select": [
+        "tsjs-security-supply-chain-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "operations",
+        "packaging",
+        "release",
+        "migration",
+        "configuration"
+      ],
+      "content_regex": [
+        "process\\.on\\s*\\(\\s*['\"](SIGTERM|SIGINT|beforeExit|uncaughtException|unhandledRejection)",
+        "sourceMap",
+        "sourcemap",
+        "health",
+        "readiness",
+        "graceful"
+      ],
+      "file_globs": [
+        "**/Dockerfile*",
+        "**/dist/**",
+        "**/build/**",
+        "**/deploy/**",
+        "**/packaging/**",
+        "**/.github/workflows/**",
+        "**/wrangler.toml",
+        "**/electron-builder.*"
+      ],
+      "gate_tags": [
+        "build",
+        "release",
+        "operations"
+      ],
+      "hints": [
+        "operations",
+        "deployment",
+        "release",
+        "rollback",
+        "observability",
+        "configuration",
+        "cli",
+        "service",
+        "source-map",
+        "omp-extension"
+      ],
+      "id": "operational-release",
+      "select": [
+        "tsjs-operational-release-review",
+        "tsjs-evidence-reproducer"
+      ]
+    },
+    {
+      "change_classes": [
+        "ui",
+        "browser",
+        "security",
+        "compatibility"
+      ],
+      "content_regex": [
+        "document\\.",
+        "window\\.",
+        "navigator\\.",
+        "dangerouslySetInnerHTML",
+        "innerHTML",
+        "hydrateRoot",
+        "postMessage",
+        "serviceWorker"
+      ],
+      "file_globs": [
+        "**/*.tsx",
+        "**/*.jsx",
+        "**/*.html",
+        "**/*.css",
+        "**/public/**",
+        "**/client/**",
+        "**/browser/**",
+        "**/service-worker.*"
+      ],
+      "gate_tags": [
+        "browser",
+        "accessibility",
+        "browser-security"
+      ],
+      "hints": [
+        "browser",
+        "ui",
+        "accessibility",
+        "a11y",
+        "hydration",
+        "ssr",
+        "dom",
+        "csp",
+        "xss",
+        "service-worker",
+        "browser-compatibility"
+      ],
+      "id": "browser-ui",
+      "select": [
+        "tsjs-browser-ui-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "host-integration",
+        "plugin",
+        "extension"
+      ],
+      "content_regex": [
+        "registerTool\\s*\\(",
+        "registerCommand\\s*\\(",
+        "sendMessage\\s*\\(",
+        "pi\\.on\\s*\\("
+      ],
+      "file_globs": [
+        "**/.omp/**",
+        "**/omp/**",
+        "**/extensions/**",
+        "**/*extension*.{ts,js,mts,mjs}"
+      ],
+      "gate_tags": [
+        "host-load",
+        "omp-extension",
+        "security"
+      ],
+      "hints": [
+        "omp-extension",
+        "plugin",
+        "extension",
+        "host-load",
+        "host-compatibility"
+      ],
+      "id": "host-extension",
+      "select": [
+        "tsjs-operational-release-review",
+        "tsjs-security-supply-chain-review",
+        "tsjs-evidence-reproducer"
+      ]
+    },
+    {
+      "change_classes": [
+        "architecture"
+      ],
+      "content_regex": [],
+      "file_globs": [],
+      "gate_tags": [],
+      "hints": [
+        "broad-analysis",
+        "whole-codebase",
+        "architecture-review",
+        "modernization",
+        "inherited-codebase"
+      ],
+      "id": "broad-architecture",
+      "select": [
+        "comprehensive-analysis-tsjs"
+      ]
+    },
+    {
+      "change_classes": [
+        "performance"
+      ],
+      "content_regex": [
+        "performance\\.(now|mark|measure)",
+        "monitorEventLoopDelay",
+        "benchmark",
+        "tinybench",
+        "Benchmark"
+      ],
+      "file_globs": [
+        "**/bench/**",
+        "**/benchmarks/**",
+        "**/*.bench.*",
+        "**/performance/**"
+      ],
+      "gate_tags": [
+        "performance",
+        "bundle-size"
+      ],
+      "hints": [
+        "performance",
+        "latency",
+        "throughput",
+        "bundle-size",
+        "memory",
+        "event-loop",
+        "benchmark",
+        "cold-start"
+      ],
+      "id": "performance",
+      "select": [
+        "tsjs-evidence-reproducer"
+      ]
+    },
+    {
+      "change_classes": [
+        "architecture",
+        "interface",
+        "schema",
+        "state",
+        "ownership",
+        "packaging",
+        "migration",
+        "host-integration"
+      ],
+      "content_regex": [
+        "export\\s+(type|interface|class|function|const|default)",
+        "AbortSignal",
+        "addEventListener\\s*\\(",
+        "set(Timeout|Interval)",
+        "new\\s+Worker",
+        "child_process",
+        "JSON\\.parse"
+      ],
+      "file_globs": [
+        "**/package.json",
+        "**/tsconfig*.json",
+        "**/jsconfig*.json",
+        "**/*.d.ts",
+        "**/schemas/**",
+        "**/migrations/**",
+        "**/src/index.*",
+        "**/src/main.*"
+      ],
+      "gate_tags": [
+        "structure-contract",
+        "profile-projection",
+        "planned-actual",
+        "public-contract",
+        "ownership"
+      ],
+      "hints": [
+        "implementation-structure",
+        "structure-contract",
+        "fixed-decision",
+        "state-ownership",
+        "effect-boundary",
+        "planned-actual",
+        "public-shape",
+        "shared-contract"
+      ],
+      "id": "implementation-structure",
+      "select": [
+        "tsjs-implementation-structure-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "planning",
+        "integration",
+        "verification",
+        "execution-slice"
+      ],
+      "content_regex": [],
+      "file_globs": [],
+      "gate_tags": [
+        "execution-slice",
+        "touchpoint",
+        "scaffolding",
+        "candidate-boundary"
+      ],
+      "hints": [
+        "execution-slicing",
+        "execution-slice",
+        "touchpoint",
+        "vertical-slice",
+        "foundation-exception",
+        "scaffolding"
+      ],
+      "id": "execution-slicing",
+      "select": [
+        "tsjs-implementation-structure-review",
+        "tsjs-test-strategy-review",
+        "tsjs-evidence-reproducer"
+      ]
+    }
+  ]
+}

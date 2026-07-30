@@ -1,0 +1,155 @@
+{
+  "authority": {
+    "may_add_gate_recipes": true,
+    "may_add_procedure": true,
+    "may_add_review_criteria": true,
+    "may_declare_pass": false,
+    "may_expand_work_scope": false,
+    "may_grant_tools_or_effects": false,
+    "may_reduce_assurance": false
+  },
+  "description": "Applicability-aware Go worker, architecture, correctness, concurrency, validation, test, module, release, evidence, and toolchain guidance for BBK across Codex, OMP, Claude Code, and generic agent harnesses.",
+  "entrypoints": {
+    "gate_plan": [
+      "{python}",
+      "tools/bbk_go.py",
+      "--json",
+      "gate-plan"
+    ],
+    "preflight": [
+      "{python}",
+      "tools/bbk_go.py",
+      "--json",
+      "preflight"
+    ],
+    "resolve": [
+      "{python}",
+      "tools/bbk_go.py",
+      "--json",
+      "resolve"
+    ]
+  },
+  "gates": "gates/go-gates.json",
+  "id": "go",
+  "installation": {
+    "cli": "tools/bbk_go.py",
+    "omp_extension": "omp/extension",
+    "skill_root": "skills"
+  },
+  "maturity": "comprehensive-alpha",
+  "name": "BBK Go Profile",
+  "package": "bbk-profile-go",
+  "qualification": {
+    "documentation_policy": "Go behavior that varies by release is gated by the repository's effective toolchain and profile capability checks.",
+    "fixture_toolchain_note": "The package qualification suite is designed to run without network access and records the exact locally available Go toolchain when tool execution is requested."
+  },
+  "references": [
+    "references/compatibility-policy.md",
+    "references/performance-policy.md",
+    "references/testing-policy.md",
+    "references/support-matrix.md"
+  ],
+  "requires": {
+    "bbk_minimum": "0.1.0-alpha.3",
+    "go_policy": "Repository go/toolchain directives, supported platforms, tags, CGO policy, module layout, and repository commands are authoritative. This profile does not silently install or select a Go toolchain.",
+    "python_minimum": "3.11"
+  },
+  "schema": "bbk.language-profile.v1",
+  "selection": {
+    "risk_trigger_map": "mappings/risk-trigger-map.json",
+    "task_skill_map": "mappings/task-skill-map.json"
+  },
+  "skills": [
+    {
+      "id": "bbk-go",
+      "kind": "router",
+      "path": "skills/bbk-go/SKILL.md"
+    },
+    {
+      "id": "go-skills",
+      "kind": "reference",
+      "path": "skills/go-skills/SKILL.md"
+    },
+    {
+      "id": "comprehensive-analysis-go",
+      "kind": "survey-review",
+      "path": "skills/comprehensive-analysis-go/SKILL.md"
+    },
+    {
+      "id": "go-api-module-boundary-review",
+      "kind": "focused-review",
+      "path": "skills/go-api-module-boundary-review/SKILL.md"
+    },
+    {
+      "id": "go-correctness-concurrency-review",
+      "kind": "focused-review",
+      "path": "skills/go-correctness-concurrency-review/SKILL.md"
+    },
+    {
+      "id": "go-test-strategy-review",
+      "kind": "focused-review",
+      "path": "skills/go-test-strategy-review/SKILL.md"
+    },
+    {
+      "id": "go-operational-readiness-review",
+      "kind": "focused-review",
+      "path": "skills/go-operational-readiness-review/SKILL.md"
+    },
+    {
+      "id": "go-security-supply-chain-review",
+      "kind": "focused-review",
+      "path": "skills/go-security-supply-chain-review/SKILL.md"
+    },
+    {
+      "id": "go-unsafe-cgo-assembly-review",
+      "kind": "focused-assurance",
+      "path": "skills/go-unsafe-cgo-assembly-review/SKILL.md"
+    },
+    {
+      "id": "go-web-htmx-review",
+      "kind": "optional-stack-review",
+      "path": "skills/go-web-htmx-review/SKILL.md"
+    },
+    {
+      "id": "go-package-release-gates",
+      "kind": "focused-assurance",
+      "path": "skills/go-package-release-gates/SKILL.md"
+    },
+    {
+      "id": "go-evidence-reproducer",
+      "kind": "evidence",
+      "path": "skills/go-evidence-reproducer/SKILL.md"
+    }
+  ],
+  "support": {
+    "conditional": [
+      "public module releases",
+      "database and persistence migrations",
+      "unsafe Go",
+      "cgo and native-library boundaries",
+      "Go assembly and compiler/runtime directives",
+      "platform-specific builds",
+      "profile-guided optimization",
+      "HTMX, Alpine.js, and server-driven HTML applications"
+    ],
+    "partial_or_unqualified": [
+      "Go plugins",
+      "Go mobile",
+      "TinyGo and embedded targets",
+      "eBPF toolchains",
+      "specialized WASM environments",
+      "custom Go compiler forks",
+      "unusual shared-library build modes"
+    ],
+    "primary": [
+      "ordinary Go modules",
+      "multi-module repositories and go.work workspaces",
+      "libraries and public packages",
+      "binaries and command-line tools",
+      "HTTP and RPC services",
+      "concurrent applications",
+      "generated-code repositories"
+    ]
+  },
+  "version": "0.1.0-alpha.1"
+}

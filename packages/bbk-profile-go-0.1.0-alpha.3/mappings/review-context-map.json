@@ -1,0 +1,52 @@
+{
+  "declaredExclusions": [
+    "VCS internals",
+    "dependency caches",
+    "unrequested build caches",
+    "credentials and secrets",
+    "unrelated sibling scopes"
+  ],
+  "groups": {
+    "consumer-fixtures": [
+      "*_test.go",
+      "testdata/**",
+      "examples/**"
+    ],
+    "generated-native": [
+      "*.s",
+      "*.syso",
+      "*.h",
+      "*.c"
+    ],
+    "source-boundaries": [
+      "*.go"
+    ],
+    "workspace-toolchain": [
+      "go.mod",
+      "go.sum",
+      "go.work",
+      "go.work.sum"
+    ]
+  },
+  "profile": "go",
+  "schema": "bbk.profile-review-context-map.v1",
+  "selectors": [
+    "changed-surface",
+    "governing-contracts",
+    "consumer-and-failure-closure"
+  ],
+  "sourceExtensions": [
+    ".go",
+    ".mod",
+    ".sum",
+    ".work",
+    ".s",
+    ".h",
+    ".c",
+    ".json",
+    ".yaml",
+    ".yml",
+    ".md"
+  ],
+  "version": "0.1.0-alpha.3"
+}

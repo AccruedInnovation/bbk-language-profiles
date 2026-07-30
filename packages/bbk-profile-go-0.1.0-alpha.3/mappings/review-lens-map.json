@@ -1,0 +1,154 @@
+{
+  "genericOnlyLensIds": [
+    "intent-outcome",
+    "specification-acceptance",
+    "feasibility-dependency",
+    "cross-shard-integration"
+  ],
+  "lenses": {
+    "architecture-boundary": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Go toolchain.",
+        "A race-detector pass does not prove absence of all concurrency defects.",
+        "Cross-compilation, CGO, platform tags, external services, performance and module-release claims require exact environment and consumer evidence."
+      ],
+      "skills": [
+        "comprehensive-analysis-go"
+      ]
+    },
+    "implementation-structure": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Go toolchain.",
+        "A race-detector pass does not prove absence of all concurrency defects.",
+        "Cross-compilation, CGO, platform tags, external services, performance and module-release claims require exact environment and consumer evidence."
+      ],
+      "skills": [
+        "go-implementation-structure-review"
+      ]
+    },
+    "interface-consumer-compatibility": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Go toolchain.",
+        "A race-detector pass does not prove absence of all concurrency defects.",
+        "Cross-compilation, CGO, platform tags, external services, performance and module-release claims require exact environment and consumer evidence."
+      ],
+      "skills": [
+        "go-api-module-boundary-review"
+      ]
+    },
+    "operations-performance-resource": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Go toolchain.",
+        "A race-detector pass does not prove absence of all concurrency defects.",
+        "Cross-compilation, CGO, platform tags, external services, performance and module-release claims require exact environment and consumer evidence."
+      ],
+      "skills": [
+        "go-operational-readiness-review"
+      ]
+    },
+    "package-install-migration-release": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Go toolchain.",
+        "A race-detector pass does not prove absence of all concurrency defects.",
+        "Cross-compilation, CGO, platform tags, external services, performance and module-release claims require exact environment and consumer evidence."
+      ],
+      "skills": [
+        "go-package-release-gates"
+      ]
+    },
+    "security-privacy-supply-chain": {
+      "conditionalSkills": [
+        {
+          "skills": [
+            "go-unsafe-cgo-assembly-review"
+          ],
+          "tokens": [
+            "unsafe",
+            "cgo",
+            "assembly",
+            "abi"
+          ]
+        }
+      ],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Go toolchain.",
+        "A race-detector pass does not prove absence of all concurrency defects.",
+        "Cross-compilation, CGO, platform tags, external services, performance and module-release claims require exact environment and consumer evidence."
+      ],
+      "skills": [
+        "go-security-supply-chain-review"
+      ]
+    },
+    "state-concurrency-effect-recovery": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Go toolchain.",
+        "A race-detector pass does not prove absence of all concurrency defects.",
+        "Cross-compilation, CGO, platform tags, external services, performance and module-release claims require exact environment and consumer evidence."
+      ],
+      "skills": [
+        "go-correctness-concurrency-review"
+      ]
+    },
+    "test-evidence": {
+      "conditionalSkills": [],
+      "contextSelectors": [
+        "changed-surface",
+        "governing-contracts",
+        "consumer-and-failure-closure"
+      ],
+      "limitations": [
+        "The profile must not install or select a Go toolchain.",
+        "A race-detector pass does not prove absence of all concurrency defects.",
+        "Cross-compilation, CGO, platform tags, external services, performance and module-release claims require exact environment and consumer evidence."
+      ],
+      "skills": [
+        "go-test-strategy-review"
+      ]
+    }
+  },
+  "profile": "go",
+  "schema": "bbk.profile-review-lens-map.v1",
+  "schemaPrefix": "go",
+  "version": "0.1.0-alpha.3"
+}

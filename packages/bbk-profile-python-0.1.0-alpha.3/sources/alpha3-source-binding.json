@@ -1,0 +1,13 @@
+{
+  "prdSha256": "5c1b3b8a831e432b3feac767536b4f352101576262add23cde07bd59c7633d93",
+  "profile": "python",
+  "requiredBbk": "0.1.0-alpha.8",
+  "schema": "bbk.profile-source-binding.v1",
+  "skillsByteIdentityRequired": true,
+  "sourceArchiveSha256": "7326bd46eec47d5051ccc4b2ff47b26b2d9d3ec4a4bc4754f8b62933a79331d9",
+  "sourceManifestedFiles": 107,
+  "sourcePackageRootSha256": "d109386e9e1805a935f52023069a11e8fcead276445b9fda469997078f070718",
+  "sourceSkillCount": 15,
+  "sourceVersion": "0.1.0-alpha.2",
+  "successorVersion": "0.1.0-alpha.3"
+}

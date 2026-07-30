@@ -1,0 +1,51 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-tsjs-actual-structure-inventory-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifacts": {
+      "type": "array"
+    },
+    "candidate_digest": {
+      "type": "string"
+    },
+    "contracts": {
+      "type": "array"
+    },
+    "digest": {
+      "type": "string"
+    },
+    "effectBoundaries": {
+      "type": "array"
+    },
+    "fixedDecisions": {
+      "type": "array"
+    },
+    "notes": {
+      "type": "array"
+    },
+    "packageSurfaces": {
+      "type": "array"
+    },
+    "root": {
+      "type": "string"
+    },
+    "schema": {
+      "const": "bbk.tsjs-actual-structure-inventory.v1"
+    },
+    "stateOwnership": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "artifacts",
+    "contracts",
+    "fixedDecisions",
+    "stateOwnership",
+    "effectBoundaries",
+    "packageSurfaces"
+  ],
+  "title": "BBK TS/JS actual structure inventory",
+  "type": "object"
+}

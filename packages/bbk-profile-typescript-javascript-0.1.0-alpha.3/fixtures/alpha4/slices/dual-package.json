@@ -1,0 +1,71 @@
+{
+  "assertions": [
+    {
+      "evidence": "consumer matrix",
+      "id": "A-DUAL",
+      "method": "test",
+      "statement": "All claimed conditions work."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice closes one integrated feedback path without artificial layer-only handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-TSJS-DUAL@1 accepted"
+  ],
+  "exitConditions": [
+    "Both conditions select compatible behavior and the same declared types."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ES-TSJS-DUAL"
+    ],
+    "interfaceRefs": [
+      "IF-ES-TSJS-DUAL"
+    ],
+    "participants": [
+      "consumer",
+      "owner"
+    ],
+    "steps": [
+      "Build both outputs.",
+      "Pack once.",
+      "Run ESM, CJS and TS consumers."
+    ]
+  },
+  "integrationOwner": "Owner of ES-TSJS-DUAL",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Exercise import, require and TypeScript declaration consumers from one packed artifact.",
+  "parentCapabilityRefs": [
+    "CAP-ES-TSJS-DUAL"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-TSJS-DUAL",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-TSJS-DUAL@1"
+  ],
+  "title": "Dual package consumers",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "synthetic qualified fixture",
+    "expectedObservation": "Both conditions select compatible behavior and the same declared types.",
+    "interaction": "Install tarball in ESM and CommonJS consumers",
+    "kind": "package"
+  },
+  "workUnitRefs": [
+    "WU-ESM",
+    "WU-CJS",
+    "WU-DECL",
+    "WU-MATRIX"
+  ]
+}

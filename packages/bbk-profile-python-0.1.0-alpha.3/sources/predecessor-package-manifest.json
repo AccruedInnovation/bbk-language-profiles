@@ -1,0 +1,380 @@
+{
+  "authority_disclaimer": "This optional BBK profile adds procedure and gate recipes; it grants no tools, environments, effects, completion, readiness, or release authority.",
+  "created_at": "2026-07-23T00:00:00Z",
+  "file_count": 60,
+  "files": [
+    {
+      "bytes": 707,
+      "executable": false,
+      "path": "CHANGELOG.md",
+      "sha256": "1d5bfcad03cfd6fe4a19632d9b05f7ef646aae4c7163c5d6f5aef5f27623b919"
+    },
+    {
+      "bytes": 1093,
+      "executable": false,
+      "path": "LICENSE",
+      "sha256": "d1278607a64065a2485edb5700a36a7050e57e450df28be8f703f62a87c92355"
+    },
+    {
+      "bytes": 5064,
+      "executable": false,
+      "path": "PROFILE.json",
+      "sha256": "965a980e66585e1d8ec46ce2d7b54619b0361f47aae6c494c4cfb9ea38163765"
+    },
+    {
+      "bytes": 4199,
+      "executable": false,
+      "path": "README.md",
+      "sha256": "835fe05e23337665fd9dc6aff86f0aa4dc782679f55664c3509f4dce28deef82"
+    },
+    {
+      "bytes": 14,
+      "executable": false,
+      "path": "VERSION",
+      "sha256": "ed41d33f787456abe92ea03b820e4c832b1e2b9e6867242eaea03258bae8d119"
+    },
+    {
+      "bytes": 2140,
+      "executable": false,
+      "path": "docs/BOUNDARIES.md",
+      "sha256": "893c18525d180a7a61081c5b4945b190a5301524215e7260e59ca188dc121040"
+    },
+    {
+      "bytes": 1644,
+      "executable": false,
+      "path": "docs/INSTALL.md",
+      "sha256": "c2a659d53038539c0f73c4bc9bf12574f22272b207f274b340fd3e90860cc9e6"
+    },
+    {
+      "bytes": 1178,
+      "executable": false,
+      "path": "docs/QUALIFICATION.md",
+      "sha256": "4ef4f40ed21240b8e12b0ac5e7d88bc15c5577ebe24a58f92ef9cfe2a92dfa6e"
+    },
+    {
+      "bytes": 1195,
+      "executable": false,
+      "path": "docs/RELEASE-NOTES.md",
+      "sha256": "4229fcab821b11af031bb0bc283dee87fc363130d90e7dcfd1524b1d8e586c67"
+    },
+    {
+      "bytes": 1693,
+      "executable": false,
+      "path": "docs/SOURCE-CHANGES.md",
+      "sha256": "5e95338deff15cea3544206a850c7f76c02b3dbfabad5b7255d17a455c67aa69"
+    },
+    {
+      "bytes": 2489,
+      "executable": false,
+      "path": "docs/USAGE.md",
+      "sha256": "f297d37aa2663e9d16bdecea7d5c7fb8d69b1fce09a4901760347bf107f97f93"
+    },
+    {
+      "bytes": 133,
+      "executable": false,
+      "path": "fixtures/python-project/Justfile",
+      "sha256": "7430234cec76f92457f351ed8e291b8e8eaaf5bf3d96960fc83879b57454d40a"
+    },
+    {
+      "bytes": 125,
+      "executable": false,
+      "path": "fixtures/python-project/README.md",
+      "sha256": "9c4964b6ad469db411ca6a3066277b747d2c04ae82fcae7f5619f6b59a2f27d5"
+    },
+    {
+      "bytes": 57,
+      "executable": false,
+      "path": "fixtures/python-project/migrations/0001_initial.py",
+      "sha256": "82a212efa2b02962b13f0965776f00749be17303e7fab047d27dc30675bccc54"
+    },
+    {
+      "bytes": 262,
+      "executable": false,
+      "path": "fixtures/python-project/native/extension.c",
+      "sha256": "9426e684110635f522bf0bbff9c9ccfb611e1e0d35f38d8540463f5dfa0f636e"
+    },
+    {
+      "bytes": 134,
+      "executable": false,
+      "path": "fixtures/python-project/noxfile.py",
+      "sha256": "f71981fcf5dbb88db21a66eedf908e0e9f9faa0898b60c15331dad1f0e9ee369"
+    },
+    {
+      "bytes": 128,
+      "executable": false,
+      "path": "fixtures/python-project/pylock.toml",
+      "sha256": "d76f1d82c8ee57379559e44fbfed1f4f1758957963e4e75e1b7db72fbfee869f"
+    },
+    {
+      "bytes": 822,
+      "executable": false,
+      "path": "fixtures/python-project/pyproject.toml",
+      "sha256": "3add7ce3a2ce0706b263e7f834de7c0fa2f68d456527c254acf22dd74dda8dfd"
+    },
+    {
+      "bytes": 99,
+      "executable": false,
+      "path": "fixtures/python-project/src/fixture_pkg/__init__.py",
+      "sha256": "0e005d80c4d73f38a6811bfbc30683f448886b22b4c0b3a47f6ecc97cc75ce12"
+    },
+    {
+      "bytes": 387,
+      "executable": false,
+      "path": "fixtures/python-project/src/fixture_pkg/api.py",
+      "sha256": "c8a5e23e57b4e930c974ba81fec17380f917971b9d1745cfdb36427cd2090877"
+    },
+    {
+      "bytes": 512,
+      "executable": false,
+      "path": "fixtures/python-project/src/fixture_pkg/async_service.py",
+      "sha256": "add9af56ef2e9e37cffda38aacb75ee8c2b9ca6fdf082acebe261ea90af69092"
+    },
+    {
+      "bytes": 192,
+      "executable": false,
+      "path": "fixtures/python-project/src/fixture_pkg/plugins.py",
+      "sha256": "245f60e2a66d9fcf8ecee6a4c415a2c9599cf5802372ac7ec57a000931703cc7"
+    },
+    {
+      "bytes": 0,
+      "executable": false,
+      "path": "fixtures/python-project/src/fixture_pkg/py.typed",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 325,
+      "executable": false,
+      "path": "fixtures/python-project/src/fixture_pkg/security.py",
+      "sha256": "b43705d63d6aecb812b29a69aae649856d3f2e66090587bf4fa6dc141476c3f8"
+    },
+    {
+      "bytes": 190,
+      "executable": false,
+      "path": "fixtures/python-project/tests/test_api.py",
+      "sha256": "55030fc23ba1543ebffc2c7924ba4ae1161b6e96bc586440b691ece3443716f7"
+    },
+    {
+      "bytes": 13208,
+      "executable": false,
+      "path": "gates/python-gates.json",
+      "sha256": "f016167ce6f99fc1ed9ee6af7ac66973fd2307a9be3d8b0895541e7df81c8d44"
+    },
+    {
+      "bytes": 351,
+      "executable": false,
+      "path": "licenses/THIRD-PARTY-NOTICES.md",
+      "sha256": "8fd95413c5fac79850d5c8892b0dc4e39ab347cb6a5f2429ae86bb0781ae0b10"
+    },
+    {
+      "bytes": 13480,
+      "executable": false,
+      "path": "mappings/risk-trigger-map.json",
+      "sha256": "9684c613afa54948dad54bda20777b259b08e5d8e50e1bf394804722147c5b9d"
+    },
+    {
+      "bytes": 1965,
+      "executable": false,
+      "path": "mappings/task-skill-map.json",
+      "sha256": "946e21fff1c2a48c8539f13e93b7efb055f388c0deedf9fe25fec67c9e2a90b3"
+    },
+    {
+      "bytes": 661,
+      "executable": false,
+      "path": "omp/extension/README.md",
+      "sha256": "e8e017f36be32a53463bb0b581bdbbf615aba85bd4143301fede5640be1f4279"
+    },
+    {
+      "bytes": 8075,
+      "executable": false,
+      "path": "omp/extension/index.js",
+      "sha256": "01b85914c6af600c3bad127ce8267cac41b490caa4ddfcde5a53b58ea20f56f8"
+    },
+    {
+      "bytes": 206,
+      "executable": false,
+      "path": "omp/extension/package.json",
+      "sha256": "3c855d6cf649b505dd7931b5d5177fb9f03c0e442bb63b6e8fa7d4d55132cbf8"
+    },
+    {
+      "bytes": 714,
+      "executable": false,
+      "path": "references/compatibility-policy.md",
+      "sha256": "40498e2eb5d3c97e5803cc8ca4cf4a27285076493d8f69a467a4b702ec053457"
+    },
+    {
+      "bytes": 758,
+      "executable": false,
+      "path": "references/environment-package-policy.md",
+      "sha256": "ce1d9ad0b2fbe3c7a805caeb02c6a10aa7b8623cb5fc3576a22b5cbd0fcdf2ff"
+    },
+    {
+      "bytes": 711,
+      "executable": false,
+      "path": "references/performance-policy.md",
+      "sha256": "0d42653ab30f622a6edfc1082fdf3a854cbede7953250cfdbb5da92dbaa4eeb0"
+    },
+    {
+      "bytes": 947,
+      "executable": false,
+      "path": "references/support-matrix.md",
+      "sha256": "a73f58a5170b71e84452343c6af1c9d86c59d61c7f555c89d3c39f7b26ff9b88"
+    },
+    {
+      "bytes": 812,
+      "executable": false,
+      "path": "references/testing-evidence-policy.md",
+      "sha256": "c97cc07a79933a7d9fa4a63d17b4efe25dca55e8d5590e6ea6692aeaddbd2ac6"
+    },
+    {
+      "bytes": 1426,
+      "executable": false,
+      "path": "schemas/bbk-language-profile-v1.schema.json",
+      "sha256": "93ba7008d7148d0e45acc2b1b7c9c2755fbbbf7efb5f257dab20b311a82b4b99"
+    },
+    {
+      "bytes": 716,
+      "executable": false,
+      "path": "schemas/bbk-profile-lock-v1.schema.json",
+      "sha256": "04e9b77f218bbb152e38319290927a089534babb0383ce986e9c6799059a36d6"
+    },
+    {
+      "bytes": 928,
+      "executable": false,
+      "path": "schemas/bbk-python-preflight-v1.schema.json",
+      "sha256": "4cefec61c5c08b983dc04d7718d21e9303af3d9bae2485bcceba6d53621e911b"
+    },
+    {
+      "bytes": 752,
+      "executable": false,
+      "path": "schemas/bbk-python-resolution-v1.schema.json",
+      "sha256": "2f90e65befa710c4ed3f007d078f2f1e01cc491bf84b49f5f1faa0e5ef376682"
+    },
+    {
+      "bytes": 3110,
+      "executable": false,
+      "path": "skills/bbk-python/SKILL.md",
+      "sha256": "7c3a86eecf05d25ef6044c867ec98cfc2d6ada637cb87e9f0ab0e14c569b1b69"
+    },
+    {
+      "bytes": 11452,
+      "executable": false,
+      "path": "skills/comprehensive-analysis-python/SKILL.md",
+      "sha256": "572e6553dae30fef1f6a8935b907219b94ebee9590b8d0bd9f23c48da4833835"
+    },
+    {
+      "bytes": 3659,
+      "executable": false,
+      "path": "skills/python-api-package-boundary-review/SKILL.md",
+      "sha256": "db2abab36bb3597429e040f92f200a11e673801f535efd45c91d0dfa4f18876d"
+    },
+    {
+      "bytes": 2427,
+      "executable": false,
+      "path": "skills/python-evidence-reproducer/SKILL.md",
+      "sha256": "2ae0acaa85f2892fe41517c688988a9aec3350384845f3eac2cdb8928d5f24a2"
+    },
+    {
+      "bytes": 2903,
+      "executable": false,
+      "path": "skills/python-native-extension-review/SKILL.md",
+      "sha256": "55a00bbb0b58d12b117e31d73046167877f42c2352c50e6e18a972e89e6d02d8"
+    },
+    {
+      "bytes": 3292,
+      "executable": false,
+      "path": "skills/python-operational-readiness-review/SKILL.md",
+      "sha256": "efcc73d5d1389aad545adeff47707731c31218d97cbfd39763861087ef3fff65"
+    },
+    {
+      "bytes": 2501,
+      "executable": false,
+      "path": "skills/python-package-release-gates/SKILL.md",
+      "sha256": "8883aa5746edae5e3aa43a4a0d999d48b8a1314d87b4f35db8ddf12c0829e2a2"
+    },
+    {
+      "bytes": 4214,
+      "executable": false,
+      "path": "skills/python-runtime-correctness-review/SKILL.md",
+      "sha256": "890fb3ee6cc65d5b69cf3f64c325e1aa10c75607a8e5c436258e8b8716e80383"
+    },
+    {
+      "bytes": 3593,
+      "executable": false,
+      "path": "skills/python-security-supply-chain-review/SKILL.md",
+      "sha256": "17c689fe08915080fe39c216801e9588f8e25a17825c9c4070f99970ddda5ace"
+    },
+    {
+      "bytes": 3847,
+      "executable": false,
+      "path": "skills/python-test-strategy-review/SKILL.md",
+      "sha256": "80311e23eb2ba2c4fce2fe33483bc733c462c27e91583f205a04932412ca3297"
+    },
+    {
+      "bytes": 3147,
+      "executable": false,
+      "path": "skills/python-typing-contract-review/SKILL.md",
+      "sha256": "697d5579ed691f5030c51734c9222a547c247c2d267caa82f5ff5130f5692e50"
+    },
+    {
+      "bytes": 1952,
+      "executable": false,
+      "path": "skills/python-web-hypermedia-review/SKILL.md",
+      "sha256": "71dddf637938235ac88a228e3ee8ac30a5e744c06f6e4e22ef6f91c38037e8af"
+    },
+    {
+      "bytes": 11172,
+      "executable": false,
+      "path": "sources/comprehensive-analysis-python.original.md",
+      "sha256": "a9c73fceb8932df70aeb4514d6a249e7dac13902190cef327c64af08ba7c6c4f"
+    },
+    {
+      "bytes": 370,
+      "executable": false,
+      "path": "sources/original-digests.json",
+      "sha256": "106cf7aaabc5a1c1f258c70d37f8c447cdb1764ff9df782001e13c3ce2763364"
+    },
+    {
+      "bytes": 20370,
+      "executable": false,
+      "path": "tests/test_profile.py",
+      "sha256": "e523c0ca55cc9b21fa1bc24667243c9028662df9b6cd609b91bcbaa3f415884c"
+    },
+    {
+      "bytes": 49969,
+      "executable": true,
+      "path": "tools/bbk_python.py",
+      "sha256": "3cab4ea39600edc060680f609914c3cd3469ca4e9a8db360179c6da1b815bc3c"
+    },
+    {
+      "bytes": 6336,
+      "executable": true,
+      "path": "tools/build_release.py",
+      "sha256": "a924208a17215a65363526cf6e893d0ecaf1d6ef755d07adf1680689c5a8d14e"
+    },
+    {
+      "bytes": 14813,
+      "executable": true,
+      "path": "tools/install.py",
+      "sha256": "b16aa3f11d038e5b54b12e9da43914ba83c80d434eb5846601c5cb45df499afd"
+    },
+    {
+      "bytes": 6196,
+      "executable": true,
+      "path": "tools/verify_package.py",
+      "sha256": "e6609b52959c5f5cca43a7319286383c5db3ef12dedf5a1a11fbcff039a5a75d"
+    }
+  ],
+  "fixture_file_count": 14,
+  "gate_recipe_count": 25,
+  "maturity": "comprehensive-alpha",
+  "name": "BBK Python Profile",
+  "profile_id": "python",
+  "profile_manifest_sha256": "965a980e66585e1d8ec46ce2d7b54619b0361f47aae6c494c4cfb9ea38163765",
+  "root_schema": "bbk.profile-package-root.v1",
+  "root_sha256": "34a85b77cc0e51d1baa9a5d3701d80a8d2eb10da6e82c90d93a68e0beaf5e7a8",
+  "schema": "bbk.profile-package-manifest.v1",
+  "skill_count": 12,
+  "source_provenance_sha256": "106cf7aaabc5a1c1f258c70d37f8c447cdb1764ff9df782001e13c3ce2763364",
+  "trigger_count": 24,
+  "version": "0.1.0-alpha.1"
+}

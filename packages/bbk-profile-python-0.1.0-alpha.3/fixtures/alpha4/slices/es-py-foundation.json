@@ -1,0 +1,68 @@
+{
+  "assertions": [
+    {
+      "evidence": "metadata report",
+      "id": "A-FOUNDATION",
+      "method": "inspection",
+      "statement": "The report identifies package contents and tags."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice creates one integrated, reversible qualification touchpoint.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "Contract accepted."
+  ],
+  "exitConditions": [
+    "Declared observation is evidenced."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "participants": [
+      "build metadata inspector"
+    ],
+    "steps": [
+      "Generate and inspect a deterministic package metadata inventory."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Python fixture",
+  "metadata": {
+    "enablesNextSlice": "ES-PY-PACKAGE",
+    "fixture": true,
+    "foundationException": true,
+    "revision": "1"
+  },
+  "objective": "Bounded foundation risk retirement",
+  "parentCapabilityRefs": [
+    "CAP-PYTHON"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-PY-FOUNDATION",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-PY-PACKAGE@1"
+  ],
+  "title": "Bounded foundation risk retirement",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "isolated qualification fixture",
+    "expectedObservation": "The report proves package topology feasibility and enables the next clean-wheel slice.",
+    "interaction": "Generate and inspect a deterministic package metadata inventory.",
+    "kind": "report"
+  },
+  "workUnitRefs": [
+    "WU-METADATA"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The change fixes consequential realization shape needed for independent implementation and review.",
+    "triggers": [
+      "checked-javascript"
+    ]
+  },
+  "contractId": "ISC-TSJS-CHECKED-JS",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper layout",
+        "bounds": "May change if fixed public/runtime contracts, ownership, effects and touchpoint evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-CHECKJS",
+        "rationale": "Protect a material boundary.",
+        "sourceRefs": [],
+        "statement": "The package remains checked JavaScript; conversion to TypeScript is not required by this slice."
+      }
+    ],
+    "prohibited": [
+      "Duplicating the same runtime schema or authoritative rule in independently mutable layers.",
+      "Treating a TypeScript declaration or transpiler pass as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-TSJS-CHECKED-JS"
+  ],
+  "metadata": {
+    "fixture": true,
+    "profile": "typescript-javascript"
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed public/shared contracts and owners are explicit.",
+      "Delegated freedom preserves competent private implementation choices.",
+      "The first execution slice creates an inspectable integrated touchpoint."
+    ],
+    "acceptedBy": [
+      "FIXTURE-AUTHORITY"
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": [
+      "tsjs-implementation-structure-review"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "retain",
+        "id": "ART-JSCONFIG",
+        "kind": "compiler-config",
+        "logicalPath": "jsconfig.json",
+        "owner": "toolchain",
+        "responsibility": "Own checkJs policy.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-JS",
+        "kind": "module",
+        "logicalPath": "src/index.js",
+        "owner": "library",
+        "responsibility": "Implement checked JavaScript behavior.",
+        "sourceRefs": []
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "Failure is typed or otherwise classified and leaves the declared recoverable state."
+        ],
+        "id": "BP-ISC-TSJS-CHECKED-JS",
+        "interfaceRefs": [
+          "IF-ISC-TSJS-CHECKED-JS"
+        ],
+        "name": "Checked JavaScript structure",
+        "steps": [
+          {
+            "contractRef": "KC-JSDOC",
+            "from": "Consumer",
+            "interaction": "use the accepted contract",
+            "to": "Owner"
+          }
+        ],
+        "success": "The declared touchpoint produces the accepted behavior.",
+        "trigger": "A declared consumer invokes the slice"
+      }
+    ],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [],
+        "id": "KC-JSDOC",
+        "invariants": [
+          "checkJs remains enabled"
+        ],
+        "kind": "public-api",
+        "name": "Checked JS API",
+        "responsibility": "Stable checked JavaScript surface",
+        "shape": "JSDoc function contract",
+        "sourceRefs": [],
+        "visibility": "shared"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-TSJS-CHECKED-JS",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-CHECKED-JS"
+        ],
+        "statement": "Record outcome class and correlation identity without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-TSJS-CHECKED-JS",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-CHECKED-JS"
+        ],
+        "statement": "Exercise the declared public/runtime boundary through a deterministic fixture or clean consumer."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-TSJS-CHECKED-JS"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-TSJS-A4"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-TSJS-CHECKED-JS"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-TSJS-CHECKED-JS"
+    ],
+    "kind": "software",
+    "purpose": "Preserve checked JavaScript and JSDoc as a supported implementation form.",
+    "requirementRefs": [
+      "REQ-ISC-TSJS-CHECKED-JS"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-TSJS-CHECKED-JS"
+    ]
+  },
+  "title": "Checked JavaScript structure",
+  "uncertainties": []
+}

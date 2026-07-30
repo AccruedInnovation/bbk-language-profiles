@@ -1,0 +1,17 @@
+{
+  "expectedLenses": [
+    "architecture-boundary",
+    "interface-consumer-compatibility",
+    "implementation-structure",
+    "state-concurrency-effect-recovery",
+    "security-privacy-supply-chain",
+    "test-evidence",
+    "operations-performance-resource",
+    "package-install-migration-release"
+  ],
+  "ompEnvToken": "GO",
+  "profileId": "go",
+  "reviewStatus": "supported",
+  "sourcePath": "order/order.go",
+  "sourceText": "package order\nimport \"context\"\ntype OrderState int\nconst ( Draft OrderState = iota; Submitted )\ntype OrderID string\nfunc DecideTransition(state OrderState) (OrderState, error) { return state, nil }\nfunc ExecuteEffect(ctx context.Context) error { /* retry timeout acknowledgement recovery shutdown */ return nil }\nvar ambientState bool\nvar shadowOrderState = map[OrderID]OrderState{}\n"
+}

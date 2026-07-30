@@ -1,0 +1,258 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-python-structure-review-result-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "advisories": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "applicability": {
+      "additionalProperties": false,
+      "properties": {
+        "disposition": {
+          "enum": [
+            "PROJECTED",
+            "NOT_APPLICABLE",
+            "PARTIAL",
+            "UNSUPPORTED",
+            "BLOCKED"
+          ]
+        },
+        "level": {
+          "enum": [
+            "none",
+            "inline",
+            "contract"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "triggers": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "level",
+        "disposition",
+        "rationale",
+        "triggers"
+      ],
+      "type": "object"
+    },
+    "bbk_version": {
+      "type": "string"
+    },
+    "blockers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "candidate": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "comparison": {
+      "$ref": "bbk-python-planned-actual-structure-comparison-v1.schema.json"
+    },
+    "coverage": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "disposition": {
+      "enum": [
+        "CONFORMS",
+        "ADVISORY_DIVERGENCE",
+        "MATERIAL_DIVERGENCE",
+        "BLOCKED",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "findings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actual_evidence": {
+            "type": "string"
+          },
+          "affected_contract_or_owner": {
+            "type": "string"
+          },
+          "class": {
+            "enum": [
+              "material",
+              "advisory",
+              "observation",
+              "blocker"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "planned_ref": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "class",
+          "planned_ref",
+          "statement",
+          "actual_evidence",
+          "affected_contract_or_owner",
+          "route"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "input": {
+      "additionalProperties": false,
+      "properties": {
+        "digest": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "implementation-structure-contract",
+            "execution-slice"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "revision",
+        "digest",
+        "path"
+      ],
+      "type": "object"
+    },
+    "inventory": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "no_authority": {
+      "additionalProperties": false,
+      "properties": {
+        "may_declare_pass": {
+          "const": false
+        },
+        "may_expand_work_scope": {
+          "const": false
+        },
+        "may_grant_tools_or_effects": {
+          "const": false
+        },
+        "may_reduce_assurance": {
+          "const": false
+        },
+        "statement": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "may_declare_pass",
+        "may_expand_work_scope",
+        "may_grant_tools_or_effects",
+        "may_reduce_assurance",
+        "statement"
+      ],
+      "type": "object"
+    },
+    "output_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "preflight_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profile": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": "python"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "const": "bbk.python.structure-review-result.v1"
+    },
+    "unsupported_or_uncertain": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "profile",
+    "bbk_version",
+    "input",
+    "preflight_digest",
+    "applicability",
+    "candidate",
+    "inventory",
+    "comparison",
+    "disposition",
+    "coverage",
+    "findings",
+    "limitations",
+    "unsupported_or_uncertain",
+    "advisories",
+    "blockers",
+    "no_authority",
+    "output_digest"
+  ],
+  "title": "BBK Python Structure Review Result v1",
+  "type": "object"
+}

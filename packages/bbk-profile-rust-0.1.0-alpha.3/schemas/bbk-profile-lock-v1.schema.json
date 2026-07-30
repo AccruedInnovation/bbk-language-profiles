@@ -1,0 +1,39 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-profile-lock-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "BBK profile lock. Alpha.4 profile records may include generic structure/slice input digests and profile projection digests; alpha.3 records remain valid.",
+  "properties": {
+    "effective_sha256": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      ]
+    },
+    "generated_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profiles": {
+      "type": "array"
+    },
+    "schema": {
+      "const": "bbk.profile-lock.v1"
+    }
+  },
+  "required": [
+    "schema",
+    "generated_at",
+    "profiles",
+    "effective_sha256"
+  ],
+  "title": "BBK profile lock",
+  "type": "object"
+}

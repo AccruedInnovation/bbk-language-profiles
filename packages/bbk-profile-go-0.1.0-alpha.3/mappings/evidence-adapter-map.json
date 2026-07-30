@@ -1,0 +1,39 @@
+{
+  "evidenceKinds": [
+    "gofmt",
+    "go-vet",
+    "static-analysis",
+    "go-test",
+    "race",
+    "fuzz",
+    "synctest",
+    "consumer",
+    "module-release",
+    "cgo-unsafe-assembly"
+  ],
+  "noInventedFields": [
+    "command",
+    "exitStatus",
+    "observedAt",
+    "toolchain",
+    "environment",
+    "subject",
+    "completeness"
+  ],
+  "principalProcedure": "go-evidence-reproducer",
+  "profile": "go",
+  "schema": "bbk.profile-evidence-adapter-map.v1",
+  "schemaPrefix": "go",
+  "trustClasses": [
+    "AGENT_INSPECTION",
+    "DETERMINISTIC_LOCAL",
+    "HUMAN_REVIEW",
+    "LEGACY_IMPORTED",
+    "OPERATIONAL_OBSERVATION",
+    "QUALIFIED_EXTERNAL_CHECK",
+    "QUALIFIED_TOOL",
+    "SIMULATOR_OR_HARNESS",
+    "UNSTRUCTURED_OBSERVATION"
+  ],
+  "version": "0.1.0-alpha.3"
+}

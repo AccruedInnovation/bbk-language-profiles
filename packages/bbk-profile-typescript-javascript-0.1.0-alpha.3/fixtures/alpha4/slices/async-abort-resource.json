@@ -1,0 +1,69 @@
+{
+  "assertions": [
+    {
+      "evidence": "fault trace and open-handle check",
+      "id": "A-ABORT",
+      "method": "test",
+      "statement": "Cancellation and cleanup ownership hold."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice closes one integrated feedback path without artificial layer-only handoff.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-TSJS-ASYNC@1 accepted"
+  ],
+  "exitConditions": [
+    "Abort propagates, resources close, and late result cannot commit."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-ES-TSJS-ASYNC"
+    ],
+    "interfaceRefs": [
+      "IF-ES-TSJS-ASYNC"
+    ],
+    "participants": [
+      "consumer",
+      "owner"
+    ],
+    "steps": [
+      "Start operation with AbortSignal.",
+      "Trigger timeout/abort.",
+      "Observe cleanup and terminal result."
+    ]
+  },
+  "integrationOwner": "Owner of ES-TSJS-ASYNC",
+  "metadata": {
+    "fixture": true
+  },
+  "objective": "Start an operation, abort it at material boundaries and prove cleanup/late-result fencing.",
+  "parentCapabilityRefs": [
+    "CAP-ES-TSJS-ASYNC"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-TSJS-ASYNC",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-TSJS-ASYNC@1"
+  ],
+  "title": "Abort and cleanup touchpoint",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "synthetic qualified fixture",
+    "expectedObservation": "Abort propagates, resources close, and late result cannot commit.",
+    "interaction": "Run deterministic cancellation fixture",
+    "kind": "protocol-trace"
+  },
+  "workUnitRefs": [
+    "WU-RUN",
+    "WU-FAULT"
+  ]
+}

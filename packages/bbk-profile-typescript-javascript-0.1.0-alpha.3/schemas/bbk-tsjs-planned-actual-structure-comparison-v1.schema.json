@@ -1,0 +1,158 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-tsjs-planned-actual-structure-comparison-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "applicability": {
+      "enum": [
+        "APPLICABLE",
+        "NOT_APPLICABLE",
+        "BLOCKED"
+      ]
+    },
+    "authority": {
+      "additionalProperties": true,
+      "properties": {
+        "may_declare_pass": {
+          "const": false
+        },
+        "may_expand_work_scope": {
+          "const": false
+        },
+        "may_grant_tools_or_effects": {
+          "const": false
+        },
+        "may_reduce_assurance": {
+          "const": false
+        },
+        "projection_is_authority": {
+          "const": false
+        },
+        "statement": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "projection_is_authority",
+        "may_declare_pass",
+        "may_expand_work_scope",
+        "may_grant_tools_or_effects",
+        "may_reduce_assurance",
+        "statement"
+      ],
+      "type": "object"
+    },
+    "bbk_version": {
+      "const": "0.1.0-alpha.4"
+    },
+    "differences": {
+      "type": "array"
+    },
+    "disposition": {
+      "enum": [
+        "CONFORMS",
+        "ADVISORY_DIVERGENCE",
+        "MATERIAL_DIVERGENCE",
+        "BLOCKED",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "input": {
+      "additionalProperties": false,
+      "properties": {
+        "digest": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "type": "string"
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "revision",
+        "digest"
+      ],
+      "type": "object"
+    },
+    "inventory_digest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "output_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "preflight_digest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profile": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": "typescript-javascript"
+        },
+        "package": {
+          "const": "bbk-profile-typescript-javascript"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "package",
+        "version"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "const": "bbk.tsjs-planned-actual-structure-comparison.v1"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "unknowns": {
+      "type": "array"
+    },
+    "within_delegated_freedom": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "profile",
+    "bbk_version",
+    "input",
+    "preflight_digest",
+    "inventory_digest",
+    "applicability",
+    "disposition",
+    "differences",
+    "unknowns",
+    "within_delegated_freedom",
+    "summary",
+    "authority",
+    "output_digest"
+  ],
+  "title": "BBK TS/JS planned versus actual structure comparison",
+  "type": "object"
+}

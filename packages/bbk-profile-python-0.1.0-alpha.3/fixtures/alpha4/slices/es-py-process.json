@@ -1,0 +1,68 @@
+{
+  "assertions": [
+    {
+      "evidence": "process trace",
+      "id": "A-PROCESS",
+      "method": "test",
+      "statement": "Process message and result disposition are stable."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "The slice creates one integrated, reversible qualification touchpoint.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "Contract accepted."
+  ],
+  "exitConditions": [
+    "Declared observation is evidenced."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "participants": [
+      "coordinator",
+      "worker process"
+    ],
+    "steps": [
+      "Send a JobMessage through the declared process context."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Python fixture",
+  "metadata": {
+    "fixture": true,
+    "revision": "1"
+  },
+  "objective": "Process job handoff",
+  "parentCapabilityRefs": [
+    "CAP-PYTHON"
+  ],
+  "profileProjections": {},
+  "scaffolding": [],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-PY-PROCESS",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-PY-PROCESS@1"
+  ],
+  "title": "Process job handoff",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "isolated qualification fixture",
+    "expectedObservation": "One terminal result or explicit failure is returned.",
+    "interaction": "Send a JobMessage through the declared process context.",
+    "kind": "protocol-trace"
+  },
+  "workUnitRefs": [
+    "WU-JOB",
+    "WU-PROCESS-FIXTURE"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "assertions": [
+    {
+      "evidence": "GOWORK=off result and module graph",
+      "id": "A-MODULE-STANDALONE",
+      "method": "test",
+      "statement": "The module passes independently of the repository go.work."
+    },
+    {
+      "evidence": "consumer fixture result",
+      "id": "A-DOWNSTREAM",
+      "method": "test",
+      "statement": "A fresh downstream consumer compiles and observes the intended API/error/wire contract."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "One public consumer path and its exact regression evidence are complete.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-GO-SERVICE-001 revision 1 accepted."
+  ],
+  "exitConditions": [
+    "Command touchpoint executes.",
+    "A-GO-SAVE and A-GO-ERROR pass."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-GO-API"
+    ],
+    "interfaceRefs": [
+      "IF-GO-SAVE"
+    ],
+    "participants": [
+      "public module",
+      "module proxy or local package fixture",
+      "downstream consumer"
+    ],
+    "steps": [
+      "Test public module with GOWORK=off.",
+      "Create or use the declared release artifact/version.",
+      "Compile and test downstream consumer."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Go save path",
+  "metadata": {
+    "fixture": "go-alpha4"
+  },
+  "objective": "Build and test the public API outside the parent go.work and compile a downstream consumer module.",
+  "parentCapabilityRefs": [
+    "CAP-GO-SAVE"
+  ],
+  "scaffolding": [
+    {
+      "disposition": "retain-as-fixture",
+      "id": "SC-CONSUMER",
+      "owner": "release tests",
+      "purpose": "Fresh downstream module fixture."
+    }
+  ],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-GO-MODULE-RELEASE-001",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-GO-SERVICE-001@1"
+  ],
+  "title": "Standalone module and downstream consumer",
+  "touchpoint": {
+    "actor": "library maintainer/downstream consumer",
+    "environment": "clean module cache/proxy policy defined by the work unit",
+    "expectedObservation": "The released module path, exported declarations, errors, and wire behavior work without local workspace replacements.",
+    "interaction": "Test the module with GOWORK=off and compile a fresh downstream consumer.",
+    "kind": "package"
+  },
+  "workUnitRefs": [
+    "WU-MODULE-CHECK",
+    "WU-DOWNSTREAM-CONSUMER"
+  ]
+}

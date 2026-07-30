@@ -1,0 +1,13 @@
+{
+  "prdSha256": "42e9157fe258899d51f615773097c75fad8715d77a68a4eae54289f8bdec7b42",
+  "profile": "go",
+  "requiredBbk": "0.1.0-alpha.8",
+  "schema": "bbk.profile-source-binding.v1",
+  "skillsByteIdentityRequired": true,
+  "sourceArchiveSha256": "23f3e92688d505de96e02ec10ca14d5ae4cf08b81b71e1296b6cd48e3c279bc8",
+  "sourceManifestedFiles": 110,
+  "sourcePackageRootSha256": "a8ac0e0d821cca94719fa47e8caf6bd32f43bf27e778ad9210e9ff6c0feee642",
+  "sourceSkillCount": 14,
+  "sourceVersion": "0.1.0-alpha.2",
+  "successorVersion": "0.1.0-alpha.3"
+}

@@ -1,0 +1,85 @@
+{
+  "assertions": [
+    {
+      "evidence": "command test plus source inventory",
+      "id": "A-GO-SAVE",
+      "method": "test",
+      "statement": "The command consumes the public API without duplicating Service lifecycle policy."
+    },
+    {
+      "evidence": "errors.Is regression test",
+      "id": "A-GO-ERROR",
+      "method": "test",
+      "statement": "ErrClosed remains classifiable by callers."
+    }
+  ],
+  "atomicity": {
+    "coherent": true,
+    "containedOrReversible": true,
+    "independentlyVerifiable": true,
+    "rationale": "One public consumer path and its exact regression evidence are complete.",
+    "reviewable": true
+  },
+  "dependencies": [],
+  "entryConditions": [
+    "ISC-GO-SERVICE-001 revision 1 accepted."
+  ],
+  "exitConditions": [
+    "Command touchpoint executes.",
+    "A-GO-SAVE and A-GO-ERROR pass."
+  ],
+  "flow": {
+    "architectureRefs": [
+      "ARCH-GO-API",
+      "ARCH-GO-CMD"
+    ],
+    "interfaceRefs": [
+      "IF-GO-SAVE"
+    ],
+    "participants": [
+      "cmd/app",
+      "api.Service",
+      "api.Store fixture"
+    ],
+    "steps": [
+      "Construct Service with consumer implementation.",
+      "Invoke Save with context and Record.",
+      "Observe output and error identity."
+    ]
+  },
+  "integrationOwner": "Worker Orchestrator: Go save path",
+  "metadata": {
+    "fixture": "go-alpha4"
+  },
+  "objective": "Exercise the public Record, Store, Service, and command consumer as one integrated read/write path.",
+  "parentCapabilityRefs": [
+    "CAP-GO-SAVE"
+  ],
+  "scaffolding": [
+    {
+      "disposition": "retain-as-fixture",
+      "id": "SC-STORE",
+      "owner": "tests",
+      "purpose": "Deterministic Store implementation for the touchpoint."
+    }
+  ],
+  "schema": "bbk.execution-slice.v1",
+  "sliceId": "ES-GO-SAVE-001",
+  "status": "ready",
+  "structureContractRefs": [
+    "ISC-GO-SERVICE-001@1"
+  ],
+  "title": "Public save path through command consumer",
+  "touchpoint": {
+    "actor": "developer/reviewer",
+    "environment": "offline fixture workspace with declared Go toolchain",
+    "expectedObservation": "The command uses the public API, reports success once, and preserves error identity.",
+    "interaction": "Run the fixture command with a deterministic Store implementation.",
+    "kind": "cli"
+  },
+  "workUnitRefs": [
+    "WU-GO-API",
+    "WU-GO-CMD",
+    "WU-GO-SAVE-TEST"
+  ]
+}

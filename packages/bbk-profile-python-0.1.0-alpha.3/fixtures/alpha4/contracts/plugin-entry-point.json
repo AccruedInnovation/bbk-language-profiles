@@ -1,0 +1,169 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "Use the least structure ceremony sufficient for this fixture.",
+    "triggers": [
+      "plugin",
+      "entry-point",
+      "packaging",
+      "consumer-shape"
+    ]
+  },
+  "contractId": "ISC-PY-PLUGIN",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper and equivalent internal module layout",
+        "bounds": "May vary when public/shared contracts, ownership, behavior, and evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-PLUGIN-GROUP",
+        "rationale": "The decision stabilizes a material Python boundary.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Plugins are discovered through the fixture.plugins entry-point group."
+      }
+    ],
+    "prohibited": [
+      "Do not treat annotations as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-PY-PLUGIN"
+  ],
+  "metadata": {
+    "fixture": true
+  },
+  "profileProjections": {
+    "python": {}
+  },
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed decisions and consequential shape are explicit.",
+      "Delegated freedom remains sufficient.",
+      "A real touchpoint can verify the result."
+    ],
+    "acceptedBy": [
+      "DEMO-AUTHORITY"
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": [
+      "bbk_reviewer"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-PYPROJECT",
+        "kind": "distribution",
+        "logicalPath": "pyproject.toml",
+        "owner": "python",
+        "responsibility": "Own art-pyproject behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      },
+      {
+        "action": "modify",
+        "id": "ART-PLUGIN",
+        "kind": "module",
+        "logicalPath": "src/fixture_pkg/plugins.py",
+        "owner": "python",
+        "responsibility": "Own art-plugin behavior.",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ]
+      }
+    ],
+    "behaviorPaths": [],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "Invalid external values are rejected before trusted use."
+        ],
+        "id": "KC-PLUGIN-GROUP",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "plugin-entry-point",
+        "name": "fixture.plugins",
+        "responsibility": "Represent fixture.plugins.",
+        "shape": "entry-point group fixture.plugins",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "external"
+      },
+      {
+        "failureSemantics": [],
+        "id": "KC-PLUGIN",
+        "invariants": [
+          "Declared values are valid for the boundary."
+        ],
+        "kind": "public-class",
+        "name": "Plugin",
+        "responsibility": "Represent Plugin.",
+        "shape": "Plugin",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "visibility": "public"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-PY-PLUGIN",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Record outcome and failure class without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-PY-PLUGIN",
+        "sourceRefs": [
+          "REQ-PYTHON"
+        ],
+        "statement": "Exercise the declared touchpoint through the normal package/runtime subject."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-PYTHON"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-PY-ALPHA4"
+    ],
+    "capabilityRefs": [
+      "CAP-PYTHON"
+    ],
+    "interfaceRefs": [
+      "IF-PYTHON"
+    ],
+    "kind": "software",
+    "purpose": "Plugin entry point contract",
+    "requirementRefs": [
+      "REQ-PYTHON"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-PY-PLUGIN"
+    ]
+  },
+  "title": "Plugin entry point contract",
+  "uncertainties": []
+}

@@ -1,0 +1,164 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The change fixes consequential realization shape needed for independent implementation and review.",
+    "triggers": [
+      "transpile-only"
+    ]
+  },
+  "contractId": "ISC-TSJS-TRANSPILE",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper layout",
+        "bounds": "May change if fixed public/runtime contracts, ownership, effects and touchpoint evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-NO-TYPECLAIM",
+        "rationale": "Protect a material boundary.",
+        "sourceRefs": [],
+        "statement": "No semantic type-check pass may be claimed unless a checker is explicitly added and run."
+      }
+    ],
+    "prohibited": [
+      "Duplicating the same runtime schema or authoritative rule in independently mutable layers.",
+      "Treating a TypeScript declaration or transpiler pass as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-TSJS-TRANSPILE"
+  ],
+  "metadata": {
+    "fixture": true,
+    "profile": "typescript-javascript"
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed public/shared contracts and owners are explicit.",
+      "Delegated freedom preserves competent private implementation choices.",
+      "The first execution slice creates an inspectable integrated touchpoint."
+    ],
+    "acceptedBy": [
+      "FIXTURE-AUTHORITY"
+    ],
+    "assuranceTier": "material",
+    "requiredReviewers": [
+      "tsjs-implementation-structure-review"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "retain",
+        "id": "ART-PKG",
+        "kind": "package",
+        "logicalPath": "package.json",
+        "owner": "package",
+        "responsibility": "Declare build/test commands.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-MAIN",
+        "kind": "entry-point",
+        "logicalPath": "src/main.ts",
+        "owner": "application",
+        "responsibility": "Own runtime entry behavior.",
+        "sourceRefs": []
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "Failure is typed or otherwise classified and leaves the declared recoverable state."
+        ],
+        "id": "BP-ISC-TSJS-TRANSPILE",
+        "interfaceRefs": [
+          "IF-ISC-TSJS-TRANSPILE"
+        ],
+        "name": "Transpile-only TypeScript structure",
+        "steps": [
+          {
+            "contractRef": "KC-RUNTIME",
+            "from": "Consumer",
+            "interaction": "use the accepted contract",
+            "to": "Owner"
+          }
+        ],
+        "success": "The declared touchpoint produces the accepted behavior.",
+        "trigger": "A declared consumer invokes the slice"
+      }
+    ],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "build success does not imply type correctness"
+        ],
+        "id": "KC-RUNTIME",
+        "invariants": [
+          "build output starts"
+        ],
+        "kind": "runtime-api",
+        "name": "Runtime entry",
+        "responsibility": "Runtime behavior, not a type-safety claim",
+        "shape": "main.ts emitted application entry",
+        "sourceRefs": [],
+        "visibility": "internal"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-TSJS-TRANSPILE",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-TRANSPILE"
+        ],
+        "statement": "Record outcome class and correlation identity without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-TSJS-TRANSPILE",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-TRANSPILE"
+        ],
+        "statement": "Exercise the declared public/runtime boundary through a deterministic fixture or clean consumer."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-TSJS-TRANSPILE"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-TSJS-A4"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-TSJS-TRANSPILE"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-TSJS-TRANSPILE"
+    ],
+    "kind": "software",
+    "purpose": "Keep emit evidence distinct from absent semantic type-check evidence.",
+    "requirementRefs": [
+      "REQ-ISC-TSJS-TRANSPILE"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-TSJS-TRANSPILE"
+    ]
+  },
+  "title": "Transpile-only TypeScript structure",
+  "uncertainties": []
+}

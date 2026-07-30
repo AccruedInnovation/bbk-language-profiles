@@ -1,0 +1,669 @@
+{
+  "scan": {
+    "exclude_globs": [
+      ".git/**",
+      ".jj/**",
+      ".bbk/**",
+      ".bbk-kit/**",
+      ".bbk-worktrees/**",
+      "vendor/**",
+      "node_modules/**",
+      "dist/**",
+      "build/**",
+      "coverage/**",
+      "testdata/large/**"
+    ],
+    "max_file_bytes": 1048576,
+    "max_files": 5000,
+    "source_extensions": [
+      ".go",
+      ".mod",
+      ".sum",
+      ".work",
+      ".s",
+      ".c",
+      ".h",
+      ".proto",
+      ".sql",
+      ".json",
+      ".yaml",
+      ".yml",
+      ".html",
+      ".tmpl",
+      ".gotmpl",
+      ".md"
+    ]
+  },
+  "schema": "bbk.go-risk-trigger-map.v1",
+  "triggers": [
+    {
+      "change_classes": [
+        "interface",
+        "schema",
+        "module",
+        "release"
+      ],
+      "content_regex": [
+        "(?m)^func\\s+[A-Z]",
+        "(?m)^type\\s+[A-Z][A-Za-z0-9_]*\\s+(struct|interface)",
+        "(?m)^var\\s+[A-Z]",
+        "(?m)^const\\s+[A-Z]",
+        "(?m)^module\\s+"
+      ],
+      "file_globs": [
+        "**/go.mod",
+        "**/go.work",
+        "**/*.go"
+      ],
+      "gate_tags": [
+        "api",
+        "module",
+        "compatibility",
+        "downstream"
+      ],
+      "hints": [
+        "public-api",
+        "module",
+        "module-release",
+        "semver",
+        "method-set",
+        "interface",
+        "downstream-caller",
+        "error-contract",
+        "major-version"
+      ],
+      "id": "public-api-module",
+      "select": [
+        "go-api-module-boundary-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "schema",
+        "migration",
+        "persistence"
+      ],
+      "content_regex": [
+        "encoding/json",
+        "json:\"",
+        "proto(json)?\\.",
+        "database/sql",
+        "sqlx?\\.",
+        "yaml:\""
+      ],
+      "file_globs": [
+        "**/*.proto",
+        "**/*.sql",
+        "**/migrations/**",
+        "**/schema/**"
+      ],
+      "gate_tags": [
+        "wire",
+        "compatibility",
+        "persistence",
+        "migration"
+      ],
+      "hints": [
+        "wire-format",
+        "serialization",
+        "json",
+        "protobuf",
+        "grpc",
+        "schema-evolution",
+        "database-schema",
+        "migration",
+        "persistent-data"
+      ],
+      "id": "wire-persistence-schema",
+      "select": [
+        "go-api-module-boundary-review",
+        "go-correctness-concurrency-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "concurrency"
+      ],
+      "content_regex": [
+        "\\bgo\\s+[A-Za-z_(]",
+        "\\bchan\\b",
+        "context\\.(Context|WithCancel|WithTimeout|WithDeadline|WithCancelCause)",
+        "sync\\.(Mutex|RWMutex|WaitGroup|Cond|Once|Map)",
+        "atomic\\.",
+        "time\\.(NewTicker|NewTimer|AfterFunc)"
+      ],
+      "gate_tags": [
+        "concurrency",
+        "cancellation",
+        "race",
+        "synctest"
+      ],
+      "hints": [
+        "concurrency",
+        "goroutine",
+        "channel",
+        "cancellation",
+        "context",
+        "race",
+        "deadlock",
+        "shared-state",
+        "atomic",
+        "timer",
+        "backpressure"
+      ],
+      "id": "concurrency-lifecycle",
+      "select": [
+        "go-correctness-concurrency-review",
+        "go-test-strategy-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "migration",
+        "persistence"
+      ],
+      "content_regex": [
+        "database/sql",
+        "BeginTx\\s*\\(",
+        "Commit\\s*\\(",
+        "Rollback\\s*\\(",
+        "os\\.(Create|OpenFile|Rename|Remove)",
+        "WriteFile\\s*\\("
+      ],
+      "file_globs": [
+        "**/migrations/**",
+        "**/*.sql"
+      ],
+      "gate_tags": [
+        "persistence",
+        "recovery",
+        "fault",
+        "migration"
+      ],
+      "hints": [
+        "persistence",
+        "transaction",
+        "migration",
+        "recovery",
+        "idempotency",
+        "durability",
+        "filesystem",
+        "restart"
+      ],
+      "id": "persistence-state",
+      "select": [
+        "go-correctness-concurrency-review",
+        "go-test-strategy-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "unsafe",
+        "cgo",
+        "assembly",
+        "native"
+      ],
+      "content_regex": [
+        "import\\s+\"C\"",
+        "import\\s+\"unsafe\"",
+        "//go:(linkname|nosplit|noescape|wasmexport)",
+        "runtime/cgo",
+        "unsafe\\.Pointer"
+      ],
+      "file_globs": [
+        "**/*.s",
+        "**/*.S",
+        "**/*.c",
+        "**/*.h"
+      ],
+      "gate_tags": [
+        "unsafe",
+        "cgo",
+        "assembly",
+        "abi",
+        "checkptr",
+        "sanitizer"
+      ],
+      "hints": [
+        "unsafe",
+        "cgo",
+        "assembly",
+        "abi",
+        "go-linkname",
+        "go-nosplit",
+        "native-library",
+        "callback",
+        "sanitizer",
+        "checkptr"
+      ],
+      "id": "unsafe-cgo-assembly",
+      "select": [
+        "go-unsafe-cgo-assembly-review",
+        "go-correctness-concurrency-review",
+        "go-security-supply-chain-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "dependency",
+        "security",
+        "packaging",
+        "generation"
+      ],
+      "content_regex": [
+        "//go:generate",
+        "os/exec",
+        "exec\\.Command(Context)?",
+        "net/http",
+        "archive/(zip|tar)",
+        "embed\\.",
+        "GOPRIVATE|GONOSUMDB|GOVCS|GOAUTH"
+      ],
+      "file_globs": [
+        "**/go.mod",
+        "**/go.sum",
+        "**/go.work",
+        "**/vendor/modules.txt",
+        "**/.github/workflows/**",
+        "**/Dockerfile*"
+      ],
+      "gate_tags": [
+        "security",
+        "dependencies",
+        "supply-chain",
+        "generation",
+        "vulnerability"
+      ],
+      "hints": [
+        "security",
+        "supply-chain",
+        "dependency",
+        "private-module",
+        "secrets",
+        "untrusted-input",
+        "filesystem",
+        "command",
+        "network",
+        "generator",
+        "vendor",
+        "govulncheck"
+      ],
+      "id": "security-supply-chain",
+      "select": [
+        "go-security-supply-chain-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "test",
+        "verification"
+      ],
+      "content_regex": [
+        "func\\s+Fuzz[A-Z]",
+        "func\\s+Benchmark[A-Z]",
+        "testing/synctest",
+        "t\\.Parallel\\s*\\(",
+        "-race",
+        "go test.*-count"
+      ],
+      "file_globs": [
+        "**/*_test.go",
+        "**/testdata/**",
+        "**/fuzz/**",
+        "**/benchmarks/**"
+      ],
+      "gate_tags": [
+        "test",
+        "fuzz",
+        "race",
+        "synctest",
+        "coverage",
+        "mutation"
+      ],
+      "hints": [
+        "test-strategy",
+        "regression",
+        "fuzz",
+        "synctest",
+        "race",
+        "coverage",
+        "mutation-testing",
+        "property-test",
+        "model-test",
+        "golden",
+        "flaky"
+      ],
+      "id": "test-strategy",
+      "select": [
+        "go-test-strategy-review",
+        "go-evidence-reproducer"
+      ]
+    },
+    {
+      "change_classes": [
+        "packaging",
+        "release",
+        "migration",
+        "operations"
+      ],
+      "content_regex": [
+        "signal\\.Notify(Context)?",
+        "http.Server",
+        "Shutdown\\s*\\(",
+        "slog\\.",
+        "otel|opentelemetry",
+        "prometheus",
+        "go:embed",
+        "default\\.pgo"
+      ],
+      "file_globs": [
+        "**/cmd/**",
+        "**/Dockerfile*",
+        "**/dist/**",
+        "**/packaging/**",
+        "**/.github/workflows/**",
+        "**/*.service"
+      ],
+      "gate_tags": [
+        "release",
+        "package",
+        "operations",
+        "shutdown",
+        "pgo"
+      ],
+      "hints": [
+        "operations",
+        "deployment",
+        "release",
+        "package",
+        "rollback",
+        "observability",
+        "configuration",
+        "signal",
+        "shutdown",
+        "health",
+        "readiness"
+      ],
+      "id": "operations-release",
+      "select": [
+        "go-operational-readiness-review",
+        "go-package-release-gates"
+      ]
+    },
+    {
+      "change_classes": [
+        "module",
+        "dependency",
+        "release"
+      ],
+      "content_regex": [
+        "(?m)^replace\\s+",
+        "(?m)^toolchain\\s+",
+        "(?m)^go\\s+[0-9]",
+        "(?m)^use\\s+\\(",
+        "(?m)^retract\\s+"
+      ],
+      "file_globs": [
+        "**/go.mod",
+        "**/go.work",
+        "**/go.sum",
+        "**/vendor/modules.txt"
+      ],
+      "gate_tags": [
+        "module",
+        "workspace",
+        "minimum-go",
+        "standalone",
+        "vendor"
+      ],
+      "hints": [
+        "go-work",
+        "workspace",
+        "replace",
+        "vendor",
+        "module-release",
+        "gowork-off",
+        "minimum-go",
+        "toolchain"
+      ],
+      "id": "module-workspace",
+      "select": [
+        "go-api-module-boundary-review",
+        "go-security-supply-chain-review",
+        "go-package-release-gates"
+      ]
+    },
+    {
+      "change_classes": [
+        "generation"
+      ],
+      "content_regex": [
+        "//go:generate",
+        "Code generated .* DO NOT EDIT",
+        "protoc",
+        "mockgen",
+        "stringer"
+      ],
+      "file_globs": [
+        "**/*generated*.go",
+        "**/*.proto",
+        "**/go.mod"
+      ],
+      "gate_tags": [
+        "generation",
+        "drift"
+      ],
+      "hints": [
+        "generation",
+        "generated-code",
+        "go-generate",
+        "protobuf",
+        "mock-generation"
+      ],
+      "id": "generation",
+      "select": [
+        "go-security-supply-chain-review",
+        "go-test-strategy-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "web",
+        "frontend"
+      ],
+      "content_regex": [
+        "hx-(get|post|put|patch|delete|swap|target)",
+        "Alpine\\.data|x-data|x-on:",
+        "html/template",
+        "template\\.Execute"
+      ],
+      "file_globs": [
+        "**/*.html",
+        "**/*.tmpl",
+        "**/*.gotmpl",
+        "**/templates/**"
+      ],
+      "gate_tags": [
+        "web",
+        "htmx",
+        "hypermedia"
+      ],
+      "hints": [
+        "htmx",
+        "alpine",
+        "hypermedia",
+        "server-driven-ui",
+        "html-template",
+        "go-web-htmx"
+      ],
+      "id": "web-htmx",
+      "select": [
+        "go-web-htmx-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "architecture"
+      ],
+      "gate_tags": [],
+      "hints": [
+        "broad-analysis",
+        "whole-codebase",
+        "architecture-review",
+        "modernization",
+        "inherited-codebase"
+      ],
+      "id": "broad-architecture",
+      "select": [
+        "comprehensive-analysis-go"
+      ]
+    },
+    {
+      "change_classes": [
+        "performance"
+      ],
+      "content_regex": [
+        "func\\s+Benchmark[A-Z]",
+        "runtime/pprof",
+        "net/http/pprof",
+        "default\\.pgo",
+        "testing\\.B"
+      ],
+      "file_globs": [
+        "**/*_test.go",
+        "**/default.pgo",
+        "**/*.pprof"
+      ],
+      "gate_tags": [
+        "benchmark",
+        "performance",
+        "pgo"
+      ],
+      "hints": [
+        "performance",
+        "latency",
+        "throughput",
+        "memory",
+        "allocation",
+        "benchmark",
+        "hot-path",
+        "pgo",
+        "profile"
+      ],
+      "id": "performance",
+      "select": [
+        "go-evidence-reproducer"
+      ]
+    },
+    {
+      "change_classes": [
+        "implementation-structure"
+      ],
+      "content_regex": [
+        "bbk\\.implementation-structure-contract\\.v1"
+      ],
+      "file_globs": [
+        "**/*structure-contract*.json",
+        "**/implementation-structure*.json"
+      ],
+      "gate_tags": [
+        "structure",
+        "structure-projection",
+        "planned-actual"
+      ],
+      "hints": [
+        "implementation-structure",
+        "structure-contract",
+        "planned-shape",
+        "type-driven-development",
+        "artifact-topology"
+      ],
+      "id": "implementation-structure",
+      "select": [
+        "go-implementation-structure",
+        "go-implementation-structure-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "execution-slicing"
+      ],
+      "content_regex": [
+        "bbk\\.execution-slice\\.v1"
+      ],
+      "file_globs": [
+        "**/*execution-slice*.json"
+      ],
+      "gate_tags": [
+        "slice",
+        "touchpoint",
+        "scaffolding"
+      ],
+      "hints": [
+        "execution-slicing",
+        "execution-slice",
+        "vertical-slice",
+        "touchpoint",
+        "foundation-exception"
+      ],
+      "id": "execution-slicing",
+      "select": [
+        "go-implementation-structure",
+        "go-implementation-structure-review",
+        "go-test-strategy-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "public-structure",
+        "shared-contract"
+      ],
+      "content_regex": [],
+      "file_globs": [],
+      "gate_tags": [
+        "public-contract-drift",
+        "structure"
+      ],
+      "hints": [
+        "public-shared-contract",
+        "exported-structure",
+        "package-ownership",
+        "consumer-interface",
+        "wire-type"
+      ],
+      "id": "public-shared-structure",
+      "select": [
+        "go-implementation-structure-review",
+        "go-api-module-boundary-review"
+      ]
+    },
+    {
+      "change_classes": [
+        "ownership",
+        "state-model",
+        "effect-boundary"
+      ],
+      "content_regex": [],
+      "file_globs": [],
+      "gate_tags": [
+        "ownership-drift",
+        "structure",
+        "concurrency",
+        "recovery"
+      ],
+      "hints": [
+        "state-ownership",
+        "goroutine-owner",
+        "channel-owner",
+        "shutdown-owner",
+        "effect-boundary",
+        "recovery-owner"
+      ],
+      "id": "ownership-structure",
+      "select": [
+        "go-implementation-structure-review",
+        "go-correctness-concurrency-review"
+      ]
+    }
+  ]
+}

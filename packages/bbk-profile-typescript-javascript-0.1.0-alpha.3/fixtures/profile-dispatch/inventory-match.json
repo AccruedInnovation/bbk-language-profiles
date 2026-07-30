@@ -1,0 +1,73 @@
+{
+  "canonicalOwners": [
+    "canonical state owner"
+  ],
+  "decisionEntrypoints": [
+    "explicit decision function"
+  ],
+  "derivedOrShadowState": [],
+  "effectExecutors": [
+    "explicit effect boundary"
+  ],
+  "hiddenDependencies": [],
+  "inventoryId": "inventory-match",
+  "mechanisms": {
+    "acknowledgement": [
+      {
+        "evidence": "fixture"
+      }
+    ],
+    "cancellation": [
+      {
+        "evidence": "fixture"
+      }
+    ],
+    "duplicate": [
+      {
+        "evidence": "fixture"
+      }
+    ],
+    "migration": [
+      {
+        "evidence": "fixture"
+      }
+    ],
+    "persistence": [
+      {
+        "evidence": "fixture"
+      }
+    ],
+    "recovery": [
+      {
+        "evidence": "fixture"
+      }
+    ],
+    "retry": [
+      {
+        "evidence": "fixture"
+      }
+    ],
+    "shutdown": [
+      {
+        "evidence": "fixture"
+      }
+    ],
+    "timeout": [
+      {
+        "evidence": "fixture"
+      }
+    ]
+  },
+  "schema": "bbk.tsjs-state-effect-inventory.v1",
+  "stateRepresentations": [
+    {
+      "kind": "sum-state",
+      "owner": "canonical state owner"
+    }
+  ],
+  "subject": {
+    "digest": "55392f9327fcd082a08f094a7aaff54375f105f77fafe8f92ae6d1b24afe0e7d",
+    "id": "subject-alpha8"
+  },
+  "unknownAreas": []
+}

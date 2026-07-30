@@ -1,0 +1,235 @@
+{
+  "antiPatterns": [
+    "broad any at trust boundaries",
+    "shadow mutable state",
+    "ambient module globals",
+    "unowned timers or subscriptions",
+    "static types treated as runtime validation"
+  ],
+  "concepts": [
+    "discriminated unions and products of independent unions",
+    "branded identities and boundary types",
+    "runtime schema/decoder boundaries distinct from static types",
+    "reducers, application services, or explicit state-machine boundaries",
+    "AbortSignal, task, subscription, timer, worker, stream, and cleanup ownership",
+    "browser, server, CLI, package, plugin, and OMP-extension effect adapters"
+  ],
+  "conditionalSkills": [
+    {
+      "skills": [
+        "tsjs-browser-ui-review"
+      ],
+      "tokens": [
+        "browser",
+        "ui",
+        "dom",
+        "react",
+        "web"
+      ]
+    }
+  ],
+  "expectedFacets": [
+    "state owners",
+    "decision entrypoints",
+    "effect executors",
+    "retry",
+    "cancellation",
+    "duplicate",
+    "timeout",
+    "acknowledgement",
+    "persistence",
+    "migration",
+    "recovery",
+    "shutdown",
+    "tests/traces/models"
+  ],
+  "formalModelTools": [
+    "property/model-based tests supported by the repository",
+    "fake-clock and scheduler-controlled async traces",
+    "browser/server harnesses and protocol trace replay",
+    "optional statechart or external Quint/TLA+ mappings"
+  ],
+  "inventoryProcedure": "Read exact request-relative inputs and BBK_PROFILE_SOURCE_ROOT; perform bounded static inventory without mutation or tool installation.",
+  "profile": "typescript-javascript",
+  "representations": [
+    "discriminated unions and products of independent unions",
+    "branded identities and boundary types",
+    "runtime schema/decoder boundaries distinct from static types",
+    "reducers, application services, or explicit state-machine boundaries"
+  ],
+  "routing": {
+    "CONTRACT": {
+      "description": "Explicit profile projection, inventory, planned-versus-actual review and evidence touchpoints.",
+      "skills": [
+        "tsjs-implementation-structure-review",
+        "tsjs-async-resource-failure-review",
+        "tsjs-test-strategy-review"
+      ]
+    },
+    "INLINE": {
+      "description": "Focused local representation and failure review only.",
+      "skills": [
+        "tsjs-implementation-structure-review",
+        "tsjs-async-resource-failure-review"
+      ]
+    },
+    "NONE": {
+      "description": "No standalone profile procedure; retain only generic record identity.",
+      "skills": []
+    }
+  },
+  "schema": "bbk.profile-state-effect-map.v1",
+  "schemaPrefix": "tsjs",
+  "signalPatterns": {
+    "acknowledgement": [
+      "ack",
+      "receipt",
+      "status"
+    ],
+    "ambientState": [
+      "ambient",
+      "global",
+      "static ",
+      "gvl",
+      "singleton",
+      "package var",
+      "module global"
+    ],
+    "cancellation": [
+      "cancel",
+      "abortsignal",
+      "context.context",
+      "cancellation"
+    ],
+    "canonicalOwners": [
+      "owner",
+      "owned",
+      "function_block",
+      "class ",
+      "struct ",
+      "reducer",
+      "service"
+    ],
+    "decisionEntrypoints": [
+      "decide",
+      "transition",
+      "reducer",
+      "apply",
+      "handle",
+      "step",
+      "execute logic",
+      "method decidetransition"
+    ],
+    "derivedState": [
+      "derived",
+      "computed",
+      "projection",
+      "cache"
+    ],
+    "duplicate": [
+      "duplicate",
+      "idempot"
+    ],
+    "effectExecutors": [
+      "effect",
+      "adapter",
+      "port",
+      "write",
+      "publish",
+      "send",
+      "output",
+      "i/o",
+      "io ",
+      "network",
+      "filesystem",
+      "physical"
+    ],
+    "externalBoundaries": [
+      "api",
+      "cli",
+      "http",
+      "rpc",
+      "queue",
+      "process",
+      "controller",
+      "target",
+      "package",
+      "plugin",
+      "ffi",
+      "mcp"
+    ],
+    "hiddenDependencies": [
+      "ambient",
+      "singleton",
+      "getenv",
+      "environment variable",
+      "global lookup",
+      "service locator"
+    ],
+    "migration": [
+      "migration",
+      "migrate",
+      "schema version"
+    ],
+    "persistence": [
+      "persist",
+      "retain",
+      "database",
+      "store"
+    ],
+    "recovery": [
+      "recover",
+      "recovery",
+      "rollback",
+      "reset",
+      "fault"
+    ],
+    "retry": [
+      "retry",
+      "backoff"
+    ],
+    "shadowState": [
+      "shadow",
+      "duplicate state",
+      "mirror state",
+      "cached state",
+      "eshadowstate",
+      "shadow_order_state"
+    ],
+    "shutdown": [
+      "shutdown",
+      "cleanup",
+      "close",
+      "dispose"
+    ],
+    "stateRepresentations": [
+      "enum",
+      "state",
+      "status",
+      "mode",
+      "variant",
+      "union",
+      "struct",
+      "dataclass",
+      "dut"
+    ],
+    "testsTracesModels": [
+      "test",
+      "trace",
+      "property",
+      "hypothesis",
+      "proptest",
+      "loom",
+      "miri",
+      "kani",
+      "simulator",
+      "counit",
+      "test manager"
+    ],
+    "timeout": [
+      "timeout",
+      "deadline"
+    ]
+  },
+  "version": "0.1.0-alpha.3"
+}

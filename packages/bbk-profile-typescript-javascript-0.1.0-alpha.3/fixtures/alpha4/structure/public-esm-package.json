@@ -1,0 +1,205 @@
+{
+  "applicability": {
+    "level": "contract",
+    "rationale": "The change fixes consequential realization shape needed for independent implementation and review.",
+    "triggers": [
+      "public-interface",
+      "package-consumer",
+      "export-map"
+    ]
+  },
+  "contractId": "ISC-TSJS-PUBLIC-ESM",
+  "decisions": {
+    "delegated": [
+      {
+        "area": "private helper layout",
+        "bounds": "May change if fixed public/runtime contracts, ownership, effects and touchpoint evidence remain intact."
+      }
+    ],
+    "fixed": [
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-ESM-EXPORTS",
+        "rationale": "Protect a material boundary.",
+        "sourceRefs": [],
+        "statement": "The package exposes only . and ./feature through ESM import and types conditions."
+      },
+      {
+        "changeRoute": "structure impact review",
+        "id": "FD-PACK-CONSUMER",
+        "rationale": "Protect a material boundary.",
+        "sourceRefs": [],
+        "statement": "Acceptance uses a packed clean consumer, not workspace source imports."
+      }
+    ],
+    "prohibited": [
+      "Duplicating the same runtime schema or authoritative rule in independently mutable layers.",
+      "Treating a TypeScript declaration or transpiler pass as runtime validation."
+    ]
+  },
+  "executionSliceRefs": [
+    "ES-TSJS-PUBLIC-ESM"
+  ],
+  "metadata": {
+    "fixture": true,
+    "profile": "typescript-javascript"
+  },
+  "profileProjections": {},
+  "review": {
+    "acceptanceCriteria": [
+      "Fixed public/shared contracts and owners are explicit.",
+      "Delegated freedom preserves competent private implementation choices.",
+      "The first execution slice creates an inspectable integrated touchpoint."
+    ],
+    "acceptedBy": [
+      "FIXTURE-AUTHORITY"
+    ],
+    "assuranceTier": "consequential",
+    "requiredReviewers": [
+      "tsjs-implementation-structure-review"
+    ],
+    "reviewRefs": []
+  },
+  "revision": "1",
+  "schema": "bbk.implementation-structure-contract.v1",
+  "status": "accepted",
+  "structure": {
+    "artifactTopology": [
+      {
+        "action": "modify",
+        "id": "ART-PKG",
+        "kind": "package",
+        "logicalPath": "package.json",
+        "owner": "package",
+        "responsibility": "Own exports, files and types paths.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-INDEX",
+        "kind": "entry-point",
+        "logicalPath": "src/index.ts",
+        "owner": "public-api",
+        "responsibility": "Own root export.",
+        "sourceRefs": []
+      },
+      {
+        "action": "modify",
+        "id": "ART-FEATURE",
+        "kind": "entry-point",
+        "logicalPath": "src/feature.ts",
+        "owner": "public-api",
+        "responsibility": "Own feature subpath export.",
+        "sourceRefs": []
+      },
+      {
+        "action": "retain",
+        "id": "ART-TSCONFIG",
+        "kind": "compiler-config",
+        "logicalPath": "tsconfig.build.json",
+        "owner": "toolchain",
+        "responsibility": "Own declaration emit.",
+        "sourceRefs": []
+      }
+    ],
+    "behaviorPaths": [
+      {
+        "failureAndRecovery": [
+          "Failure is typed or otherwise classified and leaves the declared recoverable state."
+        ],
+        "id": "BP-ISC-TSJS-PUBLIC-ESM",
+        "interfaceRefs": [
+          "IF-ISC-TSJS-PUBLIC-ESM"
+        ],
+        "name": "Public ESM package structure",
+        "steps": [
+          {
+            "contractRef": "KC-EXPORTS",
+            "from": "Consumer",
+            "interaction": "use the accepted contract",
+            "to": "Owner"
+          }
+        ],
+        "success": "The declared touchpoint produces the accepted behavior.",
+        "trigger": "A declared consumer invokes the slice"
+      }
+    ],
+    "effectBoundaries": [],
+    "keyContracts": [
+      {
+        "failureSemantics": [
+          "unsupported subpaths fail clearly"
+        ],
+        "id": "KC-EXPORTS",
+        "invariants": [
+          "runtime and declaration targets both exist",
+          "deep imports are not required"
+        ],
+        "kind": "package-export",
+        "name": "ESM export map",
+        "responsibility": "Stable runtime and declaration entry points",
+        "shape": ". and ./feature import+types conditions",
+        "sourceRefs": [],
+        "visibility": "public"
+      },
+      {
+        "failureSemantics": [],
+        "id": "KC-ESM-API",
+        "invariants": [
+          "declarations and runtime exports agree"
+        ],
+        "kind": "public-api",
+        "name": "ESM API",
+        "responsibility": "Stable public behavior",
+        "shape": "root and feature named exports",
+        "sourceRefs": [],
+        "visibility": "public"
+      }
+    ],
+    "migrationTouchpoints": [],
+    "observabilityPoints": [
+      {
+        "id": "OBS-ISC-TSJS-PUBLIC-ESM",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-PUBLIC-ESM"
+        ],
+        "statement": "Record outcome class and correlation identity without secrets."
+      }
+    ],
+    "stateOwnership": [],
+    "testSeams": [
+      {
+        "id": "TS-ISC-TSJS-PUBLIC-ESM",
+        "sourceRefs": [
+          "REQ-ISC-TSJS-PUBLIC-ESM"
+        ],
+        "statement": "Exercise the declared public/runtime boundary through a deterministic fixture or clean consumer."
+      }
+    ]
+  },
+  "subject": {
+    "architectureRefs": [
+      "ARCH-ISC-TSJS-PUBLIC-ESM"
+    ],
+    "assumptionRefs": [],
+    "baselineRefs": [
+      "BASELINE-TSJS-A4"
+    ],
+    "capabilityRefs": [
+      "CAP-ISC-TSJS-PUBLIC-ESM"
+    ],
+    "interfaceRefs": [
+      "IF-ISC-TSJS-PUBLIC-ESM"
+    ],
+    "kind": "software",
+    "purpose": "Keep export map, runtime exports, declarations and clean consumers aligned.",
+    "requirementRefs": [
+      "REQ-ISC-TSJS-PUBLIC-ESM"
+    ],
+    "scopeRefs": [
+      "SCOPE-ISC-TSJS-PUBLIC-ESM"
+    ]
+  },
+  "title": "Public ESM package structure",
+  "uncertainties": []
+}

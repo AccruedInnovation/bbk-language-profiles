@@ -1,0 +1,40 @@
+{
+  "schema": "bbk.python-original-sources.v1",
+  "sources": [
+    {
+      "bytes": 3282,
+      "disposition": "schema-fixture-and-template-source",
+      "id": "bbk-alpha4-update-kit-manifest",
+      "original_path": "sources/alpha4-update-kit-manifest.json",
+      "sha256": "bf4667b2621ff643e2b78968554db480365f04b7c89e3196aac116cc0ba5ea88"
+    },
+    {
+      "bytes": 33021,
+      "disposition": "controlling-product-requirements",
+      "id": "bbk-language-profile-alpha4-update-prd",
+      "original_path": "sources/bbk-language-profile-alpha4-update-prd.md",
+      "sha256": "3476cb07d0fffd5b0c3ecb82d8b7821e3cff36105ffc4870bed2b481c0e2a61a"
+    },
+    {
+      "bytes": 12547,
+      "disposition": "immutable-predecessor-package-evidence",
+      "id": "bbk-profile-python-alpha1-package-manifest",
+      "original_path": "sources/predecessor-package-manifest.json",
+      "sha256": "2a18b84e61693b3ba4756e6992c2a8f5dba50eca77eaae05ba01f044755c962c"
+    },
+    {
+      "bytes": 5064,
+      "disposition": "immutable-predecessor-profile-contract",
+      "id": "bbk-profile-python-alpha1-profile",
+      "original_path": "sources/predecessor-PROFILE.json",
+      "sha256": "965a980e66585e1d8ec46ce2d7b54619b0361f47aae6c494c4cfb9ea38163765"
+    },
+    {
+      "bytes": 11172,
+      "disposition": "retained-for-provenance-and-comparison",
+      "id": "comprehensive-analysis-python",
+      "original_path": "sources/comprehensive-analysis-python.original.md",
+      "sha256": "a9c73fceb8932df70aeb4514d6a249e7dac13902190cef327c64af08ba7c6c4f"
+    }
+  ]
+}

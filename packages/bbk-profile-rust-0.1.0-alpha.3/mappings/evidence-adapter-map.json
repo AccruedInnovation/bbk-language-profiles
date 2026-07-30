@@ -1,0 +1,41 @@
+{
+  "evidenceKinds": [
+    "cargo-fmt",
+    "cargo-check",
+    "clippy",
+    "cargo-test",
+    "consumer-api",
+    "feature-matrix",
+    "miri",
+    "loom",
+    "fuzz",
+    "audit",
+    "semver",
+    "benchmark"
+  ],
+  "noInventedFields": [
+    "command",
+    "exitStatus",
+    "observedAt",
+    "toolchain",
+    "environment",
+    "subject",
+    "completeness"
+  ],
+  "principalProcedure": "rust-evidence-reproducer",
+  "profile": "rust",
+  "schema": "bbk.profile-evidence-adapter-map.v1",
+  "schemaPrefix": "rust",
+  "trustClasses": [
+    "AGENT_INSPECTION",
+    "DETERMINISTIC_LOCAL",
+    "HUMAN_REVIEW",
+    "LEGACY_IMPORTED",
+    "OPERATIONAL_OBSERVATION",
+    "QUALIFIED_EXTERNAL_CHECK",
+    "QUALIFIED_TOOL",
+    "SIMULATOR_OR_HARNESS",
+    "UNSTRUCTURED_OBSERVATION"
+  ],
+  "version": "0.1.0-alpha.3"
+}

@@ -1,0 +1,85 @@
+{
+  "$id": "https://bbk.local/schemas/bbk-python-actual-structure-inventory-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "contracts": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "delegated_differences": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "fixed_decision_evidence": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "ownership": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "preflight_digest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "root": {
+      "type": "string"
+    },
+    "schema": {
+      "const": "bbk.python.actual-structure-inventory.v1"
+    },
+    "source": {
+      "enum": [
+        "derived-static",
+        "supplied"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "root",
+    "source",
+    "preflight_digest",
+    "artifacts",
+    "contracts",
+    "ownership",
+    "fixed_decision_evidence",
+    "delegated_differences",
+    "limitations",
+    "digest"
+  ],
+  "title": "BBK Python Actual Structure Inventory v1",
+  "type": "object"
+}

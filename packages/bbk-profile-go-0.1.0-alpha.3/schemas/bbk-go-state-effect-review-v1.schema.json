@@ -1,0 +1,29 @@
+{
+  "$id": "https://bbk.local/schemas/bbk.go-state-effect-review.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "authority": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array"
+    },
+    "profile": {
+      "type": "object"
+    },
+    "schema": {
+      "const": "bbk.go-state-effect-review.v1"
+    },
+    "subject": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema",
+    "classification",
+    "findings"
+  ],
+  "title": "bbk.go-state-effect-review.v1",
+  "type": "object"
+}

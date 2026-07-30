@@ -1,0 +1,6460 @@
+{
+  "content_sha256": "d36b1b0e27ecf6eba04355b94a6815c9e912517350f5c9846596a540c733e4c5",
+  "rule_count": 265,
+  "rules": [
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-clone-excessive",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-clone-excessive.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "983913692f9f6a22cf0826151c410d84070b7e2a07f40ba3994bf3f68625002e",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "anti-clone-excessive",
+      "triggers": [
+        "anti",
+        "async",
+        "memory"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-collect-intermediate",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-collect-intermediate.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "3d8c23b528a68489b183d38aca1cddc2352d840f80cd08a4c97751485fbcbdef",
+      "suggested_crates": [],
+      "title": "anti-collect-intermediate",
+      "triggers": [
+        "anti"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-empty-catch",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-empty-catch.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "95f134cd9ea0f14e8991d13114acc8f3a385a097165ea6ecb992ef8e1eadea33",
+      "suggested_crates": [],
+      "title": "anti-empty-catch",
+      "triggers": [
+        "anti",
+        "documentation"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-expect-lazy",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-expect-lazy.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "62208c2b6d0584b51991ffad5449fb7f6db21e65601e4f6783c07508f5cdc1f2",
+      "suggested_crates": [],
+      "title": "anti-expect-lazy",
+      "triggers": [
+        "anti"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-format-hot-path",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-format-hot-path.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "e9db4de4f59209fb989257133ee7abe46ac314b8362fea8f87902ec5116461d7",
+      "suggested_crates": [],
+      "title": "anti-format-hot-path",
+      "triggers": [
+        "anti",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-index-over-iter",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-index-over-iter.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "57e116484ffff5e5fd3ebd36281ba12a7c8c9b000d46f4bcf25f0257438d8e94",
+      "suggested_crates": [],
+      "title": "anti-index-over-iter",
+      "triggers": [
+        "anti",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-lock-across-await",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-lock-across-await.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "3429177799acb2baa2aa6cccb1ec22ee1605b7a531d684fd98cd5a0e14824f8a",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "anti-lock-across-await",
+      "triggers": [
+        "anti",
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-over-abstraction",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-over-abstraction.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "620cb64669e9e844233f04393c9bffa4ea2e5d9d91640018fe7a2f480a8119be",
+      "suggested_crates": [],
+      "title": "anti-over-abstraction",
+      "triggers": [
+        "anti",
+        "async",
+        "memory",
+        "performance",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-panic-expected",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-panic-expected.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "5f35f5e5b3447fd39f7610e8b15ef9f737ec860a53b654f6d9da77f80c71afb7",
+      "suggested_crates": [],
+      "title": "anti-panic-expected",
+      "triggers": [
+        "anti",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [
+        "cargo-flamegraph",
+        "perf"
+      ],
+      "id": "anti-premature-optimize",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-premature-optimize.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "fb1678ce741683cb660670480a1c37ac00adac34594bf94145c92173df70eb2b",
+      "suggested_crates": [
+        "criterion"
+      ],
+      "title": "anti-premature-optimize",
+      "triggers": [
+        "anti",
+        "memory",
+        "performance",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-string-for-str",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-string-for-str.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "4c1dc918ecf13227ad612246024fa7a767a54ce076e864c4636c90defab473b8",
+      "suggested_crates": [],
+      "title": "anti-string-for-str",
+      "triggers": [
+        "anti"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-stringly-typed",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-stringly-typed.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "bf6d3de6138e573b9f53447e7259515370d19a63219229360735871d739563ef",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "anti-stringly-typed",
+      "triggers": [
+        "anti",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-type-erasure",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-type-erasure.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "e0fff7b4b25fba5c5565167f1d460375da61510f4bd52f82fc959ab538b9e013",
+      "suggested_crates": [],
+      "title": "anti-type-erasure",
+      "triggers": [
+        "anti"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-unwrap-abuse",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-unwrap-abuse.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "5a01b900c39611b0a3bc7ea840dd1ef7ea5925fa40cb1f3132393892ca7a2690",
+      "suggested_crates": [],
+      "title": "anti-unwrap-abuse",
+      "triggers": [
+        "anti"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "anti",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "anti-vec-for-slice",
+      "kind": "diagnostic-heuristic",
+      "limitations": [],
+      "path": "rules/anti-vec-for-slice.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "a2c2613b01d4d6c4202ef611abf2f27de45cfdbca29d934a179a00e2d9fd4fbd",
+      "suggested_crates": [],
+      "title": "anti-vec-for-slice",
+      "triggers": [
+        "anti"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-builder-must-use",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-builder-must-use.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "2fc7eed1a0c7a505dfbcf1b5c3ed8893951d06ea517cd35aa706c04ac428edaf",
+      "suggested_crates": [],
+      "title": "api-builder-must-use",
+      "triggers": [
+        "api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-builder-pattern",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-builder-pattern.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "ef6da2925a5c3bd8190a5fbaee35cdc08d326c59bc45b01f273bf1a245feade6",
+      "suggested_crates": [],
+      "title": "api-builder-pattern",
+      "triggers": [
+        "api",
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-common-traits",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-common-traits.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "94a006d41066115beaf9a0bfeffd1cc5e1e074a969888902d5e478c1aef103fa",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "api-common-traits",
+      "triggers": [
+        "api",
+        "serialization",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "nightly"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-default-impl",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-default-impl.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "7afc2bf93eb62f1f1a85ae8d6086e47ee3a54c902f22f294608a847ca9926b76",
+      "suggested_crates": [],
+      "title": "api-default-impl",
+      "triggers": [
+        "api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "design-alternative",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-extension-trait",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-extension-trait.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "259b0bca3c6d40f0f9b7caff9a36648ec79ba463aca7b1f9f37f0daa5b6ee543",
+      "suggested_crates": [
+        "anyhow",
+        "tokio"
+      ],
+      "title": "api-extension-trait",
+      "triggers": [
+        "api",
+        "async",
+        "ffi"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-from-not-into",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-from-not-into.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "21baad5a4fd92743b91c93f0f63eb02aba768a133e90e8257c38f251a8a444e2",
+      "suggested_crates": [],
+      "title": "api-from-not-into",
+      "triggers": [
+        "api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-impl-asref",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-impl-asref.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "5b6768f706333dc6f58709f65160683cda564de0455a7c951a1d3454d89686e7",
+      "suggested_crates": [],
+      "title": "api-impl-asref",
+      "triggers": [
+        "api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-impl-fromiterator",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-impl-fromiterator.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "cb8da222b375e0ef6f1919d4d2edb1f43acf015130ae586e8de8a43c2d710bae",
+      "suggested_crates": [],
+      "title": "api-impl-fromiterator",
+      "triggers": [
+        "api",
+        "ffi"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-impl-into",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-impl-into.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "f33eb54c4637184b79bab795a3e6c038cb671b077d11ade768f3e316c8b4d778",
+      "suggested_crates": [],
+      "title": "api-impl-into",
+      "triggers": [
+        "api",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-must-use",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-must-use.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "713d5fe166dfff22e893a821ec7ca2046efb8d54f12c45b1f9ae57064bb9eee2",
+      "suggested_crates": [],
+      "title": "api-must-use",
+      "triggers": [
+        "api",
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-newtype-safety",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-newtype-safety.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "3af731fed522a13c7b8db89f1b26f5c60f743547377480e08869fbd572db44e9",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "api-newtype-safety",
+      "triggers": [
+        "api",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-non-exhaustive",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-non-exhaustive.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "d8d168df3a1bd779bd693e2f5c7a4c277a5885e42da9c5e8cdcb69dc94ee38f3",
+      "suggested_crates": [],
+      "title": "api-non-exhaustive",
+      "triggers": [
+        "api",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-operator-overload",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-operator-overload.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "0413c8eb0b3db94c4b710bed9e7c18e53d0fbdf6e8f987245bb7e36d95389bec",
+      "suggested_crates": [],
+      "title": "api-operator-overload",
+      "triggers": [
+        "api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-parse-dont-validate",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-parse-dont-validate.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "d701e99ea070aff336113afd443a6f812e5e15319b8481754fe6137876515d8a",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "api-parse-dont-validate",
+      "triggers": [
+        "api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-sealed-trait",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-sealed-trait.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "9dce70e82b02d48e364bf23b601485a017f9ccdd969af48920e2906c74a40f3e",
+      "suggested_crates": [],
+      "title": "api-sealed-trait",
+      "triggers": [
+        "api",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-serde-optional",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-serde-optional.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "67f8c80bf848aebe20c58e72cc204f4587af374d208132bc03da9980e09bebd8",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "api-serde-optional",
+      "triggers": [
+        "api",
+        "documentation",
+        "serialization",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "api",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "api-typestate",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/api-typestate.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "3db0bd349c144609dc61327029958244db2a16337780655596f9c4a04f7e4f2a",
+      "suggested_crates": [],
+      "title": "api-typestate",
+      "triggers": [
+        "api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-async-fn-bounds",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-async-fn-bounds.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "376fcab276d65b81aa8a9300b1149b03947153377227e85c6c1f21de9a1421b9",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-async-fn-bounds",
+      "triggers": [
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-bounded-channel",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-bounded-channel.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "99e2fbafa1f88fa55de2e37e34c8d8cfc26eed3c9e4136f9a1d8480c0d901e68",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-bounded-channel",
+      "triggers": [
+        "async",
+        "memory"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-broadcast-pubsub",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-broadcast-pubsub.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "60ec09e2fbcc1aa3a3a09337147e813ac2d1743a5cc768c16848efa90fe77786",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-broadcast-pubsub",
+      "triggers": [
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-cancel-safety",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-cancel-safety.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "bc86cde4fa4c70562cdf3c456331ce76d07f785286896f219074e2feba4689e4",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-cancel-safety",
+      "triggers": [
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-cancellation-token",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-cancellation-token.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "5c64c67d952470e61fedab7fb2d78e58b0422fb3b4d365570a2ebe903e27c5c2",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-cancellation-token",
+      "triggers": [
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-clone-before-await",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-clone-before-await.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "0b18c24466d6394fb0800e25bccd2ba9d4f09f8a2e805061eca125bf6fb5e686",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-clone-before-await",
+      "triggers": [
+        "async",
+        "ffi"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-fn-in-trait",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-fn-in-trait.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "ad92f77e431f6e0e825755b9f334c83cba7e4c7709e456d06fd173a042b1a4c3",
+      "suggested_crates": [
+        "anyhow",
+        "tokio"
+      ],
+      "title": "async-fn-in-trait",
+      "triggers": [
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-join-parallel",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-join-parallel.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "a2beabe51163a6780241a675f4c54b02629ae6e6cf319ac243741d2abeb5abb8",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-join-parallel",
+      "triggers": [
+        "async",
+        "concurrency"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-joinset-structured",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-joinset-structured.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "10d2eeed25d370b002741d9b14914ff2dd3c5deae1d214c704aa2867a563c1d4",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-joinset-structured",
+      "triggers": [
+        "async",
+        "ffi",
+        "memory"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-mpsc-queue",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-mpsc-queue.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "bb53b571f6bded40ef69c1b8612950b8c67a1539b0fbf83d90d01df8d7e14aa6",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-mpsc-queue",
+      "triggers": [
+        "async",
+        "ffi"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-no-lock-await",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-no-lock-await.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "c83093b164ee511801dddbe5d1297e9ef0e73ccecdbc7c835d5d356078676196",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-no-lock-await",
+      "triggers": [
+        "async",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-oneshot-response",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-oneshot-response.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "7ea9db323cf845435797ed4ed07da7033916e5579ae74e3343ec267ea9e2eff7",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-oneshot-response",
+      "triggers": [
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-select-racing",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-select-racing.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "27000a7081eb0fc396ac03f031466bfe835d96d017f87c9af28d682d4c18b036",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-select-racing",
+      "triggers": [
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-spawn-blocking",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-spawn-blocking.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "398a926fe15f08ae831d4058695e4910c624460d7262bd6d6248f517eabea51b",
+      "suggested_crates": [
+        "rayon",
+        "tokio"
+      ],
+      "title": "async-spawn-blocking",
+      "triggers": [
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-tokio-fs",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-tokio-fs.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "29ee1a563ee1c204e6240074c2542b8dceba8fa08e51fb0abb06ce3649f6b4f8",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-tokio-fs",
+      "triggers": [
+        "async",
+        "memory",
+        "performance",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "tokio-project-only",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-tokio-runtime",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-tokio-runtime.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "fbdfd8a78e12df7f7cb724a7992e4ac20628fd72a9ce926021d7acdddb8813b6",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-tokio-runtime",
+      "triggers": [
+        "async",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-try-join",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-try-join.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "95802f2aeee7dc96555db783b826fc0df69a1d828257857e254b542dde330f51",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-try-join",
+      "triggers": [
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "async",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "async-watch-latest",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/async-watch-latest.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "b6fff522604f17454a73b696fe22292a96aa357866a683552b01725940778837",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "async-watch-latest",
+      "triggers": [
+        "async"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "closure",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "closure-disjoint-capture",
+      "kind": "language-guidance",
+      "limitations": [],
+      "path": "rules/closure-disjoint-capture.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "14058ce4714e4f7758024c9736af13ce476d5cce74f90f71e3c5b3254e8ff60c",
+      "suggested_crates": [],
+      "title": "closure-disjoint-capture",
+      "triggers": [
+        "closure"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "closure",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "closure-fn-trait-bounds",
+      "kind": "language-guidance",
+      "limitations": [],
+      "path": "rules/closure-fn-trait-bounds.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "adfe85d835223da1f0934e94a31259f13b22b5ede93ade6b0292fd3d7c4f8559",
+      "suggested_crates": [],
+      "title": "closure-fn-trait-bounds",
+      "triggers": [
+        "closure"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "closure",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "closure-impl-fn-return",
+      "kind": "language-guidance",
+      "limitations": [],
+      "path": "rules/closure-impl-fn-return.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "66b5ed8a8d45ac65a5cb1b2d0bb36b731b2b2cc5909ddf5fc84f03fcd8e10162",
+      "suggested_crates": [],
+      "title": "closure-impl-fn-return",
+      "triggers": [
+        "closure"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "closure",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "closure-move-capture",
+      "kind": "language-guidance",
+      "limitations": [],
+      "path": "rules/closure-move-capture.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "e6edf52ec7955b4719cd9bd19ca55593b185bafdeb82390196202b9df71f5902",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "closure-move-capture",
+      "triggers": [
+        "async",
+        "closure"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "closure",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "closure-static-vs-dyn",
+      "kind": "language-guidance",
+      "limitations": [],
+      "path": "rules/closure-static-vs-dyn.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "c1dcc10f8358580a76248f0e9950c20572aa3e77b8fe3ce07d737915c4813f72",
+      "suggested_crates": [],
+      "title": "closure-static-vs-dyn",
+      "triggers": [
+        "closure"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "coll",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "coll-binaryheap",
+      "kind": "data-structure-guidance",
+      "limitations": [],
+      "path": "rules/coll-binaryheap.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "d45bb133abf0e9f1a1526e72e3e157909c0ddb319f749b1643f7eee0ed909544",
+      "suggested_crates": [],
+      "title": "coll-binaryheap",
+      "triggers": [
+        "coll",
+        "ffi"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "coll",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "coll-map-choice",
+      "kind": "data-structure-guidance",
+      "limitations": [],
+      "path": "rules/coll-map-choice.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "7854a0470c0dc09e48a15eaba629144e3605cc00341e70821415c101c0b72cf8",
+      "suggested_crates": [
+        "ahash"
+      ],
+      "title": "coll-map-choice",
+      "triggers": [
+        "coll",
+        "ffi"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "coll",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "coll-seq-choice",
+      "kind": "data-structure-guidance",
+      "limitations": [],
+      "path": "rules/coll-seq-choice.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "8ed03c3f481148712dd3268ff79c612221efa5bf1a0f30f85c383bef4fdd9eca",
+      "suggested_crates": [],
+      "title": "coll-seq-choice",
+      "triggers": [
+        "coll"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "coll",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "coll-set-membership",
+      "kind": "data-structure-guidance",
+      "limitations": [],
+      "path": "rules/coll-set-membership.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "b645928c78212e1dec8b0b15a0be0559fbdf923eb3b6e270343450cc2c8631d6",
+      "suggested_crates": [
+        "ahash"
+      ],
+      "title": "coll-set-membership",
+      "triggers": [
+        "coll"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "conc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "conc-atomic-ordering",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/conc-atomic-ordering.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "high-to-critical",
+      "sha256": "261df660bde33ab0c76ea6d73abaec3ee1525822c05c02fde375a725d562bdde",
+      "suggested_crates": [
+        "loom"
+      ],
+      "title": "conc-atomic-ordering",
+      "triggers": [
+        "conc",
+        "concurrency",
+        "ffi",
+        "memory",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "conc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "conc-rayon-par-iter",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/conc-rayon-par-iter.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "high-to-critical",
+      "sha256": "cc7bff57ccbb530e6dbdca607fc0dd048bb42abb11890971252f68037f0b27a0",
+      "suggested_crates": [
+        "rayon",
+        "tokio"
+      ],
+      "title": "conc-rayon-par-iter",
+      "triggers": [
+        "async",
+        "conc",
+        "concurrency"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "conc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "conc-scoped-threads",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/conc-scoped-threads.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "high-to-critical",
+      "sha256": "4b19dcecc0d54989c9892b1d9cf5df66518aa6cb7eebea62ff69e75db313205a",
+      "suggested_crates": [
+        "rayon"
+      ],
+      "title": "conc-scoped-threads",
+      "triggers": [
+        "async",
+        "conc"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "conc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "conc-thread-local",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/conc-thread-local.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "high-to-critical",
+      "sha256": "bbbb870a59f85af120888692c4f44592d912fc92b4380f82fda9c2706c8bd86c",
+      "suggested_crates": [],
+      "title": "conc-thread-local",
+      "triggers": [
+        "conc",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "const",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "const-block",
+      "kind": "api-and-compile-time-guidance",
+      "limitations": [],
+      "path": "rules/const-block.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "8f78ce809fe59ba8b9f5a452ba100566fbd35c64aebb137373afdf762a1a3cfb",
+      "suggested_crates": [],
+      "title": "const-block",
+      "triggers": [
+        "const",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "const",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "const-fn",
+      "kind": "api-and-compile-time-guidance",
+      "limitations": [
+        "Removing public const-callability can break downstream const contexts; public use requires compatibility review"
+      ],
+      "path": "rules/const-fn.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "8bb8c84eea45c710306e816cf0bc377f883ff1e6ab42d68772ccccb8f6231032",
+      "suggested_crates": [],
+      "title": "const-fn",
+      "triggers": [
+        "const"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "const",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "const-generics",
+      "kind": "api-and-compile-time-guidance",
+      "limitations": [],
+      "path": "rules/const-generics.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "d999587775d4f7b73de55e834eb6c96fff8e6dc714173fab520a275369b0a291",
+      "suggested_crates": [],
+      "title": "const-generics",
+      "triggers": [
+        "const"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "const",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "const-vs-static",
+      "kind": "api-and-compile-time-guidance",
+      "limitations": [],
+      "path": "rules/const-vs-static.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "cc528ca115cc4bd3fcf1d5b82cabd04ba42eb5252d3f0033492017b27155e752",
+      "suggested_crates": [],
+      "title": "const-vs-static",
+      "triggers": [
+        "const",
+        "memory",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "conv",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "conv-asmut-mutable",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/conv-asmut-mutable.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-high",
+      "sha256": "5da738305828c80e6ea3e37ab1977a15f4ce16b72b9742353ffe2654a130c75b",
+      "suggested_crates": [],
+      "title": "conv-asmut-mutable",
+      "triggers": [
+        "conv"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "conv",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "conv-fromstr-parsing",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/conv-fromstr-parsing.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-high",
+      "sha256": "3760a9495cb1d5ca3c1c68ec005ac335a29bf00ea6e9785cd02008c445f8aa24",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "conv-fromstr-parsing",
+      "triggers": [
+        "conv"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "conv",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "conv-tryfrom-fallible",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/conv-tryfrom-fallible.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-high",
+      "sha256": "2f781769f99e16e32b79d2e61542b5696a73b4c142c14c6bb091a09d45ed493f",
+      "suggested_crates": [],
+      "title": "conv-tryfrom-fallible",
+      "triggers": [
+        "conv"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-all-public",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-all-public.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "3ce223d43e18875184d0b8ff7c97cb31ef174934660c8e2cf976e9736d2221b5",
+      "suggested_crates": [
+        "wide"
+      ],
+      "title": "doc-all-public",
+      "triggers": [
+        "doc",
+        "documentation"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-cargo-metadata",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-cargo-metadata.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "62d0946aa9085af41b4054176b9815ad39eec2126cab8d71dd7ece6e3c3cc948",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "doc-cargo-metadata",
+      "triggers": [
+        "async",
+        "doc",
+        "documentation",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-crate-readme",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-crate-readme.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "959b42ee2632de15edfab908a466965979d0b037f0c13ecb776cf280bd5a972c",
+      "suggested_crates": [],
+      "title": "doc-crate-readme",
+      "triggers": [
+        "doc",
+        "documentation"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-errors-section",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-errors-section.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "32bff3e8f672cd812c6237565cbf73efa84b758e66b248e9815754426b7808ba",
+      "suggested_crates": [
+        "anyhow"
+      ],
+      "title": "doc-errors-section",
+      "triggers": [
+        "async",
+        "doc",
+        "documentation"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-examples-section",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-examples-section.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "e3b614a89fedf4caf16b33925e86ebbbba37c4d2e723ac9cceb1a82fb9a40077",
+      "suggested_crates": [],
+      "title": "doc-examples-section",
+      "triggers": [
+        "doc",
+        "documentation"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-hidden-setup",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-hidden-setup.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "dfa8a8c02094019919742bbb5ffde5f62908c2043f31f04bf47487363380f306",
+      "suggested_crates": [],
+      "title": "doc-hidden-setup",
+      "triggers": [
+        "doc",
+        "documentation"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-intra-links",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-intra-links.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "acd7610ae0fc1aa3e57ca95927397bebc17c5dd5d21764d9137d9cd8cfee98dd",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "doc-intra-links",
+      "triggers": [
+        "doc",
+        "documentation",
+        "ffi"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-link-types",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-link-types.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "04e310bfbc9eddc87663d81a6d14e2aaf59f657155a292e53ab7cbdcb4c9a8ff",
+      "suggested_crates": [
+        "rayon"
+      ],
+      "title": "doc-link-types",
+      "triggers": [
+        "doc",
+        "documentation"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-module-inner",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-module-inner.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "c29a2a6eaa504274a7b82568865a491ae13e5180743c955c95b785227a09dc0c",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "doc-module-inner",
+      "triggers": [
+        "async",
+        "doc",
+        "documentation",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-panics-section",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-panics-section.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "e59101cdcfb1b2bb7f03bff86d40a18b4fdbd4d8ff86ec6149ce018f6d93908f",
+      "suggested_crates": [],
+      "title": "doc-panics-section",
+      "triggers": [
+        "doc",
+        "ffi",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-question-mark",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-question-mark.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "a621c16fa2d53c9b582132cc1267ff10157260c9fe67f66a69acf6d0e268b470",
+      "suggested_crates": [],
+      "title": "doc-question-mark",
+      "triggers": [
+        "async",
+        "doc",
+        "documentation"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "doc",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-and-api-dependent",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "doc-safety-section",
+      "kind": "documentation-guidance",
+      "limitations": [],
+      "path": "rules/doc-safety-section.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "9f3da270ef3c7e55392bee3372c567f079e6a3ec0b930f89e66ca1ba4123d436",
+      "suggested_crates": [],
+      "title": "doc-safety-section",
+      "triggers": [
+        "doc",
+        "documentation",
+        "memory",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-convention-or-new-dependency-decision",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-anyhow-app",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-anyhow-app.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "9ca754780a6c8cbfffeaab761f23c58621bbddc23f907fc0b57e1e25f597c831",
+      "suggested_crates": [
+        "anyhow",
+        "thiserror"
+      ],
+      "title": "err-anyhow-app",
+      "triggers": [
+        "err",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-context-chain",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-context-chain.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "7485b4ca0f82bdf031aac3c3e20d289ce4110fc92ba8096d482a9eb9c2d3ac41",
+      "suggested_crates": [
+        "anyhow",
+        "thiserror"
+      ],
+      "title": "err-context-chain",
+      "triggers": [
+        "err"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-custom-type",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-custom-type.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "20fdae092f4b86a10b8c140801950f1ee39ffc76340a860697a98fa979c2aa25",
+      "suggested_crates": [
+        "anyhow",
+        "thiserror"
+      ],
+      "title": "err-custom-type",
+      "triggers": [
+        "err",
+        "ffi",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-doc-errors",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-doc-errors.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "18025097119b1dd1986f43e870c6f44296a1a54d955f7b26c770f070cf8e4599",
+      "suggested_crates": [
+        "thiserror"
+      ],
+      "title": "err-doc-errors",
+      "triggers": [
+        "documentation",
+        "err"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-expect-bugs-only",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-expect-bugs-only.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "b8f1b475e7f016c679ea5c64bfb8c70dddf302e5c2838554b31c8ba924eb5a7a",
+      "suggested_crates": [],
+      "title": "err-expect-bugs-only",
+      "triggers": [
+        "err"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-from-impl",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-from-impl.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "a828e81c58f7bc67721e01af7c8bd49996ab610f59ea7703351b35dafff36f6a",
+      "suggested_crates": [
+        "anyhow",
+        "thiserror"
+      ],
+      "title": "err-from-impl",
+      "triggers": [
+        "err"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-lowercase-msg",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-lowercase-msg.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "99eae0ae9d567f2b32c739648b58dd8f648833ad26f56d6d2cbc37c5eba778e4",
+      "suggested_crates": [
+        "anyhow",
+        "thiserror"
+      ],
+      "title": "err-lowercase-msg",
+      "triggers": [
+        "documentation",
+        "err"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-no-unwrap-prod",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-no-unwrap-prod.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "b8ba7f86cdf68b408cf22218af2420b52279999ee15e946ca0f25b7f49ad6671",
+      "suggested_crates": [],
+      "title": "err-no-unwrap-prod",
+      "triggers": [
+        "err"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-question-mark",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-question-mark.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "d1b8ad7240c10d8683ba26140fc911aa694c260705a8b2f5ca6add7a60a74fdd",
+      "suggested_crates": [
+        "anyhow",
+        "thiserror"
+      ],
+      "title": "err-question-mark",
+      "triggers": [
+        "err"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-result-over-panic",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-result-over-panic.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "63d66e846d4f783feb21eaffc5b258691dbecd341b535180bc4ade144f28c15a",
+      "suggested_crates": [
+        "anyhow",
+        "thiserror"
+      ],
+      "title": "err-result-over-panic",
+      "triggers": [
+        "err"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-source-chain",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-source-chain.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "31e3f29a51794c8f06621b9c073093cc3938771aedc7cdb4983b39fe32fb893e",
+      "suggested_crates": [
+        "anyhow",
+        "thiserror"
+      ],
+      "title": "err-source-chain",
+      "triggers": [
+        "err"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "err",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-convention-or-new-dependency-decision",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "err-thiserror-lib",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/err-thiserror-lib.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "fd6c025b335b3a8cbef8390d9d606eaeab584c8f81e4f088f24b33f0e266e866",
+      "suggested_crates": [
+        "anyhow",
+        "thiserror"
+      ],
+      "title": "err-thiserror-lib",
+      "triggers": [
+        "err",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "lint-cargo-metadata",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-cargo-metadata.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "b83fb6f6304a9614720223fddccf46ace83653348e7b7cf815fb0b32a26e31d3",
+      "suggested_crates": [
+        "serde",
+        "tokio"
+      ],
+      "title": "lint-cargo-metadata",
+      "triggers": [
+        "documentation",
+        "lint"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "nightly",
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "lint-cfg-check",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-cfg-check.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "fcdbea5c7f2a7f4318a815fc292e69d506e694a084e48d363487e33b0dc29efb",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "lint-cfg-check",
+      "triggers": [
+        "lint"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "lint-clippy-nursery-selected",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-clippy-nursery-selected.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "761e2aac35e778c92ac2dbc8740bd6509904d17743b7beeb1f430fe2072968e6",
+      "suggested_crates": [],
+      "title": "lint-clippy-nursery-selected",
+      "triggers": [
+        "async",
+        "ffi",
+        "lint",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [
+        "clippy"
+      ],
+      "id": "lint-deny-correctness",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-deny-correctness.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "4c7c029fe826c7a3bc8cd01d6ec22ea63ce0393c3cc679b4033662010a49581f",
+      "suggested_crates": [
+        "wide"
+      ],
+      "title": "lint-deny-correctness",
+      "triggers": [
+        "lint",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "lint-missing-docs",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-missing-docs.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "ab1cd1aee1a3af6537ca081f1cd3e5ab25871808ee2762a9b5bd8fd154451dfd",
+      "suggested_crates": [],
+      "title": "lint-missing-docs",
+      "triggers": [
+        "documentation",
+        "lint",
+        "public-api",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [
+        "clippy"
+      ],
+      "id": "lint-pedantic-selective",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-pedantic-selective.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "e421399a4671021725d1cb5913d585fb84e646ffa056a5627c7df1e2ba0293fa",
+      "suggested_crates": [],
+      "title": "lint-pedantic-selective",
+      "triggers": [
+        "lint"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "nightly",
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [
+        "rustfmt"
+      ],
+      "id": "lint-rustfmt-check",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-rustfmt-check.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "487bd0343b985e0b8791140b01da95b9fb236831535e64acaaf6bc1712626c9f",
+      "suggested_crates": [],
+      "title": "lint-rustfmt-check",
+      "triggers": [
+        "lint"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "lint-unsafe-doc",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-unsafe-doc.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "57db005a20a1f5f50bfe84a170d2060b55bf6249c22ba53ffb28f7568f9351f8",
+      "suggested_crates": [],
+      "title": "lint-unsafe-doc",
+      "triggers": [
+        "documentation",
+        "ffi",
+        "lint",
+        "memory",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "lint-warn-complexity",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-warn-complexity.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "fde6ab1d1cf1ea3d3375c29ce305e5b1eaa585c52e57d514549c5f560393476f",
+      "suggested_crates": [],
+      "title": "lint-warn-complexity",
+      "triggers": [
+        "lint",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [
+        "perf"
+      ],
+      "id": "lint-warn-perf",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-warn-perf.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "28711ddf0e20df6b304a40955a6526f917bb3e59754f44145ca4e8b1346f829e",
+      "suggested_crates": [],
+      "title": "lint-warn-perf",
+      "triggers": [
+        "ffi",
+        "lint",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [
+        "rustfmt"
+      ],
+      "id": "lint-warn-style",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-warn-style.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "215b87b1262d7616cf43d4ce76f3b4dbc0ff204aa31591fb6b953f07021bd209",
+      "suggested_crates": [],
+      "title": "lint-warn-style",
+      "triggers": [
+        "lint"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "lint-warn-suspicious",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-warn-suspicious.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "bbf029550c6f5f3ba426959cca73799616aa9a12d24af62813cd877d55e9bc38",
+      "suggested_crates": [],
+      "title": "lint-warn-suspicious",
+      "triggers": [
+        "lint"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "lint",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-policy",
+      "evidence_required": true,
+      "external_tools": [
+        "clippy",
+        "perf"
+      ],
+      "id": "lint-workspace-lints",
+      "kind": "mechanical-assurance",
+      "limitations": [],
+      "path": "rules/lint-workspace-lints.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "lint-dependent",
+      "sha256": "6fc509559776fe6b97f34408e919bed7e68daeaf56adac8e4bf0b8038258f5ea",
+      "suggested_crates": [],
+      "title": "lint-workspace-lints",
+      "triggers": [
+        "lint",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "macro",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [
+        "rustfmt"
+      ],
+      "id": "macro-export-crate-path",
+      "kind": "macro-guidance",
+      "limitations": [],
+      "path": "rules/macro-export-crate-path.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "74008ade9c0cb83f2b90cad5cc122927b301d4f16bce208767d3a9e58d2a5d9b",
+      "suggested_crates": [],
+      "title": "macro-export-crate-path",
+      "triggers": [
+        "macro"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "macro",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "macro-fragment-specifiers",
+      "kind": "macro-guidance",
+      "limitations": [],
+      "path": "rules/macro-fragment-specifiers.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "e9f4ce18312a94a8d3a2b5b93e5652f3fc21396dfc38e14b47f9eca25de3e19a",
+      "suggested_crates": [],
+      "title": "macro-fragment-specifiers",
+      "triggers": [
+        "macro"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "macro",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "macro-prefer-functions",
+      "kind": "macro-guidance",
+      "limitations": [],
+      "path": "rules/macro-prefer-functions.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "f8f89e40a69bc547311708e35ea42fcf9e250cd3ece1791dd37089891a596d0a",
+      "suggested_crates": [],
+      "title": "macro-prefer-functions",
+      "triggers": [
+        "ffi",
+        "macro"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "macro",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "macro-private-helpers",
+      "kind": "macro-guidance",
+      "limitations": [],
+      "path": "rules/macro-private-helpers.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "73cace5447b2083f521cce08aa64b52224650fb88d7b37f0a0b5070fd6f7af2e",
+      "suggested_crates": [
+        "serde",
+        "thiserror"
+      ],
+      "title": "macro-private-helpers",
+      "triggers": [
+        "documentation",
+        "macro",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "macro",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "macro-proc-error-spans",
+      "kind": "macro-guidance",
+      "limitations": [],
+      "path": "rules/macro-proc-error-spans.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "6e73e2ace34efb58f48feca16c7a23b788d42c4d084b5c8fef708641b2353842",
+      "suggested_crates": [
+        "thiserror"
+      ],
+      "title": "macro-proc-error-spans",
+      "triggers": [
+        "macro"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "macro",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "macro-proc-syn-quote",
+      "kind": "macro-guidance",
+      "limitations": [],
+      "path": "rules/macro-proc-syn-quote.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "a880da74f52469d92e6f71262772d2852c98675227758c9586d3eff19af53d02",
+      "suggested_crates": [],
+      "title": "macro-proc-syn-quote",
+      "triggers": [
+        "ffi",
+        "macro",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "macro",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "macro-proc-two-crate",
+      "kind": "macro-guidance",
+      "limitations": [],
+      "path": "rules/macro-proc-two-crate.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "e30f2e5034b63a1c9e1fa17e61246551fa67d28f5ff901bf4128bd99a59c980b",
+      "suggested_crates": [
+        "thiserror"
+      ],
+      "title": "macro-proc-two-crate",
+      "triggers": [
+        "macro"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "macro",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "macro-rules-hygiene",
+      "kind": "macro-guidance",
+      "limitations": [],
+      "path": "rules/macro-rules-hygiene.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "acf4977b06bea149a042e11f4a8263f1b8a3c81d4e9e3206a5a6a4e571b691c4",
+      "suggested_crates": [],
+      "title": "macro-rules-hygiene",
+      "triggers": [
+        "macro",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-arena-allocator",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-arena-allocator.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "3027217813a2d8a996591a96676abeefdff87a3462486316b58a54e621912f65",
+      "suggested_crates": [
+        "criterion"
+      ],
+      "title": "mem-arena-allocator",
+      "triggers": [
+        "mem",
+        "memory",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-arrayvec",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-arrayvec.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "8114ceb52948d2aad3e320c47a096f351dc24099fb514f79acb0fb1b8e332f82",
+      "suggested_crates": [
+        "arrayvec",
+        "smallvec"
+      ],
+      "title": "mem-arrayvec",
+      "triggers": [
+        "mem"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-assert-type-size",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-assert-type-size.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "288396b8bd1324d71ab3304c12322d087a0b9db70de79949b4899e7dcb66334b",
+      "suggested_crates": [],
+      "title": "mem-assert-type-size",
+      "triggers": [
+        "ffi",
+        "mem",
+        "memory",
+        "performance",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-avoid-format",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-avoid-format.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "73aeda367c72ab290024d38ce90cfef726500e9d548a854ec9b9a05579d2d325",
+      "suggested_crates": [
+        "compact_str"
+      ],
+      "title": "mem-avoid-format",
+      "triggers": [
+        "mem"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-box-large-variant",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-box-large-variant.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "fd3a95b28488ba01475c9da9a5dd89cbba1124e3c394b45ffd0dcfebf3d47081",
+      "suggested_crates": [
+        "smallvec"
+      ],
+      "title": "mem-box-large-variant",
+      "triggers": [
+        "mem",
+        "memory",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-boxed-slice",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-boxed-slice.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "1e8b1023efd305bbe2046cfc1c877b0cae1e7f06be00a05c76570576a8ac22b1",
+      "suggested_crates": [],
+      "title": "mem-boxed-slice",
+      "triggers": [
+        "mem",
+        "memory"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-clone-from",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-clone-from.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "48e93c36a55b0a4c801b621f951aa1102126f4e0bcac5ef8dad8405775d7863e",
+      "suggested_crates": [
+        "criterion"
+      ],
+      "title": "mem-clone-from",
+      "triggers": [
+        "ffi",
+        "mem",
+        "memory"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-compact-string",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-compact-string.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "a3e001e5cda9e4f8f9de8d1fc1857a299e9a7744b733bb879452f81d7217fb5c",
+      "suggested_crates": [
+        "compact_str",
+        "smallvec"
+      ],
+      "title": "mem-compact-string",
+      "triggers": [
+        "mem",
+        "memory"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-drop-order",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-drop-order.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "03828e4267fe3df947b8ae9bb7b16a067f6fcb68f1e3d115e209678833b22923",
+      "suggested_crates": [
+        "tracing"
+      ],
+      "title": "mem-drop-order",
+      "triggers": [
+        "ffi",
+        "mem",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-reuse-collections",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-reuse-collections.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "e930bc6b880a073141ab50dcb9af3181dd0e403a745b0558c584c246614e8a88",
+      "suggested_crates": [],
+      "title": "mem-reuse-collections",
+      "triggers": [
+        "mem"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "range-and-layout-evidence-required",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-smaller-integers",
+      "kind": "optimization-guidance",
+      "limitations": [
+        "Integer width, float precision, units, serialization, alignment, and conversion cost are domain contracts",
+        "Do not downgrade geospatial or scientific precision without an explicit error budget"
+      ],
+      "path": "rules/mem-smaller-integers.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "e42a69f421f0ce04ae88637e76002d4b692d5a9685ce1a95729effab23f8fa90",
+      "suggested_crates": [
+        "bitflags"
+      ],
+      "title": "mem-smaller-integers",
+      "triggers": [
+        "ffi",
+        "mem",
+        "memory",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-smallvec",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-smallvec.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "a0556de953d23a2f0670098c013550fb3290c2af9a7c807c1d5923a4ef310571",
+      "suggested_crates": [
+        "arrayvec",
+        "smallvec"
+      ],
+      "title": "mem-smallvec",
+      "triggers": [
+        "mem",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-take-replace",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-take-replace.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "d8c396f4acff5cf1e01d103404d2d5a5d2925373af5e1aba50b20e9ea38baa9b",
+      "suggested_crates": [],
+      "title": "mem-take-replace",
+      "triggers": [
+        "mem"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-thinvec",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-thinvec.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "50cf1f0cc9b78d2eb8bb48739cc05026176722e5f62b8b5aeb4fdb1de5f8a462",
+      "suggested_crates": [
+        "smallvec",
+        "thin-vec"
+      ],
+      "title": "mem-thinvec",
+      "triggers": [
+        "mem",
+        "memory",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-with-capacity",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-with-capacity.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "2bb5ff99287414a60458c687ef925d595414f07bbf26f3a3f5194107a4ac4478",
+      "suggested_crates": [
+        "smallvec"
+      ],
+      "title": "mem-with-capacity",
+      "triggers": [
+        "mem",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-write-over-format",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-write-over-format.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "370491b9cd639f9d7d2e0a1e4fc58fe5e13cdd54b17750d45000885ac839b7b1",
+      "suggested_crates": [
+        "criterion"
+      ],
+      "title": "mem-write-over-format",
+      "triggers": [
+        "mem"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "mem",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "mem-zero-copy",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/mem-zero-copy.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "0128bf291e401d615032c1c1c5543a3791dc63c249e800e71c2e2012a2681a13",
+      "suggested_crates": [],
+      "title": "mem-zero-copy",
+      "triggers": [
+        "mem",
+        "memory",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-acronym-word",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-acronym-word.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "adf757646953837175f3e8edf19359cb5bf648c534c8c1c04f998efde53ff786",
+      "suggested_crates": [],
+      "title": "name-acronym-word",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-as-free",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-as-free.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "62ab9a56b679a3352c3e1159d4b090ea0cd1a7b98d2699ba55069ad9b4116efe",
+      "suggested_crates": [],
+      "title": "name-as-free",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-consts-screaming",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-consts-screaming.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "b3a94463e11d6bf4694848370bf019727120df003ef808ef79491e44e93ea844",
+      "suggested_crates": [
+        "wide"
+      ],
+      "title": "name-consts-screaming",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-crate-no-rs",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-crate-no-rs.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "d2aaf1f2fdb570883146caf1599f1461d1227d72abe7dffe293dd6a71a68cad6",
+      "suggested_crates": [
+        "serde",
+        "tokio"
+      ],
+      "title": "name-crate-no-rs",
+      "triggers": [
+        "ffi",
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-funcs-snake",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-funcs-snake.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "6f88da65a474590629b487474f7d16669e2bc85f42deec234bbb4561bce53c25",
+      "suggested_crates": [],
+      "title": "name-funcs-snake",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-into-ownership",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-into-ownership.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "fe5908c4ac4dd5a746c9433a168b850093a607d7b49e9d4fd1c18fa3732f757b",
+      "suggested_crates": [],
+      "title": "name-into-ownership",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-is-has-bool",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-is-has-bool.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "b6c6809beea29b05c0e6a2dd40b386c624bfa1427b5383d0bced556356b528d7",
+      "suggested_crates": [],
+      "title": "name-is-has-bool",
+      "triggers": [
+        "documentation",
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-iter-convention",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-iter-convention.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "c73310b518aaaf38384e8beaad5ed224eac3a88de2022bac771bbc66477aa324",
+      "suggested_crates": [],
+      "title": "name-iter-convention",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-iter-method",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-iter-method.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "ba0d5411ef4f07de3fa1e17e88ce39a4c9585971b894c2d817a2d025b7aae603",
+      "suggested_crates": [],
+      "title": "name-iter-method",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-iter-type-match",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-iter-type-match.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "121958603d75c2c69e5aa74bd0fb729030e9832ee245007ee9667f0c9096072b",
+      "suggested_crates": [],
+      "title": "name-iter-type-match",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-lifetime-short",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-lifetime-short.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "6b41b7a418c68a79a8d013d4fdeb9a5141818f5d0d6231f163680f2bb0358423",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "name-lifetime-short",
+      "triggers": [
+        "name",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-no-get-prefix",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-no-get-prefix.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "161062d503bfc0a54defa2c4e7ec12e204c866166fddd09bef0724a63b8bd277",
+      "suggested_crates": [],
+      "title": "name-no-get-prefix",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-to-expensive",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-to-expensive.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "4f9fccabab1d14c4466c0430c2e6585db902696c4ada7c8e8dfc7b3241df3300",
+      "suggested_crates": [],
+      "title": "name-to-expensive",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-type-param-single",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-type-param-single.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "e1b5083bb60dc80ba2f1666ee303ddb57a6a160cddc1427a867362d727c0a341",
+      "suggested_crates": [],
+      "title": "name-type-param-single",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-types-camel",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-types-camel.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "73321d6f5ed12a3ff23c5051e2faeb7e70ebf0446436c72d3f7862ec2f3b56ed",
+      "suggested_crates": [],
+      "title": "name-types-camel",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "name",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "name-variants-camel",
+      "kind": "convention",
+      "limitations": [],
+      "path": "rules/name-variants-camel.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "a113c2363310dafe26a45db0f0f4a3ff41cfb85ede8a99a19c8f51c6781778e8",
+      "suggested_crates": [],
+      "title": "name-variants-camel",
+      "triggers": [
+        "name"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "num",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "num-cast-try-from",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/num-cast-try-from.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "2cec97a24fbf09dba01cbc4cb5b7a904398439163bdbb1d407e536ebe9140195",
+      "suggested_crates": [],
+      "title": "num-cast-try-from",
+      "triggers": [
+        "num"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "num",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "num-float-compare",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/num-float-compare.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "0af0ed600acab59edfe8ff7f7a49eb0091d06ce581e051550fe33f7e4d50468a",
+      "suggested_crates": [],
+      "title": "num-float-compare",
+      "triggers": [
+        "num"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "num",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "num-nonzero",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/num-nonzero.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "66a09b6d3e59806e80c403aa76eb69c9a1f94614c0784756a6cabac68b30e1a9",
+      "suggested_crates": [],
+      "title": "num-nonzero",
+      "triggers": [
+        "num"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "num",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "num-overflow-explicit",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/num-overflow-explicit.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "e472eefad4531bbacd02622af4904f3f903ed9f21761563b218cb6d41ba00cde",
+      "suggested_crates": [],
+      "title": "num-overflow-explicit",
+      "triggers": [
+        "num"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "num",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "num-saturating-clamp",
+      "kind": "correctness-guidance",
+      "limitations": [],
+      "path": "rules/num-saturating-clamp.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "13094dcb7e52a5136a459080f589799b20d75ebe9c5ca3a1137efc9a1a24e147",
+      "suggested_crates": [],
+      "title": "num-saturating-clamp",
+      "triggers": [
+        "num"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "obs",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "obs-error-chain",
+      "kind": "operability-guidance",
+      "limitations": [],
+      "path": "rules/obs-error-chain.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-high",
+      "sha256": "bf9431c478a78c013b1f900f7e462747fac32aa80bb115044ba244765eec8507",
+      "suggested_crates": [
+        "anyhow",
+        "tracing"
+      ],
+      "title": "obs-error-chain",
+      "triggers": [
+        "async",
+        "obs"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "obs",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "obs-instrument-spans",
+      "kind": "operability-guidance",
+      "limitations": [],
+      "path": "rules/obs-instrument-spans.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-high",
+      "sha256": "26192ab33b9afa7f62ba3ffb0b4c247e8b13749c94ef9746e61ca8b3409bfa12",
+      "suggested_crates": [
+        "tracing"
+      ],
+      "title": "obs-instrument-spans",
+      "triggers": [
+        "async",
+        "obs"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "obs",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "obs-levels-filter",
+      "kind": "operability-guidance",
+      "limitations": [],
+      "path": "rules/obs-levels-filter.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-high",
+      "sha256": "79ddf7b046683c10fa77034ea44c293c32fa3b7726b1f97383e0b84018df369d",
+      "suggested_crates": [
+        "tracing"
+      ],
+      "title": "obs-levels-filter",
+      "triggers": [
+        "obs"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "obs",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "obs-library-facade",
+      "kind": "operability-guidance",
+      "limitations": [],
+      "path": "rules/obs-library-facade.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-high",
+      "sha256": "e19123adc6b31ef2d332df48f2c61a91d72a0d60ae4de2a10928b5680ae53dcb",
+      "suggested_crates": [
+        "serde",
+        "tracing",
+        "wide"
+      ],
+      "title": "obs-library-facade",
+      "triggers": [
+        "obs"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "obs",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "obs-no-sensitive-data",
+      "kind": "operability-guidance",
+      "limitations": [],
+      "path": "rules/obs-no-sensitive-data.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-high",
+      "sha256": "0c5159885993839cb43267926ede588efcbe0ec907468c5c240903f301ca689c",
+      "suggested_crates": [
+        "thiserror",
+        "tracing"
+      ],
+      "title": "obs-no-sensitive-data",
+      "triggers": [
+        "async",
+        "obs"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "obs",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "obs-structured-fields",
+      "kind": "operability-guidance",
+      "limitations": [],
+      "path": "rules/obs-structured-fields.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-high",
+      "sha256": "98f91c169f11499e831358c27b241102f530df9a6dbd03a82b04c9fe43aa0b0f",
+      "suggested_crates": [
+        "tracing"
+      ],
+      "title": "obs-structured-fields",
+      "triggers": [
+        "obs"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "obs",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "repository-convention-or-new-dependency-decision",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "obs-tracing-over-log",
+      "kind": "operability-guidance",
+      "limitations": [],
+      "path": "rules/obs-tracing-over-log.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "6fd7d2fd40f59d2f5f7a692450b16d70a0b07ce9bcbda9ca11e265bfc931df56",
+      "suggested_crates": [
+        "tokio",
+        "tracing"
+      ],
+      "title": "obs-tracing-over-log",
+      "triggers": [
+        "async",
+        "obs",
+        "observability"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "opt-bounds-check",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/opt-bounds-check.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "1d104897ea1fc911c14828ef72547350610144c9fbf047715a80f9e285e72bd7",
+      "suggested_crates": [],
+      "title": "opt-bounds-check",
+      "triggers": [
+        "ffi",
+        "memory",
+        "opt",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [
+        "perf"
+      ],
+      "id": "opt-cache-friendly",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/opt-cache-friendly.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "1751b422b51311c83492f6b2b089143923ad9ea8d7ba9c651f068a9b9d65f686",
+      "suggested_crates": [],
+      "title": "opt-cache-friendly",
+      "triggers": [
+        "ffi",
+        "memory",
+        "opt",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "benchmark-required",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "opt-codegen-units",
+      "kind": "optimization-guidance",
+      "limitations": [
+        "Fewer codegen units can improve optimization while increasing compile time and reducing build parallelism"
+      ],
+      "path": "rules/opt-codegen-units.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "b81af5325623b28cda7c04060081a8c16d0702f804d521c06aa51397b59caab4",
+      "suggested_crates": [],
+      "title": "opt-codegen-units",
+      "triggers": [
+        "memory",
+        "opt",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [
+        "perf"
+      ],
+      "id": "opt-cold-unlikely",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/opt-cold-unlikely.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "59dd0ac875cb7fc34f4f6a642c726e504f9dfd7717c8b444d0a1c8d850dadd69",
+      "suggested_crates": [],
+      "title": "opt-cold-unlikely",
+      "triggers": [
+        "opt",
+        "performance",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "opt-inline-always-rare",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/opt-inline-always-rare.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "c803bdf268d59bfc55dca1877c2a84913c752649b0e15ce139c6ce8a59c23d81",
+      "suggested_crates": [
+        "criterion"
+      ],
+      "title": "opt-inline-always-rare",
+      "triggers": [
+        "opt"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "nightly",
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "opt-inline-never-cold",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/opt-inline-never-cold.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "98fb41026991466aba7b816a7fea3388f6133c070c62c3c8a2d15e6776d12879",
+      "suggested_crates": [],
+      "title": "opt-inline-never-cold",
+      "triggers": [
+        "opt",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "opt-inline-small",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/opt-inline-small.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "0eb6bcf8e09b7227ad6bf163b6ab401729ba91ef26b8a48380ec7275936d0df1",
+      "suggested_crates": [],
+      "title": "opt-inline-small",
+      "triggers": [
+        "opt"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "nightly",
+        "stable"
+      ],
+      "default_applicability": "profiled-hot-path-only",
+      "evidence_required": true,
+      "external_tools": [
+        "cargo-flamegraph",
+        "perf"
+      ],
+      "id": "opt-likely-hint",
+      "kind": "optimization-guidance",
+      "limitations": [
+        "Do not infer branch probability from source order alone",
+        "Channel support must be detected rather than stated from a static Rust version"
+      ],
+      "path": "rules/opt-likely-hint.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "f326544cc166309a667bdfd8fde7fad5166133d65dc3035fa2629f72d9b76a6a",
+      "suggested_crates": [
+        "likely_stable"
+      ],
+      "title": "opt-likely-hint",
+      "triggers": [
+        "opt",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "benchmark-required",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "opt-lto-release",
+      "kind": "optimization-guidance",
+      "limitations": [
+        "LTO can materially increase link time and does not guarantee a runtime improvement"
+      ],
+      "path": "rules/opt-lto-release.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "ac40d266e9d720e2cb6832395f5353abf4e842d4539b0e5136f0e1168ac828bf",
+      "suggested_crates": [],
+      "title": "opt-lto-release",
+      "triggers": [
+        "memory",
+        "opt"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "representative-workload-required",
+      "evidence_required": true,
+      "external_tools": [
+        "llvm-profdata"
+      ],
+      "id": "opt-pgo-profile",
+      "kind": "optimization-guidance",
+      "limitations": [
+        "PGO is only as representative as the collected workload and must be repeated after material changes"
+      ],
+      "path": "rules/opt-pgo-profile.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "5272b2b55268462ed2072a63d202eb0d3b7858485be76d67676d15fc9ffe49f0",
+      "suggested_crates": [],
+      "title": "opt-pgo-profile",
+      "triggers": [
+        "ffi",
+        "opt",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "nightly",
+        "stable"
+      ],
+      "default_applicability": "profiled-hot-path-only",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "opt-simd-portable",
+      "kind": "optimization-guidance",
+      "limitations": [
+        "Portable SIMD may require nightly",
+        "Platform intrinsics require target and safety qualification"
+      ],
+      "path": "rules/opt-simd-portable.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "31717432b5a9136e24d1adc4cfb4dd516306b404d411059f0f87bd57f40221d2",
+      "suggested_crates": [
+        "wide"
+      ],
+      "title": "opt-simd-portable",
+      "triggers": [
+        "ffi",
+        "opt",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "opt",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "deployment-target-specific",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "opt-target-cpu",
+      "kind": "optimization-guidance",
+      "limitations": [
+        "target-cpu=native can make artifacts non-portable and is inappropriate for generic distribution"
+      ],
+      "path": "rules/opt-target-cpu.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "437e6cc771ec258de5560c755f4cb4e567e145a8257fac40fbe1fc0c4c817cf2",
+      "suggested_crates": [],
+      "title": "opt-target-cpu",
+      "triggers": [
+        "opt",
+        "performance",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-arc-shared",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-arc-shared.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "62bfe5de6a545bd572042b2199599d37cca472d7a20192ecc00ee7148930ca2a",
+      "suggested_crates": [],
+      "title": "own-arc-shared",
+      "triggers": [
+        "async",
+        "own",
+        "performance",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-borrow-over-clone",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-borrow-over-clone.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "495bbffcdbdd58230585d802b43b28808058e7e9e24a1602427250822a84253b",
+      "suggested_crates": [],
+      "title": "own-borrow-over-clone",
+      "triggers": [
+        "memory",
+        "own",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-clone-explicit",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-clone-explicit.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "d6c9b7da0eba4e167694fc410e76d93d344bc6ec586469920e09fcc2a0b3b5a4",
+      "suggested_crates": [],
+      "title": "own-clone-explicit",
+      "triggers": [
+        "ffi",
+        "own",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-copy-small",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-copy-small.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "30b6c640b9f9ab49e2604046392070d255476fe5afd7606e800654873c7cfbdf",
+      "suggested_crates": [],
+      "title": "own-copy-small",
+      "triggers": [
+        "own"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-cow-conditional",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-cow-conditional.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "9f7961785309d5f73a98ebf73e7f9b0ca3977b44aa7d50133b9af65d432e707b",
+      "suggested_crates": [],
+      "title": "own-cow-conditional",
+      "triggers": [
+        "own"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-lifetime-elision",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-lifetime-elision.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "65d60b8beef3fbff885028b0d235d0b94bee2f84b5bbbff45db30e100771a65c",
+      "suggested_crates": [],
+      "title": "own-lifetime-elision",
+      "triggers": [
+        "own"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "profiled-hot-path-only",
+      "evidence_required": true,
+      "external_tools": [
+        "cargo-flamegraph",
+        "perf"
+      ],
+      "id": "own-move-large",
+      "kind": "design-guidance",
+      "limitations": [
+        "Do not use universal byte thresholds",
+        "Boxing adds allocation, indirection, and cache effects",
+        "Compiler optimizations may elide moves"
+      ],
+      "path": "rules/own-move-large.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "d99633d09efd40f7eaa46f7ab9664f3d9d04519a801abe74a9cf648126d9883a",
+      "suggested_crates": [],
+      "title": "own-move-large",
+      "triggers": [
+        "own"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-mutex-interior",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-mutex-interior.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "d071f58d4e763740eeaba48f5f7821522170b5791698abfba22c3c6b8cc5da21",
+      "suggested_crates": [],
+      "title": "own-mutex-interior",
+      "triggers": [
+        "async",
+        "own",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-rc-single-thread",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-rc-single-thread.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "ccfb12f6547c1d42092df685b3d441b128898b355b827c9b12e63eb40c13f91e",
+      "suggested_crates": [],
+      "title": "own-rc-single-thread",
+      "triggers": [
+        "own"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-refcell-interior",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-refcell-interior.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "85993378fbd8cefbe53d75b32eda36295f6ccfce388b141597e1735afb150269",
+      "suggested_crates": [],
+      "title": "own-refcell-interior",
+      "triggers": [
+        "own"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "nightly"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-rwlock-readers",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-rwlock-readers.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "04bb52563a0a472d03f211493ec4e0a80b74b13485bb538d119bd03ebb90d920",
+      "suggested_crates": [],
+      "title": "own-rwlock-readers",
+      "triggers": [
+        "async",
+        "own",
+        "performance",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "own",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "general-with-context",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "own-slice-over-vec",
+      "kind": "design-guidance",
+      "limitations": [],
+      "path": "rules/own-slice-over-vec.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "context-dependent",
+      "sha256": "2602c6d319a2dd4926950cd11c4c980fa9ce3766f58d0a1ed2720c88cfbb019a",
+      "suggested_crates": [],
+      "title": "own-slice-over-vec",
+      "triggers": [
+        "own"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "pat",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "pat-at-bindings",
+      "kind": "language-guidance",
+      "limitations": [],
+      "path": "rules/pat-at-bindings.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "562ec8fa2c151524cf53a21aed57f400506a888a37d4da7aae595c39d5ba3ecf",
+      "suggested_crates": [],
+      "title": "pat-at-bindings",
+      "triggers": [
+        "pat"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "pat",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "pat-exhaustive-enum",
+      "kind": "language-guidance",
+      "limitations": [],
+      "path": "rules/pat-exhaustive-enum.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "42184c0f7140afdaf9d5377d0f64d027cb1fa5fa2ec30c9f320114168013e34d",
+      "suggested_crates": [],
+      "title": "pat-exhaustive-enum",
+      "triggers": [
+        "pat",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "pat",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "pat-if-let-chains",
+      "kind": "language-guidance",
+      "limitations": [],
+      "path": "rules/pat-if-let-chains.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "3ce1ed93221bbf0d74311120a0dc2b754ecc6e9573670dfedcd6e323bfef346c",
+      "suggested_crates": [],
+      "title": "pat-if-let-chains",
+      "triggers": [
+        "pat"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "pat",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "pat-let-else",
+      "kind": "language-guidance",
+      "limitations": [],
+      "path": "rules/pat-let-else.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "da56508174af078b040e6e713943a9fb184d388b1d55e0bf43514a9a92287002",
+      "suggested_crates": [
+        "anyhow"
+      ],
+      "title": "pat-let-else",
+      "triggers": [
+        "pat"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "pat",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "pat-matches-macro",
+      "kind": "language-guidance",
+      "limitations": [],
+      "path": "rules/pat-matches-macro.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "33f9535fee4966692998d83e52450b81832ddcef30eda5b317cc763fb52e34f6",
+      "suggested_crates": [],
+      "title": "pat-matches-macro",
+      "triggers": [
+        "pat"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "trusted-input-performance-only",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-ahash",
+      "kind": "optimization-guidance",
+      "limitations": [
+        "Hashers are security and compatibility choices; untrusted-input DoS risk and deterministic-output requirements must be assessed"
+      ],
+      "path": "rules/perf-ahash.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "62c03be18979a894006baa4d8f5705a411c5e53abda2f78fff0455fc2a8e665e",
+      "suggested_crates": [
+        "ahash"
+      ],
+      "title": "perf-ahash",
+      "triggers": [
+        "perf",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-black-box-bench",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/perf-black-box-bench.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "1d605b2ab9bfa2a6a4d8dcc10941cf88c2e065b46d7b6139a71683e54f9d9090",
+      "suggested_crates": [
+        "criterion"
+      ],
+      "title": "perf-black-box-bench",
+      "triggers": [
+        "perf"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-chain-avoid",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/perf-chain-avoid.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "c83e1ef0e198ddaee171f1ebd281284ffcc0233f6024f84702a965a05e0dd6a9",
+      "suggested_crates": [],
+      "title": "perf-chain-avoid",
+      "triggers": [
+        "perf",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "nightly",
+        "stable"
+      ],
+      "default_applicability": "allocation-hot-path-only",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-collect-into",
+      "kind": "optimization-guidance",
+      "limitations": [
+        "Use stable extend when collect_into is unavailable",
+        "Channel support must be detected"
+      ],
+      "path": "rules/perf-collect-into.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "3fe3419b1cdb577125f0605917a0bf6b67471dcc68a694c258e70b2587a91def",
+      "suggested_crates": [],
+      "title": "perf-collect-into",
+      "triggers": [
+        "perf"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-collect-once",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/perf-collect-once.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "82fee7d56af575e982276a9b30f0aae6d8deb8ddb2d48478747eb07bc086e2ad",
+      "suggested_crates": [],
+      "title": "perf-collect-once",
+      "triggers": [
+        "memory",
+        "perf"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-drain-reuse",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/perf-drain-reuse.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "9eafa0e5a8f39c0150bc8c063f8a600aa6f7fee55e6f8601cfc4d7702690216e",
+      "suggested_crates": [],
+      "title": "perf-drain-reuse",
+      "triggers": [
+        "perf"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-entry-api",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/perf-entry-api.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "327790871f3a46571549e9967aeaeb51525fb8632f258a5f80dbbd9d910d324c",
+      "suggested_crates": [],
+      "title": "perf-entry-api",
+      "triggers": [
+        "perf",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-extend-batch",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/perf-extend-batch.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "cb1ee0834562f18f638c1d57c2081f5506850f894ad221c17f5735316f585b27",
+      "suggested_crates": [],
+      "title": "perf-extend-batch",
+      "triggers": [
+        "perf",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-io-buffering",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/perf-io-buffering.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "e79c82449d5b0805b882a6c3b90def0dbec831c081077458897582ff76cbc8aa",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "perf-io-buffering",
+      "triggers": [
+        "async",
+        "perf",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-iter-lazy",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/perf-iter-lazy.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "2c26bdc7dcb28b2d320719f1e35737e565de5830927a1b6a318e60ee88b050f9",
+      "suggested_crates": [],
+      "title": "perf-iter-lazy",
+      "triggers": [
+        "perf"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-iter-over-index",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/perf-iter-over-index.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "3c199c371b338812298813075710a04be75bc705ac76013316e7429f84c73e2f",
+      "suggested_crates": [
+        "rayon"
+      ],
+      "title": "perf-iter-over-index",
+      "triggers": [
+        "perf",
+        "performance",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": true,
+      "external_tools": [
+        "cargo-flamegraph",
+        "perf"
+      ],
+      "id": "perf-profile-first",
+      "kind": "optimization-guidance",
+      "limitations": [],
+      "path": "rules/perf-profile-first.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "19c1e3658dbd4346b298c9ec6d06adb1f5dc4d3f3e607055351711b17ad9d5d4",
+      "suggested_crates": [
+        "criterion",
+        "wide"
+      ],
+      "title": "perf-profile-first",
+      "triggers": [
+        "perf",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "perf",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "benchmark-and-operational-policy-required",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "perf-release-profile",
+      "kind": "optimization-guidance",
+      "limitations": [
+        "opt-level, LTO, codegen units, panic strategy, and stripping are independent trade-offs",
+        "Diagnostic, size, throughput, startup, compile-time, and crash-policy goals may require different profiles"
+      ],
+      "path": "rules/perf-release-profile.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "77ae118feca38b74670c313392bb3fb1327a0697624a1e289e066a882283bd11",
+      "suggested_crates": [],
+      "title": "perf-release-profile",
+      "triggers": [
+        "memory",
+        "perf",
+        "performance"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-bin-dir",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-bin-dir.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "d3ec76960da1ee68963b49fecbeb81dac0d0d904fa3d688474b0e35950eb493d",
+      "suggested_crates": [],
+      "title": "proj-bin-dir",
+      "triggers": [
+        "proj"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-build-rs-minimal",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-build-rs-minimal.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "0cd0a49c2cb2e4e1589978219d70b1a1a7b4bc4feb1f8903eb5282df90bae384",
+      "suggested_crates": [],
+      "title": "proj-build-rs-minimal",
+      "triggers": [
+        "proj"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-feature-additive",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-feature-additive.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "e6f90553463f23206b89156ea780f7ab81b8b5f9d64427d618396db47b73ab86",
+      "suggested_crates": [
+        "serde",
+        "tokio"
+      ],
+      "title": "proj-feature-additive",
+      "triggers": [
+        "proj"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-flat-small",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-flat-small.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "4a0335ef126fa30d6ad96f5e3c591a6130fbdbb6300e5914a6bc85c1d43229ee",
+      "suggested_crates": [],
+      "title": "proj-flat-small",
+      "triggers": [
+        "proj"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-lib-main-split",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-lib-main-split.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "839dd04878f9190d209332efde1a751a0f4d255595e82703ae7f8551e002a541",
+      "suggested_crates": [
+        "anyhow"
+      ],
+      "title": "proj-lib-main-split",
+      "triggers": [
+        "proj",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-mod-by-feature",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-mod-by-feature.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "fc8180f6fa7867c15a41137d5e36d0c48d9dfdc3b403e17a2d58ded814db63f3",
+      "suggested_crates": [],
+      "title": "proj-mod-by-feature",
+      "triggers": [
+        "proj",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-mod-rs-dir",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-mod-rs-dir.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "1714485aeb998ee22d2f19d9f612fbb89524ccf963ad3b584f298725423e335e",
+      "suggested_crates": [
+        "serde",
+        "tokio"
+      ],
+      "title": "proj-mod-rs-dir",
+      "triggers": [
+        "proj"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-msrv-declare",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-msrv-declare.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "6a1cfb6620570248e132d6dc792c839c16a672d6ff427825582720c94331accb",
+      "suggested_crates": [],
+      "title": "proj-msrv-declare",
+      "triggers": [
+        "proj"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-prelude-module",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-prelude-module.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory",
+      "sha256": "33f82f80234eec337be0f126da6433177bd7392009e908c06a7d5c84259f0654",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "proj-prelude-module",
+      "triggers": [
+        "async",
+        "documentation",
+        "proj"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-pub-crate-internal",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-pub-crate-internal.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "8e3f147828685dda0956b8860419a3dbc5235e36ba4f7677a0483e8bb8911787",
+      "suggested_crates": [],
+      "title": "proj-pub-crate-internal",
+      "triggers": [
+        "proj",
+        "public-api",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-pub-super-parent",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-pub-super-parent.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "dc87e711a4988d16e705999a5dcad718af982d8acde2ea0db449d5122669fb6c",
+      "suggested_crates": [
+        "wide"
+      ],
+      "title": "proj-pub-super-parent",
+      "triggers": [
+        "proj",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-pub-use-reexport",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-pub-use-reexport.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "64f7d524b4fd31079cd156151ea1d09a97af4d24bd9e302792d0072522d9cc24",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "proj-pub-use-reexport",
+      "triggers": [
+        "async",
+        "proj",
+        "public-api"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-workspace-deps",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-workspace-deps.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "708e66dd25799f6b82520c327916d5cb9e4067a481256374a87262905a99fedb",
+      "suggested_crates": [
+        "anyhow",
+        "criterion",
+        "proptest",
+        "serde",
+        "thiserror",
+        "tokio",
+        "tracing"
+      ],
+      "title": "proj-workspace-deps",
+      "triggers": [
+        "async",
+        "proj",
+        "serialization",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "proj",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "project-convention",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "proj-workspace-large",
+      "kind": "project-structure-guidance",
+      "limitations": [],
+      "path": "rules/proj-workspace-large.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "eba7f6546fea1ae4d617cf331775e54b21529360377367a225d12e25a4214716",
+      "suggested_crates": [
+        "anyhow",
+        "serde",
+        "tokio",
+        "tracing"
+      ],
+      "title": "proj-workspace-large",
+      "triggers": [
+        "proj",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "serde",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "serde-custom-with",
+      "kind": "compatibility-guidance",
+      "limitations": [],
+      "path": "rules/serde-custom-with.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "332c49af356fb5c0d4a50c00658c66ae6218dd3a710a7eef975a20e7f84b5c33",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "serde-custom-with",
+      "triggers": [
+        "serde",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "serde",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "serde-default-compat",
+      "kind": "compatibility-guidance",
+      "limitations": [],
+      "path": "rules/serde-default-compat.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "463a0533f6afbefc8b0ce78ad19986c7f4071b9262094e675ce7576f5d705b8b",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "serde-default-compat",
+      "triggers": [
+        "serde",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "serde",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "serde-deny-unknown-fields",
+      "kind": "compatibility-guidance",
+      "limitations": [],
+      "path": "rules/serde-deny-unknown-fields.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "b127f0548708d21e1f4eceaf4bc33410b169167e1ceadcc85dadb3c276bc7fc3",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "serde-deny-unknown-fields",
+      "triggers": [
+        "public-api",
+        "serde"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "serde",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "serde-enum-representation",
+      "kind": "compatibility-guidance",
+      "limitations": [],
+      "path": "rules/serde-enum-representation.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "d5cd9860b8da7ba5653e231fd356a3e149a872b80839ea183a2d28f5a9359d7e",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "serde-enum-representation",
+      "triggers": [
+        "serde"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "serde",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "serde-flatten",
+      "kind": "compatibility-guidance",
+      "limitations": [],
+      "path": "rules/serde-flatten.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "0d8a09e5afad99e18487f7ea4254c3293618f2b1ab2e21114fdc0b9906b2aa11",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "serde-flatten",
+      "triggers": [
+        "ffi",
+        "serde",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "serde",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "serde-rename-all",
+      "kind": "compatibility-guidance",
+      "limitations": [],
+      "path": "rules/serde-rename-all.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "d01831a463257716360783347589f6d8e9ca03e37d65b476e35cc9a00af80017",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "serde-rename-all",
+      "triggers": [
+        "serde",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "serde",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "serde-skip-empty",
+      "kind": "compatibility-guidance",
+      "limitations": [],
+      "path": "rules/serde-skip-empty.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "d02963950e9293dc038ea7a69a9074d0f1b10376ee814e395bd9c174c5f960f7",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "serde-skip-empty",
+      "triggers": [
+        "serde",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "serde",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "serde-try-from-validate",
+      "kind": "compatibility-guidance",
+      "limitations": [],
+      "path": "rules/serde-try-from-validate.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "medium-to-critical",
+      "sha256": "148c1ae58b75e955dc7d3d49160d8367299d3831622fe34d0f7438c94cb09a61",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "serde-try-from-validate",
+      "triggers": [
+        "memory",
+        "serde",
+        "serialization"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-arrange-act-assert",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-arrange-act-assert.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "4daca01e870bca5ec7b36e57fc6f0e06ef61800ca034e131a801e50848ac531f",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "test-arrange-act-assert",
+      "triggers": [
+        "async",
+        "test"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-cfg-test-module",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-cfg-test-module.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "2084ab59f12fb797cbede297ad09e953585d7abd7500d2ce420520da78be8cf3",
+      "suggested_crates": [],
+      "title": "test-cfg-test-module",
+      "triggers": [
+        "test"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "performance-claim-only",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-criterion-bench",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-criterion-bench.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "f3c06a4d90266a9d689732d836d157aa670fdad8bea5e2df1c530ac39d2ee459",
+      "suggested_crates": [
+        "criterion",
+        "tokio"
+      ],
+      "title": "test-criterion-bench",
+      "triggers": [
+        "test"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-descriptive-names",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-descriptive-names.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "4ff666c26eb922f24510c69276395ba5c7f8a65664889eee1e0498b1fb32513b",
+      "suggested_crates": [],
+      "title": "test-descriptive-names",
+      "triggers": [
+        "documentation",
+        "test"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-doctest-examples",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-doctest-examples.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "da10cb635ca404442050a05a52b66d253ba74e122308691209793ec0fc0c3fe0",
+      "suggested_crates": [],
+      "title": "test-doctest-examples",
+      "triggers": [
+        "documentation",
+        "test"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-fixture-raii",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-fixture-raii.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "31bb3387870ab5dd1c8bf727bef82057722051b50e8550d509d3e82540c36c89",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "test-fixture-raii",
+      "triggers": [
+        "async",
+        "test",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-integration-dir",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-integration-dir.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "66f2c347ee954ed2b4895165fece70d12dcd8cba43accbe691d4f55552b704e9",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "test-integration-dir",
+      "triggers": [
+        "async",
+        "public-api",
+        "test",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "concurrency-invariant-only",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-loom-concurrency",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-loom-concurrency.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "3b0c6184d623b767c152728170f07742999dac5cae8b1030a64bdafb2df9d842",
+      "suggested_crates": [
+        "criterion",
+        "loom",
+        "tokio"
+      ],
+      "title": "test-loom-concurrency",
+      "triggers": [
+        "concurrency",
+        "memory",
+        "test"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-mock-traits",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-mock-traits.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "8048818116513292350d5839e5d0e937b8391558956c5c1afa2d511e9b51b2b6",
+      "suggested_crates": [
+        "mockall",
+        "proptest",
+        "tokio"
+      ],
+      "title": "test-mock-traits",
+      "triggers": [
+        "async",
+        "test",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-mockall-mocking",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-mockall-mocking.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "2e35181ef1ad9df518453d0bac75c969006d110005e99a34a2c99b6c0f7b2617",
+      "suggested_crates": [
+        "mockall",
+        "proptest",
+        "tokio"
+      ],
+      "title": "test-mockall-mocking",
+      "triggers": [
+        "async",
+        "test",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "property-suitable-behavior",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-proptest-properties",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-proptest-properties.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "5ce67a89328f52a06b792b889482e68ecb68f7c61e34c5023c8438cb85950531",
+      "suggested_crates": [
+        "criterion",
+        "mockall",
+        "proptest"
+      ],
+      "title": "test-proptest-properties",
+      "triggers": [
+        "test",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-should-panic",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-should-panic.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "e8fe40303c56fa7bada350c562a3a7b34a5e30d2ee03ac84b1d3bdfb9bd4b6ed",
+      "suggested_crates": [],
+      "title": "test-should-panic",
+      "triggers": [
+        "test",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-snapshot-testing",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-snapshot-testing.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "f63a289fbadc531754620571e4a8aa31aef6d514d5dfe4764fd0a9e0704b86cb",
+      "suggested_crates": [
+        "insta",
+        "proptest"
+      ],
+      "title": "test-snapshot-testing",
+      "triggers": [
+        "serialization",
+        "test",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-tokio-async",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-tokio-async.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "e861ad78c2a8cedae3bb05866993b5a4c38d807dd1010b3303f367f97c8058fe",
+      "suggested_crates": [
+        "mockall",
+        "tokio"
+      ],
+      "title": "test-tokio-async",
+      "triggers": [
+        "async",
+        "test",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "test",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "test-use-super",
+      "kind": "assurance-technique",
+      "limitations": [],
+      "path": "rules/test-use-super.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "coverage-dependent",
+      "sha256": "f4b898b762887c3d7682f5bc9b11b898c9de38d6a50fdc97ccc9559c8e9643c9",
+      "suggested_crates": [
+        "mockall",
+        "proptest"
+      ],
+      "title": "test-use-super",
+      "triggers": [
+        "public-api",
+        "test",
+        "testing"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "trait",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "trait-associated-type-vs-generic",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/trait-associated-type-vs-generic.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "d7b6f4d8374908db94e5293f7782aee279c85b507f6d50061ed2b1e15a0de082",
+      "suggested_crates": [],
+      "title": "trait-associated-type-vs-generic",
+      "triggers": [
+        "trait"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "trait",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "trait-blanket-impl",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/trait-blanket-impl.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "f7ca3c2d845949872141f16567ba821b3ec63e50443012e60b0b51cb292d479c",
+      "suggested_crates": [],
+      "title": "trait-blanket-impl",
+      "triggers": [
+        "trait"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "trait",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "trait-coherence-newtype",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/trait-coherence-newtype.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "2b83200c3bf2ffee547ac8633322096eef159e9046f70459055b6284e6339cac",
+      "suggested_crates": [],
+      "title": "trait-coherence-newtype",
+      "triggers": [
+        "ffi",
+        "memory",
+        "trait"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "trait",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "trait-default-methods",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/trait-default-methods.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "49b37f36353fde6fe1ed07f203cce0ea7398bef9cf9b575951b9b2ca38deb578",
+      "suggested_crates": [],
+      "title": "trait-default-methods",
+      "triggers": [
+        "documentation",
+        "performance",
+        "trait"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "trait",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "trait-dyn-vs-generic",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/trait-dyn-vs-generic.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "eebcf9ff7f642734a151d59491b2c1db30899567ddecbe2d45240923baf4eec8",
+      "suggested_crates": [],
+      "title": "trait-dyn-vs-generic",
+      "triggers": [
+        "performance",
+        "trait"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "trait",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "trait-object-safety",
+      "kind": "api-design-guidance",
+      "limitations": [],
+      "path": "rules/trait-object-safety.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-medium",
+      "sha256": "f5b6f7a18f8fd23c85593659c59ee365ca98db7b21caf89f19d2fdee049a13d4",
+      "suggested_crates": [],
+      "title": "trait-object-safety",
+      "triggers": [
+        "trait"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-deref-coercion",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-deref-coercion.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "deff96ce81f5db9e39e9f05975902af2ff801797766aac04d55f667beb8107d9",
+      "suggested_crates": [],
+      "title": "type-deref-coercion",
+      "triggers": [
+        "type"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-display-vs-debug",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-display-vs-debug.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "09a1ae18299dae852b5218181b2e722e63bcfa2c2ac9a1386ee3064097a39781",
+      "suggested_crates": [
+        "anyhow",
+        "thiserror"
+      ],
+      "title": "type-display-vs-debug",
+      "triggers": [
+        "type"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-enum-states",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-enum-states.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "5f93957ca56e0a03050e7852ef9df857cefe3d9c8a7b41ce489852d9d4463bcb",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "type-enum-states",
+      "triggers": [
+        "type"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-generic-bounds",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-generic-bounds.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "c196af7099dfdb7499000d761e214c29b50bc0a93fdae9ea119b8f7c5a741e61",
+      "suggested_crates": [],
+      "title": "type-generic-bounds",
+      "triggers": [
+        "type"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "nightly",
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-never-diverge",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-never-diverge.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "5bd9a078025c64642538a77cae49f184b20998f30720e3ba7dfaa03e0dad98c6",
+      "suggested_crates": [],
+      "title": "type-never-diverge",
+      "triggers": [
+        "type",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-newtype-ids",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-newtype-ids.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "d3b64fa3536caaf7d77dc22a88b40bbe6ddae1c296c6d3abfe0b370cb26e9f82",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "type-newtype-ids",
+      "triggers": [
+        "type"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-newtype-validated",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-newtype-validated.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "41e458dd0adcab22fb32be189fe4e90ae9a07e344c8f4ef49dda97ee88f4133f",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "type-newtype-validated",
+      "triggers": [
+        "serialization",
+        "type"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-no-stringly",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-no-stringly.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "23a8dc86e5778c1d5c96b4eea1c98ec432387a62f708cc014d3fcdeedf024061",
+      "suggested_crates": [
+        "serde"
+      ],
+      "title": "type-no-stringly",
+      "triggers": [
+        "documentation",
+        "serialization",
+        "type"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-numeric-fmt",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-numeric-fmt.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "f4ba074a4904f14ca434aa297eb82a0ae6b4409418d5afb6134e80d852b4a32e",
+      "suggested_crates": [],
+      "title": "type-numeric-fmt",
+      "triggers": [
+        "type"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-option-nullable",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-option-nullable.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "fef313793530de5b3bd2539f5e42bdca997f8c0784dfc275944e09f99b68e3b0",
+      "suggested_crates": [],
+      "title": "type-option-nullable",
+      "triggers": [
+        "type",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-phantom-marker",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-phantom-marker.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "4016cfcd272db697a578c3ba133a452ddc414f29982cc329f764bbe624a029d5",
+      "suggested_crates": [],
+      "title": "type-phantom-marker",
+      "triggers": [
+        "ffi",
+        "memory",
+        "type",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-repr-transparent",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-repr-transparent.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "8e601b0963b5c32201dec7e01e652835d7e5427f71f4e7e94956d7a54db13d27",
+      "suggested_crates": [],
+      "title": "type-repr-transparent",
+      "triggers": [
+        "ffi",
+        "memory",
+        "type",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "type",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "conditional",
+      "evidence_required": false,
+      "external_tools": [],
+      "id": "type-result-fallible",
+      "kind": "type-design-guidance",
+      "limitations": [],
+      "path": "rules/type-result-fallible.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "advisory-to-high",
+      "sha256": "079b48f3c5d6cb141443169968528395bcf81ef880c2abdb2eb61ba5a974faee",
+      "suggested_crates": [
+        "thiserror"
+      ],
+      "title": "type-result-fallible",
+      "triggers": [
+        "type"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "unsafe",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "unsafe-extern-block",
+      "kind": "soundness-assurance",
+      "limitations": [],
+      "path": "rules/unsafe-extern-block.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "documentation-to-critical",
+      "sha256": "bc876c2a529ef454218aec7f2c78a9dc2d430b5db79119d712ff921daa20aba3",
+      "suggested_crates": [],
+      "title": "unsafe-extern-block",
+      "triggers": [
+        "ffi",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "unsafe",
+      "channels": [
+        "nightly",
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "unsafe-maybeuninit",
+      "kind": "soundness-assurance",
+      "limitations": [],
+      "path": "rules/unsafe-maybeuninit.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "documentation-to-critical",
+      "sha256": "d5fbbb609229c22546e4795fe663b94aeb11b95d696362e98b005858966ff03a",
+      "suggested_crates": [],
+      "title": "unsafe-maybeuninit",
+      "triggers": [
+        "ffi",
+        "memory",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "unsafe",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "unsafe-minimize-scope",
+      "kind": "soundness-assurance",
+      "limitations": [],
+      "path": "rules/unsafe-minimize-scope.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "documentation-to-critical",
+      "sha256": "19d39cc40dbf83bbe2c53073cdcbf1e9406b13b1d24e452c9ba1a1a91ba307b6",
+      "suggested_crates": [],
+      "title": "unsafe-minimize-scope",
+      "triggers": [
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "unsafe",
+      "channels": [
+        "nightly"
+      ],
+      "default_applicability": "triggered-and-supported",
+      "evidence_required": true,
+      "external_tools": [
+        "miri"
+      ],
+      "id": "unsafe-miri-ci",
+      "kind": "soundness-assurance",
+      "limitations": [
+        "Passing Miri is evidence rather than proof of soundness",
+        "Safe local code may still exercise unsafe dependencies",
+        "Unsupported system interactions may require a targeted subset"
+      ],
+      "path": "rules/unsafe-miri-ci.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "documentation-to-critical",
+      "sha256": "11eb0c935b86110eb827f065b1f98c891e7e9ae87204425a3066bd6f973f33ea",
+      "suggested_crates": [
+        "loom"
+      ],
+      "title": "unsafe-miri-ci",
+      "triggers": [
+        "async",
+        "concurrency",
+        "ffi",
+        "memory",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "unsafe",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "unsafe-no-mangle-unsafe",
+      "kind": "soundness-assurance",
+      "limitations": [],
+      "path": "rules/unsafe-no-mangle-unsafe.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "documentation-to-critical",
+      "sha256": "429ffbd81bcf9f749614472a06c9ea2c14f3d242294318797ba5e30d7d559cd7",
+      "suggested_crates": [],
+      "title": "unsafe-no-mangle-unsafe",
+      "triggers": [
+        "ffi",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "unsafe",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "unsafe-safety-comment",
+      "kind": "soundness-assurance",
+      "limitations": [],
+      "path": "rules/unsafe-safety-comment.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "documentation-to-critical",
+      "sha256": "4892500c59f446eb8031fcf2cc98bf64f3323276abee0355409f4af53cbdcaab",
+      "suggested_crates": [
+        "tokio"
+      ],
+      "title": "unsafe-safety-comment",
+      "triggers": [
+        "documentation",
+        "memory",
+        "unsafe"
+      ],
+      "worker_applicability": true
+    },
+    {
+      "category": "unsafe",
+      "channels": [
+        "stable"
+      ],
+      "default_applicability": "triggered",
+      "evidence_required": true,
+      "external_tools": [],
+      "id": "unsafe-send-sync-manual",
+      "kind": "soundness-assurance",
+      "limitations": [],
+      "path": "rules/unsafe-send-sync-manual.md",
+      "reviewer_applicability": true,
+      "severity_if_violated": "documentation-to-critical",
+      "sha256": "106ca8ba1843ec8dfe9658c5db41fd99d106bcf2b8b4ece41e8db1dd347372f2",
+      "suggested_crates": [],
+      "title": "unsafe-send-sync-manual",
+      "triggers": [
+        "unsafe"
+      ],
+      "worker_applicability": true
+    }
+  ],
+  "schema": "bbk.rust-rules-index.v1",
+  "source_skill": "rust-skills",
+  "source_version": "1.5.1-bbk.1"
+}

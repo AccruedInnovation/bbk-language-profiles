@@ -1,0 +1,11 @@
+{
+  "name": "fixture-public-esm-package",
+  "version": "1.0.0",
+  "type": "module",
+  "packageManager": "npm@11.0.0",
+  "exports": {".": {"types": "./dist/index.d.ts", "import": "./dist/index.js"}, "./feature": {"types":"./dist/feature.d.ts","import":"./dist/feature.js"}},
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {"typecheck":"tsc --noEmit","build":"tsc -p tsconfig.build.json","test":"node --test","test:package":"node test-package.mjs"},
+  "devDependencies": {"typescript":"^6.0.0"}
+}

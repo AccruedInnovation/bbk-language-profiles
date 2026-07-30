@@ -1,0 +1,28 @@
+{
+  "$id": "https://bbk.local/schemas/bbk.tsjs-evidence-adapter-result.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "authority": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array"
+    },
+    "profile": {
+      "type": "object"
+    },
+    "schema": {
+      "const": "bbk.tsjs-evidence-adapter-result.v1"
+    },
+    "subject": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema",
+    "evidenceReceipt"
+  ],
+  "title": "bbk.tsjs-evidence-adapter-result.v1",
+  "type": "object"
+}
