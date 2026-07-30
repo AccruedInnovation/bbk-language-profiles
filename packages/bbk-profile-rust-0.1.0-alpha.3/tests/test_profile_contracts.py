@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import json
 import os
 import shutil
@@ -37,7 +38,7 @@ def run_json(command, *, cwd=None, env=None, check=True):
 
 class RustProfileTests(unittest.TestCase):
     def test_profile_manifest_and_internal_references(self):
-        profile = json.loads((ROOT / "PROFILE.json").read_text())
+        profile = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
         self.assertEqual(profile["schema"], "bbk.language-profile.v1")
         self.assertEqual(profile["id"], "rust")
         self.assertEqual(profile["maturity"], "comprehensive-alpha")
@@ -59,11 +60,11 @@ class RustProfileTests(unittest.TestCase):
         for path in profile["selection"].values():
             self.assertTrue((ROOT / path).is_file(), path)
         for path in (ROOT / "schemas").glob("*.json"):
-            json.loads(path.read_text())
+            json.loads(path.read_text(encoding="utf-8"))
 
     def test_rule_index_is_current_and_complete(self):
         run([sys.executable, INDEX, "--check"])
-        index = json.loads((ROOT / "skills" / "rust-skills" / "rules-index.json").read_text())
+        index = json.loads((ROOT / "skills" / "rust-skills" / "rules-index.json").read_text(encoding="utf-8"))
         self.assertEqual(index["rule_count"], 265)
         self.assertEqual(len(index["rules"]), 265)
         self.assertEqual(len({item["id"] for item in index["rules"]}), 265)
@@ -101,9 +102,9 @@ class RustProfileTests(unittest.TestCase):
             fakebin = Path(temp) / "bin"; fakebin.mkdir()
             fake = fakebin / ("cargo.cmd" if os.name == "nt" else "cargo")
             if os.name == "nt":
-                fake.write_text(f"@echo touched>{marker}\r\n")
+                fake.write_text(f"@echo touched>{marker}\r\n", encoding="utf-8")
             else:
-                fake.write_text(f"#!/bin/sh\ntouch {marker!s}\nexit 91\n")
+                fake.write_text(f"#!/bin/sh\ntouch {marker!s}\nexit 91\n", encoding="utf-8")
                 fake.chmod(0o755)
             env = os.environ.copy(); env["PATH"] = str(fakebin) + os.pathsep + env.get("PATH", "")
             value, _ = run_json([
@@ -254,7 +255,7 @@ class RustProfileTests(unittest.TestCase):
             self.assertEqual(len(list((home / ".claude" / "skills").glob("*/SKILL.md"))), 14)
             self.assertTrue((home / ".omp" / "agent" / "extensions" / "bbk-profile-rust" / "index.js").is_file())
             self.assertTrue((home / "bin" / ("bbk-rust.cmd" if os.name == "nt" else "bbk-rust")).is_file())
-            current = json.loads((home / "data" / "profiles" / "rust" / "current.json").read_text())
+            current = json.loads((home / "data" / "profiles" / "rust" / "current.json").read_text(encoding="utf-8"))
             self.assertEqual(current["version"], "0.1.0-alpha.3")
             status, _ = run_json([sys.executable, INSTALL, "--json", "status", "--scope", "user"], env=env)
             self.assertEqual(status["summary"].get("current"), len(status["files"]))
@@ -275,13 +276,13 @@ class RustProfileTests(unittest.TestCase):
 
 
     def test_alpha4_generic_and_profile_schemas_accept_positive_fixtures(self):
-        contract_schema = json.loads((ROOT / "schemas" / "bbk-implementation-structure-contract-v1.schema.json").read_text())
-        slice_schema = json.loads((ROOT / "schemas" / "bbk-execution-slice-v1.schema.json").read_text())
+        contract_schema = json.loads((ROOT / "schemas" / "bbk-implementation-structure-contract-v1.schema.json").read_text(encoding="utf-8"))
+        slice_schema = json.loads((ROOT / "schemas" / "bbk-execution-slice-v1.schema.json").read_text(encoding="utf-8"))
         for path in sorted((ALPHA4 / "contracts").glob("*.json")):
-            Draft202012Validator(contract_schema).validate(json.loads(path.read_text()))
+            Draft202012Validator(contract_schema).validate(json.loads(path.read_text(encoding="utf-8")))
         for path in sorted((ALPHA4 / "slices").glob("*.json")):
-            Draft202012Validator(slice_schema).validate(json.loads(path.read_text()))
-        invalid = json.loads((ALPHA4 / "invalid-contract.json").read_text())
+            Draft202012Validator(slice_schema).validate(json.loads(path.read_text(encoding="utf-8")))
+        invalid = json.loads((ALPHA4 / "invalid-contract.json").read_text(encoding="utf-8"))
         self.assertTrue(list(Draft202012Validator(contract_schema).iter_errors(invalid)))
 
     def test_alpha4_structure_projection_is_deterministic_and_schema_valid(self):
@@ -290,7 +291,7 @@ class RustProfileTests(unittest.TestCase):
         left, _ = run_json(command); right, _ = run_json(command)
         self.assertEqual(left, right)
         self.assertEqual(left["applicability"]["disposition"], "SUPPORTED")
-        schema = json.loads((ROOT / "schemas" / "bbk-rust-implementation-structure-projection-v1.schema.json").read_text())
+        schema = json.loads((ROOT / "schemas" / "bbk-rust-implementation-structure-projection-v1.schema.json").read_text(encoding="utf-8"))
         Draft202012Validator(schema).validate(left)
         self.assertFalse(left["authority"]["projection_is_authoritative_state"])
 
@@ -308,7 +309,7 @@ class RustProfileTests(unittest.TestCase):
         self.assertRegex(value["inputs"]["implementation_structure_contracts"][0]["projection_digest"], r"^[0-9a-f]{64}$")
         self.assertRegex(value["inputs"]["execution_slices"][0]["projection_digest"], r"^[0-9a-f]{64}$")
         self.assertEqual(value["structure_support"], "supported")
-        schema = json.loads((ROOT / "schemas" / "bbk-rust-execution-slice-projection-v1.schema.json").read_text())
+        schema = json.loads((ROOT / "schemas" / "bbk-rust-execution-slice-projection-v1.schema.json").read_text(encoding="utf-8"))
         Draft202012Validator(schema).validate(value["slice_projections"][0])
 
     def test_alpha4_routine_change_does_not_fan_out_structure_review(self):
@@ -339,11 +340,11 @@ class RustProfileTests(unittest.TestCase):
         self.assertTrue(harmless["comparison"]["within_delegated_freedom"])
         self.assertEqual(material["disposition"], "MATERIAL_DIVERGENCE")
         self.assertTrue(any(item.get("fixed_decision_ref") == "FD-RUST-PUBLIC" for item in material["findings"]))
-        schema = json.loads((ROOT / "schemas" / "bbk-rust-structure-review-result-v1.schema.json").read_text())
+        schema = json.loads((ROOT / "schemas" / "bbk-rust-structure-review-result-v1.schema.json").read_text(encoding="utf-8"))
         Draft202012Validator(schema).validate(harmless); Draft202012Validator(schema).validate(material)
 
     def test_alpha4_legacy_profile_is_reported_unprojected(self):
-        profile = json.loads((ROOT / "PROFILE.json").read_text())
+        profile = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
         profile.pop("capabilities", None)
         self.assertEqual(rust_structure.structure_support_status(profile), "legacy-unprojected")
 
@@ -353,6 +354,54 @@ class RustProfileTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0)
         self.assertEqual(value["applicability"]["disposition"], "BLOCKED")
         self.assertTrue(value["blockers"])
+
+class CurrentMetadataContractTests(unittest.TestCase):
+    def test_current_release_metadata_is_consistent(self):
+        version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+        profile = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
+        self.assertEqual(version, '0.1.0-alpha.3')
+        self.assertEqual(profile["version"], version)
+        self.assertEqual(profile["requires"]["bbk_minimum"], '0.1.0-alpha.8')
+        self.assertEqual(profile["contract_dialects"]["implementation_structure"]["legacy_output_value"], '0.1.0-alpha.4')
+        self.assertEqual(profile["contract_dialects"]["execution_slice"]["legacy_output_value"], '0.1.0-alpha.4')
+        self.assertEqual(profile["contract_dialects"]["typed_profile_dispatch"]["id"], "bbk.profile-capability.v1")
+
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        install = (ROOT / "docs" / "INSTALL.md").read_text(encoding="utf-8")
+        metadata = (ROOT / "docs" / "METADATA-CONTRACT.md").read_text(encoding="utf-8")
+        omp_readme = (ROOT / "omp" / "extension" / "README.md").read_text(encoding="utf-8")
+        omp_package = json.loads((ROOT / "omp" / "extension" / "package.json").read_text(encoding="utf-8"))
+        for current in (readme, install, metadata, omp_readme):
+            self.assertIn(version, current)
+        for current in (readme, install, metadata):
+            self.assertIn('0.1.0-alpha.8', current)
+        self.assertEqual(omp_package["version"], version)
+        self.assertNotIn("for BBK alpha.4 across", profile.get("description", ""))
+
+        current_guidance = "\n".join((readme, install, omp_readme)).lower().replace("`", "")
+        for stale_claim in (
+            "install bbk core alpha.4",
+            "install bbk core 0.1.0-alpha.4",
+            "requires bbk 0.1.0-alpha.4",
+            "requires bbk core 0.1.0-alpha.4",
+            "minimum compatible bbk core is 0.1.0-alpha.4",
+        ):
+            self.assertNotIn(stale_claim, current_guidance)
+
+    def test_python_tools_and_tests_use_explicit_text_encoding(self):
+        violations = []
+        for source in [*sorted((ROOT / "tools").glob("*.py")), *sorted((ROOT / "tests").glob("*.py"))]:
+            tree = ast.parse(source.read_text(encoding="utf-8"), filename=str(source))
+            for node in ast.walk(tree):
+                if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Attribute):
+                    continue
+                if node.func.attr not in {"read_text", "write_text"}:
+                    continue
+                if any(keyword.arg == "encoding" for keyword in node.keywords):
+                    continue
+                violations.append(f"{source.relative_to(ROOT).as_posix()}:{node.lineno} {node.func.attr}")
+        self.assertEqual(violations, [])
+
 
 
 if __name__ == "__main__":

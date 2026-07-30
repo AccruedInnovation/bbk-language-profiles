@@ -772,11 +772,9 @@ def preferred_repo_command(preflight_value: dict[str, Any], gate_id: str) -> lis
 def requirement_availability(requirement: str, preflight_value: dict[str, Any], preferred: list[str] | None) -> tuple[str, str]:
     if requirement == "bbk-python":
         return "AVAILABLE", "provided by this profile package"
-    if requirement == "bbk-alpha4-structure-validator":
-        version = effective_bbk_version()
-        if version.startswith("0.1.0-alpha.4") or not version.startswith("0.1.0-alpha."):
-            return "AVAILABLE", f"BBK core declares {version}; generic contract validation remains a core responsibility"
-        return "MISSING", f"BBK core {version} does not declare alpha.4 implementation-structure support"
+    if requirement == "bbk-structure-contract-validator":
+        detected = detect_structure_contract_validator()
+        return detected["status"], detected["detail"]
     if requirement == "repository-defined":
         return ("AVAILABLE", "repository command detected") if preferred else ("MISSING", "no repository command detected")
     if requirement == "repository-defined-or-python-build":
@@ -1033,8 +1031,86 @@ def syntax_check(args: argparse.Namespace) -> dict[str, Any]:
     return payload
 
 
+DEFAULT_BBK_MINIMUM = str(PROFILE["requires"]["bbk_minimum"])
+
+
 def effective_bbk_version() -> str:
-    return os.environ.get("BBK_CORE_VERSION", PROFILE.get("requires", {}).get("bbk_minimum", "0.1.0-alpha.4"))
+    return os.environ.get("BBK_CORE_VERSION") or DEFAULT_BBK_MINIMUM
+
+
+STRUCTURE_CONTRACT_DIALECT = "0.1.0-alpha.4"
+
+
+def _parse_bbk_version(value: str) -> tuple[tuple[int, int, int], tuple[str, tuple[int, ...]] | None] | None:
+    match = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)(?:-([A-Za-z]+)(?:\.([0-9.]+))?)?(?:\+[-0-9A-Za-z.]+)?", value.strip())
+    if not match:
+        return None
+    base = tuple(int(match.group(index)) for index in (1, 2, 3))
+    label = match.group(4)
+    if label is None:
+        return base, None
+    numeric = tuple(int(part) for part in (match.group(5) or "").split(".") if part)
+    return base, (label.lower(), numeric)
+
+
+def version_supports_structure_contract(value: str) -> bool:
+    parsed = _parse_bbk_version(value)
+    if parsed is None:
+        return False
+    base, prerelease = parsed
+    introduced_base = (0, 1, 0)
+    if base > introduced_base:
+        return True
+    if base < introduced_base:
+        return False
+    if prerelease is None:
+        return True
+    label, numeric = prerelease
+    return label == "alpha" and bool(numeric) and numeric[0] >= 4
+
+
+def _candidate_bbk_roots() -> list[Path]:
+    candidates: list[Path] = []
+    raw_root = os.environ.get("BBK_CORE_ROOT")
+    if raw_root:
+        candidates.append(Path(raw_root).expanduser())
+    raw_cli = os.environ.get("BBK_CORE_CLI")
+    if raw_cli:
+        cli = Path(raw_cli).expanduser()
+        candidates.extend([cli.parent.parent, cli.parent])
+    unique: list[Path] = []
+    seen: set[str] = set()
+    for candidate in candidates:
+        resolved = candidate.resolve()
+        key = os.path.normcase(str(resolved))
+        if key not in seen:
+            seen.add(key)
+            unique.append(resolved)
+    return unique
+
+
+def detect_structure_contract_validator() -> dict[str, str]:
+    for root in _candidate_bbk_roots():
+        schema = root / "schemas" / "bbk-implementation-structure-contract-v1.schema.json"
+        cli = root / "tools" / "bbk.py"
+        if schema.is_file() and cli.is_file():
+            return {
+                "status": "AVAILABLE",
+                "detail": f"BBK structure-contract capability detected at {root}; schema={schema.name}",
+                "source": "capability-detection",
+            }
+    version = effective_bbk_version()
+    if version_supports_structure_contract(version):
+        return {
+            "status": "AVAILABLE",
+            "detail": f"BBK core {version} is compatible with the structure-contract dialect introduced in {STRUCTURE_CONTRACT_DIALECT}",
+            "source": "version-fallback",
+        }
+    return {
+        "status": "MISSING",
+        "detail": f"BBK core {version} predates or does not declare the structure-contract capability introduced in {STRUCTURE_CONTRACT_DIALECT}",
+        "source": "version-fallback",
+    }
 
 
 def no_authority_boundary() -> dict[str, Any]:
@@ -1373,7 +1449,8 @@ def structure_projection_value(contract: dict[str, Any], contract_path: Path, ro
     payload = {
         "schema": "bbk.python.implementation-structure-projection.v1",
         "profile": {"id": "python", "version": VERSION},
-        "bbk_version": effective_bbk_version(),
+        "bbk_version": STRUCTURE_CONTRACT_DIALECT,
+        "bbk_core_version": effective_bbk_version(),
         "input": input_record,
         "preflight_digest": preflight_value.get("digest") if preflight_value else None,
         "applicability": contract_applicability(contract, disposition),
@@ -1484,7 +1561,8 @@ def slice_projection_value(slice_value: dict[str, Any], slice_path: Path, root_a
     payload = {
         "schema": "bbk.python.execution-slice-projection.v1",
         "profile": {"id": "python", "version": VERSION},
-        "bbk_version": effective_bbk_version(),
+        "bbk_version": STRUCTURE_CONTRACT_DIALECT,
+        "bbk_core_version": effective_bbk_version(),
         "input": input_record,
         "preflight_digest": preflight_value.get("digest") if preflight_value else None,
         "applicability": {"level": "contract" if slice_value.get("structureContractRefs") else "inline", "disposition": disposition, "rationale": str(slice_value.get("atomicity", {}).get("rationale", "")), "triggers": ["execution-slicing"]},
@@ -1802,7 +1880,8 @@ def structure_review_command(args: argparse.Namespace) -> dict[str, Any]:
     payload = {
         "schema": "bbk.python.structure-review-result.v1",
         "profile": {"id": "python", "version": VERSION},
-        "bbk_version": effective_bbk_version(),
+        "bbk_version": STRUCTURE_CONTRACT_DIALECT,
+        "bbk_core_version": effective_bbk_version(),
         "input": generic_input_record("implementation-structure-contract", contract, contract_path),
         "preflight_digest": preflight_value.get("digest") if preflight_value else inventory.get("preflight_digest"),
         "applicability": contract_applicability(contract, app_disposition),

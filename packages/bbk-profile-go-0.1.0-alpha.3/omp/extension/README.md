@@ -1,5 +1,7 @@
 # BBK Go profile — OMP extension
 
+
+Current profile package: `0.1.0-alpha.3`.
 This optional extension exposes the installed `bbk-profile-go` resolver and alpha.4 structure/slice projection commands through OMP. It does not install tools, run planned gates during resolution, grant effects, broaden scope, reduce assurance, or declare a pass.
 
 Commands:

@@ -1,7 +1,7 @@
 # BBK language profiles
 
 This repository contains the expanded, editable language-profile packages from
-BBK `0.1.0-alpha.11.7`. Each directory beneath `packages/` remains independently
+BBK `0.1.0-alpha.11.11`. Each directory beneath `packages/` remains independently
 bound by its own `PACKAGE-MANIFEST.json`.
 
 - **BBK CODESYS Structured Text Profile** — `codesys` `0.1.0-alpha.3`

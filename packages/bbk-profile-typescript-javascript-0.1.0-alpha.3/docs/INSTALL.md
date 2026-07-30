@@ -71,3 +71,9 @@ bbk-tsjs --version
 python3 tools/install.py status --scope user
 python3 tools/install.py uninstall --scope user
 ```
+
+
+Current profile package: `0.1.0-alpha.3`.
+
+
+Version and contract-dialect semantics are documented in `docs/METADATA-CONTRACT.md`.

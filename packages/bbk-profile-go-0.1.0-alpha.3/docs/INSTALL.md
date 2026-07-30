@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- BBK core `0.1.0-alpha.4` or a compatible successor;
+- BBK core `0.1.0-alpha.8` or a compatible successor;
 - Python 3.11 or newer for the resolver and installer;
 - Go only when `--run-tools` or planned Go gates are actually executed;
 - Node only to validate the optional OMP extension syntax.
@@ -54,3 +54,9 @@ python3 tools/install.py uninstall --scope user
 ```
 
 Normal uninstall removes only files that still match the install manifest. Modified files and ownership roots are preserved.
+
+
+Current profile package: `0.1.0-alpha.3`.
+
+
+Version and contract-dialect semantics are documented in `docs/METADATA-CONTRACT.md`.

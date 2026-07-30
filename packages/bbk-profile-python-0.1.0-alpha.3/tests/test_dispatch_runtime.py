@@ -32,7 +32,7 @@ def file_digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-class Alpha8ProfileDispatchTests(unittest.TestCase):
+class ProfileDispatchTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
@@ -278,6 +278,25 @@ class Alpha8ProfileDispatchTests(unittest.TestCase):
         self.assertIn(tool_name, value["tools"])
         self.assertEqual(value["result"]["schema"], "bbk.profile-capability-result.v1")
         self.assertEqual(value["result"]["status"], "PASS")
+
+
+EXTENSION = ROOT / "omp" / "extension" / "index.js"
+
+
+class OmpCommandContextBoundaryTests(unittest.TestCase):
+    def test_slash_commands_do_not_inject_results_into_model_context(self):
+        text = EXTENSION.read_text(encoding="utf-8")
+        self.assertNotIn("sendMessage(", text)
+        self.assertNotIn("sendUserMessage(", text)
+        self.assertNotIn("return value.details", text)
+        self.assertNotIn("return ctx.ui.notify", text)
+        self.assertIn("ctx.ui.notify", text)
+
+    def test_llm_callable_tools_still_return_structured_results(self):
+        text = EXTENSION.read_text(encoding="utf-8")
+        self.assertIn("content:", text)
+        self.assertIn("details:", text)
+        self.assertIn("registerTool", text)
 
 
 if __name__ == "__main__":

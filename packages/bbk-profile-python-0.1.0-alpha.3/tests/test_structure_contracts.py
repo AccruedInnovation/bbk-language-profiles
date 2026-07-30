@@ -4,6 +4,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -14,8 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 CLI = ROOT / "tools" / "bbk_python.py"
 FIXTURE = ROOT / "fixtures" / "python-project"
 A4 = ROOT / "fixtures" / "alpha4"
-CONTRACT_SCHEMA = json.loads((ROOT / "schemas" / "bbk-implementation-structure-contract-v1.schema.json").read_text())
-SLICE_SCHEMA = json.loads((ROOT / "schemas" / "bbk-execution-slice-v1.schema.json").read_text())
+CONTRACT_SCHEMA = json.loads((ROOT / "schemas" / "bbk-implementation-structure-contract-v1.schema.json").read_text(encoding="utf-8"))
+SLICE_SCHEMA = json.loads((ROOT / "schemas" / "bbk-execution-slice-v1.schema.json").read_text(encoding="utf-8"))
 
 
 def run(command, *, env=None, check=True):
@@ -42,19 +43,19 @@ def inventory(name: str) -> Path:
     return A4 / "inventories" / name
 
 
-class PythonAlpha4StructureTests(unittest.TestCase):
+class PythonStructureContractTests(unittest.TestCase):
     def test_generic_positive_and_negative_fixtures(self):
         cvalidator = Draft202012Validator(CONTRACT_SCHEMA)
         svalidator = Draft202012Validator(SLICE_SCHEMA)
         for path in sorted((A4 / "contracts").glob("*.json")):
-            errors = list(cvalidator.iter_errors(json.loads(path.read_text())))
+            errors = list(cvalidator.iter_errors(json.loads(path.read_text(encoding="utf-8"))))
             self.assertFalse(errors, f"{path}: {[item.message for item in errors]}")
         for path in sorted((A4 / "slices").glob("*.json")):
-            errors = list(svalidator.iter_errors(json.loads(path.read_text())))
+            errors = list(svalidator.iter_errors(json.loads(path.read_text(encoding="utf-8"))))
             self.assertFalse(errors, f"{path}: {[item.message for item in errors]}")
-        invalid = json.loads((A4 / "negative" / "invalid-contract.json").read_text())
+        invalid = json.loads((A4 / "negative" / "invalid-contract.json").read_text(encoding="utf-8"))
         self.assertTrue(list(cvalidator.iter_errors(invalid)))
-        invalid_slice = json.loads((A4 / "negative" / "invalid-slice.json").read_text())
+        invalid_slice = json.loads((A4 / "negative" / "invalid-slice.json").read_text(encoding="utf-8"))
         self.assertTrue(list(svalidator.iter_errors(invalid_slice)))
         invalid_contract_result = run([sys.executable, CLI, "--json", "structure", "--root", FIXTURE, "--contract", A4 / "negative" / "invalid-contract.json"], check=False)
         self.assertNotEqual(invalid_contract_result.returncode, 0)
@@ -64,9 +65,9 @@ class PythonAlpha4StructureTests(unittest.TestCase):
         self.assertIn("sliceId", json.loads(invalid_slice_result.stdout)["error"])
 
     def test_alpha3_predecessor_remains_schema_valid_and_legacy_unprojected(self):
-        profile_schema = json.loads((ROOT / "schemas" / "bbk-language-profile-v1.schema.json").read_text())
-        predecessor = json.loads((ROOT / "sources" / "predecessor-PROFILE.json").read_text())
-        expectation = json.loads((A4 / "legacy" / "alpha3-profile-expected.json").read_text())
+        profile_schema = json.loads((ROOT / "schemas" / "bbk-language-profile-v1.schema.json").read_text(encoding="utf-8"))
+        predecessor = json.loads((ROOT / "sources" / "predecessor-PROFILE.json").read_text(encoding="utf-8"))
+        expectation = json.loads((A4 / "legacy" / "alpha3-profile-expected.json").read_text(encoding="utf-8"))
         errors = list(Draft202012Validator(profile_schema).iter_errors(predecessor))
         self.assertFalse(errors, [item.message for item in errors])
         support = predecessor.get("capabilities", {}).get("implementation_structure", {}).get("status", "legacy-unprojected")
@@ -81,20 +82,20 @@ class PythonAlpha4StructureTests(unittest.TestCase):
             "bbk-python-structure-review-result-v1.schema.json",
             "bbk-python-actual-structure-inventory-v1.schema.json",
         ]:
-            schema = json.loads((ROOT / "schemas" / name).read_text())
+            schema = json.loads((ROOT / "schemas" / name).read_text(encoding="utf-8"))
             Draft202012Validator.check_schema(schema)
 
         structure, _ = run_json([
             sys.executable, CLI, "--json", "structure", "--root", FIXTURE,
             "--contract", contract("public-typed-package.json"), "--role", "architect",
         ])
-        Draft202012Validator(json.loads((ROOT / "schemas" / "bbk-python-implementation-structure-projection-v1.schema.json").read_text())).validate(structure)
+        Draft202012Validator(json.loads((ROOT / "schemas" / "bbk-python-implementation-structure-projection-v1.schema.json").read_text(encoding="utf-8"))).validate(structure)
 
         projected_slice, _ = run_json([
             sys.executable, CLI, "--json", "slice", "--root", FIXTURE,
             "--slice", slice_path("es-py-package.json"), "--contract", contract("package-consumer.json"),
         ])
-        Draft202012Validator(json.loads((ROOT / "schemas" / "bbk-python-execution-slice-projection-v1.schema.json").read_text())).validate(projected_slice)
+        Draft202012Validator(json.loads((ROOT / "schemas" / "bbk-python-execution-slice-projection-v1.schema.json").read_text(encoding="utf-8"))).validate(projected_slice)
 
         reviewed, _ = run_json([
             sys.executable, CLI, "--json", "structure-review", "--root", FIXTURE,
@@ -102,12 +103,12 @@ class PythonAlpha4StructureTests(unittest.TestCase):
             "--candidate", A4 / "candidates" / "conforming-candidate.json",
             "--actual-inventory", inventory("public-conforming.json"),
         ])
-        comparison_schema = json.loads((ROOT / "schemas" / "bbk-python-planned-actual-structure-comparison-v1.schema.json").read_text())
+        comparison_schema = json.loads((ROOT / "schemas" / "bbk-python-planned-actual-structure-comparison-v1.schema.json").read_text(encoding="utf-8"))
         Draft202012Validator(comparison_schema).validate(reviewed["comparison"])
-        review_schema = json.loads((ROOT / "schemas" / "bbk-python-structure-review-result-v1.schema.json").read_text())
+        review_schema = json.loads((ROOT / "schemas" / "bbk-python-structure-review-result-v1.schema.json").read_text(encoding="utf-8"))
         registry = Registry()
         for schema_path in sorted((ROOT / "schemas").glob("*.schema.json")):
-            schema_value = json.loads(schema_path.read_text())
+            schema_value = json.loads(schema_path.read_text(encoding="utf-8"))
             if schema_value.get("$id"):
                 registry = registry.with_resource(schema_value["$id"], Resource.from_contents(schema_value))
         Draft202012Validator(review_schema, registry=registry).validate(reviewed)
@@ -289,17 +290,61 @@ class PythonAlpha4StructureTests(unittest.TestCase):
         self.assertEqual({item["id"] for item in value["selected_components"]}, {"bbk-python", "comprehensive-analysis-python"})
         self.assertIsNotNone(value["implementation_structure"]["contract_projection"])
 
-    def test_unavailable_alpha4_core_validator_is_blocked_not_skipped(self):
-        env = os.environ.copy()
-        env["BBK_CORE_VERSION"] = "0.1.0-alpha.3"
-        value, _ = run_json([
+    def test_structure_contract_validator_defaults_to_declared_profile_minimum(self):
+        command = [
             sys.executable, CLI, "--json", "resolve", "--root", FIXTURE,
             "--role", "architect", "--assurance-tier", "material",
             "--structure-contract", contract("public-typed-package.json"),
-        ], env=env)
+        ]
+        env = os.environ.copy()
+        for name in ("BBK_CORE_VERSION", "BBK_CORE_ROOT", "BBK_CORE_CLI"):
+            env.pop(name, None)
+        value, _ = run_json(command, env=env)
         gate = next(item for item in value["gate_plan"]["selected"] if item["id"] == "python-generic-structure-contract-validate")
-        self.assertEqual(gate["planning_status"], "BLOCKED_INPUT")
-        self.assertTrue(any(item["requirement"] == "bbk-alpha4-structure-validator" and item["status"] == "MISSING" for item in gate["availability"]))
+        availability = next(item for item in gate["availability"] if item["requirement"] == "bbk-structure-contract-validator")
+        self.assertEqual(availability["status"], "AVAILABLE")
+        self.assertIn("0.1.0-alpha.8", availability["detail"])
+
+    def test_structure_contract_validator_compatibility_is_capability_aware(self):
+        command = [
+            sys.executable, CLI, "--json", "resolve", "--root", FIXTURE,
+            "--role", "architect", "--assurance-tier", "material",
+            "--structure-contract", contract("public-typed-package.json"),
+        ]
+        cases = {
+            "0.1.0-alpha.3": "MISSING",
+            "0.1.0-alpha.4": "AVAILABLE",
+            "0.1.0-alpha.8": "AVAILABLE",
+            "0.1.0-alpha.11.8": "AVAILABLE",
+            "0.1.0": "AVAILABLE",
+            "0.2.0-alpha.1": "AVAILABLE",
+        }
+        for version, expected in cases.items():
+            with self.subTest(version=version):
+                env = os.environ.copy()
+                env.pop("BBK_CORE_ROOT", None)
+                env.pop("BBK_CORE_CLI", None)
+                env["BBK_CORE_VERSION"] = version
+                value, _ = run_json(command, env=env)
+                gate = next(item for item in value["gate_plan"]["selected"] if item["id"] == "python-generic-structure-contract-validate")
+                availability = next(item for item in gate["availability"] if item["requirement"] == "bbk-structure-contract-validator")
+                self.assertEqual(availability["status"], expected)
+                self.assertEqual(gate["planning_status"], "BLOCKED_INPUT" if expected == "MISSING" else "PLANNED")
+
+        with tempfile.TemporaryDirectory() as temp:
+            core = Path(temp)
+            (core / "schemas").mkdir()
+            (core / "tools").mkdir()
+            (core / "schemas" / "bbk-implementation-structure-contract-v1.schema.json").write_text("{}\n", encoding="utf-8")
+            (core / "tools" / "bbk.py").write_text("# capability fixture\n", encoding="utf-8")
+            env = os.environ.copy()
+            env["BBK_CORE_VERSION"] = "0.1.0-alpha.3"
+            env["BBK_CORE_ROOT"] = str(core)
+            value, _ = run_json(command, env=env)
+            gate = next(item for item in value["gate_plan"]["selected"] if item["id"] == "python-generic-structure-contract-validate")
+            availability = next(item for item in gate["availability"] if item["requirement"] == "bbk-structure-contract-validator")
+            self.assertEqual(availability["status"], "AVAILABLE")
+            self.assertIn("capability detected", availability["detail"])
 
     def test_resolution_with_contract_and_slice_is_deterministic_and_locks_both_digests(self):
         command = [

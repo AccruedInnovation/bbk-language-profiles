@@ -1,5 +1,5 @@
 {
-  "description": "OMP tools and commands for the BBK Go alpha.4 language profile, including structure and execution-slice projections",
+  "description": "OMP tools and commands for the BBK Go language profile, including structure and execution-slice projections",
   "name": "bbk-profile-go-omp-extension",
   "private": true,
   "type": "module",

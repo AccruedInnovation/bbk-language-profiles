@@ -13,15 +13,19 @@ BBK role constitution
 
 The generic BBK contract or slice remains the source object. A Rust projection is a deterministic, non-authoritative view that makes its meaning concrete in Rust vocabulary. It cannot broaden scope, grant tools or effects, lower assurance, declare a pass, or replace candidate-bound evidence.
 
+## Version identities
+
+The profile package version is `0.1.0-alpha.3` and the minimum compatible BBK core is `0.1.0-alpha.8`. Legacy projection fields containing `"bbk_version": "0.1.0-alpha.4"` identify the implementation-structure/execution-slice **contract dialect introduced in BBK alpha.4**; they do not report the installed core version. See `docs/METADATA-CONTRACT.md`.
+
 ## Release
 
 - Profile ID: `rust`
 - Package: `bbk-profile-rust`
-- Version: `0.1.0-alpha.2`
+- Version: `0.1.0-alpha.3`
 - Maturity: `comprehensive-alpha`
-- Required BBK core: `0.1.0-alpha.4` or a compatible successor
+- Required BBK core: `0.1.0-alpha.8` or a compatible successor
 - Alpha.4 capability: `ImplementationStructureContract` and `ExecutionSlice` **supported**
-- Prior release: `0.1.0-alpha.1`, retained as an immutable side-by-side predecessor
+- Prior release: `0.1.0-alpha.2`, retained as the immutable predecessor represented by the source-lineage records
 
 Primary support includes ordinary `std` libraries, binaries, CLIs, Cargo workspaces, async services, public crates, persistence and migration work, and packaged Rust artifacts. Unsafe/FFI, proc macros, cross-target work, and WASM are conditional. `no_std`, embedded, kernel, GPU, and specialized WASM environments remain partial or unqualified.
 
@@ -58,7 +62,7 @@ The selected mutation-testing integration is **`mutest-rs`**, normally invoked t
 
 ## Quick start
 
-Install BBK core alpha.4 first, then this profile:
+Install BBK core `0.1.0-alpha.8` or a compatible successor first, then this profile:
 
 ```bash
 python3 tools/install.py install --scope user --omp

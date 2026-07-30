@@ -1,5 +1,7 @@
 # BBK Python profile OMP extension
 
+
+Current profile package: `0.1.0-alpha.3`.
 This extension exposes the installed `bbk-profile-python` CLI through OMP.
 
 Tools:

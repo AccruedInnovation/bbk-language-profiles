@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROFILE = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
 VERSION = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
 TOP = f"bbk-profile-go-{VERSION}"
-FIXED_TIME = (2026, 7, 24, 0, 0, 0)
+FIXED_TIME = (2026, 7, 29, 0, 0, 0)
 EXCLUDED_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache"}
 EXCLUDED_SUFFIXES = {".pyc", ".pyo"}
 
@@ -76,7 +76,7 @@ def build_manifest() -> dict[str, Any]:
         "profile_id": PROFILE["id"],
         "version": VERSION,
         "maturity": PROFILE["maturity"],
-        "created_at": "2026-07-24T00:00:00Z",
+        "created_at": "2026-07-29T00:00:00Z",
         "file_count": len(files),
         "files": files,
         "root_sha256": hashlib.sha256(canonical(payload)).hexdigest(),

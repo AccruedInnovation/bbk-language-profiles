@@ -1,5 +1,7 @@
 # BBK TypeScript/JavaScript OMP extension
 
+
+Current profile package: `0.1.0-alpha.3`.
 Registers tools and commands for the installed `bbk-profile-typescript-javascript` package.
 
 ## Tools

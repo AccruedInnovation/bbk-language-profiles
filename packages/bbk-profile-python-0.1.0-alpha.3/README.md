@@ -2,11 +2,15 @@
 
 `bbk-profile-python` is an optional, host-neutral Python language profile for the Blueprint Bootstrap Kit (BBK).
 
-**Version:** `0.1.0-alpha.2`  
-**Required BBK:** `0.1.0-alpha.4` or a compatible successor  
+**Version:** `0.1.0-alpha.3`  
+**Required BBK:** `0.1.0-alpha.8` or a compatible successor  
 **Maturity:** `comprehensive-alpha`
 
-This successor preserves the alpha.1 Python preflight, proportional resolver, gate planning, installer, OMP extension, and focused review packs while adding qualified profile-specific projections for BBK alpha.4 `ImplementationStructureContract` and `ExecutionSlice` objects.
+This alpha.3 package preserves the alpha.2 Python preflight, resolver, gates, structure/slice projections, installer, OMP extension, and focused review packs while adding typed State–Decision–Effect and Review Assurance dispatch through the BBK alpha.8 profile protocol.
+
+## Version identities
+
+The profile package version is `0.1.0-alpha.3` and the minimum compatible BBK core is `0.1.0-alpha.8`. Legacy projection fields containing `"bbk_version": "0.1.0-alpha.4"` identify the implementation-structure/execution-slice **contract dialect introduced in BBK alpha.4**; they do not report the installed core version. See `docs/METADATA-CONTRACT.md`.
 
 ## What alpha.4 adds
 

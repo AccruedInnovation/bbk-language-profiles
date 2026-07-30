@@ -1,5 +1,16 @@
 # BBK Go Profile 0.1.0-alpha.3 release notes
 
+## Pre-public alpha.3 correction — 2026-07-29
+
+The package remains `0.1.0-alpha.3`. Before the first public tag, current-facing metadata was normalized to require BBK `0.1.0-alpha.8` or a compatible successor, while historical predecessor and source-lineage records were preserved.
+
+- `VERSION`, `PROFILE.json`, the README release block, installation guidance, OMP package metadata, and the package manifest are now checked together.
+- The legacy `bbk_version: 0.1.0-alpha.4` projection value is documented as contract-dialect lineage rather than the installed BBK version.
+- Python tools and tests use explicit UTF-8 text I/O, and release-numbered OMP context tests are consolidated into responsibility-oriented suites.
+
+## Original alpha.3 release content
+
+
 ## Summary
 
 This immutable successor updates the alpha.2 profile for BBK `0.1.0-alpha.8`. It preserves the existing language procedures and adds read-only typed State–Decision–Effect and Review Assurance integration through `bbk.profile-capability.v1`.

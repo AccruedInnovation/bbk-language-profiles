@@ -1,4 +1,4 @@
-4da1f08f78ae62a3a3d35a669669cc97543a797b98a082a0bbb4d46897f3284a  packages/bbk-profile-go-0.1.0-alpha.3
-d7e7f38796770ee7aaf7d1a5c6d68cfbe43626700e99c0468980feb674430950  packages/bbk-profile-python-0.1.0-alpha.3
-06158ecbe6709b55952f910b90f9c986e5ee147062bbe0a83bf63b06fe39984a  packages/bbk-profile-rust-0.1.0-alpha.3
-3cdcfe0e665bcb6e44431c6f472448c7c3e5b854fc8bb43422570f3d669e34aa  packages/bbk-profile-typescript-javascript-0.1.0-alpha.3
+9c72c321780539a12053c6cc53e751a17c6193711a86242d6d8c1d48ff5e1a40  packages/bbk-profile-go-0.1.0-alpha.3
+40ed488ce36933bdc1a0ebb2ed7356fa2c055d5cd7caee04f1986075ba7c8b36  packages/bbk-profile-python-0.1.0-alpha.3
+9ac3b016805449c59e5ef64c219b70eb7eb9eb71f40684ead2ecffa9f765b988  packages/bbk-profile-rust-0.1.0-alpha.3
+2eec170b6db876a27d97cec686a1ffd67b6a1a1322da068817a0602acc2882ec  packages/bbk-profile-typescript-javascript-0.1.0-alpha.3

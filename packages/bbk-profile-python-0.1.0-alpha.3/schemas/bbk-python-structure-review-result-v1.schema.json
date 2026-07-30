@@ -46,7 +46,13 @@
       ],
       "type": "object"
     },
+    "bbk_core_version": {
+      "description": "Detected or declared BBK core version used for this invocation.",
+      "type": "string"
+    },
     "bbk_version": {
+      "const": "0.1.0-alpha.4",
+      "description": "Legacy structure/slice contract-dialect lineage, not the installed BBK version.",
       "type": "string"
     },
     "blockers": {
@@ -237,6 +243,7 @@
     "schema",
     "profile",
     "bbk_version",
+    "bbk_core_version",
     "input",
     "preflight_digest",
     "applicability",

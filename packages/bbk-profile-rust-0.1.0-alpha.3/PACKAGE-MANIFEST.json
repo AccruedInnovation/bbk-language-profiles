@@ -1,14 +1,14 @@
 {
   "authority_disclaimer": "This optional BBK profile adds procedure and gate recipes; it grants no tools, effects, completion, readiness, or release authority.",
   "bbk_minimum": "0.1.0-alpha.8",
-  "created_at": "2026-07-24T00:00:00Z",
+  "created_at": "2026-07-29T00:00:00Z",
   "file_count": 395,
   "files": [
     {
-      "bytes": 1898,
+      "bytes": 2448,
       "executable": false,
       "path": "CHANGELOG.md",
-      "sha256": "5f1e4c8f2998a972a7c6424e17fa4fdb4f229283c2ddc2b7c5892e39a35b71ab"
+      "sha256": "8318d0234f61742a80cc9f4f9a760234c28b0f1dcfa7a05ef81a621583c1f53c"
     },
     {
       "bytes": 1093,
@@ -17,16 +17,16 @@
       "sha256": "d1278607a64065a2485edb5700a36a7050e57e450df28be8f703f62a87c92355"
     },
     {
-      "bytes": 10364,
+      "bytes": 11321,
       "executable": false,
       "path": "PROFILE.json",
-      "sha256": "c734fda69ff2afe30ea247ca15461383cca6e9eb21a6b261e338c4f1eeae901b"
+      "sha256": "9757c32365cf9ebda28597a4a4c11387e423e93b79456f6f44effa70c2230778"
     },
     {
-      "bytes": 5117,
+      "bytes": 5559,
       "executable": false,
       "path": "README.md",
-      "sha256": "c91c1b4a23bce2311c0aadca3f2fe750b796a01c8bbf8b060526fbff541461e5"
+      "sha256": "8bf93629d7ebf7465c05e8f663c9c1c4cdcfc1e23967cd059573479915f99efd"
     },
     {
       "bytes": 14,
@@ -59,10 +59,10 @@
       "sha256": "3749fdaf3853509bce2afd089d70d75e19f687febd3537bebc08843656543383"
     },
     {
-      "bytes": 1414,
+      "bytes": 1502,
       "executable": false,
       "path": "docs/INSTALL.md",
-      "sha256": "f2dd3132f2db8347cbdd63a94ae72dd271392ec3667679f012d09e464b6a743c"
+      "sha256": "b4c14fe2dbb56191c07c7d4001f5a0cf729a5fcd062333c9ad49294dd6871204"
     },
     {
       "bytes": 739,
@@ -75,6 +75,12 @@
       "executable": false,
       "path": "docs/LIVE-QUALIFICATION-PLAN.md",
       "sha256": "ec7161082c94dde4813d2da12974c405b3cb894431872466d28db21e715a1285"
+    },
+    {
+      "bytes": 1357,
+      "executable": false,
+      "path": "docs/METADATA-CONTRACT.md",
+      "sha256": "568e6c9a0460c4e45e1497fdb29ad470a553856c9d92fb688ab28c8a0286ed4c"
     },
     {
       "bytes": 500,
@@ -95,10 +101,10 @@
       "sha256": "54037d5555ee7e088a6145cdab0eb0332c4fbb7ca2c6832581bce8f7d32b2d22"
     },
     {
-      "bytes": 2479,
+      "bytes": 3241,
       "executable": false,
       "path": "docs/RELEASE-NOTES.md",
-      "sha256": "9b68a249dfc0dfdcc89d21a84f35f4eae462fe534c945c7f38aaefd816aeee85"
+      "sha256": "3aea88068218399953f0f4d8a94dce91e30bb21ae30284e30f3acf7328240c01"
     },
     {
       "bytes": 2722,
@@ -392,13 +398,13 @@
       "bytes": 986,
       "executable": false,
       "path": "omp/extension/README.md",
-      "sha256": "ff2e4ac679762796d4aa90115187fe40f077518adae866615e0d3891f927483b"
+      "sha256": "2ec16ab202c6364985adfe119326b695325e318004e7a9ed9493370c772a499c"
     },
     {
-      "bytes": 20992,
+      "bytes": 21401,
       "executable": false,
       "path": "omp/extension/index.js",
-      "sha256": "d06842e922d402f35945ba521bd1a2b7fffea43d9d5799782dfdb88d8cb623d8"
+      "sha256": "9e49768b9bf7b6542694d48c0e4256fd15c42f2085c6fc93853b6859427f8e9c"
     },
     {
       "bytes": 202,
@@ -2315,22 +2321,16 @@
       "sha256": "fef7d6bb568f725f7a6948c271c0663899472e0ae7c2fa3274513c18267dd83b"
     },
     {
-      "bytes": 18822,
+      "bytes": 19560,
       "executable": false,
-      "path": "tests/test_alpha8_dispatch.py",
-      "sha256": "3863612e99dc8bec922082a75c88992a7cbc78274855ee571d8fdc596d934a6e"
+      "path": "tests/test_dispatch_runtime.py",
+      "sha256": "71f37775bd8eef90a2257f5303746f9f510b73a4df46f67c2b8d31d77bf33b95"
     },
     {
-      "bytes": 912,
+      "bytes": 24952,
       "executable": false,
-      "path": "tests/test_omp_context_boundary.py",
-      "sha256": "3ffb7b793d53b7b42130657428013af6708150abd1fceb75e6072ecfa8a8c279"
-    },
-    {
-      "bytes": 21870,
-      "executable": false,
-      "path": "tests/test_profile.py",
-      "sha256": "b8ddc1aa104586ffeb821bf7e7672703d30e56f7ae391c98da2cd20dd9f741df"
+      "path": "tests/test_profile_contracts.py",
+      "sha256": "47263f84c1dc3ae81fae99d677968a4ebc091a5580c907db618e4af2d5011fea"
     },
     {
       "bytes": 44820,
@@ -2342,7 +2342,7 @@
       "bytes": 6926,
       "executable": false,
       "path": "tools/build_release.py",
-      "sha256": "d1497b7976c79f0c53acfff29b932fdfb5a2280c29fdb697ca06dd1bb3d42e21"
+      "sha256": "c064a88aa67066b5984001048bf237f57506db59746e38150a4f7a5a7e52eb6c"
     },
     {
       "bytes": 4424,
@@ -2358,7 +2358,7 @@
     },
     {
       "bytes": 55389,
-      "executable": true,
+      "executable": false,
       "path": "tools/profile.py",
       "sha256": "07ab8af8de7af267c43d1b2d4f79c1c6c7b81274896577fec98e015496bf9c30"
     },
@@ -2381,10 +2381,10 @@
   "name": "BBK Rust Profile",
   "profile_dispatch_protocol": "bbk.profile-capability.v1",
   "profile_id": "rust",
-  "profile_manifest_sha256": "c734fda69ff2afe30ea247ca15461383cca6e9eb21a6b261e338c4f1eeae901b",
+  "profile_manifest_sha256": "9757c32365cf9ebda28597a4a4c11387e423e93b79456f6f44effa70c2230778",
   "review_assurance_status": "supported",
   "root_schema": "bbk.profile-package-root.v1",
-  "root_sha256": "06158ecbe6709b55952f910b90f9c986e5ee147062bbe0a83bf63b06fe39984a",
+  "root_sha256": "9ac3b016805449c59e5ef64c219b70eb7eb9eb71f40684ead2ecffa9f765b988",
   "rule_count": 265,
   "schema": "bbk.profile-package-manifest.v1",
   "selected_mutation_tool": "mutest-rs",

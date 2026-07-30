@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import hashlib
 import json
 import os
@@ -368,24 +369,19 @@ class TypeScriptJavaScriptProfileTests(unittest.TestCase):
             self.assertTrue(project.exists())
             self.assertFalse((project / ".bbk-profile-typescript-javascript-install.json").exists())
 
-    @unittest.skipUnless(BBK_CORE_ROOT and (BBK_CORE_ROOT / "tools" / "bbk.py").is_file(), "BBK alpha.3 core reference not configured")
-    def test_bbk_alpha3_core_rejects_alpha4_profile_explicitly(self):
+    @unittest.skipUnless(BBK_CORE_ROOT and (BBK_CORE_ROOT / "tools" / "bbk.py").is_file(), "A compatible BBK core reference is not configured")
+    def test_current_bbk_core_resolves_manifested_profile(self):
         bbk = BBK_CORE_ROOT / "tools" / "bbk.py"  # type: ignore[operator]
-        command = [
+        value, result = run_json([
             sys.executable, bbk, "--json", "profile", "resolve",
             "--profile-dir", ROOT, "--id", "typescript-javascript",
             "--source", FIXTURES / "strict-node-esm", "--role", "worker",
             "--task-profile", "implementation", "--assurance-tier", "routine",
-        ]
-        # Source-tree tests may run after edits and before the successor package
-        # manifest is frozen. Clean-extraction qualification separately proves
-        # verified profile discovery without this development-only bypass.
-        command.append("--allow-unverified")
-        value, result = run_json(command, check=False)
-        self.assertEqual(result.returncode, 2)
-        self.assertEqual(value["status"], "ERROR")
-        self.assertIn("bbk_minimum", value["error"])
-        self.assertIn("0.1.0-alpha.4", value["error"])
+        ], check=False)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(value["resolution"]["schema"], "bbk.tsjs-profile-resolution.v1")
+        self.assertEqual(value["profile"]["package_verification"]["status"], "PASS")
+        self.assertEqual(value["profile"]["compatibility"]["status"], "PASS")
 
 
     def test_alpha4_profile_and_output_schemas(self):
@@ -439,7 +435,7 @@ class TypeScriptJavaScriptProfileTests(unittest.TestCase):
         check = dict(left)
         output_digest = check.pop("output_digest")
         self.assertEqual(output_digest, hashlib.sha256(json.dumps(check, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()).hexdigest())
-        schema = json.loads((ROOT / "schemas" / "bbk-tsjs-implementation-structure-projection-v1.schema.json").read_text())
+        schema = json.loads((ROOT / "schemas" / "bbk-tsjs-implementation-structure-projection-v1.schema.json").read_text(encoding="utf-8"))
         self.assertEqual(list(Draft202012Validator(schema).iter_errors(left)), [])
 
     def test_non_tsjs_subject_returns_partial_projection(self):
@@ -476,7 +472,7 @@ class TypeScriptJavaScriptProfileTests(unittest.TestCase):
         self.assertIn("tsjs-implementation-structure-review", value["projection"]["validation_boundary"]["focused_review_packs"])
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "slice.json"
-            raw = json.loads((FIXTURES / "alpha4" / "slices" / "foundation-exception.json").read_text())
+            raw = json.loads((FIXTURES / "alpha4" / "slices" / "foundation-exception.json").read_text(encoding="utf-8"))
             raw["metadata"] = {"fixture": True}
             path.write_text(json.dumps(raw), encoding="utf-8")
             risky, _ = run_json([sys.executable, CLI, "--json", "slice", "--root", FIXTURES / "public-esm-package", "--slice", path])
@@ -564,7 +560,7 @@ class TypeScriptJavaScriptProfileTests(unittest.TestCase):
         self.assertTrue((FIXTURES / "alpha4" / "actual-inventory" / "public-esm-material-drift.json").is_file())
 
     def test_alpha3_profile_classifies_as_legacy_unprojected(self):
-        legacy = json.loads((FIXTURES / "alpha4" / "legacy" / "alpha3-profile.json").read_text())
+        legacy = json.loads((FIXTURES / "alpha4" / "legacy" / "alpha3-profile.json").read_text(encoding="utf-8"))
         capability = legacy.get("capabilities", {}).get("implementation_structure")
         status = capability.get("status") if isinstance(capability, dict) else "legacy-unprojected"
         self.assertEqual(status, "legacy-unprojected")
@@ -603,6 +599,54 @@ class TypeScriptJavaScriptProfileTests(unittest.TestCase):
             self.assertEqual(value["schema"], "bbk.tsjs-implementation-structure-projection.v1")
             self.assertEqual(value["disposition"], "SUPPORTED")
             run([sys.executable, INSTALL, "uninstall", "--scope", "user"], env=env)
+
+class CurrentMetadataContractTests(unittest.TestCase):
+    def test_current_release_metadata_is_consistent(self):
+        version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+        profile = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
+        self.assertEqual(version, '0.1.0-alpha.3')
+        self.assertEqual(profile["version"], version)
+        self.assertEqual(profile["requires"]["bbk_minimum"], '0.1.0-alpha.8')
+        self.assertEqual(profile["contract_dialects"]["implementation_structure"]["legacy_output_value"], '0.1.0-alpha.4')
+        self.assertEqual(profile["contract_dialects"]["execution_slice"]["legacy_output_value"], '0.1.0-alpha.4')
+        self.assertEqual(profile["contract_dialects"]["typed_profile_dispatch"]["id"], "bbk.profile-capability.v1")
+
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        install = (ROOT / "docs" / "INSTALL.md").read_text(encoding="utf-8")
+        metadata = (ROOT / "docs" / "METADATA-CONTRACT.md").read_text(encoding="utf-8")
+        omp_readme = (ROOT / "omp" / "extension" / "README.md").read_text(encoding="utf-8")
+        omp_package = json.loads((ROOT / "omp" / "extension" / "package.json").read_text(encoding="utf-8"))
+        for current in (readme, install, metadata, omp_readme):
+            self.assertIn(version, current)
+        for current in (readme, install, metadata):
+            self.assertIn('0.1.0-alpha.8', current)
+        self.assertEqual(omp_package["version"], version)
+        self.assertNotIn("for BBK alpha.4 across", profile.get("description", ""))
+
+        current_guidance = "\n".join((readme, install, omp_readme)).lower().replace("`", "")
+        for stale_claim in (
+            "install bbk core alpha.4",
+            "install bbk core 0.1.0-alpha.4",
+            "requires bbk 0.1.0-alpha.4",
+            "requires bbk core 0.1.0-alpha.4",
+            "minimum compatible bbk core is 0.1.0-alpha.4",
+        ):
+            self.assertNotIn(stale_claim, current_guidance)
+
+    def test_python_tools_and_tests_use_explicit_text_encoding(self):
+        violations = []
+        for source in [*sorted((ROOT / "tools").glob("*.py")), *sorted((ROOT / "tests").glob("*.py"))]:
+            tree = ast.parse(source.read_text(encoding="utf-8"), filename=str(source))
+            for node in ast.walk(tree):
+                if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Attribute):
+                    continue
+                if node.func.attr not in {"read_text", "write_text"}:
+                    continue
+                if any(keyword.arg == "encoding" for keyword in node.keywords):
+                    continue
+                violations.append(f"{source.relative_to(ROOT).as_posix()}:{node.lineno} {node.func.attr}")
+        self.assertEqual(violations, [])
+
 
 
 if __name__ == "__main__":

@@ -46,8 +46,18 @@ function profileRoot(cwd) {
   return readCurrent(path.join(userDataRoot(), "profiles", "rust", "current.json"));
 }
 
+function pythonCommand(script) {
+  const python = process.env.BBK_PYTHON || (process.platform === "win32" ? "py" : "python3");
+  return { executable: python, prefix: process.platform === "win32" && !process.env.BBK_PYTHON ? ["-3", script] : [script] };
+}
+
+function explicitCommand(value) {
+  if (String(value).toLowerCase().endsWith(".py")) return pythonCommand(path.resolve(value));
+  return { executable: value, prefix: [] };
+}
+
 function command(cwd) {
-  if (process.env.BBK_RUST_CLI) return { executable: process.env.BBK_RUST_CLI, prefix: [] };
+  if (process.env.BBK_RUST_CLI) return explicitCommand(process.env.BBK_RUST_CLI);
   const root = profileRoot(cwd);
   if (root) {
     const script = path.join(root, "tools", "bbk_rust.py");
@@ -131,7 +141,7 @@ function registerTool(pi, definition) {
 
 
 function profileCapabilityCommand(cwd) {
-  if (process.env.BBK_RUST_PROFILE_DISPATCH_CLI) return { executable: process.env.BBK_RUST_PROFILE_DISPATCH_CLI, prefix: [] };
+  if (process.env.BBK_RUST_PROFILE_DISPATCH_CLI) return explicitCommand(process.env.BBK_RUST_PROFILE_DISPATCH_CLI);
   const root = profileRoot(cwd);
   if (root) {
     const script = path.join(root, "tools", "profile.py");

@@ -1,14 +1,14 @@
 {
   "alpha4_structure_fixture_file_count": 26,
   "authority_disclaimer": "This optional BBK profile adds procedure and gate recipes; it grants no tools, environments, effects, completion, readiness, or release authority.",
-  "created_at": "2026-07-24T00:00:00Z",
+  "created_at": "2026-07-29T00:00:00Z",
   "file_count": 145,
   "files": [
     {
-      "bytes": 1819,
+      "bytes": 2726,
       "executable": false,
       "path": "CHANGELOG.md",
-      "sha256": "12a5ce8eba2cee5b06e62ce3977ab751987538e82b0117f631635fa7fa13e2a1"
+      "sha256": "fb46d0f2b4c09deddf7692edd33f460280f9902a4c97410e4ba16796d60fca73"
     },
     {
       "bytes": 1093,
@@ -17,16 +17,16 @@
       "sha256": "d1278607a64065a2485edb5700a36a7050e57e450df28be8f703f62a87c92355"
     },
     {
-      "bytes": 12894,
+      "bytes": 13800,
       "executable": false,
       "path": "PROFILE.json",
-      "sha256": "bcd467b9417e0fa933d5c0dfa96add279c39216b1523b543f23fb7c607b2f850"
+      "sha256": "8d0125613f6cd7779b7dea9fcf8abf15ec465a71edcefdad6ea85c34bf5adf0f"
     },
     {
-      "bytes": 3896,
+      "bytes": 4273,
       "executable": false,
       "path": "README.md",
-      "sha256": "9d460cea0b45df83be226c7e7496a98a04aef9a1ec1df27e76dbbf2666f216d0"
+      "sha256": "7b5f4a3b46e67ea184dbc19384f7cebb7933fbe19684ba674bd0c2069c9e28ae"
     },
     {
       "bytes": 14,
@@ -59,22 +59,28 @@
       "sha256": "980e48790c8032448cc94e95cec7e32b14958508530eedb56461bc547e3297d2"
     },
     {
-      "bytes": 1892,
+      "bytes": 2024,
       "executable": false,
       "path": "docs/INSTALL.md",
-      "sha256": "7b50b07ffd1c83be926c4ea43446a1e22fff8a8b99fcc5abcae47fccbe86cf24"
+      "sha256": "3de9d81d0c860df1f9a05a1c3c5ff4ef565a8d6a18b4dde508f1e9eaa8b5809c"
     },
     {
-      "bytes": 1575,
+      "bytes": 1593,
       "executable": false,
       "path": "docs/KNOWN-LIMITATIONS.md",
-      "sha256": "2d6045dcee1d361ecae76e13d49f46a52b8e04aa9ab6c2b29597c77b312c5cc3"
+      "sha256": "fcc6b4aa24c564a23ace83ecc64db1e3017952065d94124d71319db67fc4a146"
     },
     {
       "bytes": 2556,
       "executable": false,
       "path": "docs/LIVE-QUALIFICATION-PLAN.md",
       "sha256": "1cdd7c2067cec54383171a121a455749bcb8d66a5fd4774a1003fdfe442eaf13"
+    },
+    {
+      "bytes": 1359,
+      "executable": false,
+      "path": "docs/METADATA-CONTRACT.md",
+      "sha256": "e9681bdfaa09cc89616b938fd0d2bef2db028f8d4c18294441d4f43c93d3ade4"
     },
     {
       "bytes": 500,
@@ -95,10 +101,10 @@
       "sha256": "5da9fe33948406dc36e8ac58dd9e88592887e4c203ff3149b347c8f44ee73a05"
     },
     {
-      "bytes": 2493,
+      "bytes": 3574,
       "executable": false,
       "path": "docs/RELEASE-NOTES.md",
-      "sha256": "595bf62e5dd541c5337ace468c58bb2f7cc183239f117ccb594cd2ef9e91f9e0"
+      "sha256": "9f26bf95c20211f5abd26f667e8a4253158cf19777d7708235912fee00274d89"
     },
     {
       "bytes": 2725,
@@ -431,10 +437,10 @@
       "sha256": "55030fc23ba1543ebffc2c7924ba4ae1161b6e96bc586440b691ece3443716f7"
     },
     {
-      "bytes": 18325,
+      "bytes": 18327,
       "executable": false,
       "path": "gates/python-gates.json",
-      "sha256": "06e87096d859f2f234b1e707ed592839ac289c9768c11b6934f23d238f190a0d"
+      "sha256": "a2835c2af400c29cec94fbc8bf232f4ee28f8fdc8bfa989b62902b72396e0e41"
     },
     {
       "bytes": 351,
@@ -479,16 +485,16 @@
       "sha256": "a68d60fc93228ca1b140928d0fff246d6c3569f5821ba006e2ff4679f4bee6f8"
     },
     {
-      "bytes": 645,
+      "bytes": 688,
       "executable": false,
       "path": "omp/extension/README.md",
-      "sha256": "a47d27f2d3e60d5c3df9b5db3522e2fa834c7664d5c60816e65f21db818080b3"
+      "sha256": "eac9c0f2e225b87fc8a928d487dd8b72848f77c542e5f80e86eaafd0b09d0929"
     },
     {
-      "bytes": 21527,
+      "bytes": 21936,
       "executable": false,
       "path": "omp/extension/index.js",
-      "sha256": "7eaddf10d34f2e42c2f2e8db597c1c53b64eb865f36590cc6093da6f68d07048"
+      "sha256": "8eea396870c6ccae9d6a849c28d73c776d65b81fc67a03bc4aea656d11ccaee7"
     },
     {
       "bytes": 206,
@@ -593,16 +599,16 @@
       "sha256": "1978fc6ab52209158f18093b2ad5dcb78117c7fde84052567cb7bea08379e1eb"
     },
     {
-      "bytes": 6071,
+      "bytes": 6375,
       "executable": false,
       "path": "schemas/bbk-python-execution-slice-projection-v1.schema.json",
-      "sha256": "a0d6887a9e8a01ef2b620f1b5cd10bb7fab3b7262b7c2e670fdb3f9ac2713c62"
+      "sha256": "49c92915c1cc66ae4a5edc12ec73af3a8c71bf0f30346af32e7135940d546bd8"
     },
     {
-      "bytes": 7370,
+      "bytes": 7674,
       "executable": false,
       "path": "schemas/bbk-python-implementation-structure-projection-v1.schema.json",
-      "sha256": "8a03010fd5a8cd52468008c45e74db24006c2100f920325b07607b32ed343d5d"
+      "sha256": "b0a8e13e3cc8e0afcc865f1494aa5da868a8e0a701656e36b1c932d25614fcca"
     },
     {
       "bytes": 2411,
@@ -647,10 +653,10 @@
       "sha256": "63685a58889e50b991bee5c98a87d51997920f43633e71968451763bf647a64f"
     },
     {
-      "bytes": 5300,
+      "bytes": 5604,
       "executable": false,
       "path": "schemas/bbk-python-structure-review-result-v1.schema.json",
-      "sha256": "10c97a9ba6bca27256dacf57a8ccbe1232e030d4fd5a497361795266c10b758a"
+      "sha256": "d1aeae741433b65172ce1287e74cebc4101685e2dae009ae67333045e41f224a"
     },
     {
       "bytes": 5276,
@@ -821,40 +827,34 @@
       "sha256": "2a18b84e61693b3ba4756e6992c2a8f5dba50eca77eaae05ba01f044755c962c"
     },
     {
-      "bytes": 18286,
+      "bytes": 19560,
       "executable": false,
-      "path": "tests/test_alpha4_structure.py",
-      "sha256": "32e4863b9e4140183fd77de945852f85bb9f68f3f6623080d9f1a3fc4a093e74"
+      "path": "tests/test_dispatch_runtime.py",
+      "sha256": "71f37775bd8eef90a2257f5303746f9f510b73a4df46f67c2b8d31d77bf33b95"
     },
     {
-      "bytes": 18822,
+      "bytes": 28765,
       "executable": false,
-      "path": "tests/test_alpha8_dispatch.py",
-      "sha256": "3863612e99dc8bec922082a75c88992a7cbc78274855ee571d8fdc596d934a6e"
+      "path": "tests/test_profile_contracts.py",
+      "sha256": "435b15fa16f958bd10a6dc1c5a17f567b231a351d59f59ee04d0753218ca5b9c"
     },
     {
-      "bytes": 912,
+      "bytes": 21033,
       "executable": false,
-      "path": "tests/test_omp_context_boundary.py",
-      "sha256": "3ffb7b793d53b7b42130657428013af6708150abd1fceb75e6072ecfa8a8c279"
+      "path": "tests/test_structure_contracts.py",
+      "sha256": "108029b7f715e97b87bf14904619632d281b12b03f8bcbb6814a797376947c62"
     },
     {
-      "bytes": 25595,
-      "executable": false,
-      "path": "tests/test_profile.py",
-      "sha256": "55431e2669eaae38d5ed30d2a77153bc9c8be60b4e7abf45084b92b9b6a0010e"
-    },
-    {
-      "bytes": 107226,
+      "bytes": 109920,
       "executable": false,
       "path": "tools/bbk_python.py",
-      "sha256": "c83971f33ee8e58a3fcc9ded8d213cb96691115ea6a0b140f286e3c9d6e70278"
+      "sha256": "e5d934d8f5314b1637d4deee29756041303e34fa1ee7f1d3d0f3a3438323d27a"
     },
     {
       "bytes": 7415,
       "executable": false,
       "path": "tools/build_release.py",
-      "sha256": "3b895523f518e657553821a0863eefd3775a6ec2cb0d76f6dce390625edcdcf7"
+      "sha256": "aec0d84f6d1047ab75a8998becfa3a175868cbc80788514c5ed90efa3ab48eb3"
     },
     {
       "bytes": 15448,
@@ -864,7 +864,7 @@
     },
     {
       "bytes": 55389,
-      "executable": true,
+      "executable": false,
       "path": "tools/profile.py",
       "sha256": "07ab8af8de7af267c43d1b2d4f79c1c6c7b81274896577fec98e015496bf9c30"
     },
@@ -882,10 +882,10 @@
   "name": "BBK Python Profile",
   "profile_dispatch_protocol": "bbk.profile-capability.v1",
   "profile_id": "python",
-  "profile_manifest_sha256": "bcd467b9417e0fa933d5c0dfa96add279c39216b1523b543f23fb7c607b2f850",
+  "profile_manifest_sha256": "8d0125613f6cd7779b7dea9fcf8abf15ec465a71edcefdad6ea85c34bf5adf0f",
   "review_assurance_status": "supported",
   "root_schema": "bbk.profile-package-root.v1",
-  "root_sha256": "d7e7f38796770ee7aaf7d1a5c6d68cfbe43626700e99c0468980feb674430950",
+  "root_sha256": "40ed488ce36933bdc1a0ebb2ed7356fa2c055d5cd7caee04f1986075ba7c8b36",
   "schema": "bbk.profile-package-manifest.v1",
   "skill_count": 15,
   "source_provenance_sha256": "a794d33a235ba64f82bc590d20012d26c963b7fe2b1a854a872b405a1daa14db",

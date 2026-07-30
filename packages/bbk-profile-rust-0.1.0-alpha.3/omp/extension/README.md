@@ -1,6 +1,6 @@
 # BBK Rust profile — OMP extension
 
-This optional extension exposes the installed `bbk-profile-rust 0.1.0-alpha.2` deterministic CLI through OMP. It plans profile components and gates and projects generic BBK structure/slice objects. It does not install Rust tools, run Cargo gates by default, grant effects, or mark work passed.
+This optional extension exposes the installed `bbk-profile-rust 0.1.0-alpha.3` deterministic CLI through OMP. It plans profile components and gates and projects generic BBK structure/slice objects. It does not install Rust tools, run Cargo gates by default, grant effects, or mark work passed.
 
 Commands:
 

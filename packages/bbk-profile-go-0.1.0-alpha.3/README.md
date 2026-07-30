@@ -1,8 +1,12 @@
 # BBK Go Profile
 
-`bbk-profile-go` is an optional, independently versioned Go language profile for the Blueprint Bootstrap Kit. Version `0.1.0-alpha.2` targets BBK `0.1.0-alpha.4` and adds qualified projections for `ImplementationStructureContract` and `ExecutionSlice` while preserving alpha.1 preflight, resolution, gate planning, installer, and review behavior.
+`bbk-profile-go` is an optional, independently versioned Go language profile for the Blueprint Bootstrap Kit. Version `0.1.0-alpha.3` requires BBK `0.1.0-alpha.8` or a compatible successor. It preserves the alpha.2 structure/slice projections and adds the alpha.8 typed profile-dispatch surface.
 
 The generic BBK contract or slice remains authoritative. The Go projection is a deterministic, non-mutating view. It cannot grant tools, effects, scope, approval, readiness, validation, completion, or release authority.
+
+## Version identities
+
+The profile package version is `0.1.0-alpha.3` and the minimum compatible BBK core is `0.1.0-alpha.8`. Legacy projection fields containing `"bbk_version": "0.1.0-alpha.4"` identify the implementation-structure/execution-slice **contract dialect introduced in BBK alpha.4**; they do not report the installed core version. See `docs/METADATA-CONTRACT.md`.
 
 ## Main capabilities
 

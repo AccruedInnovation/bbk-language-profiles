@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import hashlib
 import json
 import os
@@ -17,7 +18,7 @@ INSTALL = ROOT / "tools" / "install.py"
 FIXTURE = ROOT / "fixtures" / "go-workspace"
 NEGATIVE = ROOT / "fixtures" / "negative"
 ALPHA4 = ROOT / "fixtures" / "alpha4"
-BBK_CORE = Path(os.environ.get("BBK_CORE_CLI", "/nonexistent/bbk-alpha4/tools/bbk.py"))
+BBK_CORE = Path(os.environ.get("BBK_CORE_CLI", "/nonexistent/bbk/tools/bbk.py"))
 
 
 def run(command, *, cwd=None, env=None, check=True):
@@ -59,7 +60,7 @@ def gates(value):
 
 class GoProfileTests(unittest.TestCase):
     def test_profile_manifest_and_skill_references(self):
-        profile = json.loads((ROOT / "PROFILE.json").read_text())
+        profile = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
         self.assertEqual(profile["schema"], "bbk.language-profile.v1")
         self.assertEqual(profile["id"], "go")
         self.assertEqual(profile["maturity"], "comprehensive-alpha")
@@ -74,7 +75,7 @@ class GoProfileTests(unittest.TestCase):
             self.assertTrue((ROOT / path).is_file(), path)
 
     def test_uploaded_source_digest_is_preserved(self):
-        record = json.loads((ROOT / "sources" / "original-digests.json").read_text())
+        record = json.loads((ROOT / "sources" / "original-digests.json").read_text(encoding="utf-8"))
         source = Path("/mnt/data/comprehensive-analysis-go.md")
         if source.is_file():
             digest = hashlib.sha256(source.read_bytes()).hexdigest()
@@ -96,18 +97,18 @@ class GoProfileTests(unittest.TestCase):
                 if definition.get("type") == "string" and key in value:
                     self.assertIsInstance(value[key], str)
 
-        profile = json.loads((ROOT / "PROFILE.json").read_text())
-        profile_schema = json.loads((ROOT / "schemas" / "bbk-language-profile-v1.schema.json").read_text())
+        profile = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
+        profile_schema = json.loads((ROOT / "schemas" / "bbk-language-profile-v1.schema.json").read_text(encoding="utf-8"))
         validate_required_and_consts(profile, profile_schema)
         preflight, _ = run_json([sys.executable, CLI, "--json", "preflight", "--root", FIXTURE])
-        preflight_schema = json.loads((ROOT / "schemas" / "bbk-go-preflight-v1.schema.json").read_text())
+        preflight_schema = json.loads((ROOT / "schemas" / "bbk-go-preflight-v1.schema.json").read_text(encoding="utf-8"))
         validate_required_and_consts(preflight, preflight_schema)
         resolution, _ = run_json([sys.executable, CLI, "--json", "resolve", "--root", FIXTURE, "--path", "cmd/app/main.go"])
-        resolution_schema = json.loads((ROOT / "schemas" / "bbk-go-resolution-v1.schema.json").read_text())
+        resolution_schema = json.loads((ROOT / "schemas" / "bbk-go-resolution-v1.schema.json").read_text(encoding="utf-8"))
         validate_required_and_consts(resolution, resolution_schema)
 
     def test_gate_recipes_are_nonexecuting_and_have_no_shell_operators(self):
-        value = json.loads((ROOT / "gates" / "go-gates.json").read_text())
+        value = json.loads((ROOT / "gates" / "go-gates.json").read_text(encoding="utf-8"))
         self.assertTrue(value["policy"]["no_silent_install"])
         self.assertTrue(value["policy"]["no_silent_toolchain_download"])
         for recipe in value["recipes"]:
@@ -246,7 +247,7 @@ class GoProfileTests(unittest.TestCase):
         self.assertIn("go-generate-diff", gates(value))
 
     def test_negative_fixture_registry_covers_required_cases(self):
-        value = json.loads((ROOT / "fixtures" / "negative-cases.json").read_text())
+        value = json.loads((ROOT / "fixtures" / "negative-cases.json").read_text(encoding="utf-8"))
         ids = {item["id"] for item in value["cases"]}
         required = {
             "hidden-parent-go-work", "local-replace-masks-release", "cached-tests-not-fresh",
@@ -359,7 +360,7 @@ class GoProfileTests(unittest.TestCase):
             self.assertEqual(len(list((home / ".claude" / "skills").glob("*/SKILL.md"))), 14)
             self.assertTrue((home / ".omp" / "agent" / "extensions" / "bbk-profile-go" / "index.js").is_file())
             self.assertTrue((home / "bin" / ("bbk-go.cmd" if os.name == "nt" else "bbk-go")).is_file())
-            current = json.loads((home / "data" / "profiles" / "go" / "current.json").read_text())
+            current = json.loads((home / "data" / "profiles" / "go" / "current.json").read_text(encoding="utf-8"))
             self.assertEqual(current["version"], "0.1.0-alpha.3")
             status, _ = run_json([sys.executable, INSTALL, "--json", "status", "--scope", "user"], env=env)
             self.assertEqual(status["summary"].get("current"), len(status["files"]))
@@ -381,7 +382,7 @@ class GoProfileTests(unittest.TestCase):
             self.assertFalse((project / ".bbk-profile-go-install.json").exists())
 
     def test_alpha4_profile_capability_and_entrypoints(self):
-        profile = json.loads((ROOT / "PROFILE.json").read_text())
+        profile = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
         capability = profile["capabilities"]["implementation_structure"]
         self.assertEqual(capability["status"], "supported")
         self.assertIn("go-package", capability["artifact_kinds"])
@@ -399,7 +400,7 @@ class GoProfileTests(unittest.TestCase):
         assert spec.loader is not None
         spec.loader.exec_module(module)
         for path in sorted((ROOT / "schemas").glob("*.json")):
-            json.loads(path.read_text())
+            json.loads(path.read_text(encoding="utf-8"))
         pairs = [
             (ALPHA4 / "structure" / "go-service-contract.json", ROOT / "schemas" / "bbk-implementation-structure-contract-v1.schema.json"),
             (ALPHA4 / "structure" / "routine-inline-contract.json", ROOT / "schemas" / "bbk-implementation-structure-contract-v1.schema.json"),
@@ -411,8 +412,8 @@ class GoProfileTests(unittest.TestCase):
             (ALPHA4 / "slices" / "module-downstream-slice.json", ROOT / "schemas" / "bbk-execution-slice-v1.schema.json"),
         ]
         for value_path, schema_path in pairs:
-            value = json.loads(value_path.read_text())
-            schema = json.loads(schema_path.read_text())
+            value = json.loads(value_path.read_text(encoding="utf-8"))
+            schema = json.loads(schema_path.read_text(encoding="utf-8"))
             self.assertEqual(module.schema_errors(value, schema), [], value_path)
 
     def test_profile_projection_and_review_outputs_validate_against_namespaced_schemas(self):
@@ -437,10 +438,10 @@ class GoProfileTests(unittest.TestCase):
         ]
         for command, schema_name in commands:
             value, _ = run_json(command)
-            schema = json.loads((ROOT / "schemas" / schema_name).read_text())
+            schema = json.loads((ROOT / "schemas" / schema_name).read_text(encoding="utf-8"))
             self.assertEqual(module.schema_errors(value, schema), [], schema_name)
         review, _ = run_json(commands[-1][0])
-        comparison_schema = json.loads((ROOT / "schemas" / "bbk-go-planned-actual-structure-comparison-v1.schema.json").read_text())
+        comparison_schema = json.loads((ROOT / "schemas" / "bbk-go-planned-actual-structure-comparison-v1.schema.json").read_text(encoding="utf-8"))
         self.assertEqual(module.schema_errors(review["comparison"], comparison_schema), [])
 
     def test_invalid_generic_contract_fails_closed(self):
@@ -584,7 +585,7 @@ class GoProfileTests(unittest.TestCase):
         assert spec.loader is not None
         spec.loader.exec_module(module)
         value, _ = run_json([sys.executable, CLI, "--json", "inventory", "--root", FIXTURE])
-        schema = json.loads((ROOT / "schemas" / "bbk-go-actual-structure-inventory-v1.schema.json").read_text())
+        schema = json.loads((ROOT / "schemas" / "bbk-go-actual-structure-inventory-v1.schema.json").read_text(encoding="utf-8"))
         self.assertEqual(module.schema_errors(value, schema), [])
 
     def test_profile_lock_contains_contract_slice_and_projection_digests(self):
@@ -613,13 +614,13 @@ class GoProfileTests(unittest.TestCase):
             self.assertEqual(left["output_sha256"], right["output_sha256"])
 
     def test_legacy_alpha3_profile_fixture_is_unprojected(self):
-        legacy = json.loads((ROOT / "fixtures" / "alpha4" / "legacy" / "PROFILE-alpha3.json").read_text())
+        legacy = json.loads((ROOT / "fixtures" / "alpha4" / "legacy" / "PROFILE-alpha3.json").read_text(encoding="utf-8"))
         support = legacy.get("capabilities", {}).get("implementation_structure", {}).get("status", "legacy-unprojected")
         self.assertEqual(support, "legacy-unprojected")
 
-    def test_bbk_alpha4_discovers_and_resolves_manifested_profile(self):
+    def test_current_bbk_discovers_and_resolves_manifested_profile(self):
         if not BBK_CORE.is_file() or not (ROOT / "PACKAGE-MANIFEST.json").is_file():
-            self.skipTest("BBK alpha.4 core or package manifest unavailable")
+            self.skipTest("A compatible BBK core or package manifest is unavailable")
         listed, _ = run_json([sys.executable, BBK_CORE, "--json", "profile", "list", "--profile-dir", ROOT])
         match = next(item for item in listed["profiles"] if item.get("id") == "go")
         self.assertEqual(match["package_verification"]["status"], "PASS")
@@ -632,6 +633,54 @@ class GoProfileTests(unittest.TestCase):
         ])
         self.assertEqual(resolved["resolution"]["schema"], "bbk.go-profile-resolution.v1")
         self.assertEqual(resolved["profile"]["package_verification"]["status"], "PASS")
+
+class CurrentMetadataContractTests(unittest.TestCase):
+    def test_current_release_metadata_is_consistent(self):
+        version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+        profile = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
+        self.assertEqual(version, '0.1.0-alpha.3')
+        self.assertEqual(profile["version"], version)
+        self.assertEqual(profile["requires"]["bbk_minimum"], '0.1.0-alpha.8')
+        self.assertEqual(profile["contract_dialects"]["implementation_structure"]["legacy_output_value"], '0.1.0-alpha.4')
+        self.assertEqual(profile["contract_dialects"]["execution_slice"]["legacy_output_value"], '0.1.0-alpha.4')
+        self.assertEqual(profile["contract_dialects"]["typed_profile_dispatch"]["id"], "bbk.profile-capability.v1")
+
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        install = (ROOT / "docs" / "INSTALL.md").read_text(encoding="utf-8")
+        metadata = (ROOT / "docs" / "METADATA-CONTRACT.md").read_text(encoding="utf-8")
+        omp_readme = (ROOT / "omp" / "extension" / "README.md").read_text(encoding="utf-8")
+        omp_package = json.loads((ROOT / "omp" / "extension" / "package.json").read_text(encoding="utf-8"))
+        for current in (readme, install, metadata, omp_readme):
+            self.assertIn(version, current)
+        for current in (readme, install, metadata):
+            self.assertIn('0.1.0-alpha.8', current)
+        self.assertEqual(omp_package["version"], version)
+        self.assertNotIn("for BBK alpha.4 across", profile.get("description", ""))
+
+        current_guidance = "\n".join((readme, install, omp_readme)).lower().replace("`", "")
+        for stale_claim in (
+            "install bbk core alpha.4",
+            "install bbk core 0.1.0-alpha.4",
+            "requires bbk 0.1.0-alpha.4",
+            "requires bbk core 0.1.0-alpha.4",
+            "minimum compatible bbk core is 0.1.0-alpha.4",
+        ):
+            self.assertNotIn(stale_claim, current_guidance)
+
+    def test_python_tools_and_tests_use_explicit_text_encoding(self):
+        violations = []
+        for source in [*sorted((ROOT / "tools").glob("*.py")), *sorted((ROOT / "tests").glob("*.py"))]:
+            tree = ast.parse(source.read_text(encoding="utf-8"), filename=str(source))
+            for node in ast.walk(tree):
+                if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Attribute):
+                    continue
+                if node.func.attr not in {"read_text", "write_text"}:
+                    continue
+                if any(keyword.arg == "encoding" for keyword in node.keywords):
+                    continue
+                violations.append(f"{source.relative_to(ROOT).as_posix()}:{node.lineno} {node.func.attr}")
+        self.assertEqual(violations, [])
+
 
 
 if __name__ == "__main__":

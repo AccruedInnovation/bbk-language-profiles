@@ -1,6 +1,6 @@
 # Known limitations
 
-`bbk-profile-go 0.1.0-alpha.2` is a statically and mock-qualified alpha.4 profile projection, not an execution authority.
+`bbk-profile-go 0.1.0-alpha.3` is a statically and mock-qualified profile package requiring BBK `0.1.0-alpha.8` or a compatible successor. Its structure/slice outputs use the contract dialect introduced in core alpha.4; it is not an execution authority.
 
 ## Live environments not universally qualified
 

@@ -1,7 +1,7 @@
 {
   "generated_from": {
-    "bbk_root_sha256": "ff3cd43978d01a7dbfa0fb97c153ec842043eb7cd15884fbe8483aa3cd5bbcc7",
-    "bbk_version": "0.1.0-alpha.11.7",
+    "bbk_root_sha256": "820600cc056a91839936d731657c07ee6c960fb2b21474e4eccd15ae23f57582",
+    "bbk_version": "0.1.0-alpha.11.11",
     "bundled_source": "bundled-language-profiles"
   },
   "profile_count": 5,
@@ -15,7 +15,7 @@
       "name": "BBK Go Profile",
       "package": "bbk-profile-go",
       "path": "packages/bbk-profile-go-0.1.0-alpha.3",
-      "root_sha256": "4da1f08f78ae62a3a3d35a669669cc97543a797b98a082a0bbb4d46897f3284a",
+      "root_sha256": "9c72c321780539a12053c6cc53e751a17c6193711a86242d6d8c1d48ff5e1a40",
       "typed_capabilities": true,
       "version": "0.1.0-alpha.3"
     },
@@ -25,7 +25,7 @@
       "name": "BBK Python Profile",
       "package": "bbk-profile-python",
       "path": "packages/bbk-profile-python-0.1.0-alpha.3",
-      "root_sha256": "d7e7f38796770ee7aaf7d1a5c6d68cfbe43626700e99c0468980feb674430950",
+      "root_sha256": "40ed488ce36933bdc1a0ebb2ed7356fa2c055d5cd7caee04f1986075ba7c8b36",
       "typed_capabilities": true,
       "version": "0.1.0-alpha.3"
     },
@@ -35,7 +35,7 @@
       "name": "BBK Rust Profile",
       "package": "bbk-profile-rust",
       "path": "packages/bbk-profile-rust-0.1.0-alpha.3",
-      "root_sha256": "06158ecbe6709b55952f910b90f9c986e5ee147062bbe0a83bf63b06fe39984a",
+      "root_sha256": "9ac3b016805449c59e5ef64c219b70eb7eb9eb71f40684ead2ecffa9f765b988",
       "typed_capabilities": true,
       "version": "0.1.0-alpha.3"
     },
@@ -45,7 +45,7 @@
       "name": "BBK TypeScript/JavaScript Profile",
       "package": "bbk-profile-typescript-javascript",
       "path": "packages/bbk-profile-typescript-javascript-0.1.0-alpha.3",
-      "root_sha256": "3cdcfe0e665bcb6e44431c6f472448c7c3e5b854fc8bb43422570f3d669e34aa",
+      "root_sha256": "2eec170b6db876a27d97cec686a1ffd67b6a1a1322da068817a0602acc2882ec",
       "typed_capabilities": true,
       "version": "0.1.0-alpha.3"
     }

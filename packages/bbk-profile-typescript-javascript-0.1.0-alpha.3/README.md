@@ -12,6 +12,10 @@ BBK role constitution
 
 This is a temporary development-method package. It is not the real Blueprint TypeScript adapter, AgentSpec compiler, Host Protocol, release authority, readiness authority, semantic store, or OMP qualification record.
 
+## Version identities
+
+The profile package version is `0.1.0-alpha.3` and the minimum compatible BBK core is `0.1.0-alpha.8`. Legacy projection fields containing `"bbk_version": "0.1.0-alpha.4"` identify the implementation-structure/execution-slice **contract dialect introduced in BBK alpha.4**; they do not report the installed core version. See `docs/METADATA-CONTRACT.md`.
+
 ## Release
 
 - Profile ID: `typescript-javascript`

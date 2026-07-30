@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import hashlib
 import json
 import os
@@ -35,7 +36,7 @@ def run_json(command, *, cwd=None, env=None, check=True):
 
 class PythonProfileTests(unittest.TestCase):
     def test_profile_manifest_and_internal_references(self):
-        profile = json.loads((ROOT / "PROFILE.json").read_text())
+        profile = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
         self.assertEqual(profile["schema"], "bbk.language-profile.v1")
         self.assertEqual(profile["id"], "python")
         self.assertEqual(profile["maturity"], "comprehensive-alpha")
@@ -50,13 +51,13 @@ class PythonProfileTests(unittest.TestCase):
         for path in profile["selection"].values():
             self.assertTrue((ROOT / path).is_file(), path)
         for path in [*sorted((ROOT / "schemas").glob("*.json")), *sorted((ROOT / "mappings").glob("*.json")), *sorted((ROOT / "gates").glob("*.json"))]:
-            json.loads(path.read_text())
+            json.loads(path.read_text(encoding="utf-8"))
 
     def test_original_skill_is_preserved_and_corrections_are_present(self):
-        provenance = json.loads((ROOT / "sources" / "original-digests.json").read_text())
+        provenance = json.loads((ROOT / "sources" / "original-digests.json").read_text(encoding="utf-8"))
         source = ROOT / provenance["sources"][0]["original_path"]
         self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(), provenance["sources"][0]["sha256"])
-        updated = (ROOT / "skills" / "comprehensive-analysis-python" / "SKILL.md").read_text()
+        updated = (ROOT / "skills" / "comprehensive-analysis-python" / "SKILL.md").read_text(encoding="utf-8")
         self.assertIn("Bare `raise` is the correct way", updated)
         self.assertIn("Generators are not an automatic improvement", updated)
         self.assertIn("Breaking Surfaces", updated)
@@ -86,8 +87,8 @@ class PythonProfileTests(unittest.TestCase):
         self.assertFalse(any(FIXTURE.rglob("*.pyc")))
         with tempfile.TemporaryDirectory() as temp:
             project = Path(temp)
-            (project / "pyproject.toml").write_text("[project]\nname='broken'\nversion='0.1'\n")
-            (project / "bad.py").write_text("def broken(:\n")
+            (project / "pyproject.toml").write_text("[project]\nname='broken'\nversion='0.1'\n", encoding="utf-8")
+            (project / "bad.py").write_text("def broken(:\n", encoding="utf-8")
             result = run([sys.executable, CLI, "--json", "syntax-check", "--root", project, "--path", "bad.py"], check=False)
             self.assertEqual(result.returncode, 1)
             self.assertEqual(json.loads(result.stdout)["status"], "FAIL")
@@ -99,9 +100,9 @@ class PythonProfileTests(unittest.TestCase):
             for name in ["ruff", "pytest", "mypy", "build"]:
                 path = fakebin / (f"{name}.cmd" if os.name == "nt" else name)
                 if os.name == "nt":
-                    path.write_text(f"@echo touched>{marker}\r\n")
+                    path.write_text(f"@echo touched>{marker}\r\n", encoding="utf-8")
                 else:
-                    path.write_text(f"#!/bin/sh\ntouch {marker!s}\nexit 91\n")
+                    path.write_text(f"#!/bin/sh\ntouch {marker!s}\nexit 91\n", encoding="utf-8")
                     path.chmod(0o755)
             env = os.environ.copy(); env["PATH"] = str(fakebin) + os.pathsep + env.get("PATH", "")
             value, _ = run_json([
@@ -312,12 +313,12 @@ class PythonProfileTests(unittest.TestCase):
             self.assertEqual(len(list((home / ".claude" / "skills").glob("*/SKILL.md"))), 15)
             self.assertTrue((home / ".omp" / "agent" / "extensions" / "bbk-profile-python" / "index.js").is_file())
             self.assertTrue((home / "bin" / ("bbk-python.cmd" if os.name == "nt" else "bbk-python")).is_file())
-            current = json.loads((home / "data" / "profiles" / "python" / "current.json").read_text())
+            current = json.loads((home / "data" / "profiles" / "python" / "current.json").read_text(encoding="utf-8"))
             self.assertEqual(current["version"], "0.1.0-alpha.3")
             status, _ = run_json([sys.executable, INSTALL, "--json", "status", "--scope", "user"], env=env)
             self.assertEqual(status["summary"].get("current"), len(status["files"]))
             modified = home / ".agents" / "skills" / "bbk-python" / "SKILL.md"
-            modified.write_text(modified.read_text() + "\n<!-- local user modification -->\n")
+            modified.write_text(modified.read_text(encoding="utf-8") + "\n<!-- local user modification -->\n", encoding="utf-8")
             uninstalled, _ = run_json([sys.executable, INSTALL, "--json", "uninstall", "--scope", "user"], env=env)
             self.assertTrue(any(item["path"] == str(modified) and item["reason"] == "modified since install" for item in uninstalled["preserved"]))
             self.assertTrue(modified.exists())
@@ -330,9 +331,9 @@ class PythonProfileTests(unittest.TestCase):
             data = home / "data"
             old_root = data / "profiles" / "python" / "0.1.0-alpha.1"
             old_root.mkdir(parents=True)
-            (old_root / "PROFILE.json").write_text('{"id":"python","version":"0.1.0-alpha.1"}\n')
+            (old_root / "PROFILE.json").write_text('{"id":"python","version":"0.1.0-alpha.1"}\n', encoding="utf-8")
             current = data / "profiles" / "python" / "current.json"
-            current.write_text(json.dumps({"schema":"bbk.current-profile.v1","id":"python","version":"0.1.0-alpha.1","path":str(old_root)}, indent=2) + "\n")
+            current.write_text(json.dumps({"schema":"bbk.current-profile.v1","id":"python","version":"0.1.0-alpha.1","path":str(old_root)}, indent=2) + "\n", encoding="utf-8")
             env = os.environ.copy(); env.update({"HOME": str(home), "BBK_INSTALL_ROOT": str(data), "BBK_BIN_DIR": str(home / "bin")})
             installed, _ = run_json([sys.executable, INSTALL, "--json", "install", "--scope", "user", "--omp", "--force"], env=env)
             selector_records = [item for item in installed["files"] if item["path"] == str(current)]
@@ -342,8 +343,8 @@ class PythonProfileTests(unittest.TestCase):
             backup = Path(record["backup"])
             self.assertNotEqual(backup.resolve(), current.resolve())
             self.assertTrue(backup.is_file())
-            self.assertEqual(json.loads(backup.read_text())["version"], "0.1.0-alpha.1")
-            self.assertEqual(json.loads(current.read_text())["version"], "0.1.0-alpha.3")
+            self.assertEqual(json.loads(backup.read_text(encoding="utf-8"))["version"], "0.1.0-alpha.1")
+            self.assertEqual(json.loads(current.read_text(encoding="utf-8"))["version"], "0.1.0-alpha.3")
             self.assertTrue((old_root / "PROFILE.json").is_file())
 
     def test_project_install_roundtrip_preserves_project_root(self):
@@ -354,15 +355,15 @@ class PythonProfileTests(unittest.TestCase):
             self.assertTrue((project / ".bbk-kit" / "profiles" / "python" / "0.1.0-alpha.3" / "PROFILE.json").is_file())
             self.assertTrue((project / ".omp" / "extensions" / "bbk-profile-python" / "index.js").is_file())
             modified = project / ".omp" / "extensions" / "bbk-profile-python" / "index.js"
-            modified.write_text(modified.read_text() + "\n// local project modification\n")
+            modified.write_text(modified.read_text(encoding="utf-8") + "\n// local project modification\n", encoding="utf-8")
             uninstalled, _ = run_json([sys.executable, INSTALL, "--json", "uninstall", "--scope", "project", "--root", project])
             self.assertTrue(any(item["path"] == str(modified) and item["reason"] == "modified since install" for item in uninstalled["preserved"]))
             self.assertTrue(modified.exists())
             self.assertTrue(project.exists())
             self.assertFalse((project / ".bbk-profile-python-install.json").exists())
 
-    @unittest.skipUnless(CORE_CLI is not None and CORE_CLI.is_file(), "BBK alpha3 core reference is required")
-    def test_bbk_alpha3_discovers_successor_but_rejects_alpha4_requirement(self):
+    @unittest.skipUnless(CORE_CLI is not None and CORE_CLI.is_file(), "A compatible BBK core reference is required")
+    def test_current_bbk_discovers_and_resolves_manifested_profile(self):
         if not (ROOT / "PACKAGE-MANIFEST.json").is_file():
             self.skipTest("package manifest is written by the release builder")
         with tempfile.TemporaryDirectory() as temp:
@@ -373,16 +374,63 @@ class PythonProfileTests(unittest.TestCase):
             python_profiles = [item for item in listing["profiles"] if item.get("id") == "python"]
             self.assertEqual(len(python_profiles), 1)
             self.assertEqual(python_profiles[0]["package_verification"]["status"], "PASS")
-            self.assertEqual(python_profiles[0]["compatibility"]["status"], "FAIL")
-            self.assertFalse(python_profiles[0]["compatibility"]["bbk_compatible"])
-            result = run([
+            self.assertEqual(python_profiles[0]["compatibility"]["status"], "PASS")
+            self.assertTrue(python_profiles[0]["compatibility"]["bbk_compatible"])
+            resolved, _ = run_json([
                 sys.executable, CORE_CLI, "--json", "profile", "resolve", "--id", "python",
                 "--root", FIXTURE, "--role", "worker", "--task-profile", "implementation",
                 "--assurance-tier", "routine", "--path", "src/fixture_pkg/api.py",
-            ], env=env, cwd=FIXTURE, check=False)
-            self.assertNotEqual(result.returncode, 0)
-            self.assertIn("incompatible", json.loads(result.stdout)["error"].lower())
+            ], env=env, cwd=FIXTURE)
+            self.assertEqual(resolved["resolution"]["schema"], "bbk.python-profile-resolution.v1")
+            self.assertEqual(resolved["profile"]["package_verification"]["status"], "PASS")
             run([sys.executable, INSTALL, "uninstall", "--scope", "user"], env=env)
+
+class CurrentMetadataContractTests(unittest.TestCase):
+    def test_current_release_metadata_is_consistent(self):
+        version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+        profile = json.loads((ROOT / "PROFILE.json").read_text(encoding="utf-8"))
+        self.assertEqual(version, '0.1.0-alpha.3')
+        self.assertEqual(profile["version"], version)
+        self.assertEqual(profile["requires"]["bbk_minimum"], '0.1.0-alpha.8')
+        self.assertEqual(profile["contract_dialects"]["implementation_structure"]["legacy_output_value"], '0.1.0-alpha.4')
+        self.assertEqual(profile["contract_dialects"]["execution_slice"]["legacy_output_value"], '0.1.0-alpha.4')
+        self.assertEqual(profile["contract_dialects"]["typed_profile_dispatch"]["id"], "bbk.profile-capability.v1")
+
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        install = (ROOT / "docs" / "INSTALL.md").read_text(encoding="utf-8")
+        metadata = (ROOT / "docs" / "METADATA-CONTRACT.md").read_text(encoding="utf-8")
+        omp_readme = (ROOT / "omp" / "extension" / "README.md").read_text(encoding="utf-8")
+        omp_package = json.loads((ROOT / "omp" / "extension" / "package.json").read_text(encoding="utf-8"))
+        for current in (readme, install, metadata, omp_readme):
+            self.assertIn(version, current)
+        for current in (readme, install, metadata):
+            self.assertIn('0.1.0-alpha.8', current)
+        self.assertEqual(omp_package["version"], version)
+        self.assertNotIn("for BBK alpha.4 across", profile.get("description", ""))
+
+        current_guidance = "\n".join((readme, install, omp_readme)).lower().replace("`", "")
+        for stale_claim in (
+            "install bbk core alpha.4",
+            "install bbk core 0.1.0-alpha.4",
+            "requires bbk 0.1.0-alpha.4",
+            "requires bbk core 0.1.0-alpha.4",
+            "minimum compatible bbk core is 0.1.0-alpha.4",
+        ):
+            self.assertNotIn(stale_claim, current_guidance)
+
+    def test_python_tools_and_tests_use_explicit_text_encoding(self):
+        violations = []
+        for source in [*sorted((ROOT / "tools").glob("*.py")), *sorted((ROOT / "tests").glob("*.py"))]:
+            tree = ast.parse(source.read_text(encoding="utf-8"), filename=str(source))
+            for node in ast.walk(tree):
+                if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Attribute):
+                    continue
+                if node.func.attr not in {"read_text", "write_text"}:
+                    continue
+                if any(keyword.arg == "encoding" for keyword in node.keywords):
+                    continue
+                violations.append(f"{source.relative_to(ROOT).as_posix()}:{node.lineno} {node.func.attr}")
+        self.assertEqual(violations, [])
 
 
 

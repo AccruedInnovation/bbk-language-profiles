@@ -524,7 +524,7 @@
       "id": "python-generic-structure-contract-validate",
       "minimum_tier": "routine",
       "requires": [
-        "bbk-alpha4-structure-validator"
+        "bbk-structure-contract-validator"
       ],
       "triggers": [
         "implementation-structure"

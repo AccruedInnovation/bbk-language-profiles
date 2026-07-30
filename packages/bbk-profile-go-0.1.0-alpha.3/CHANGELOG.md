@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0-alpha.3 — 2026-07-24 (pre-public correction 2026-07-29)
+
+- Added typed State–Decision–Effect and Review Assurance dispatch, mappings, schemas, fixtures, OMP surfaces, migration guidance, and release qualification while preserving alpha.2 procedures and legacy interfaces.
+- Corrected current-facing package, README, installation, limitation, and OMP metadata before the first public tag; historical predecessor records remain unchanged.
+- Clarified that legacy `bbk_version: 0.1.0-alpha.4` projection fields identify the structure/slice contract dialect rather than the installed core version or compatibility minimum.
+- Consolidated release-numbered OMP-context tests into responsibility-oriented dispatch/runtime suites and enforced explicit UTF-8 text I/O in Python tools and tests.
+
 ## 0.1.0-alpha.2 — 2026-07-23
 
 - Requires BBK `0.1.0-alpha.4` and declares `implementation_structure.status = supported`.
@@ -15,7 +22,3 @@
 ## 0.1.0-alpha.1 — 2026-07-23
 
 - Initial comprehensive-alpha Go profile for BBK alpha.3.
-
-## 0.1.0-alpha.3 — 2026-07-24
-
-Added typed State–Decision–Effect and Review Assurance dispatch, mappings, schemas, fixtures, OMP surfaces, migration guidance, and release qualification while preserving alpha.2 skill bytes and legacy interfaces.

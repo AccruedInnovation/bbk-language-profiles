@@ -131,7 +131,27 @@
       "status": "supported"
     }
   },
-  "description": "Applicability-aware Rust worker, review, validation, gate, evidence, and toolchain guidance for BBK across Codex, OMP, Claude Code, and generic agent harnesses.",
+  "contract_dialects": {
+    "execution_slice": {
+      "id": "bbk.execution-slice.v1",
+      "introduced_in_bbk": "0.1.0-alpha.4",
+      "legacy_output_field": "bbk_version",
+      "legacy_output_value": "0.1.0-alpha.4",
+      "meaning": "Contract-dialect lineage. It is not the installed BBK core version and is not the profile compatibility minimum."
+    },
+    "implementation_structure": {
+      "id": "bbk.implementation-structure-contract.v1",
+      "introduced_in_bbk": "0.1.0-alpha.4",
+      "legacy_output_field": "bbk_version",
+      "legacy_output_value": "0.1.0-alpha.4",
+      "meaning": "Contract-dialect lineage. It is not the installed BBK core version and is not the profile compatibility minimum."
+    },
+    "typed_profile_dispatch": {
+      "id": "bbk.profile-capability.v1",
+      "introduced_in_bbk": "0.1.0-alpha.8"
+    }
+  },
+  "description": "Applicability-aware Rust worker, implementation-structure, execution-slice, review, validation, gate, evidence, and toolchain guidance for BBK, including the structure-contract dialect introduced in core alpha.4 and typed profile dispatch introduced in core alpha.8.",
   "entrypoints": {
     "evidence_adapter": [
       "{python}",
